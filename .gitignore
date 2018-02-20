@@ -1,0 +1,4 @@
+node_modules
+src/public
+.vscode
+.DS_STORE

@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "Style/*": ["src/app/style/*"],
+      "Config/*": ["./src/app/config/*"],
+      "Logic/*": ["./src/app/logic/*"],
+      "Containers/*": ["./src/app/components/containers/*"],
+      "Presentational/*": ["./src/app/components/presentational/*"]
+    },
+    "target": "ES6",
+  },
+  "exclude": [
+    "node_modules"
+  ]
+}
