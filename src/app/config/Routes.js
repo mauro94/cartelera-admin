@@ -1,10 +1,21 @@
 import React from 'react'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
-import App from 'Containers/App';
+import {
+    Router,
+    Switch,
+    Route,
+    Link
+} from 'react-router-dom'
+import { history } from 'Config/helper'
+import App from 'Containers/App'
+import LoginPage from 'Presentational/LoginPage'
 
 const Routes = () => (
-    <Router>
-        <Route path="/:filter?" component={App} />
+    <Router history={history}>
+        <div>
+            <Route exact path="/" component={App} />
+            <Route path="/login" component={LoginPage} />
+            <Route path="/newbie" component={App} />
+        </div>
     </Router>
 )
 

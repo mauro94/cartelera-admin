@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux'
-import test from './test'
+import { reducer as formReducer } from 'redux-form'
+import session from './session'
 
 const reducers = combineReducers({
-    test
+    session,
+    form: formReducer
 })
- 
+
 export default reducers

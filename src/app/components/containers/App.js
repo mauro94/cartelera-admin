@@ -1,16 +1,16 @@
 import { connect } from 'react-redux'
 import React from 'react'
 import 'Style/main.scss'
-import AppView from 'Presentational/AppView'
+import PrivatePage from 'Presentational/PrivatePage'
+import { withRouter } from 'react-router-dom'
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        text: ownProps.match.params.filter
     }
 }
 
-const App = connect(
+const App = withRouter(connect(
     mapStateToProps
-)(AppView)
+)(PrivatePage))
 
 export default App
