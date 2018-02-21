@@ -4,21 +4,27 @@ import {
 } from 'Config/constants'
 import { history } from 'Config/helper'
 import { createAction } from 'Logic/actions'
-import { post, get, del } from 'Logic/actions/thunks'
+import { post } from 'Logic/actions/thunks'
+// import { SubmissionError } from 'redux-form/lib/SubmissionError'
 
-export function login(loginAttempt) {
+export const login = (loginAttempt) => {
     return (dispatch) => {
         dispatch(createAction(SessionActions.Login, null,
             null, Status.WaitingOnServer))
         post(loginAttempt, 'api/login')
             .then(response => {
-                history.push(response.isNewbie ? '/newbie' : '/')
                 dispatch(
                     createAction(SessionActions.Login, response.user, null,
                         Status.Ready))
+                history.push(response.isNewbie ? '/newbie' : '/')
             })
-            .catch((error) => dispatch(
-                createAction(SessionActions.Login, null, error,
-                    Status.Failed)))
+            .catch((error) => {
+                dispatch(
+                    createAction(SessionActions.Login, null, error.response.data,
+                        Status.Failed))
+                // throw new SubmissionError({
+                //     "email": "invalid email"
+                // })
+            })
     }
 }

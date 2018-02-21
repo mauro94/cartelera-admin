@@ -11,7 +11,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onSubmit: loginAttempt => {
+        handleSubmit: loginAttempt => {
             dispatch(thunks.session.login(loginAttempt))
         }
     }

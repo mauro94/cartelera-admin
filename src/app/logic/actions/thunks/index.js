@@ -1,6 +1,7 @@
 import { serverUrl, fetchHeader } from 'Config/constants'
 import { request } from 'Config/helper'
 import * as session from './session'
+import { SubmissionError } from 'redux-form'
 
 export var thunks = {
     session: session
@@ -9,10 +10,7 @@ export var thunks = {
 export function post(object, route) {
     return request.post(route, object)
         .then(response => {
-            return response.data
-        },
-            error => {
-                return error
-            }
-        )
+            return response
+        })
+        .catch(err => { throw err })
 }
