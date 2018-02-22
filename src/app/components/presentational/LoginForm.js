@@ -1,6 +1,17 @@
 // Render Prop
 import React from 'react';
-import { Formik } from 'formik';
+import { Formik, Field } from 'formik';
+import EmailComponent from 'Presentational/InputFields';
+
+const onSubmit=(values, actions) => {
+    handleSubmit(values)
+    actions.setSubmitting(false)
+}
+
+const initialValues = {
+    email: '',
+    password: '',
+}
 
 export default class LoginForm extends React.Component {
     componentWillReceiveProps(nextProps) {
@@ -13,16 +24,9 @@ export default class LoginForm extends React.Component {
         const { handleSubmit, session } = this.props
         return (
             <Formik
-                initialValues={{
-                    email: '',
-                    password: '',
-                }}
-                onSubmit={(values, actions) => {
-                    handleSubmit(values)
-                    actions.setSubmitting(false)
-                }}
-            >
-                {({
+                initialValues={initialValues}
+                onSubmit={onSubmit}
+                >{({
                     values,
                     errors,
                     touched,
@@ -37,15 +41,12 @@ export default class LoginForm extends React.Component {
                         <form onSubmit={handleSubmit}>
                             {/*reqres error, change to our api (unauthorized)*/}
                             {errors.error && <div>{errors.error}</div>}
-                            <input
-                                type="email"
-                                name="email"
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                                value={values.email}
-                            />
+
+                            <Field name="email" value={values.email} component={EmailComponent}/>
+
                             {errors.email && <div>{errors.email}</div>}
-                            <input
+
+                            <Field
                                 type="password"
                                 name="password"
                                 onChange={handleChange}
