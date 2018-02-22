@@ -1,12 +1,7 @@
 // Render Prop
 import React from 'react';
 import { Formik, Field } from 'formik';
-import EmailComponent from 'Presentational/InputFields';
-
-const onSubmit=(values, actions) => {
-    handleSubmit(values)
-    actions.setSubmitting(false)
-}
+import { EmailComponent, PasswordComponent } from 'Presentational/InputFields';
 
 const initialValues = {
     email: '',
@@ -25,7 +20,10 @@ export default class LoginForm extends React.Component {
         return (
             <Formik
                 initialValues={initialValues}
-                onSubmit={onSubmit}
+                onSubmit={(values, actions) => {
+                    handleSubmit(values)
+                    actions.setSubmitting(false)
+                }}
                 >{({
                     values,
                     errors,
@@ -41,18 +39,13 @@ export default class LoginForm extends React.Component {
                         <form onSubmit={handleSubmit}>
                             {/*reqres error, change to our api (unauthorized)*/}
                             {errors.error && <div>{errors.error}</div>}
-
-                            <Field name="email" value={values.email} component={EmailComponent}/>
-
+                            <Field name="email"
+                                   id={"emailLoginField"}
+                                   component={EmailComponent}/>
                             {errors.email && <div>{errors.email}</div>}
-
-                            <Field
-                                type="password"
-                                name="password"
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                                value={values.password}
-                            />
+                            <Field name="password"
+                                   id={"passwordLoginField"}
+                                   component={PasswordComponent}/>
                             {errors.password && <div>{errors.password}</div>}
                             <button type="submit" disabled={isSubmitting}>
                                 Submit
