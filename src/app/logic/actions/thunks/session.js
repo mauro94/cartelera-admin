@@ -22,9 +22,6 @@ export const login = (loginAttempt) => {
                 dispatch(
                     createAction(SessionActions.Login, null, error.response.data,
                         Status.Failed))
-                // throw new SubmissionError({
-                //     "email": "invalid email"
-                // })
             })
     }
 }
