@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { thunks } from 'Logic/actions/thunks'
-import LoginForm from 'Presentational/LoginForm'
+import ProfileDetailsForm from 'Presentational/ProfileDetailsForm'
 
 const mapStateToProps = state => {
     return {
@@ -11,15 +11,15 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        handleSubmit: loginAttempt => {
-            dispatch(thunks.user.login(loginAttempt))
+        handleSubmit: profileDetails => {
+            dispatch(thunks.user.update(profileDetails))
         }
     }
 }
 
-const Login = connect(
+const FirstLogin = connect(
     mapStateToProps,
     mapDispatchToProps
-)(LoginForm)
+)(ProfileDetailsForm)
 
-export default Login
+export default FirstLogin

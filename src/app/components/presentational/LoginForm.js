@@ -15,13 +15,13 @@ const initialValues = {
 
 export default class LoginForm extends React.Component {
     componentWillReceiveProps(nextProps) {
-        if (nextProps.session.error) {
-            this.setErrors(nextProps.session.error);
+        if (nextProps.user.error) {
+            this.setErrors(nextProps.user.error);
         }
     }
 
     render() {
-        const { handleSubmit, session } = this.props
+        const { handleSubmit, user } = this.props
         return (
             <Formik
                 initialValues={initialValues}
