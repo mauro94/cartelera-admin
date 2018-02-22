@@ -7,6 +7,7 @@ import {
 } from 'react-router-dom'
 import { history } from 'Config/helper'
 import App from 'Containers/App'
+import FirstLogin from 'Containers/FirstLogin'
 import LoginPage from 'Presentational/LoginPage'
 
 const Routes = () => (
@@ -14,7 +15,7 @@ const Routes = () => (
         <div>
             <Route exact path="/" component={App} />
             <Route path="/login" component={LoginPage} />
-            <Route path="/newbie" component={App} />
+            <Route path="/newbie" component={FirstLogin} />
         </div>
     </Router>
 )

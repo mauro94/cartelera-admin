@@ -1,5 +1,5 @@
 import {
-    SessionActions,
+    UserActions,
     Status
 } from 'Config/constants'
 
@@ -9,9 +9,9 @@ var defaultState = {
     error: {}
 }
 
-function session(state = defaultState, action) {
+function user(state = defaultState, action) {
     switch (action.type) {
-        case SessionActions.Login:
+        case UserActions.Login:
             return {
                 current: action.object,
                 status: action.status,
@@ -22,4 +22,4 @@ function session(state = defaultState, action) {
     }
 }
 
-export default session
+export default user
