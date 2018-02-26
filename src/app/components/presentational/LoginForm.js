@@ -1,6 +1,7 @@
 // Render Prop
 import React from 'react';
-import { Formik } from 'formik';
+import { Formik, Form, Field } from 'formik'
+import Yup from 'yup'
 
 export default class LoginForm extends React.Component {
     componentWillReceiveProps(nextProps) {
@@ -12,54 +13,44 @@ export default class LoginForm extends React.Component {
     render() {
         const { handleSubmit, user } = this.props
         return (
-            <Formik
-                initialValues={{
-                    email: '',
-                    password: '',
-                }}
-                onSubmit={(values, actions) => {
-                    handleSubmit(values)
-                    actions.setSubmitting(false)
-                }}
-            >
-                {({
-                    values,
-                    errors,
-                    touched,
-                    handleChange,
-                    handleBlur,
-                    handleSubmit,
-                    isSubmitting,
-                    setErrors
-                }) => {
-                    this.setErrors = setErrors
-                    return (
-                        <form onSubmit={handleSubmit}>
-                            {/*reqres error, change to our api (unauthorized)*/}
-                            {errors.error && <div>{errors.error}</div>}
-                            <input
-                                type="email"
-                                name="email"
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                                value={values.email}
-                            />
-                            {errors.email && <div>{errors.email}</div>}
-                            <input
-                                type="password"
-                                name="password"
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                                value={values.password}
-                            />
-                            {errors.password && <div>{errors.password}</div>}
-                            <button type="submit" disabled={isSubmitting}>
-                                Submit
-                            </button>
-                        </form>
-                    )
-                }}
-            </Formik>
+            <div className="addGameForm">
+        <Formik
+          validationSchema={
+            Yup.object().shape({
+                email: Yup.string().email("Correo no valido").required(),
+                password: Yup.string().required()
+              })
+          }
+          /*initialValues={{
+            title: 'asdf',
+            releaseYear: '',
+            genre: '',
+            price: '12',
+          }}*/
+          onSubmit={(values, actions) => { 
+            handleSubmit(values)
+            action.setSubmitting(false)
+          }}
+          render={({
+            values,
+            errors,
+            touched,
+            isSubmitting
+            }) => (
+            <Form>
+              <div>
+                { touched.email && errors.email && <p>{errors.email}</p>}
+                <Field type="email" name="email" placeholder="Email"/>
+              </div>
+              <div>
+                {touched.password && errors.password && <p>{errors.password}</p> }
+                <Field type="password" name="password" placeholder="Password"/>
+              </div>
+              <button disabled={isSubmitting}>Submit</button>
+            </Form>
+          )}
+        />
+      </div>
         )
     }
 }
