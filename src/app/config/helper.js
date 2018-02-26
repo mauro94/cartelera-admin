@@ -1,3 +1,4 @@
+import React from 'react'
 import { createBrowserHistory } from 'history'
 import axios from 'axios'
 
@@ -11,3 +12,7 @@ export const request = axios.create({
 })
 
 export const history = createBrowserHistory()
+
+export const makeOption = function(element) {
+    return <option key={element.key} value={element.key}> {element.text} </option>
+}
