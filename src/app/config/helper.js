@@ -1,3 +1,5 @@
+import React from 'react'
+import { connect } from 'react-redux'
 import { createBrowserHistory } from 'history'
 import axios from 'axios'
 
@@ -11,3 +13,19 @@ export const request = axios.create({
 })
 
 export const history = createBrowserHistory()
+
+export const withAuth = (Component) => {
+    class AuthenticatedComponent extends React.Component {
+        render() {
+            return (
+                <Component />
+            )
+        }
+    }
+    const mapStateToProps = (state) => {
+        return {
+
+        }
+    }
+    return connect(mapStateToProps)(AuthenticatedComponent)
+}
