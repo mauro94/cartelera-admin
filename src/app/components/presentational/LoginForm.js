@@ -1,4 +1,4 @@
-// Render Prop
+
 import React, {Fragment} from 'react';
 import { Formik, Form, Field } from 'formik';
 import { EmailComponent, PasswordComponent } from 'Presentational/InputFields';

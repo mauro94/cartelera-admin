@@ -3,14 +3,23 @@ import React from 'react'
 import 'Style/main.scss'
 import PrivatePage from 'Presentational/PrivatePage'
 import { withRouter } from 'react-router-dom'
+import { thunks } from 'Logic/actions/thunks'
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state) => {
     return {
+
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        logout: () => { dispatch(thunks.user.logout()) }
     }
 }
 
 const App = withRouter(connect(
-    mapStateToProps
+    mapStateToProps,
+    mapDispatchToProps
 )(PrivatePage))
 
 export default App

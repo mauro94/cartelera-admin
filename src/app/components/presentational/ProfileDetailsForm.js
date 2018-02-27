@@ -13,33 +13,24 @@ export default class ProfileDetailsForm extends React.Component {
         const { handleSubmit, user } = this.props
 
         const initialValues = {
-            firstName: user.current.firstName || '',
-            lastName: user.current.lastName || '',
-            password: user.current.password || '',
-            office: user.current.office || '',
-            phoneNumber: user.current.phoneNumber || '',
-            campus: user.current.campus || 'MTY',
-            id: user.current.id || '1',
-            isNewbie: user.current.isNewbie || true
+            firstName: user.firstName || '',
+            lastName: user.lastName || '',
+            password: user.password || '',
+            office: user.office || '',
+            phoneNumber: user.phoneNumber || '',
+            campus: user.campus || 'MTY',
+            id: user.id || '1',
+            isNewbie: user.isNewbie || true
         }
 
         const campusList = [
-            {key: 'MTY', text: 'Monterrey'},
-            {key: 'CDMX', text: 'Ciudad de México'},
-            {key: 'QTO', text: 'Queretaro'}]
+            { key: 'MTY', text: 'Monterrey' },
+            { key: 'CDMX', text: 'Ciudad de México' },
+            { key: 'QTO', text: 'Queretaro' }]
 
         return (
             <Formik
-                initialValues={{
-                    firstName: user.current.firstName || '',
-                    lastName: user.current.lastName || '',
-                    password: user.current.password || '',
-                    office: user.current.office || '',
-                    phoneNumber: user.current.phoneNumber || '',
-                    campus: user.current.campus || 'MTY',
-                    id: user.current.id || '1',
-                    isNewbie: user.current.isNewbie || true
-                }}
+                initialValues={initialValues}
                 onSubmit={(values, actions) => {
                     values.isNewbie = false
                     handleSubmit(values)
@@ -61,25 +52,25 @@ export default class ProfileDetailsForm extends React.Component {
                         <form onSubmit={handleSubmit}>
                             {/*reqres error, change to our api (unauthorized)*/}
                             {errors.error && <div>{errors.error}</div>}
-                            <Field name="firstName" placeholder="Nombre" component={TextComponent}/>
+                            <Field name="firstName" placeholder="Nombre" component={TextComponent} />
                             {errors.firstName && <div>{errors.firstName}</div>}
 
-                            <Field name="lastName" placeholder="Apellido" component={TextComponent}/>
+                            <Field name="lastName" placeholder="Apellido" component={TextComponent} />
                             {errors.lastName && <div>{errors.lastName}</div>}
 
-                            <Field name="password" component={PasswordComponent}/>
+                            <Field name="password" component={PasswordComponent} />
                             {errors.password && <div>{errors.password}</div>}
 
-                            <Field name="office" placeholder="Oficina" component={TextComponent}/>
+                            <Field name="office" placeholder="Oficina" component={TextComponent} />
                             {errors.office && <div>{errors.office}</div>}
 
-                            <Field name="phoneNumber" placeholder="Teléfono" component={TextComponent}/>
+                            <Field name="phoneNumber" placeholder="Teléfono" component={TextComponent} />
                             {errors.phoneNumber && <div>{errors.phoneNumber}</div>}
 
-                            <Field name="selectCampus" 
-                                   instruction={"Selecciona tu campus"}
-                                   campusList={campusList}
-                                   component={SelectComponent}/>
+                            <Field name="selectCampus"
+                                instruction={"Selecciona tu campus"}
+                                campusList={campusList}
+                                component={SelectComponent} />
                             {errors.campus && <div>{errors.campus}</div>}
                             <button type="submit" disabled={isSubmitting}>
                                 Submit
