@@ -1,4 +1,3 @@
-// Render Prop
 import React from 'react';
 import { Formik, Form, Field } from 'formik'
 import { EmailComponent, PasswordComponent } from 'Presentational/InputFields';
@@ -28,9 +27,9 @@ export default class LoginForm extends React.Component {
                         })
                     }
                     initialValues={initialValues}
-                    onSubmit={(values, actions) => { 
+                    onSubmit={(values, actions) => {
                         handleSubmit(values)
-                        action.setSubmitting(false)
+                        actions.setSubmitting(false)
                     }}
                     render={({
                         values,
@@ -41,21 +40,21 @@ export default class LoginForm extends React.Component {
                         handleSubmit,
                         isSubmitting
                     }) => (
-                    <Form>
-                        <div>
-                            {errors.error && <p>{errors.error}</p>}
-                        </div>
-                        <div>
-                            { touched.email && errors.email && <p>{errors.email}</p>}
-                            <Field name="email" id={"emailLoginField"} component={EmailComponent}/>
-                        </div>
-                        <div>
-                            {touched.password && errors.password && <p>{errors.password}</p> }
-                            <Field name="password" id={"passwordLoginField"} component={PasswordComponent}/>
-                        </div>
-                        <button disabled={isSubmitting}>Submit</button>
-                    </Form>
-                )}
+                            <Form>
+                                <div>
+                                    {errors.error && <p>{errors.error}</p>}
+                                </div>
+                                <div>
+                                    {touched.email && errors.email && <p>{errors.email}</p>}
+                                    <Field name="email" id={"emailLoginField"} component={EmailComponent} />
+                                </div>
+                                <div>
+                                    {touched.password && errors.password && <p>{errors.password}</p>}
+                                    <Field name="password" id={"passwordLoginField"} component={PasswordComponent} />
+                                </div>
+                                <button disabled={isSubmitting}>Submit</button>
+                            </Form>
+                        )}
                 />
             </div>
         )

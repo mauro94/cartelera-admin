@@ -1,9 +1,23 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { thunks } from 'Logic/actions/thunks'
+import { history, loggedIn } from 'Config/helper'
+import { Status } from 'Config/constants'
 import LoginForm from 'Presentational/LoginForm'
-import { withFormik, Form, Field } from 'formik'
-import Yup from 'yup'
+
+class Login extends React.Component {
+    componentWillMount() {
+        if (loggedIn()) {
+            history.replace('/')
+        }
+    }
+
+    render() {
+        if (this.props.user.status == Status.WaitingOnServer)
+            return <p>Loading...</p>
+        return <LoginForm {...this.props} />
+    }
+}
 
 const mapStateToProps = state => {
     return {
@@ -19,9 +33,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-const Login = connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(LoginForm)
-
-export default Login
+export default connect(mapStateToProps, mapDispatchToProps)(Login)
