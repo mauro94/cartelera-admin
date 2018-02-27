@@ -33,6 +33,7 @@
     "css-loader": "^0.28.9",
     "formik": "^0.11.11",
     "history": "^4.7.2",
+    "jwt-decode": "^2.2.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.7",
@@ -42,6 +43,7 @@
     "redux": "^3.7.2",
     "redux-form": "^7.2.3",
     "redux-thunk": "^2.2.0",
-    "style-loader": "^0.20.2"
+    "style-loader": "^0.20.2",
+    "yup": "^0.24.1"
   }
 }
