@@ -4,7 +4,7 @@ import {
 } from 'Config/constants'
 import { history } from 'Config/helper'
 import { createAction } from 'Logic/actions'
-import { request } from 'Config/helper'
+import { request, setToken, getProfile } from 'Config/helper'
 
 export const login = (loginAttempt) => {
     return (dispatch) => {
@@ -12,8 +12,9 @@ export const login = (loginAttempt) => {
             null, Status.WaitingOnServer))
         request.get('/users/1')
             .then(response => {
+                setToken(response.data.token)
                 dispatch(
-                    createAction(UserActions.Login, response.data, null,
+                    createAction(UserActions.Login, getProfile(), null,
                         Status.Ready))
                 history.push(response.data.isNewbie ? '/newbie' : '/')
             })

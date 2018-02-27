@@ -4,7 +4,7 @@ import 'Style/main.scss'
 import PrivatePage from 'Presentational/PrivatePage'
 import { withRouter } from 'react-router-dom'
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state) => {
     return {
     }
 }

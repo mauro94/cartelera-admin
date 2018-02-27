@@ -12,6 +12,7 @@ var defaultState = {
 function user(state = defaultState, action) {
     switch (action.type) {
         case UserActions.Login:
+        case UserActions.Update:
             return {
                 current: action.object,
                 status: action.status,
