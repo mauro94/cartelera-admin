@@ -2,6 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { thunks } from 'Logic/actions/thunks'
 import LoginForm from 'Presentational/LoginForm'
+import { withFormik, Form, Field } from 'formik'
+import Yup from 'yup'
 
 const mapStateToProps = state => {
     return {

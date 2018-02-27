@@ -59,3 +59,6 @@ export const withAuth = (Component) => {
     }
     return connect(mapStateToProps, mapDispatchToProps)(AuthenticatedComponent)
 }
+export const makeOption = function (element) {
+    return <option key={element.key} value={element.key}> {element.text} </option>
+}

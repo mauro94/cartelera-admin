@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Formik, Field } from 'formik';
+import { SelectComponent, TextComponent, EmailComponent, PasswordComponent } from 'Presentational/InputFields';
 
 export default class ProfileDetailsForm extends React.Component {
     componentWillReceiveProps(nextProps) {
@@ -10,6 +11,23 @@ export default class ProfileDetailsForm extends React.Component {
     }
     render() {
         const { handleSubmit, user } = this.props
+
+        const initialValues = {
+            firstName: user.current.firstName || '',
+            lastName: user.current.lastName || '',
+            password: user.current.password || '',
+            office: user.current.office || '',
+            phoneNumber: user.current.phoneNumber || '',
+            campus: user.current.campus || 'MTY',
+            id: user.current.id || '1',
+            isNewbie: user.current.isNewbie || true
+        }
+
+        const campusList = [
+            {key: 'MTY', text: 'Monterrey'},
+            {key: 'CDMX', text: 'Ciudad de México'},
+            {key: 'QTO', text: 'Queretaro'}]
+
         return (
             <Formik
                 initialValues={{
@@ -43,56 +61,25 @@ export default class ProfileDetailsForm extends React.Component {
                         <form onSubmit={handleSubmit}>
                             {/*reqres error, change to our api (unauthorized)*/}
                             {errors.error && <div>{errors.error}</div>}
-                            <Field
-                                type="text"
-                                name="firstName"
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                                value={values.firstName}
-                                placeholder="Nombre"
-                            />
+                            <Field name="firstName" placeholder="Nombre" component={TextComponent}/>
                             {errors.firstName && <div>{errors.firstName}</div>}
-                            <Field
-                                type="text"
-                                name="lastName"
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                                value={values.lastName}
-                                placeholder="Apellido"
-                            />
+
+                            <Field name="lastName" placeholder="Apellido" component={TextComponent}/>
                             {errors.lastName && <div>{errors.lastName}</div>}
-                            <Field
-                                type="password"
-                                name="password"
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                                value={values.password}
-                                placeholder="Contraseña"
-                            />
+
+                            <Field name="password" component={PasswordComponent}/>
                             {errors.password && <div>{errors.password}</div>}
-                            <Field
-                                type="text"
-                                name="office"
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                                value={values.office}
-                                placeholder="Oficina"
-                            />
+
+                            <Field name="office" placeholder="Oficina" component={TextComponent}/>
                             {errors.office && <div>{errors.office}</div>}
-                            <Field
-                                type="text"
-                                name="phoneNumber"
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                                value={values.phoneNumber}
-                                placeholder="Teléfono"
-                            />
+
+                            <Field name="phoneNumber" placeholder="Teléfono" component={TextComponent}/>
                             {errors.phoneNumber && <div>{errors.phoneNumber}</div>}
-                            <Field component="select" name="campus">
-                                <option value="MTY">Monterrey</option>
-                                <option value="QTO">Querétaro</option>
-                                <option value="CDMX">Ciudad de México</option>
-                            </Field>
+
+                            <Field name="selectCampus" 
+                                   instruction={"Selecciona tu campus"}
+                                   campusList={campusList}
+                                   component={SelectComponent}/>
                             {errors.campus && <div>{errors.campus}</div>}
                             <button type="submit" disabled={isSubmitting}>
                                 Submit
