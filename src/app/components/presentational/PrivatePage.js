@@ -3,10 +3,10 @@ import PropTypes from 'prop-types'
 import { withAuth } from 'Config/helper'
 
 const PrivatePage = ({ user, logout }) => (
-    <div>
+    <React.Fragment>
         <p>Hello, {user.firstName}</p>
         <button onClick={logout}>logout</button>
-    </div>
+    </React.Fragment>
 )
 
 PrivatePage.propTypes = {

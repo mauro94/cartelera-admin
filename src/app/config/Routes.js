@@ -12,11 +12,11 @@ import LoginPage from 'Presentational/LoginPage'
 
 const Routes = () => (
     <Router history={history}>
-        <div>
+        <Switch>
             <Route exact path="/" component={App} />
             <Route path="/login" component={LoginPage} />
             <Route path="/newbie" component={FirstLogin} />
-        </div>
+        </Switch>
     </Router>
 )
 
