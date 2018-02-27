@@ -8,14 +8,12 @@ export const EmailComponent: React.SFC<FieldProps<Values> & CustomInputProps> = 
   form: { touched, errors }, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
   ...props
 }) => (
-    <div>
-        <input
-            type="email"
-            placeholder="Correo Electrónico"
-            {...field}
-            {...props}
-        />
-    </div>
+      <input
+          type="email"
+          placeholder="Correo Electrónico"
+          {...field}
+          {...props}
+      />
 );
 
 export const PasswordComponent: React.SFC<FieldProps<Values> & CustomInputProps> = ({
@@ -23,14 +21,12 @@ export const PasswordComponent: React.SFC<FieldProps<Values> & CustomInputProps>
     form: { touched, errors }, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
     ...props
   }) => (
-    <div>
-      <input
-          type="password"
-          placeholder="Contraseña"
-          {...field}
-          {...props}
-      />
-    </div>
+    <input
+        type="password"
+        placeholder="Contraseña"
+        {...field}
+        {...props}
+    />
   );
 
   export const TextComponent: React.SFC<FieldProps<Values> & CustomInputProps> = ({

@@ -1,4 +1,58 @@
 @import 'themeColors';
+@import url('https://fonts.googleapis.com/css?family=Barlow:100,200,300,400,500,600,700,800,900&subset=latin-ext');
+
+html {
+  font-family: 'Barlow', sans-serif;
+}
+
+html, body, #root{
+  height: 100%;
+}
+
+div {
+  height: inherit;
+}
+
+input {
+  background: $themeColor-white;
+  border: 1px solid $themeColor-light;
+  border-radius: 7px;
+  height: 30px;
+  width: 80%;
+  text-indent: 10px;
+}
+
+// Different kinds of input
+input::-webkit-input-placeholder { 
+  line-height: 1.5em;
+}
+input:-moz-placeholder { 
+  line-height: 1.5em;
+}
+input::-moz-placeholder { 
+  line-height: 1.5em;
+}
+input:-ms-input-placeholder { 
+  line-height: 1.5em;
+}
+
 p {
   color: $themeColor-darkBlue;
+}
+
+h1 {
+  font-weight: 700;
+  font-size: 48px;
+  color: $themeColor-black;
+}
+
+// CSS Grid
+.grid-container {
+  display: grid;
+}
+
+// Messages
+.message-error {
+  background: $themeColor-darkBlue;
+  color: $themeColor-white;
 }
