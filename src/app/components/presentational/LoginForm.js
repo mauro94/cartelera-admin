@@ -26,6 +26,10 @@ export default class LoginForm extends React.Component {
             <div className="grid-container">
                 <div className="item1">
                     <h1>Cartelera</h1>
+                    <h1>de</h1>
+                    <h1>Innovación</h1>
+                    <h1>y</h1>
+                    <h1>Emprendimiento</h1>
                 </div>
                 <div className="item2">
                     <Formik
@@ -52,15 +56,17 @@ export default class LoginForm extends React.Component {
                             <div className="item3">
                         <Form>
                             {errors.error && <p>{errors.error}</p>}
-                            <div>
-                                { touched.email && errors.email && <p>{errors.email}</p>}
+                            <div className="form-field">
                                 <Field name="email" id={"emailLoginField"} component={EmailComponent}/>
+                                { touched.email && errors.email && <p className="message-error">{errors.email}</p> }
                             </div>
-                            <div>
-                                {touched.password && errors.password && <p>{errors.password}</p> }
+                            <div className="form-field">
                                 <Field name="password" id={"passwordLoginField"} component={PasswordComponent}/>
+                                {touched.password && errors.password && <p className="message-error">{errors.password}</p> }
                             </div>
-                            <button disabled={isSubmitting}>Submit</button>
+                            <div className="form-field">
+                                <button className="button-submit" disabled={isSubmitting}>Submit</button>
+                            </div>
                         </Form>
                         </div>
                     )}

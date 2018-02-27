@@ -13,13 +13,19 @@ div {
   height: inherit;
 }
 
+// Inputs
 input {
   background: $themeColor-white;
   border: 1px solid $themeColor-light;
   border-radius: 7px;
   height: 30px;
-  width: 80%;
+  width: 100%;
   text-indent: 10px;
+}
+
+.form-field {
+  width: 80%;
+  margin-top: 10px;
 }
 
 // Different kinds of input
@@ -53,6 +59,19 @@ h1 {
 
 // Messages
 .message-error {
-  background: $themeColor-darkBlue;
+  color: $themeColor-red;
+  height: 20px;
+  font-size: 12px;
+  margin-top: 0;
+}
+
+// Buttons
+.button-submit {
+  width: 20%;
+  background: $themeColor-lightBlue;
   color: $themeColor-white;
+  border-radius: 7px;
+  height: 30px;
+  float: right;
+  border: 0;
 }
