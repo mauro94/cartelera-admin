@@ -1,7 +1,10 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
-import { Formik, Field } from 'formik';
+import { Formik, Field, Form } from 'formik';
 import { SelectComponent, TextComponent, EmailComponent, PasswordComponent } from 'Presentational/InputFields';
+import Yup from 'yup';
+import 'Style/gridColumns2.scss';
+import 'Style/loginForm.scss';
 
 export default class ProfileDetailsForm extends React.Component {
     componentWillReceiveProps(nextProps) {
@@ -9,6 +12,7 @@ export default class ProfileDetailsForm extends React.Component {
             this.setErrors(nextProps.user.error);
         }
     }
+
     render() {
         const { handleSubmit, user } = this.props
 
@@ -24,61 +28,96 @@ export default class ProfileDetailsForm extends React.Component {
         }
 
         const campusList = [
-            { key: 'MTY', text: 'Monterrey' },
-            { key: 'CDMX', text: 'Ciudad de México' },
-            { key: 'QTO', text: 'Queretaro' }]
+            { key: 'MTY', text: 'Campus Monterrey' },
+            { key: 'CDMX', text: 'Campus Ciudad de México' },
+            { key: 'AGS', text: 'Campus Aguascalientes' },
+            { key: 'CS', text: 'Campus Chiapas' },
+            { key: 'CH', text: 'Campus Chihuahua' },
+            { key: 'CDJZ', text: 'Campus Ciudad Juarez' },
+            { key: 'CDOB', text: 'Campus Ciudad Obregón' },
+            { key: 'CV', text: 'Campus Cuernavaca' },
+            { key: 'EDMX', text: 'Campus Estado de México' },
+            { key: 'GDL', text: 'Campus Guadalajara' },
+            { key: 'HDL', text: 'Campus Hidalgo' },
+            { key: 'IRP', text: 'Campus Irapuato' },
+            { key: 'LGN', text: 'Campus Laguna' },
+            { key: 'LN', text: 'Campus León' },
+            { key: 'MOR', text: 'Campus Morelia' },
+            { key: 'PL', text: 'Campus Puebla' },
+            { key: 'QRO', text: 'Campus Querétaro' },
+            { key: 'SLT', text: 'Campus Saltillo' },
+            { key: 'SLP', text: 'Campus San Luis Potosí' },
+            { key: 'SF', text: 'Campus Santa Fe' },
+            { key: 'SNL', text: 'Campus Sinaloa' },
+            { key: 'SNTE', text: 'Campus Sonora Norte' },
+            { key: 'TMP', text: 'Campus Tampico' },
+            { key: 'TOL', text: 'Campus Toluca' },
+            { key: 'ZAC', text: 'Campus Zacatecas' },]
 
         return (
-            <Formik
-                initialValues={initialValues}
-                onSubmit={(values, actions) => {
-                    values.isNewbie = false
-                    handleSubmit(values)
-                    actions.setSubmitting(false)
-                }}
-            >
-                {({
-                    values,
-                    errors,
-                    touched,
-                    handleChange,
-                    handleBlur,
-                    handleSubmit,
-                    isSubmitting,
-                    setErrors
-                }) => {
-                    this.setErrors = setErrors
-                    return (
-                        <form onSubmit={handleSubmit}>
-                            {/*reqres error, change to our api (unauthorized)*/}
-                            {errors.error && <div>{errors.error}</div>}
-                            <Field name="firstName" placeholder="Nombre" component={TextComponent} />
-                            {errors.firstName && <div>{errors.firstName}</div>}
+            <Fragment>
+            <div className="item3">
+                <Formik
+                    validationSchema={
+                        Yup.object().shape({
+                            firstName: Yup.string().required("Nombre requerido"),
+                            lastName: Yup.string().required("Apellido requerido"),
+                            password: Yup.string().required("Contraseña requerida"),
+                            office: Yup.string().uppercase("Escribir oficina usando mayusculas").required("Oficina requerido"),
+                            phoneNumber: Yup.string().min(8, "Se necesita un número de minimo 8 digitos").required("Correo requerido"),
+                        })
+                    }
+                    initialValues={initialValues}
+                    onSubmit={(values, actions) => {
+                        values.isNewbie = false
+                        handleSubmit(values)
+                        actions.setSubmitting(false)
+                    }}>
+                    {({
+                        values,
+                        errors,
+                        touched,
+                        handleChange,
+                        handleBlur,
+                        handleSubmit,
+                        isSubmitting,
+                        setErrors
+                    }) => {
+                        this.setErrors = setErrors
+                        return (
+                            <Form>
+                                {/*reqres error, change to our api (unauthorized)*/}
+                                {errors.error && <p className="message-error">{errors.error}</p>}
 
-                            <Field name="lastName" placeholder="Apellido" component={TextComponent} />
-                            {errors.lastName && <div>{errors.lastName}</div>}
+                                <Field name="firstName" placeholder="Nombre" component={TextComponent} />
+                                {errors.firstName && <p className="message-error">{errors.firstName}</p>}
 
-                            <Field name="password" component={PasswordComponent} />
-                            {errors.password && <div>{errors.password}</div>}
+                                <Field name="lastName" placeholder="Apellido" component={TextComponent} />
+                                {errors.lastName && <p className="message-error">{errors.lastName}</p>}
 
-                            <Field name="office" placeholder="Oficina" component={TextComponent} />
-                            {errors.office && <div>{errors.office}</div>}
+                                <Field name="password" component={PasswordComponent} />
+                                {errors.password && <p className="message-error">{errors.password}</p>}
 
-                            <Field name="phoneNumber" placeholder="Teléfono" component={TextComponent} />
-                            {errors.phoneNumber && <div>{errors.phoneNumber}</div>}
+                                <Field name="office" placeholder="Oficina" component={TextComponent} />
+                                {errors.office && <p className="message-error">{errors.office}</p>}
 
-                            <Field name="selectCampus"
-                                instruction={"Selecciona tu campus"}
-                                campusList={campusList}
-                                component={SelectComponent} />
-                            {errors.campus && <div>{errors.campus}</div>}
-                            <button type="submit" disabled={isSubmitting}>
-                                Submit
-                            </button>
-                        </form>
-                    )
-                }}
-            </Formik>
+                                <Field name="phoneNumber" placeholder="Teléfono" component={TextComponent} />
+                                {errors.phoneNumber && <p className="message-error">{errors.phoneNumber}</p>}
+
+                                <Field name="selectCampus"
+                                    campusList={campusList}
+                                    component={SelectComponent} />
+                                {errors.campus && <p className="message-error">{errors.campus}</p>}
+                                
+                                <div className="form-field">
+                                    <button className="button-submit" disabled={isSubmitting}>Continuar</button>
+                                </div>
+                            </Form>
+                        )
+                    }}
+                </Formik>
+            </div>
+            </Fragment>
         )
     }
 }

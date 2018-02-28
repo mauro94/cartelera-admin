@@ -6,12 +6,6 @@ import Yup from 'yup';
 import 'Style/gridColumns2.scss';
 import 'Style/loginForm.scss';
 
-
-const initialValues = {
-    email: '',
-    password: '',
-}
-
 export default class LoginForm extends React.Component {
     componentWillReceiveProps(nextProps) {
         if (nextProps.user.error) {
@@ -21,6 +15,12 @@ export default class LoginForm extends React.Component {
 
     render() {
         const { handleSubmit, user } = this.props
+
+        const initialValues = {
+            email: '',
+            password: '',
+        }
+
         return (
             <Fragment>
             <div className="grid-container">
@@ -43,34 +43,37 @@ export default class LoginForm extends React.Component {
                         onSubmit={(values, actions) => { 
                             handleSubmit(values)
                             action.setSubmitting(false)
-                        }}
-                        render={({
+                        }}>
+                        {({
                             values,
                             errors,
                             touched,
                             handleChange,
                             handleBlur,
                             handleSubmit,
-                            isSubmitting
-                        }) => (
-                            <div className="item3">
-                        <Form>
-                            {errors.error && <p>{errors.error}</p>}
-                            <div className="form-field">
-                                <Field name="email" id={"emailLoginField"} component={EmailComponent}/>
-                                { touched.email && errors.email && <p className="message-error">{errors.email}</p> }
-                            </div>
-                            <div className="form-field">
-                                <Field name="password" id={"passwordLoginField"} component={PasswordComponent}/>
-                                {touched.password && errors.password && <p className="message-error">{errors.password}</p> }
-                            </div>
-                            <div className="form-field">
-                                <button className="button-submit" disabled={isSubmitting}>Submit</button>
-                            </div>
-                        </Form>
-                        </div>
-                    )}
-                    />
+                            isSubmitting,
+                            setErrors
+                        }) => {
+                            this.setErrors = setErrors
+                            return(
+                                <div className="item3">
+                                    <Form>
+                                        {errors.error && <p className="message-error">{errors.error}</p>}
+                                        
+                                        <Field name="email" id={"emailLoginField"} component={EmailComponent}/>
+                                        { touched.email && errors.email && <p className="message-error">{errors.email}</p> }
+                                        
+                                        <Field name="password" id={"passwordLoginField"} component={PasswordComponent}/>
+                                        {touched.password && errors.password && <p className="message-error">{errors.password}</p> }
+                                        
+                                        <div className="form-field">
+                                            <button className="button-submit" disabled={isSubmitting}>Iniciar Sesíon</button>
+                                        </div>
+                                    </Form>
+                                </div>
+                            )}
+                        }
+                    </Formik>
                 </div>
             </div>
             </Fragment>

@@ -14,7 +14,7 @@ div {
 }
 
 // Inputs
-input {
+input, select {
   background: $themeColor-white;
   border: 1px solid $themeColor-light;
   border-radius: 7px;
@@ -27,6 +27,7 @@ input {
   width: 80%;
   margin-top: 10px;
 }
+
 
 // Different kinds of input
 input::-webkit-input-placeholder { 

@@ -8,7 +8,7 @@ export const EmailComponent = ({
   form: { touched, errors }, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
   ...props
 }) => (
-    <div>
+    <div className="form-field">
       <input
         type="email"
         placeholder="Correo Electrónico"
@@ -23,7 +23,7 @@ export const PasswordComponent = ({
   form: { touched, errors }, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
   ...props
 }) => (
-    <div>
+    <div className="form-field">
       <input
         type="password"
         placeholder="Contraseña"
@@ -38,7 +38,7 @@ export const TextComponent = ({
   form: { touched, errors }, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
   ...props
 }) => (
-    <div>
+    <div className="form-field">
       <input
         type="text"
         {...field}
@@ -54,7 +54,7 @@ export const SelectComponent = ({
   form: { touched, errors }, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
   ...props
 }) => (
-    <div>
+    <div className="form-field">
       <div>
         <label>{instruction}</label>
       </div>
