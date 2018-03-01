@@ -46,21 +46,19 @@ export default class LoginForm extends React.Component {
                 }) => {
                     this.setErrors = setErrors
                     return(
-                        <div className="item3">
-                            <Form>
-                                {errors.error && <p className="message-error">{errors.error}</p>}
-                                
-                                <Field name="email" id={"emailLoginField"} component={EmailComponent}/>
-                                { touched.email && errors.email && <p className="message-error">{errors.email}</p> }
-                                
-                                <Field name="password" id={"passwordLoginField"} component={PasswordComponent}/>
-                                {touched.password && errors.password && <p className="message-error">{errors.password}</p> }
-                                
-                                <div className="form-field">
-                                    <button className="button-submit" disabled={isSubmitting}>Iniciar Sesíon</button>
-                                </div>
-                            </Form>
-                        </div>
+                        <Form>
+                            {errors.error && <p className="message-error">{errors.error}</p>}
+                            
+                            <Field name="email" id={"emailLoginField"} component={EmailComponent}/>
+                            { touched.email && errors.email && <p className="message-error">{errors.email}</p> }
+                            
+                            <Field name="password" id={"passwordLoginField"} component={PasswordComponent}/>
+                            {touched.password && errors.password && <p className="message-error">{errors.password}</p> }
+                            
+                            <div className="form-field">
+                                <button className="button-submit" disabled={isSubmitting}>Iniciar Sesíon</button>
+                            </div>
+                        </Form>
                     )}
                 }
             </Formik>

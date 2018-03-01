@@ -4,8 +4,9 @@ import Login from 'Containers/Login'
 import FirstLogin from 'Containers/FirstLogin'
 import logo from 'Images/logo.svg';
 
-var divStyle = {
-    height: 'auto'
+var additionalStyle = {
+    display: 'grid',
+    'align-content': 'center'
 };
 
 const LoginPage = () => (
@@ -14,7 +15,7 @@ const LoginPage = () => (
             <div className="item1">
                 <img className="logo" src={logo} />
             </div>
-            <div className="item2">
+            <div className="item2" style={additionalStyle}>
                     <Route path="/login" component={Login} />
                     <Route exact path="/newbie" component={FirstLogin}  />
             </div>
