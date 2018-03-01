@@ -1,4 +1,5 @@
 @import 'themeColors';
+@import 'setup';
 @import url('https://fonts.googleapis.com/css?family=Barlow:100,200,300,400,500,600,700,800,900&subset=latin-ext');
 
 html {
@@ -11,6 +12,12 @@ html, body, #root{
 
 div {
   height: inherit;
+}
+
+// Images
+.logo {
+  width: 80%;
+  height: 80%;
 }
 
 // Inputs
@@ -27,7 +34,6 @@ input, select {
   width: 80%;
   margin-top: 10px;
 }
-
 
 // Different kinds of input
 input::-webkit-input-placeholder { 
@@ -49,8 +55,15 @@ p {
 
 h1 {
   font-weight: 700;
-  font-size: 48px;
   color: $themeColor-black;
+
+  @media #{$mobileScreenSize} {
+    font-size: 24px;
+  }
+
+  @media #{$desktopScreenSize} {
+    font-size: 48px;
+  }
 }
 
 // CSS Grid
@@ -68,7 +81,7 @@ h1 {
 
 // Buttons
 .button-submit {
-  width: 20%;
+  width: 100px;
   background: $themeColor-lightBlue;
   color: $themeColor-white;
   border-radius: 7px;

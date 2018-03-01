@@ -1,5 +1,7 @@
+@import 'setup';
+
 .grid-container {
-    grid-template-columns: auto auto;
+    grid-template-columns: 50% auto;
     grid-gap: 20px;
     align-content: center;
 }
@@ -7,6 +9,9 @@
 .item1 {
     grid-column: 1;
     width: 100%;
+    display: flex;
+    justify-content:flex-end;
+    align-items:center;
 }
 
 .item2 {

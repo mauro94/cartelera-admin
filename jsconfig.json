@@ -6,7 +6,8 @@
       "Config/*": ["./src/app/config/*"],
       "Logic/*": ["./src/app/logic/*"],
       "Containers/*": ["./src/app/components/containers/*"],
-      "Presentational/*": ["./src/app/components/presentational/*"]
+      "Presentational/*": ["./src/app/components/presentational/*"],
+      "Images/*": ["./src/app/images/*"]
     },
     "target": "ES6",
   },

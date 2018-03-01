@@ -28,7 +28,8 @@ module.exports = {
             Config: 'src/app/config/',
             Logic: 'src/app/logic/',
             Containers: 'src/app/components/containers/',
-            Presentational: 'src/app/components/presentational/'
+            Presentational: 'src/app/components/presentational/',
+            Images: 'src/app/images/'
         },
         extensions: ['*','.js','.jsx']
     },
@@ -60,7 +61,17 @@ module.exports = {
         {
             test:/\.(s*)css$/,
             use:['style-loader','css-loader', 'sass-loader']
-         }
+        },
+        {
+            test: /\.(png|svg|jp(e*)g)$/,
+            use: [{
+                loader: 'url-loader',
+                options: {
+                    limit: 8000,
+                    name: 'src/app/images/[hash]-[name].[ext]'
+                }
+            }]
+        }
     ]
     }
 };
