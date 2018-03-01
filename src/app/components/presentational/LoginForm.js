@@ -4,7 +4,6 @@ import { Formik, Form, Field } from 'formik';
 import { EmailComponent, PasswordComponent } from 'Presentational/InputFields';
 import Yup from 'yup';
 import 'Style/gridColumns2.scss';
-import 'Style/loginForm.scss';
 
 export default class LoginForm extends React.Component {
     componentWillReceiveProps(nextProps) {

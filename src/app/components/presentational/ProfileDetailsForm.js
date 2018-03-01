@@ -4,7 +4,6 @@ import { Formik, Field, Form } from 'formik';
 import { SelectComponent, TextComponent, EmailComponent, PasswordComponent } from 'Presentational/InputFields';
 import Yup from 'yup';
 import 'Style/gridColumns2.scss';
-import 'Style/loginForm.scss';
 
 export default class ProfileDetailsForm extends React.Component {
     componentWillReceiveProps(nextProps) {
@@ -57,7 +56,7 @@ export default class ProfileDetailsForm extends React.Component {
         return (
             <div>
             <p>         
-                Hola {}! <br/>
+                Hola {user.firstName}! <br/>
                 Antes de continuar, por favor completa tus datos:
             </p>
             <Formik
