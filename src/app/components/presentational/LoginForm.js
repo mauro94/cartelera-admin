@@ -3,7 +3,7 @@ import React, {Fragment} from 'react';
 import { Formik, Form, Field } from 'formik';
 import { EmailComponent, PasswordComponent } from 'Presentational/InputFields';
 import Yup from 'yup';
-import 'Style/gridColumns2.scss';
+
 
 export default class LoginForm extends React.Component {
     componentWillReceiveProps(nextProps) {
@@ -13,6 +13,8 @@ export default class LoginForm extends React.Component {
     }
 
     render() {
+        require('Style/gridColumns2.scss');
+        
         const { handleSubmit, user } = this.props
 
         const initialValues = {

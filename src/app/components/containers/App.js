@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import React from 'react'
 import 'Style/main.scss'
-import PrivatePage from 'Presentational/PrivatePage'
+import HomePage from 'Presentational/HomePage'
 import { withRouter } from 'react-router-dom'
 import { thunks } from 'Logic/actions/thunks'
 
@@ -20,6 +20,6 @@ const mapDispatchToProps = (dispatch) => {
 const App = withRouter(connect(
     mapStateToProps,
     mapDispatchToProps
-)(PrivatePage))
+)(HomePage))
 
 export default App

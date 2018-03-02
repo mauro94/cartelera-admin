@@ -1,0 +1,36 @@
+.grid-container {
+    grid-template-columns: 5rem auto 5rem;
+    grid-template-rows: 5rem auto;
+}
+
+.container-navbar {
+    display: grid;
+    grid-column: 2;
+    grid-template-columns: 10% 90%;
+}
+
+.container-navbar-logo {
+    grid-column: 1;
+}
+
+.navbar-logo {
+    height: 4rem;
+    display:flex;
+    justify-content:flex-start;
+    align-items:center;
+}
+
+.user {
+    height: 1rem;
+    padding-right: 1rem;
+    font-size: 14px;
+    font-weight: 200;
+}
+
+.container-navbar-buttons {
+    grid-column: 2;
+}
+
+.container-content {
+    grid-column: 2;
+}

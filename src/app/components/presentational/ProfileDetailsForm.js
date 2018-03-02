@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import { Formik, Field, Form } from 'formik';
 import { SelectComponent, TextComponent, EmailComponent, PasswordComponent } from 'Presentational/InputFields';
 import Yup from 'yup';
-import 'Style/gridColumns2.scss';
 
 export default class ProfileDetailsForm extends React.Component {
     componentWillReceiveProps(nextProps) {
@@ -13,6 +12,8 @@ export default class ProfileDetailsForm extends React.Component {
     }
 
     render() {
+        require('Style/gridColumns2.scss');
+        
         const { handleSubmit, user } = this.props
 
         const initialValues = {
