@@ -31,7 +31,8 @@ const mapDispatchToProps = dispatch => {
     return {
         handleSubmit: profileDetails => {
             dispatch(thunks.user.update(profileDetails))
-        }
+        },
+        logout: () => { dispatch(thunks.user.logout()) }
     }
 }
 

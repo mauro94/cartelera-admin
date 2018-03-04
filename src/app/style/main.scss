@@ -36,6 +36,12 @@ input, select {
   margin-top: 10px;
 }
 
+.form-field.buttons {
+  display: flex;
+  flex-direction: row;
+  flex-flow: row-reverse;
+}
+
 // Different kinds of input
 input::-webkit-input-placeholder { 
   line-height: 1.5em;
@@ -74,7 +80,7 @@ h1 {
 
 // Messages
 .message-error {
-  padding-top: 5px;
+  margin-top: 5px;
   color: $themeColor-red;
   height: 20px;
   font-size: 14px;
@@ -83,6 +89,7 @@ h1 {
 
 // Buttons
 .button-submit {
+  margin-top: 5px;
   font-size: 16px;
   min-width: 150px;
   background: $themeColor-lightBlue;
@@ -91,4 +98,23 @@ h1 {
   height: 35px;
   float: right;
   border: 0;
+}
+
+.button-newbie-logout {
+  font-size: 13px;
+  width: auto;
+  background: transparent;
+  color: $themeColor-black;
+  border-radius: 7px;
+  text-align: right;
+  text-decoration: underline;
+  height: 20px;
+  margin-top: 20px;
+  float: right;
+  
+  border: 0;
+}
+
+#newbie-logout {
+  color: red;
 }

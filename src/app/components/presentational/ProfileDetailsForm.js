@@ -15,7 +15,7 @@ export default class ProfileDetailsForm extends React.Component {
     }
 
     render() {
-        const { handleSubmit, user } = this.props
+        const { handleSubmit, user, logout } = this.props
 
         const initialValues = {
             firstName: user.firstName || '',
@@ -113,10 +113,14 @@ export default class ProfileDetailsForm extends React.Component {
                                 component={SelectComponent} />
                             {errors.campus && <p className="message-error">{errors.campus}</p>}
                             
-                            <div className="form-field">
+                            <div className="form-field buttons">
                                 <button className="button-submit" disabled={isSubmitting}>Continuar</button>
+                                <button className="button-newbie-logout" onClick={logout}>Cerrar Sesión</button>
                             </div>
+                                
+
                         </Form>
+                        
                     )
                 }}
             </Formik>
