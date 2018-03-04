@@ -1,13 +1,13 @@
 import { connect } from 'react-redux'
 import React from 'react'
 import 'Style/main.scss'
-import HomePage from 'Presentational/HomePage'
+import Home from 'Containers/Home'
 import { withRouter } from 'react-router-dom'
 import { thunks } from 'Logic/actions/thunks'
 
 const mapStateToProps = (state) => {
     return {
-
+        user: state.user
     }
 }
 
@@ -20,6 +20,6 @@ const mapDispatchToProps = (dispatch) => {
 const App = withRouter(connect(
     mapStateToProps,
     mapDispatchToProps
-)(HomePage))
+)(Home))
 
 export default App

@@ -3,7 +3,7 @@
 @import url('https://fonts.googleapis.com/css?family=Barlow:100,200,300,400,500,600,700,800,900&subset=latin-ext');
 
 html {
-  font-family: 'Barlow', sans-serif;
+  font-family: $systemfont;
 }
 
 html, body, #root{
