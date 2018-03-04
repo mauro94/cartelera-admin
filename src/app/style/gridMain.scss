@@ -22,6 +22,7 @@
     grid-template-columns: auto 150px 150px 150px 150px;
     align-items: center;
     justify-items: center;
+    overflow: hidden;
 }
 
 .navbar-logo {
@@ -38,13 +39,13 @@
     border: 0;
     font-size: 16px;
     font-family: $systemfont;
+    font-weight: 500;
 
-
-    &#user {
-        grid-column: 5;
-    }
     &#events {
         grid-column: 4;
+        color: $themeColor-lightBlue;
+        border-bottom: 4px solid;
+        border-color: $themeColor-lightBlue;
     }
     &#categories {
         grid-column: 3;
@@ -56,6 +57,50 @@
     &:hover {
         color: $themeColor-lightBlue;
     }
+}
+
+.dropdown {
+    grid-column: 5;
+    align-items: center;
+    justify-items: center;
+    overflow: hidden;
+    display: grid;
+
+    &#user {
+        padding-top: 80px;
+        margin: 0;
+    }
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: $themeColor-white;
+    min-width: 150px;
+    height: auto;
+    box-shadow: 0px 8px 16px 0px $themeColor-black-shadow;
+    z-index: 1;
+    margin-top: 60px;
+    box-shadow: 0px 8px 16px 0px $themeColor-black-shadow;
+    right: 8rem;
+
+    & a {
+        float: none;
+        color: $themeColor-black;
+        padding: 10px 10px;
+        text-decoration: none;
+        display: block;
+        text-align: right;
+        
+        &:hover {
+            background-color: $themeColor-light;
+        }
+    }
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+    color: $themeColor-lightBlue;
 }
 
 .user {

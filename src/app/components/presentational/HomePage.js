@@ -23,7 +23,7 @@ const HomePage = ({...props}) => (
                     {props.sponsorsButton != null && <props.sponsorsButton user={props.user} />}
                     {props.categoriesButton != null && <props.categoriesButton user={props.user} />}
                     <props.eventsButton user={props.user} />
-                    <props.profileButton user={props.user} />
+                    <props.profileButton user={props.user} logout={props.logout} />
                 </div>
             </div>
             <div className="container-content">

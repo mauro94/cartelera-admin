@@ -3,7 +3,13 @@ import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
 export const navbarButtonUser = ({ ...props }) => (
-    <button className="navbar-button" id="user">{props.user.firstName}</button>
+    <div className="dropdown">
+        <button className="navbar-button" id="user">{props.user.firstName}</button>
+            <div className="dropdown-content">
+                <a onClick={() => props.logout()} href="#">Editar Pérfil</a>
+                <a href="#">Cerrar Sesión</a>
+            </div>
+    </div>
 )
 
 export const navbarButtonEvents = ({ ...props }) => (
@@ -16,8 +22,4 @@ export const navbarButtonCategories = ({ ...props }) => (
 
 export const navbarButtonSponsors = ({ ...props }) => (
     <button className="navbar-button" id="sponsors">Sponsors</button>
-)
-
-export const navbarButtonEmpty = ({ ...props }) => (
-    <button></button>
 )

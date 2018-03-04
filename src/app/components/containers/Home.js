@@ -58,8 +58,7 @@ class Home extends React.Component {
             eventsButton={this.eventsButton}
             categoriesButton={this.categoriesButton}
             sponsorsButton={this.sponsorsButton}
-
-            user={this.props.user}
+            logout={this.props.logout}
         />
     }
 }
@@ -70,6 +69,15 @@ const mapStateToProps = state => {
     }
 }
 
+const mapDispatchToProps = () => {
+    return {
+        logout: () => { dispatch(thunks.user.logout()) }
+    }
+}
+
+
+
 export default connect(
-    mapStateToProps
+    mapStateToProps,
+    mapDispatchToProps
 )(Home)

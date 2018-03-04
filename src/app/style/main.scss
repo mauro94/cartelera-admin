@@ -35,6 +35,10 @@ input, select {
   margin-top: 10px;
 }
 
+button:focus {
+  outline: 0;
+}
+
 // Different kinds of input
 input::-webkit-input-placeholder { 
   line-height: 1.5em;

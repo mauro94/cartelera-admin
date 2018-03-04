@@ -1,5 +1,5 @@
 import React, {Fragment} from 'react';
-import { BrowserRouter as Router, Route, Link, Prompt, Switch } from "react-router-dom";
+import { Route } from "react-router-dom";
 import Login from 'Containers/Login'
 import FirstLogin from 'Containers/FirstLogin'
 import logo from 'Images/logo.svg';
