@@ -2,49 +2,44 @@ import {
     UserActions,
     Status
 } from 'Config/constants'
-import { history } from 'Config/helper'
 import { createAction } from 'Logic/actions'
-import { request, setToken, getUserId, rmToken } from 'Config/helper'
+import { request, setSession, rmSession, history, getToken, setCurrentUserNewbie } from 'Config/helper'
 
 export const login = (loginAttempt) => {
     return (dispatch) => {
         dispatch(createAction(UserActions.Login, null,
             null, Status.WaitingOnServer))
-        request.post('/login', loginAttempt)
+        request.post('/auth_user', loginAttempt)
             .then(response => {
-                setToken(response.data.token)
-                profile((response) => createAction(UserActions.Login, response.data, null, Status.Ready), dispatch)
-                    .then(response => {
-                        history.push(response.data.isNewbie ? '/newbie' : '/')
-                    })
+                setSession(response.data.authToken, response.data.id, response.data.isNewbie)
+                dispatch(createAction(UserActions.Login, response.data, null, Status.Ready))
+                history.push(response.data.isNewbie ? '/newbie' : '/')
             })
             .catch((error) => {
+                // setErrors({error: "There's been an error"})
                 dispatch(
-                    createAction(UserActions.Login, null, error.response.data,
+                    createAction(UserActions.Login, null, error.response.data.error,
                         Status.Failed))
             })
     }
 }
 
-const profile = (action, dispatch) => {
-    return request.get('/users/' + getUserId())
-        .then(response => {
-            dispatch(action(response))
-            return response
-        })
-}
-
-export const current = () => {
+export const get = (id) => {
     return (dispatch) => {
-        dispatch(createAction(UserActions.Current, null,
+        dispatch(createAction(UserActions.Get, null,
             null, Status.WaitingOnServer))
-        profile((response) => createAction(UserActions.Current, response.data, null, Status.Ready), dispatch)
+        request.get('/users/' + id, {
+            headers: {
+                'Authorization': 'Bearer ' + getToken()
+            }
+        })
+            .then(response => {
+                dispatch(createAction(UserActions.Get, response.data, null, Status.Ready))
+            })
             .catch((error) => {
-                rmToken()
                 dispatch(
-                    createAction(UserActions.Current, null, error.response.data,
+                    createAction(UserActions.Get, null, error.response.data,
                         Status.Failed))
-                history.replace('/login')
             })
     }
 }
@@ -52,7 +47,7 @@ export const current = () => {
 export const logout = () => {
     //TODO: server call for logging out
     return (dispatch) => {
-        rmToken()
+        rmSession()
         dispatch(
             createAction(UserActions.Logout, null, null,
                 Status.Ready))
@@ -61,13 +56,35 @@ export const logout = () => {
 }
 
 export const update = (profileDetails) => {
+    let snakeProfileDetails = {
+        user : {
+            password: profileDetails.password,
+            password_confirmation: profileDetails.password,
+            first_name: profileDetails.firstName,
+            last_name: profileDetails.lastName,
+            office: profileDetails.office,
+            phone_number: profileDetails.phoneNumber,
+            campus: profileDetails.campus,
+            is_newbie: false
+        }
+    }
+
     return (dispatch) => {
         dispatch(createAction(UserActions.Update, null,
             null, Status.WaitingOnServer))
-        request.put('/users/' + profileDetails.id, profileDetails)
+        request.put('/users/' + profileDetails.id, snakeProfileDetails, {
+            headers: {
+                'Authorization': 'Bearer ' + getToken()
+            }
+        })
             .then(response => {
+                let rookie = {
+                    ...response.data,
+                    isNewbie: false
+                }
+                setCurrentUserNewbie(false)
                 dispatch(
-                    createAction(UserActions.Update, response.data, null,
+                    createAction(UserActions.Update, rookie, null,
                         Status.Ready))
             })
             .catch((error) => {

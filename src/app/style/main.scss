@@ -22,10 +22,11 @@ div {
 
 // Inputs
 input, select {
+  font-size: 16px;
   background: $themeColor-white;
   border: 1px solid $themeColor-light;
   border-radius: 7px;
-  height: 30px;
+  height: 35px;
   width: 100%;
   text-indent: 10px;
 }
@@ -73,19 +74,21 @@ h1 {
 
 // Messages
 .message-error {
+  padding-top: 5px;
   color: $themeColor-red;
   height: 20px;
-  font-size: 12px;
+  font-size: 14px;
   margin-top: 0;
 }
 
 // Buttons
 .button-submit {
-  width: 100px;
+  font-size: 16px;
+  min-width: 150px;
   background: $themeColor-lightBlue;
   color: $themeColor-white;
   border-radius: 7px;
-  height: 30px;
+  height: 35px;
   float: right;
   border: 0;
 }

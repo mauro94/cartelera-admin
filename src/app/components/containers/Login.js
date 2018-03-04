@@ -1,14 +1,17 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { thunks } from 'Logic/actions/thunks'
-import { history, loggedIn } from 'Config/helper'
+import { history, loggedIn, isCurrentUserNewbie } from 'Config/helper'
 import { Status } from 'Config/constants'
 import LoginForm from 'Presentational/LoginForm'
 
 class Login extends React.Component {
     componentWillMount() {
-        if (loggedIn()) {
+        if (loggedIn() && !isCurrentUserNewbie()) {
             history.replace('/')
+        }
+        else if (loggedIn() && isCurrentUserNewbie()) {
+            history.replace('/newbie')
         }
     }
 
@@ -27,8 +30,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        handleSubmit: loginAttempt => {
-            dispatch(thunks.user.login(loginAttempt))
+        handleSubmit: (loginAttempt, setErrors) => {
+            dispatch(thunks.user.login(loginAttempt, setErrors))
         }
     }
 }

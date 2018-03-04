@@ -2,11 +2,17 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { thunks } from 'Logic/actions/thunks'
 import ProfileDetailsForm from 'Presentational/ProfileDetailsForm'
-import { history, withAuth } from 'Config/helper'
+import { history, withAuth, isCurrentUserNewbie } from 'Config/helper'
 
 class FirstLogin extends React.Component {
     componentWillMount() {
-        if (!this.props.user.isNewbie) {
+        if (!isCurrentUserNewbie()) {
+            history.replace('/')
+        }
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (!isCurrentUserNewbie()) {
             history.replace('/')
         }
     }

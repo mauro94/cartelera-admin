@@ -5,6 +5,7 @@ import { SelectComponent, TextComponent, EmailComponent, PasswordComponent } fro
 import Yup from 'yup';
 import 'Style/gridColumns2.scss';
 import 'Style/loginForm.scss';
+import { isEmpty } from 'Config/helper'
 
 export default class ProfileDetailsForm extends React.Component {
     componentWillReceiveProps(nextProps) {
@@ -57,7 +58,7 @@ export default class ProfileDetailsForm extends React.Component {
         return (
             <div>
             <p>         
-                Hola {}! <br/>
+                Hola {user.email}! <br/>
                 Antes de continuar, por favor completa tus datos:
             </p>
             <Formik
@@ -72,7 +73,7 @@ export default class ProfileDetailsForm extends React.Component {
                 }
                 initialValues={initialValues}
                 onSubmit={(values, actions) => {
-                    values.isNewbie = false
+                    values.id = user.id
                     handleSubmit(values)
                     actions.setSubmitting(false)
                 }}>
@@ -90,7 +91,7 @@ export default class ProfileDetailsForm extends React.Component {
                     return (
                         <Form>
                             {/*reqres error, change to our api (unauthorized)*/}
-                            {errors.error && <p className="message-error">{errors.error}</p>}
+                            {!isEmpty(user.error) && <p className="message-error">{user.error}</p>}
 
                             <Field name="firstName" placeholder="Nombre" component={TextComponent} />
                             {errors.firstName && <p className="message-error">{errors.firstName}</p>}

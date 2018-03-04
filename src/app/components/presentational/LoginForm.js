@@ -5,14 +5,9 @@ import { EmailComponent, PasswordComponent } from 'Presentational/InputFields';
 import Yup from 'yup';
 import 'Style/gridColumns2.scss';
 import 'Style/loginForm.scss';
+import { isEmpty } from 'Config/helper'
 
 export default class LoginForm extends React.Component {
-    componentWillReceiveProps(nextProps) {
-        if (nextProps.user.error) {
-            this.setErrors(nextProps.user.error);
-        }
-    }
-
     render() {
         const { handleSubmit, user } = this.props
 
@@ -30,7 +25,7 @@ export default class LoginForm extends React.Component {
                     })
                 }
                 initialValues={initialValues}
-                onSubmit={(values, actions) => { 
+                onSubmit={(values, action) => { 
                     handleSubmit(values)
                     action.setSubmitting(false)
                 }}>
@@ -48,7 +43,7 @@ export default class LoginForm extends React.Component {
                     return(
                         <div className="item3">
                             <Form>
-                                {errors.error && <p className="message-error">{errors.error}</p>}
+                                {!isEmpty(user.error) && <p className="message-error">{user.error}</p>}
                                 
                                 <Field name="email" id={"emailLoginField"} component={EmailComponent}/>
                                 { touched.email && errors.email && <p className="message-error">{errors.email}</p> }
