@@ -12,9 +12,13 @@ export function isEmpty(object) {
 }
 
 export const request = axios.create({
-    baseURL: 'https://5a8e3738b5a3130012909abb.mockapi.io/api',
-    timeout: 1000
+    //baseURL: 'https://5a8e3738b5a3130012909abb.mockapi.io/api',
+    baseURL: 'https://cartelera-api.herokuapp.com/',
+    headers: {
+        'Accept': 'application/vnd.cartelera-api.v1',
+    }
 })
+
 
 export const history = createBrowserHistory()
 
@@ -22,16 +26,31 @@ export const loggedIn = () => {
     return !isEmpty(localStorage.getItem('SESSION_TOKEN'))
 }
 
-export const getUserId = () => {
-    return decode(localStorage.getItem('SESSION_TOKEN')).id
-}
-
-export const setToken = (token) => {
+export const setSession = (token, id, isNewbie) => {
     localStorage.setItem('SESSION_TOKEN', token)
+    localStorage.setItem('SESSION_USER_ID', id)
+    localStorage.setItem('SESSION_USER_IS_NEWBIE', isNewbie)
 }
 
-export const rmToken = () => {
+export const getToken = () => {
+    return localStorage.getItem('SESSION_TOKEN')
+}
+
+export const getSessionUserId = () => {
+    return localStorage.getItem('SESSION_USER_ID')
+}
+
+export const isCurrentUserNewbie = () => {
+    return (localStorage.getItem('SESSION_USER_IS_NEWBIE') == 'true')
+}
+
+export const setCurrentUserNewbie = (isNewbie) => {
+    localStorage.setItem('SESSION_USER_IS_NEWBIE', isNewbie)
+}
+export const rmSession = () => {
     localStorage.removeItem('SESSION_TOKEN')
+    localStorage.removeItem('SESSION_USER_ID')
+    localStorage.removeItem('SESSION_USER_IS_NEWBIE')
 }
 
 export const withAuth = (Component) => {
@@ -43,7 +62,10 @@ export const withAuth = (Component) => {
             else if (loggedIn) {
                 //TODO: ask server if token is valid
                 //if not, rmToken and redirect to login
-                this.props.currentUser()
+                if(isCurrentUserNewbie() && this.props.location.pathname != "/newbie"){
+                    history.replace('/newbie')
+                }
+                this.props.getUser(getSessionUserId())
             }
         }
         render() {
@@ -63,12 +85,9 @@ export const withAuth = (Component) => {
 
     const mapDispatchToProps = (dispatch) => {
         return {
-            currentUser: () => dispatch(thunks.user.current())
+            getUser: (id) => dispatch(thunks.user.get(id))
+            //getUser: () => dispatch(thunks.user.logout())
         }
     }
     return connect(mapStateToProps, mapDispatchToProps)(AuthenticatedComponent)
-}
-
-export const makeOption = function (element) {
-    return <option key={element.key} value={element.key}> {element.text} </option>
 }

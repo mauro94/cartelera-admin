@@ -61,7 +61,11 @@ export const SelectComponent = ({
       <select
         {...field}
         {...props}>
-        {campusList.map(makeOption)}
+        {campusList.map(Option)}
       </select>
     </div>
   );
+
+const Option =  element => (
+    <option key={element.key} value={element.key}> {element.text} </option>
+)

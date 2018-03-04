@@ -1,7 +1,7 @@
 import React, {Fragment} from 'react';
 import { BrowserRouter as Router, Route, Link, Prompt, Switch } from "react-router-dom";
 import PropTypes from 'prop-types';
-import { withAuth, isEmpty } from 'Config/helper';
+import { isEmpty } from 'Config/helper';
 import {Sponsor} from 'Containers/Home'
 
 import 'Style/gridMain.scss';
@@ -38,4 +38,4 @@ HomePage.propTypes = {
     logout: PropTypes.func
 }
 
-export default withAuth(HomePage)
+export default HomePage

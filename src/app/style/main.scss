@@ -22,10 +22,11 @@ div {
 
 // Inputs
 input, select {
+  font-size: 16px;
   background: $themeColor-white;
   border: 1px solid $themeColor-light;
   border-radius: 7px;
-  height: 30px;
+  height: 35px;
   width: 100%;
   text-indent: 10px;
 }
@@ -37,6 +38,12 @@ input, select {
 
 button:focus {
   outline: 0;
+}
+
+.form-field.buttons {
+  display: flex;
+  flex-direction: row;
+  flex-flow: row-reverse;
 }
 
 // Different kinds of input
@@ -77,19 +84,41 @@ h1 {
 
 // Messages
 .message-error {
+  margin-top: 5px;
   color: $themeColor-red;
   height: 20px;
-  font-size: 12px;
+  font-size: 14px;
   margin-top: 0;
 }
 
 // Buttons
 .button-submit {
-  width: 100px;
+  margin-top: 5px;
+  font-size: 16px;
+  min-width: 150px;
   background: $themeColor-lightBlue;
   color: $themeColor-white;
   border-radius: 7px;
-  height: 30px;
+  height: 35px;
   float: right;
   border: 0;
+}
+
+.button-newbie-logout {
+  font-size: 13px;
+  width: auto;
+  background: transparent;
+  color: $themeColor-black;
+  border-radius: 7px;
+  text-align: right;
+  text-decoration: underline;
+  height: 20px;
+  margin-top: 20px;
+  float: right;
+  
+  border: 0;
+}
+
+#newbie-logout {
+  color: red;
 }

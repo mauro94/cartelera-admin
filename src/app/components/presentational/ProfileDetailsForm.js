@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { Formik, Field, Form } from 'formik';
 import { SelectComponent, TextComponent, EmailComponent, PasswordComponent } from 'Presentational/InputFields';
 import Yup from 'yup';
+import { isEmpty } from 'Config/helper'
 
 export default class ProfileDetailsForm extends React.Component {
     componentWillReceiveProps(nextProps) {
@@ -14,7 +15,7 @@ export default class ProfileDetailsForm extends React.Component {
     render() {
         require('Style/gridColumns2.scss');
         
-        const { handleSubmit, user } = this.props
+        const { handleSubmit, user, logout } = this.props
 
         const initialValues = {
             firstName: user.firstName || '',
@@ -65,14 +66,14 @@ export default class ProfileDetailsForm extends React.Component {
                     Yup.object().shape({
                         firstName: Yup.string().required("Nombre requerido"),
                         lastName: Yup.string().required("Apellido requerido"),
-                        password: Yup.string().required("Contraseña requerida"),
+                        password: Yup.string().min(6,"Mínimo 6 caracteres").required("Contraseña requerida"),
                         office: Yup.string().uppercase("Escribir oficina usando mayusculas").required("Oficina requerido"),
                         phoneNumber: Yup.string().min(8, "Se necesita un número de minimo 8 digitos").required("Teléfono requerido"),
                     })
                 }
                 initialValues={initialValues}
                 onSubmit={(values, actions) => {
-                    values.isNewbie = false
+                    values.id = user.id
                     handleSubmit(values)
                     actions.setSubmitting(false)
                 }}>
@@ -90,7 +91,7 @@ export default class ProfileDetailsForm extends React.Component {
                     return (
                         <Form>
                             {/*reqres error, change to our api (unauthorized)*/}
-                            {errors.error && <p className="message-error">{errors.error}</p>}
+                            {!isEmpty(user.error) && <p className="message-error">{user.error}</p>}
 
                             <Field name="firstName" placeholder="Nombre" component={TextComponent} />
                             {errors.firstName && <p className="message-error">{errors.firstName}</p>}
@@ -112,10 +113,14 @@ export default class ProfileDetailsForm extends React.Component {
                                 component={SelectComponent} />
                             {errors.campus && <p className="message-error">{errors.campus}</p>}
                             
-                            <div className="form-field">
+                            <div className="form-field buttons">
                                 <button className="button-submit" disabled={isSubmitting}>Continuar</button>
+                                <button className="button-newbie-logout" onClick={logout}>Cerrar Sesión</button>
                             </div>
+                                
+
                         </Form>
+                        
                     )
                 }}
             </Formik>

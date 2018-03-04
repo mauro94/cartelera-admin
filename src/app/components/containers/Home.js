@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 import { thunks } from 'Logic/actions/thunks'
 import { history, loggedIn } from 'Config/helper'
 import { Status } from 'Config/constants'
@@ -11,6 +12,8 @@ import {
     navbarButtonEmpty
  } from 'Presentational/HomeComponents'
 import HomePage from 'Presentational/HomePage';
+import 'Style/main.scss'
+
 
 let component = <p>Loading...</p>
 
@@ -59,13 +62,14 @@ class Home extends React.Component {
             categoriesButton={this.categoriesButton}
             sponsorsButton={this.sponsorsButton}
             logout={this.props.logout}
+            user={this.props.user.current}
         />
     }
 }
 
 const mapStateToProps = state => {
     return {
-        user: state.user.current
+        user: state.user
     }
 }
 
@@ -77,7 +81,7 @@ const mapDispatchToProps = () => {
 
 
 
-export default connect(
+export default withRouter(connect(
     mapStateToProps,
     mapDispatchToProps
-)(Home)
+)(Home))

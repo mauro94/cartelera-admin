@@ -5,17 +5,16 @@ import {
     Route,
     Link
 } from 'react-router-dom'
-import { history } from 'Config/helper'
-import App from 'Containers/App'
+import { history, withAuth } from 'Config/helper'
+import Home from 'Containers/Home'
 import FirstLogin from 'Containers/FirstLogin'
 import LoginPage from 'Presentational/LoginPage'
 
 const Routes = () => (
     <Router history={history}>
         <Switch>
-            <Route exact path="/" component={App} />
+            <Route exact path="/" component={withAuth(Home)} />
             <Route exact path="/login" component={LoginPage} />
-            <Route exact path="/newbie" component={LoginPage} />
         </Switch>
     </Router>
 )

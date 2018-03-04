@@ -1,7 +1,7 @@
 export const UserActions = Object.freeze({
     Login: 'LOGIN',
     Update: 'UPDATE_USER',
-    Current: 'CURRENT_USER',
+    Get: 'GET_USER',
     Logout: 'LOGOUT'
 })
 
