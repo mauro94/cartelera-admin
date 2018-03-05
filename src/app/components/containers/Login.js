@@ -11,7 +11,7 @@ class Login extends React.Component {
             history.replace('/')
         }
         else if (loggedIn() && isCurrentUserNewbie()) {
-            history.replace('/newbie')
+            history.replace('/login/newbie')
         }
     }
 

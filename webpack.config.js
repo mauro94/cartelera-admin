@@ -9,9 +9,11 @@ module.exports = {
         "react-hot-loader/patch",
         "./src/app/config/index.js"
     ],
+
     output: {
-      path: BUILD_DIR,
-      filename: 'bundle.js'
+        path: BUILD_DIR,
+        publicPath: '/',
+        filename: 'bundle.js'
     },
 
     devtool: "source-map-inline",
@@ -31,7 +33,7 @@ module.exports = {
             Presentational: 'src/app/components/presentational/',
             Images: 'src/app/images/'
         },
-        extensions: ['*','.js','.jsx']
+        extensions: ['*', '.js', '.jsx']
     },
 
     plugins: [
@@ -44,11 +46,11 @@ module.exports = {
         }),
     ],
 
-    module : {
-        rules : [{
+    module: {
+        rules: [{
             loader: 'babel-loader',
-            query :{
-                presets:['react','es2015']
+            query: {
+                presets: ['react', 'es2015']
             },
             test: /\.jsx?$/,
             exclude: /(node_modules|bower_components)/
@@ -59,8 +61,8 @@ module.exports = {
             enforce: "pre"
         },
         {
-            test:/\.(s*)css$/,
-            use:['style-loader','css-loader', 'sass-loader']
+            test: /\.(s*)css$/,
+            use: ['style-loader', 'css-loader', 'sass-loader']
         },
         {
             test: /\.(png|svg|jp(e*)g)$/,
@@ -72,6 +74,6 @@ module.exports = {
                 }
             }]
         }
-    ]
+        ]
     }
 };

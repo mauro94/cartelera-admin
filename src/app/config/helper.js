@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { createBrowserHistory } from 'history'
+import { withRouter } from 'react-router'
 import axios from 'axios'
 import decode from 'jwt-decode'
 import { thunks } from 'Logic/actions/thunks'
@@ -62,8 +63,8 @@ export const withAuth = (Component) => {
             else if (loggedIn) {
                 //TODO: ask server if token is valid
                 //if not, rmToken and redirect to login
-                if(isCurrentUserNewbie() && this.props.location.pathname != "/newbie"){
-                    history.replace('/newbie')
+                if (isCurrentUserNewbie() && this.props.location.pathname != "/login/newbie") {
+                    history.replace('/login/newbie')
                 }
                 this.props.getUser(getSessionUserId())
             }
@@ -89,5 +90,8 @@ export const withAuth = (Component) => {
             //getUser: () => dispatch(thunks.user.logout())
         }
     }
-    return connect(mapStateToProps, mapDispatchToProps)(AuthenticatedComponent)
+    return withRouter(connect(
+        mapStateToProps,
+        mapDispatchToProps)
+        (AuthenticatedComponent))
 }
