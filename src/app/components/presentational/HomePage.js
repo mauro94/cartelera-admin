@@ -1,13 +1,13 @@
-import React, {Fragment} from 'react';
+import React, { Fragment } from 'react';
 import { BrowserRouter as Router, Route, Link, Prompt, Switch } from "react-router-dom";
 import PropTypes from 'prop-types';
-import { isEmpty } from 'Config/helper';
-import {Sponsor} from 'Containers/Home'
+import { isEmpty, withAuth } from 'Config/helper';
+import { Sponsor } from 'Containers/Home'
 
 import 'Style/gridMain.scss';
 import logo from 'Images/logo.svg';
 
-const HomePage = ({...props}) => (
+const HomePage = ({ ...props }) => (
     <React.Fragment>
         <div className="grid-container">
             <div className="container-navbar">
@@ -16,7 +16,7 @@ const HomePage = ({...props}) => (
                         <img className="logo" src={logo} />
                     </div>
                     <div className="user">
-                        { props.userType }
+                        {props.userType}
                     </div>
                 </div>
                 <div className="container-navbar-buttons">
@@ -38,4 +38,4 @@ HomePage.propTypes = {
     logout: PropTypes.func
 }
 
-export default HomePage
+export default withAuth(HomePage)

@@ -1,13 +1,8 @@
-import React, {Fragment} from 'react';
-import { Route } from "react-router-dom";
+import React, { Fragment } from 'react'
+import { Route } from "react-router-dom"
 import Login from 'Containers/Login'
 import FirstLogin from 'Containers/FirstLogin'
-import logo from 'Images/logo.svg';
-
-var additionalStyle = {
-    display: 'grid',
-    'align-content': 'center'
-};
+import logo from 'Images/logo.svg'
 
 const LoginPage = () => (
     <Fragment>
@@ -15,9 +10,9 @@ const LoginPage = () => (
             <div className="item1">
                 <img className="logo" src={logo} />
             </div>
-            <div className="item2" style={additionalStyle}>
-                    <Route exact path="/login" component={Login} />
-                    <Route exact path="/newbie" component={FirstLogin}  />
+            <div className="item2">
+                <Route exact path="/login" component={Login} />
+                <Route exact path="/newbie" component={FirstLogin} />
             </div>
         </div>
     </Fragment>
