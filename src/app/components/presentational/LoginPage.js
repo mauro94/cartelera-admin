@@ -6,7 +6,7 @@ import logo from 'Images/logo.svg'
 
 const LoginPage = () => (
     <Fragment>
-        <div className="grid-container">
+        <div className="grid-container container-login">
             <div className="item1">
                 <img className="logo" src={logo} />
             </div>

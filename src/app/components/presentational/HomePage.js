@@ -9,7 +9,7 @@ import logo from 'Images/logo.svg';
 
 const HomePage = ({ ...props }) => (
     <React.Fragment>
-        <div className="grid-container">
+        <div className="grid-container container-home">
             <div className="container-navbar">
                 <div className="container-navbar-logo">
                     <div className="navbar-logo">
