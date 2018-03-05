@@ -44,8 +44,6 @@ class Home extends React.Component {
                     this.userType = "Sponsor"
                     this.profileButton = navbarButtonUser
                     this.eventsButton = navbarButtonEvents
-
-                    this.logoutButton = <button onClick={this.props.logout}>logout</button>
                 break;
                 default:
                     // Solicitante
@@ -73,7 +71,7 @@ const mapStateToProps = state => {
     }
 }
 
-const mapDispatchToProps = () => {
+const mapDispatchToProps = dispatch => {
     return {
         logout: () => { dispatch(thunks.user.logout()) }
     }
