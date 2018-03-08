@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Link, Prompt, Switch } from "react-rout
 import PropTypes from 'prop-types';
 import { isEmpty, withAuth } from 'Config/helper';
 import { Sponsor } from 'Containers/Home'
+import EditProfile from 'Containers/FirstLogin'
 
 import 'Style/gridMain.scss';
 import logo from 'Images/logo.svg';
@@ -27,7 +28,8 @@ const HomePage = ({ ...props }) => (
                 </div>
             </div>
             <div className="container-content">
-
+                {/*<Route path="/" component={EditProfile} />*/}
+                {/*<Route path="/edit-profile" component={FirstLogin} />*/}
             </div>
         </div>
     </React.Fragment>

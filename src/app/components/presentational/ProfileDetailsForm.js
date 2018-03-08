@@ -7,15 +7,15 @@ import { isEmpty } from 'Config/helper'
 
 export default class ProfileDetailsForm extends React.Component {
     componentWillReceiveProps(nextProps) {
-        if (nextProps.user.error) {
-            this.setErrors(nextProps.user.error);
+        if (nextProps.error) {
+            this.setErrors(nextProps.error);
         }
     }
 
     render() {
         require('Style/gridColumns2.scss');
         
-        const { handleSubmit, user, logout } = this.props
+        const { handleSubmit, user, logout, error } = this.props
 
         const initialValues = {
             firstName: user.firstName || '',
@@ -91,7 +91,7 @@ export default class ProfileDetailsForm extends React.Component {
                     return (
                         <Form>
                             {/*reqres error, change to our api (unauthorized)*/}
-                            {!isEmpty(user.error) && <p className="message-error">{user.error}</p>}
+                            {!isEmpty(error) && <p className="message-error">{errors.error}</p>}
 
                             <Field name="firstName" placeholder="Nombre" component={TextComponent} />
                             {errors.firstName && <p className="message-error">{errors.firstName}</p>}

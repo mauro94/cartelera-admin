@@ -24,6 +24,7 @@ class FirstLogin extends React.Component {
 
 const mapStateToProps = state => {
     return {
+        error: state.user.error
     }
 }
 

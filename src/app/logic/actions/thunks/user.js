@@ -13,10 +13,9 @@ export const login = (loginAttempt) => {
             .then(response => {
                 setSession(response.data.authToken, response.data.id, response.data.isNewbie)
                 dispatch(createAction(UserActions.Login, response.data, null, Status.Ready))
-                history.push(response.data.isNewbie ? '/newbie' : '/')
+                history.push(response.data.isNewbie ? '/login/newbie' : '/')
             })
             .catch((error) => {
-                // setErrors({error: "There's been an error"})
                 dispatch(
                     createAction(UserActions.Login, null, error.response.data.error,
                         Status.Failed))
@@ -89,7 +88,7 @@ export const update = (profileDetails) => {
             })
             .catch((error) => {
                 dispatch(
-                    createAction(UserActions.Update, null, error.response.data,
+                    createAction(UserActions.Update, profileDetails, error.response? error.response.data : {error: error.message},
                         Status.Failed))
             })
     }

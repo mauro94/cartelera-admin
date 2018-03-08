@@ -8,8 +8,7 @@ import {
     navbarButtonUser,
     navbarButtonEvents,
     navbarButtonCategories,
-    navbarButtonSponsors,
-    navbarButtonEmpty
+    navbarButtonSponsors
  } from 'Presentational/HomeComponents'
 import HomePage from 'Presentational/HomePage';
 import 'Style/main.scss'
@@ -25,7 +24,6 @@ class Home extends React.Component {
         this.eventsButton = null
         this.categoriesButton = null
         this.sponsorsButton = null
-        this.main = null
     }
     
     componentWillMount() {
