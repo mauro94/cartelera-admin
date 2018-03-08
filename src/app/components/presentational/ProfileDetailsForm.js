@@ -6,12 +6,6 @@ import Yup from 'yup';
 import { isEmpty } from 'Config/helper'
 
 export default class ProfileDetailsForm extends React.Component {
-    componentWillReceiveProps(nextProps) {
-        if (nextProps.error) {
-            this.setErrors(nextProps.error);
-        }
-    }
-
     render() {
         require('Style/gridColumns2.scss');
         
@@ -84,14 +78,12 @@ export default class ProfileDetailsForm extends React.Component {
                     handleChange,
                     handleBlur,
                     handleSubmit,
-                    isSubmitting,
-                    setErrors
+                    isSubmitting
                 }) => {
-                    this.setErrors = setErrors
                     return (
                         <Form>
                             {/*reqres error, change to our api (unauthorized)*/}
-                            {!isEmpty(error) && <p className="message-error">{errors.error}</p>}
+                            {!isEmpty(error) && <p className="message-error">{error}</p>}
 
                             <Field name="firstName" placeholder="Nombre" component={TextComponent} />
                             {errors.firstName && <p className="message-error">{errors.firstName}</p>}

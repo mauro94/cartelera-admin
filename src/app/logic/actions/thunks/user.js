@@ -88,7 +88,7 @@ export const update = (profileDetails) => {
             })
             .catch((error) => {
                 dispatch(
-                    createAction(UserActions.Update, profileDetails, error.response? error.response.data : {error: error.message},
+                    createAction(UserActions.Update, profileDetails, error.response? error.response.data : error.message,
                         Status.Failed))
             })
     }

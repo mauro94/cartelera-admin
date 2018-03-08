@@ -9,7 +9,7 @@ export default class LoginForm extends React.Component {
     render() {
         require('Style/gridColumns2.scss');
         
-        const { handleSubmit, user } = this.props
+        const { handleSubmit, error } = this.props
 
         const initialValues = {
             email: '',
@@ -36,13 +36,11 @@ export default class LoginForm extends React.Component {
                     handleChange,
                     handleBlur,
                     handleSubmit,
-                    isSubmitting,
-                    setErrors
+                    isSubmitting
                 }) => {
-                    this.setErrors = setErrors
                     return(
                         <Form>
-                            {!isEmpty(user.error) && <p className="message-error">{errors.error}</p>}
+                            {!isEmpty(error) && <p className="message-error">{error}</p>}
                             
                             <Field name="email" id={"emailLoginField"} component={EmailComponent}/>
                             { touched.email && errors.email && <p className="message-error">{errors.email}</p> }
@@ -51,7 +49,7 @@ export default class LoginForm extends React.Component {
                             {touched.password && errors.password && <p className="message-error">{errors.password}</p> }
                             
                             <div className="form-field">
-                                <button className="button-submit" disabled={isSubmitting}>Iniciar Sesíon</button>
+                                <button className="button-submit" disabled={isSubmitting}>Iniciar Sesión</button>
                             </div>
                         </Form>
                     )}

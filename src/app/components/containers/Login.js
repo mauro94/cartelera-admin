@@ -16,7 +16,7 @@ class Login extends React.Component {
     }
 
     render() {
-        if (this.props.user.status == Status.WaitingOnServer)
+        if (this.props.loading)
             return <p>Loading...</p>
         return <LoginForm {...this.props} />
     }
@@ -24,7 +24,8 @@ class Login extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        user: state.user
+        error: state.user.error,
+        loading: state.user.status == Status.WaitingOnServer
     }
 }
 
