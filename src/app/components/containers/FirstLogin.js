@@ -5,17 +5,17 @@ import ProfileDetailsForm from 'Presentational/ProfileDetailsForm'
 import { history, isCurrentUserNewbie, withAuth } from 'Config/helper'
 
 class FirstLogin extends React.Component {
-    // componentWillMount() {
-    //     if (!isCurrentUserNewbie()) {
-    //         history.replace('/')
-    //     }
-    // }
+    componentWillMount() {
+        if (!isCurrentUserNewbie()) {
+            history.replace('/')
+        }
+    }
 
-    // componentWillReceiveProps(nextProps) {
-    //     if (!isCurrentUserNewbie()) {
-    //         history.replace('/')
-    //     }
-    // }
+    componentWillReceiveProps(nextProps) {
+        if (!isCurrentUserNewbie()) {
+            history.replace('/')
+        }
+    }
 
     render() {
         return <ProfileDetailsForm {...this.props} />
