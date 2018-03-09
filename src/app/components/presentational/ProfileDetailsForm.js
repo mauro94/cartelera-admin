@@ -15,6 +15,7 @@ export default class ProfileDetailsForm extends React.Component {
             firstName: user.firstName || '',
             lastName: user.lastName || '',
             password: user.password || '',
+            passwordConfirm: '',
             office: user.office || '',
             phoneNumber: user.phoneNumber || '',
             campus: user.campus || 'MTY',
@@ -61,6 +62,7 @@ export default class ProfileDetailsForm extends React.Component {
                         firstName: Yup.string().required("Nombre requerido"),
                         lastName: Yup.string().required("Apellido requerido"),
                         password: Yup.string().min(6,"Mínimo 6 caracteres").required("Contraseña requerida"),
+                        passwordConfirm: Yup.string().oneOf([Yup.ref('password'), null], "Contraseñas deben ser iguales").required("Confirmación requerida"),
                         office: Yup.string().uppercase("Escribir oficina usando mayusculas").required("Oficina requerida"),
                         phoneNumber: Yup.string().min(8, "Se necesita un número de minimo 8 digitos").required("Teléfono requerido"),
                     })
@@ -91,8 +93,11 @@ export default class ProfileDetailsForm extends React.Component {
                             <Field name="lastName" placeholder="Apellido" className={((touched.lastName && errors.lastName) ? 'emptyField' : 'readyField')} component={TextComponent} />
                             {touched.lastName && errors.lastName && <p className="message-error">{errors.lastName}</p>}
 
-                            <Field name="password" className={((touched.password && errors.password) ? 'emptyField' : 'readyField')} component={PasswordComponent}/>
+                            <Field name="password" className={((touched.password && errors.password) ? 'emptyField' : 'readyField')} component={PasswordComponent}s/>
                             {touched.password && errors.password && <p className="message-error">{errors.password}</p>}
+
+                            {touched.password && !errors.password && <Field name="passwordConfirm" placeholder="Confirmar contraseña" className={((touched.passwordConfirm && errors.passwordConfirm) ? 'emptyField' : 'readyField')} component={PasswordComponent}/>}
+                            {touched.passwordConfirm && errors.passwordConfirm && !errors.password && <p className="message-error">{errors.passwordConfirm}</p>}
 
                             <Field name="office" placeholder="Oficina" className={((touched.office && errors.office) ? 'emptyField' : 'readyField')}component={TextComponent} />
                             {touched.office && errors.office && <p className="message-error">{errors.office}</p>}
