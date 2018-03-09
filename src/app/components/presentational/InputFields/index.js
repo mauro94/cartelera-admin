@@ -2,6 +2,9 @@ import React from 'react'
 import { Field } from 'formik'
 import PropTypes from 'prop-types'
 import { makeOption } from 'Config/helper'
+import FontAwesomeIcon from '@fortawesome/react-fontawesome'
+import { faEye, faEyeSlash } from '@fortawesome/fontawesome-free-solid'
+import { Password } from 'Presentational/InputFields/password'
 
 export const EmailComponent = ({
   field, // { name, value, onChange, onBlur }
@@ -18,20 +21,7 @@ export const EmailComponent = ({
     </div>
   );
 
-export const PasswordComponent = ({
-  field, // { name, value, onChange, onBlur }
-  form: { touched, errors }, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
-  ...props
-}) => (
-    <div className="form-field">
-      <input
-        type="password"
-        placeholder="Contraseña"
-        {...field}
-        {...props}
-      />
-    </div>
-  );
+export const PasswordComponent = Password
 
 export const TextComponent = ({
   field, // { name, value, onChange, onBlur }

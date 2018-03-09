@@ -93,7 +93,7 @@ export default class ProfileDetailsForm extends React.Component {
                             <Field name="lastName" placeholder="Apellido" className={((touched.lastName && errors.lastName) ? 'emptyField' : 'readyField')} component={TextComponent} />
                             {touched.lastName && errors.lastName && <p className="message-error">{errors.lastName}</p>}
 
-                            <Field name="password" className={((touched.password && errors.password) ? 'emptyField' : 'readyField')} component={PasswordComponent}s/>
+                            <Field name="password" className={((touched.password && errors.password) ? 'emptyField' : 'readyField')} component={PasswordComponent}/>
                             {touched.password && errors.password && <p className="message-error">{errors.password}</p>}
 
                             {touched.password && !errors.password && <Field name="passwordConfirm" placeholder="Confirmar contraseña" className={((touched.passwordConfirm && errors.passwordConfirm) ? 'emptyField' : 'readyField')} component={PasswordComponent}/>}

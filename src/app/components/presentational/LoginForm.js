@@ -13,7 +13,7 @@ export default class LoginForm extends React.Component {
 
         const initialValues = {
             email: '',
-            password: '',
+            password: ''
         }
 
         return (
@@ -45,7 +45,7 @@ export default class LoginForm extends React.Component {
                             <Field name="email" id={"emailLoginField"} className={((touched.email && errors.email) ? 'emptyField' : 'readyField')} component={EmailComponent}/>
                             { touched.email && errors.email && <p className="message-error">{errors.email}</p> }
                             
-                            <Field name="password" id={"passwordLoginField"} className={((touched.password && errors.password)? 'emptyField' : 'readyField')}  component={PasswordComponent}/>
+                            <Field name="password" id={"passwordLoginField"} className={((touched.password && errors.password)? 'emptyField' : 'readyField')} component={PasswordComponent} />
                             { touched.password && errors.password && <p className="message-error">{errors.password}</p> }
                             
                             <div className="form-field">

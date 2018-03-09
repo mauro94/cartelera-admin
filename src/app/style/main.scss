@@ -27,13 +27,19 @@ input, select {
   border: 1px solid $themeColor-light;
   border-radius: 7px;
   height: 35px;
-  width: 100%;
+  width: 99%;
+  text-overflow: ellipsis;
   text-indent: 10px;
 }
 
 .form-field {
   width: 80%;
   margin-top: 10px;
+}
+
+.password-form-field {
+  display: flex;
+  position: relative;
 }
 
 button:focus {
@@ -133,4 +139,16 @@ h1 {
 
 #newbie-logout {
   color: red;
+}
+
+.passwordToggle{
+  color:$themeColor-black;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 1em;
+  height: auto;
+  width: auto;
+  position: absolute;
+  top: 15%;
+  right: 2%;
 }
