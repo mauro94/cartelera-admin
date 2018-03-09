@@ -40,6 +40,14 @@ button:focus {
   outline: 0;
 }
 
+.emptyField {
+    border: 1px solid $themeColor-red;
+}
+
+.readyField {
+  border: 1px solid #cacacc;
+}
+
 .form-field.buttons {
   display: flex;
   flex-direction: row;
@@ -102,6 +110,10 @@ h1 {
   height: 35px;
   float: right;
   border: 0;
+}
+.button-submit:disabled {
+  background: $themeColor-light;
+  color: $themeColor-white;
 }
 
 .button-newbie-logout {
