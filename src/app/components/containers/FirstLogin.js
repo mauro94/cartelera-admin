@@ -7,13 +7,13 @@ import { history, isCurrentUserNewbie, withAuth } from 'Config/helper'
 class FirstLogin extends React.Component {
     componentWillMount() {
         if (!isCurrentUserNewbie()) {
-            history.replace('/')
+            history.replace('/dashboard')
         }
     }
 
     componentWillReceiveProps(nextProps) {
         if (!isCurrentUserNewbie()) {
-            history.replace('/')
+            history.replace('/dashboard')
         }
     }
 

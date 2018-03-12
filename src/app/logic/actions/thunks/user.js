@@ -13,7 +13,7 @@ export const login = (loginAttempt) => {
             .then(response => {
                 setSession(response.data.authToken, response.data.id, response.data.isNewbie)
                 dispatch(createAction(UserActions.Login, response.data, null, Status.Ready))
-                history.push(response.data.isNewbie ? '/login/newbie' : '/')
+                history.push(response.data.isNewbie ? '/login/newbie' : '/dashboard')
             })
             .catch((error) => {
                 dispatch(

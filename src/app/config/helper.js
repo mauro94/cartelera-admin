@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { createBrowserHistory } from 'history'
-import { withRouter } from 'react-router'
+import { withRouter } from 'react-router-dom'
 import axios from 'axios'
 import decode from 'jwt-decode'
 import { thunks } from 'Logic/actions/thunks'

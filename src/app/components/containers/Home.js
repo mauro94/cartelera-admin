@@ -14,8 +14,6 @@ import HomePage from 'Presentational/HomePage';
 import 'Style/main.scss'
 
 
-let component = <p>Loading...</p>
-
 class Home extends React.Component {
     constructor() {
         super()

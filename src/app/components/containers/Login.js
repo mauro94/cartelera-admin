@@ -8,7 +8,7 @@ import LoginForm from 'Presentational/LoginForm'
 class Login extends React.Component {
     componentWillMount() {
         if (loggedIn() && !isCurrentUserNewbie()) {
-            history.replace('/')
+            history.replace('/dashboard')
         }
         else if (loggedIn() && isCurrentUserNewbie()) {
             history.replace('/login/newbie')
