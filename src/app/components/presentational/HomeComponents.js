@@ -6,7 +6,7 @@ export const navbarButtonUser = ({ ...props }) => (
     <div className="dropdown">
         <button className="navbar-button" id="user">{props.user.firstName}</button>
             <div className="dropdown-content">
-                <a href="#">Editar Pérfil</a>
+                <a href="/edit-profile">Editar Pérfil</a>
                 <a onClick={() => props.logout()} href="#">Cerrar Sesión</a>
             </div>
     </div>

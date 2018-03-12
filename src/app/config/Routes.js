@@ -12,6 +12,7 @@ const Routes = () => (
     <Router history={history}>
         <Switch>
             <Route exact path="/" component={Home} />
+            <Route exact path="/edit-profile" component={Home} />
             <Route path="/login" component={LoginPage} />
         </Switch>
     </Router>

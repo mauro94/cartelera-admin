@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Link, Prompt, Switch } from "react-rout
 import PropTypes from 'prop-types';
 import { isEmpty, withAuth } from 'Config/helper';
 import { Sponsor } from 'Containers/Home'
-import EditProfile from 'Containers/FirstLogin'
+import EditProfile from 'Containers/EditProfile'
 
 import 'Style/gridMain.scss';
 import logo from 'Images/logo.svg';
@@ -14,7 +14,7 @@ const HomePage = ({ ...props }) => (
             <div className="container-navbar">
                 <div className="container-navbar-logo">
                     <div className="navbar-logo">
-                        <img className="logo" src={logo} />
+                        <a href="/"><img className="logo" src={logo} /></a>
                     </div>
                     <div className="user">
                         {props.userType}
@@ -28,8 +28,8 @@ const HomePage = ({ ...props }) => (
                 </div>
             </div>
             <div className="container-content">
-                {/*<Route path="/" component={EditProfile} />*/}
-                {/*<Route path="/edit-profile" component={FirstLogin} />*/}
+                <Route exact path="/" component={()=>(<p>home</p>)} />
+                <Route exact path="/edit-profile" render={() => <EditProfile {...props} />}/>
             </div>
         </div>
     </React.Fragment>
