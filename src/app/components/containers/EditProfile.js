@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { thunks } from 'Logic/actions/thunks'
 import ProfileDetailsForm from 'Presentational/ProfileDetailsForm'
 import { history } from 'Config/helper'
+import { Status } from 'Config/constants'
 
 class EditProfile extends React.Component {
     render() {
@@ -14,7 +15,8 @@ class EditProfile extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        error: state.user.error
+        error: state.user.error,
+        loading: state.user.status == Status.WaitingOnServer
     }
 }
 

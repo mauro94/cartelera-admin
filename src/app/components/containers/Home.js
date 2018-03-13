@@ -24,11 +24,11 @@ class Home extends React.Component {
         this.sponsorsButton = null
     }
     
-    componentWillMount() {
+    componentWillReceiveProps() {
         if(this.props.user.status != Status.WaitingOnServer) {
-            switch (/*this.props.user.current.userType*/1) {
+            switch (this.props.user.current.userType) {
                 // Admin
-                case 0:
+                case "administrator":
                     this.userType = "Administrador"
                     this.profileButton = navbarButtonUser
                     this.eventsButton = navbarButtonEvents
@@ -36,7 +36,7 @@ class Home extends React.Component {
                     this.sponsorsButton = navbarButtonSponsors
                 break;
                 // Sponsor
-                case 1:
+                case "sponsor":
                     this.userType = "Sponsor"
                     this.profileButton = navbarButtonUser
                     this.eventsButton = navbarButtonEvents
@@ -49,6 +49,16 @@ class Home extends React.Component {
     }
 
     render() {
+        if (this.props.loading)
+            return  <HomePage 
+                userType={this.userType} 
+                profileButton={null}
+                eventsButton={null}
+                categoriesButton={null}
+                sponsorsButton={null}
+                logout={null}
+                user={null}
+            />
         return <HomePage 
             userType={this.userType} 
             profileButton={this.profileButton}
@@ -63,7 +73,8 @@ class Home extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        user: state.user
+        user: state.user,
+        loading: state.user.status == Status.WaitingOnServer
     }
 }
 

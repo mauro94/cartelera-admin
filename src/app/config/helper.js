@@ -70,11 +70,7 @@ export const withAuth = (Component) => {
             }
         }
         render() {
-            if (this.props.loading)
-                return <p>Loading...</p>
-            return (
-                <Component {...this.props} />
-            )
+            return <Component {...this.props} />
         }
     }
     const mapStateToProps = (state) => {

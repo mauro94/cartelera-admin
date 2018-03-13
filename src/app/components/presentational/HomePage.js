@@ -8,28 +8,28 @@ import 'Style/gridMain.scss';
 import logo from 'Images/logo.svg';
 
 const HomePage = ({ ...props }) => (
-        <div className="grid-container container-home">
-            <div className="container-navbar">
-                <div className="container-navbar-logo">
-                    <div className="navbar-logo">
-                        <a onClick={() => history.replace('/dashboard')} href=""><img className="logo" src={logo} /></a>
-                    </div>
-                    <div className="user">
-                        {props.userType}
-                    </div>
+    <div className="grid-container container-home">
+        <div className="container-navbar">
+            <div className="container-navbar-logo">
+                <div className="navbar-logo">
+                    <Link to={"/dashboard"}><img className="logo" src={logo} /></Link>
                 </div>
-                <div className="container-navbar-buttons">
-                    {props.sponsorsButton && <props.sponsorsButton user={props.user} />}
-                    {props.categoriesButton && <props.categoriesButton user={props.user} />}
-                    {props.eventsButton && <props.eventsButton user={props.user} />}
-                    {props.profileButton && <props.profileButton user={props.user} logout={props.logout} />}
+                <div className="user">
+                    {props.userType}
                 </div>
             </div>
-            <div className="container-content">
-                <Route exact path="/dashboard" component={()=>(<p>home</p>)} />
-                <Route path="/dashboard/profile" render={() => <EditProfile {...props} />}/>
+            <div className="container-navbar-buttons">
+                {props.sponsorsButton && <props.sponsorsButton user={props.user} />}
+                {props.categoriesButton && <props.categoriesButton user={props.user} />}
+                {props.eventsButton && <props.eventsButton user={props.user} />}
+                {props.profileButton && <props.profileButton user={props.user} logout={props.logout} />}
             </div>
         </div>
+        <div className="container-content">
+            <Route exact path="/dashboard" component={()=>(<p>home</p>)} />
+            <Route path="/dashboard/profile" render={() => <EditProfile {...props} />}/>
+        </div>
+    </div>
 )
 
 export default HomePage

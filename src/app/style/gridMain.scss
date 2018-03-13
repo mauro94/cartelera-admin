@@ -41,22 +41,25 @@
     font-family: $systemfont;
     font-weight: 500;
 
-    &#events {
+    &#events-button {
         grid-column: 4;
-        color: $themeColor-lightBlue;
-        border-bottom: 4px solid;
-        border-color: $themeColor-lightBlue;
     }
-    &#categories {
+    &#categories-button {
         grid-column: 3;
     }
-    &#sponsors {
+    &#sponsors-button {
         grid-column: 2;
     }
 
     &:hover {
         color: $themeColor-lightBlue;
     }
+}
+
+.selected-button-view {
+    border-color: $themeColor-lightBlue;
+    color: $themeColor-lightBlue;
+    border-bottom: 4px solid;
 }
 
 .dropdown {
@@ -66,7 +69,7 @@
     overflow: hidden;
     display: grid;
 
-    &#user {
+    &#user-button {
         padding-top: 80px;
         margin: 0;
     }
