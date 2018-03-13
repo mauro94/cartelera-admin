@@ -7,8 +7,8 @@ export const navbarButtonUser = ({ ...props }) => (
     <div className="dropdown">
         <button className="navbar-button" id="user-button">{props.user.firstName}</button>
             <div className="dropdown-content">
-                <Link to={"/dashboard/profile"} onClick={() => { addColorSelectedButton("user-button") }}>Editar Pérfil</Link>
-                <Link to={"/dashboard/profile"} onClick={() => { props.logout() }}>Cerrar Sesión</Link>
+                <Link to={"/dashboard/profile/edit"} onClick={() => { addColorSelectedButton("user-button") }}>Pérfil</Link>
+                <Link to={"/login"} onClick={() => { props.logout() }}>Cerrar Sesión</Link>
             </div>
     </div>
 )

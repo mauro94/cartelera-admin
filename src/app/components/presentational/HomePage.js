@@ -1,10 +1,10 @@
 import React from 'react'
-import { BrowserRouter as Router, Route, Link, Prompt, Switch } from "react-router-dom"
-import { isEmpty, history } from 'Config/helper'
-import { Sponsor } from 'Containers/Home'
-import EditProfile from 'Containers/EditProfile'
+import { BrowserRouter as Router, Route, Link } from "react-router-dom"
+import { history } from 'Config/helper'
+import ColumnMenuLayout from 'Presentational/ColumnMenuLayout'
 
 import 'Style/gridMain.scss';
+import 'Style/columnMenuLayout.scss';
 import logo from 'Images/logo.svg';
 
 const HomePage = ({ ...props }) => (
@@ -27,7 +27,8 @@ const HomePage = ({ ...props }) => (
         </div>
         <div className="container-content">
             <Route exact path="/dashboard" component={()=>(<p>home</p>)} />
-            <Route path="/dashboard/profile" render={() => <EditProfile {...props} />}/>
+            {/* <Route path="/dashboard/profile" render={() => <EditProfile {...props} />}/> */}
+            <Route path="/dashboard/profile" render={() => <ColumnMenuLayout {...props} />}/>
         </div>
     </div>
 )

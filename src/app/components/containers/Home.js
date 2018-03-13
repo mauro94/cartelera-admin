@@ -24,9 +24,9 @@ class Home extends React.Component {
         this.sponsorsButton = null
     }
     
-    componentWillReceiveProps() {
-        if(this.props.user.status != Status.WaitingOnServer) {
-            switch (this.props.user.current.userType) {
+    componentWillReceiveProps(nextProps) {
+        if(nextProps.user.status != Status.WaitingOnServer) {
+            switch (nextProps.user.current.userType) {
                 // Admin
                 case "administrator":
                     this.userType = "Administrador"
