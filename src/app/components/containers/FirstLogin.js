@@ -6,6 +6,7 @@ import { history, isCurrentUserNewbie, withAuth } from 'Config/helper'
 import { Formik, Form, Field } from 'formik';
 import { Status } from 'Config/constants'
 import Yup from 'yup';
+import { campusList } from 'Config/Test'
 
 class FirstLogin extends React.Component {
     componentWillMount() {
@@ -22,33 +23,6 @@ class FirstLogin extends React.Component {
 
     render() {
         require('Style/gridColumns2.scss');
-
-        const campusList = [
-            { key: 'MTY', text: 'Campus Monterrey' },
-            { key: 'CDMX', text: 'Campus Ciudad de México' },
-            { key: 'AGS', text: 'Campus Aguascalientes' },
-            { key: 'CS', text: 'Campus Chiapas' },
-            { key: 'CH', text: 'Campus Chihuahua' },
-            { key: 'CDJZ', text: 'Campus Ciudad Juarez' },
-            { key: 'CDOB', text: 'Campus Ciudad Obregón' },
-            { key: 'CV', text: 'Campus Cuernavaca' },
-            { key: 'EDMX', text: 'Campus Estado de México' },
-            { key: 'GDL', text: 'Campus Guadalajara' },
-            { key: 'HDL', text: 'Campus Hidalgo' },
-            { key: 'IRP', text: 'Campus Irapuato' },
-            { key: 'LGN', text: 'Campus Laguna' },
-            { key: 'LN', text: 'Campus León' },
-            { key: 'MOR', text: 'Campus Morelia' },
-            { key: 'PL', text: 'Campus Puebla' },
-            { key: 'QRO', text: 'Campus Querétaro' },
-            { key: 'SLT', text: 'Campus Saltillo' },
-            { key: 'SLP', text: 'Campus San Luis Potosí' },
-            { key: 'SF', text: 'Campus Santa Fe' },
-            { key: 'SNL', text: 'Campus Sinaloa' },
-            { key: 'SNTE', text: 'Campus Sonora Norte' },
-            { key: 'TMP', text: 'Campus Tampico' },
-            { key: 'TOL', text: 'Campus Toluca' },
-            { key: 'ZAC', text: 'Campus Zacatecas' }]
         
         if (this.props.loading)
             return <p>Loading...</p>
