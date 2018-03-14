@@ -27,7 +27,8 @@ input, select {
   border: 1px solid $themeColor-light;
   border-radius: 7px;
   height: 35px;
-  width: 100%;
+  width: 99%;
+  text-overflow: ellipsis;
   text-indent: 10px;
 }
 
@@ -36,8 +37,21 @@ input, select {
   margin-top: 10px;
 }
 
+.password-form-field {
+  display: flex;
+  position: relative;
+}
+
 button:focus {
   outline: 0;
+}
+
+.emptyField {
+    border: 1px solid $themeColor-red;
+}
+
+.readyField {
+  border: 1px solid #cacacc;
 }
 
 .form-field.buttons {
@@ -103,6 +117,10 @@ h1 {
   float: right;
   border: 0;
 }
+.button-submit:disabled {
+  background: $themeColor-light;
+  color: $themeColor-white;
+}
 
 .button-newbie-logout {
   font-size: 13px;
@@ -121,4 +139,16 @@ h1 {
 
 #newbie-logout {
   color: red;
+}
+
+.passwordToggle{
+  color:$themeColor-black;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 1em;
+  height: auto;
+  width: auto;
+  position: absolute;
+  top: 15%;
+  right: 2%;
 }

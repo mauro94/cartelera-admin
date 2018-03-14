@@ -16,7 +16,7 @@ class EditProfile extends React.Component {
         return (
             <div>
                 <p>         
-                    Hola {this.props.user.firstName}! <br/>
+                    Hola {this.props.user.email}! <br/>
                     Antes de continuar, por favor completa tus datos:
                 </p>
                 <Formik
@@ -25,7 +25,8 @@ class EditProfile extends React.Component {
                             firstName: Yup.string().required("Nombre requerido"),
                             lastName: Yup.string().required("Apellido requerido"),
                             password: Yup.string().min(6,"Mínimo 6 caracteres").required("Contraseña requerida"),
-                            office: Yup.string().uppercase("Escribir oficina usando mayusculas").required("Oficina requerido"),
+                            passwordConfirm: Yup.string().oneOf([Yup.ref('password'), null], "Contraseñas deben ser iguales").required("Confirmación requerida"),
+                            office: Yup.string().uppercase("Escribir oficina usando mayusculas").required("Oficina requerida"),
                             phoneNumber: Yup.string().min(8, "Se necesita un número de minimo 8 digitos").required("Teléfono requerido"),
                         })
                     }
