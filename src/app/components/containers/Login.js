@@ -3,7 +3,9 @@ import { connect } from 'react-redux'
 import { thunks } from 'Logic/actions/thunks'
 import { history, loggedIn, isCurrentUserNewbie } from 'Config/helper'
 import { Status } from 'Config/constants'
-import LoginForm from 'Presentational/LoginForm'
+import { Formik, Form, Field } from 'formik';
+import { LoginForm } from 'Presentational/LoginForm'
+import Yup from 'yup';
 
 class Login extends React.Component {
     componentWillMount() {
@@ -16,9 +18,48 @@ class Login extends React.Component {
     }
 
     render() {
+        require('Style/gridColumns2.scss');
+
         if (this.props.loading)
             return <p>Loading...</p>
-        return <LoginForm {...this.props} />
+
+        return (
+            <Formik
+                validationSchema={
+                    Yup.object().shape({
+                        email: Yup.string().email("Correo no valido").required("Correo requerido"),
+                        password: Yup.string().min(6,"Mínimo 6 caracteres").required("Contraseña requerida")
+                    })
+                }
+                initialValues={{
+                    email: '',
+                    password: ''
+                }}
+                onSubmit={(values, action) => { 
+                    this.props.handleSubmit(values)
+                    action.setSubmitting(false)
+                }}>
+                {({
+                    values,
+                    errors,
+                    touched,
+                    handleChange,
+                    handleBlur,
+                    handleSubmit,
+                    isSubmitting
+                }) => {
+                    return (
+                        <LoginForm 
+                            handleSubmit={ handleSubmit } 
+                            error={ this.props.error } 
+                            errors={ errors }
+                            touched={ touched } 
+                            isSubmitting={ isSubmitting } 
+                        />)
+                    }   
+                }
+            </Formik>
+        )
     }
 }
 

@@ -6,10 +6,10 @@ import logo from 'Images/logo.svg'
 
 const LoginPage = () => (
     <div className="grid-container container-login">
-        <div className="item1">
+        <div className="login-logo">
             <img className="logo" src={logo} />
         </div>
-        <div className="item2">
+        <div className="login-form">
             <Route exact path="/login" component={Login} />
             <Route path="/login/newbie" component={FirstLogin} />
         </div>
