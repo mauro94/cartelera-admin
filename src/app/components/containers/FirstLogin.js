@@ -7,6 +7,7 @@ import { Formik, Form, Field } from 'formik';
 import { Status } from 'Config/constants'
 import Yup from 'yup';
 import { campusList } from 'Config/Test'
+import { FormMessageWelcome } from 'Presentational/FormComponents'
 
 class FirstLogin extends React.Component {
     componentWillMount() {
@@ -29,10 +30,7 @@ class FirstLogin extends React.Component {
 
         return (
             <div>
-                <p>         
-                    Hola {this.props.user.email}! <br/>
-                    Antes de continuar, por favor completa tus datos:
-                </p>
+                < FormMessageWelcome mail={ this.props.user.email }/>
                 <Formik
                     validationSchema={
                         Yup.object().shape({
@@ -77,6 +75,7 @@ class FirstLogin extends React.Component {
                                 isSubmitting={ isSubmitting } 
                                 campusList={ campusList }
                                 logout={ this.props.logout }
+                                isEditProfile={ false }
                             />)
                         }
                     }
@@ -93,9 +92,17 @@ const mapStateToProps = state => {
     }
 }
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch, props) => {
     return {
         handleSubmit: profileDetails => {
+            for (var key in props.user) {
+                if (profileDetails.hasOwnProperty(key)) {
+                    if (props.user[key] != profileDetails[key]) {
+                        delete profileDetails[key]
+                    }
+                }
+            }
+            profileDetails["is_newbie"] = false
             dispatch(thunks.user.update(profileDetails))
         },
         logout: () => { dispatch(thunks.user.logout()) }

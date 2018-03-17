@@ -7,6 +7,7 @@ import { Status } from 'Config/constants'
 import { Formik, Form, Field } from 'formik';
 import Yup from 'yup';
 import { campusList } from 'Config/Test'
+import { FormMessageEditProfile } from 'Presentational/FormComponents'
 
 class EditProfile extends React.Component {
     render() {
@@ -15,17 +16,12 @@ class EditProfile extends React.Component {
         
         return (
             <div>
-                <p>         
-                    Hola {this.props.user.email}! <br/>
-                    Antes de continuar, por favor completa tus datos:
-                </p>
+                {/* < FormMessageEditProfile name={ this.props.user.firstName }/> */}
                 <Formik
                     validationSchema={
                         Yup.object().shape({
                             firstName: Yup.string().required("Nombre requerido"),
                             lastName: Yup.string().required("Apellido requerido"),
-                            password: Yup.string().min(6,"Mínimo 6 caracteres").required("Contraseña requerida"),
-                            passwordConfirm: Yup.string().oneOf([Yup.ref('password'), null], "Contraseñas deben ser iguales").required("Confirmación requerida"),
                             office: Yup.string().uppercase("Escribir oficina usando mayusculas").required("Oficina requerida"),
                             phoneNumber: Yup.string().min(8, "Se necesita un número de minimo 8 digitos").required("Teléfono requerido"),
                         })
@@ -33,12 +29,20 @@ class EditProfile extends React.Component {
                     initialValues={{
                         firstName: this.props.user.firstName || '',
                         lastName: this.props.user.lastName || '',
-                        password: this.props.user.password || '',
                         office: this.props.user.office || '',
                         phoneNumber: this.props.user.phoneNumber || '',
                         campus: this.props.user.campus || 'MTY',
                         id: this.props.user.id || '1',
                         isNewbie: this.props.user.isNewbie || true
+                    }}
+                    mapPropsToValues={{ 
+                        firstName: '',
+                        lastName: '',
+                        office: '',
+                        phoneNumber: '',
+                        campus: '',
+                        id: '',
+                        isNewbie: ''
                     }}
                     onSubmit={(values, action) => {
                         values.id = this.props.user.id
@@ -63,6 +67,7 @@ class EditProfile extends React.Component {
                                 isSubmitting={ isSubmitting } 
                                 campusList={ campusList }
                                 logout={ this.props.logout }
+                                isEditProfile={ true }
                             />)
                         }
                     }
@@ -79,9 +84,16 @@ const mapStateToProps = state => {
     }
 }
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch, props) => {
     return {
         handleSubmit: profileDetails => {
+            for (var key in props.user) {
+                if (profileDetails.hasOwnProperty(key)) {
+                    if (props.user[key] == profileDetails[key] && key != "id") {
+                        delete profileDetails[key]
+                    }
+                }
+            }
             dispatch(thunks.user.update(profileDetails))
         },
         logout: () => { dispatch(thunks.user.logout()) }

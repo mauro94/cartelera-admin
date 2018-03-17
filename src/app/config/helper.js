@@ -91,3 +91,16 @@ export const withAuth = (Component) => {
         mapDispatchToProps)
         (AuthenticatedComponent))
 }
+
+export const objectToSnakeCase = (objectName, object) => {
+    var snakeCase = require('snake-case');
+    let snakeObject = {}
+
+    snakeObject[objectName] = {}
+    
+    for (var key in object) {
+        snakeObject[objectName][snakeCase(key)] = object[key]
+    }
+
+    return snakeObject
+}
