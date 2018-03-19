@@ -15,7 +15,7 @@ export const FormMessageEditProfile = ({ name }) => (
     </p>
 )
 
-export const FormButtonSubmit = ({ errors, isSubmitting, isEditProfile }) => {
+export const FormButtonSubmit = ({ errors, isSubmitting, isEditProfile, touched }) => {
     if (!isEditProfile) 
         return (
             <button className="button-submit" disabled={((
@@ -37,8 +37,18 @@ export const FormButtonSubmit = ({ errors, isSubmitting, isEditProfile }) => {
                         isSubmitting }>
                 Actualizar
             </button>
-        )
-    
+        )   
+}
+
+export const FormButtonSubmitPassword = ({ errors, isSubmitting, touched }) => {
+    return (
+        <button className="button-submit" disabled={((
+            touched.password && !errors.password &&
+            touched.passwordConfirm && !errors.passwordConfirm &&
+            !isSubmitting) ? false : true)}>
+            Cambiar Contraseña
+        </button>
+    )
 }
 
 export const FormButtonSignout = ({ logout, isEditProfile }) => {

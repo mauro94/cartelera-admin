@@ -15,7 +15,7 @@ const ColumnMenuLayout = ({ ...props }) => (
         </div>
         <div className="container-menu-content">
             <Route path="/dashboard/profile/edit" render={() => <EditProfile {...props} />} />
-            <Route path="/dashboard/profile/password" component={()=>(<p>password</p>)} />
+            <Route path="/dashboard/profile/password" render={() => <EditProfile {...props} />} />
         </div>
     </div>
 )

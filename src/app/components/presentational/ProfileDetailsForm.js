@@ -34,7 +34,7 @@ export const ProfileDetailsForm = ({ handleSubmit, error, errors, touched, isSub
         {touched.campus && errors.campus && <p className="message-error">{errors.campus}</p>}
         
         <div className="form-field buttons">
-            < FormButtonSubmit errors={ errors } isSubmitting={ isSubmitting } isEditProfile={ isEditProfile }/>
+            < FormButtonSubmit errors={ errors } isSubmitting={ isSubmitting } isEditProfile={ isEditProfile } touched={ touched }/>
             < FormButtonSignout  logout={ logout } isEditProfile={ isEditProfile }/>
         </div>
     </Form>        
