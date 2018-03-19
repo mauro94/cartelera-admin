@@ -94,7 +94,7 @@ export const withAuth = (Component) => {
 
 export const objectToSnakeCase = (objectName, object) => {
     var snakeCase = require('snake-case');
-    let snakeObject = {}
+    var snakeObject = {}
 
     snakeObject[objectName] = {}
     
