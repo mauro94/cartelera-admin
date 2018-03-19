@@ -24,8 +24,8 @@ class EditProfile extends React.Component {
                             Yup.object().shape({
                                 firstName: Yup.string().required("Nombre requerido"),
                                 lastName: Yup.string().required("Apellido requerido"),
-                                office: Yup.string().uppercase("Escribir oficina usando mayusculas").required("Oficina requerida"),
-                                phoneNumber: Yup.string().min(8, "Se necesita un número de minimo 8 digitos").required("Teléfono requerido"),
+                                office: Yup.string().required("Oficina requerida"),
+                                phoneNumber: Yup.string().matches(/^\+?\d+$/, "Teléfono inválido").min(8,"Mínimo 8 caracteres").required("Teléfono requerido"),
                             })
                         }
                         initialValues={{
