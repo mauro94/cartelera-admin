@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router, Route, Link } from "react-router-dom"
+import { BrowserRouter as Router, Route, Link, NavLink } from "react-router-dom"
 import { history } from 'Config/helper'
 import EditProfile from 'Containers/EditProfile'
 
@@ -7,10 +7,10 @@ const ColumnMenuLayout = ({ ...props }) => (
     <div className="grid-container container-column-menu">
         <div className="container-menu-elements">
             <div className="menu-link">
-                <Link className="menu-link-selected" id="profile-link" onClick={() => {addColorSelectedMenuButton("profile-link")}} to={"/dashboard/profile/edit"}>Editar Pérfil</Link>
+                <NavLink activeClassName="menu-link-selected" to={"/dashboard/profile/edit"}>Editar Pérfil</NavLink>
             </div>
             <div className="menu-link">
-                <Link className="" id="password-link" onClick={() => {addColorSelectedMenuButton("password-link")}} to={"/dashboard/profile/password"}>Cambiar Contraseña</Link>
+                <NavLink activeClassName="menu-link-selected" to={"/dashboard/profile/password"}>Cambiar Contraseña</NavLink>
             </div>
         </div>
         <div className="container-menu-content">
@@ -19,16 +19,5 @@ const ColumnMenuLayout = ({ ...props }) => (
         </div>
     </div>
 )
-
-function addColorSelectedMenuButton(selectedButtonId) {
-    var profile = document.getElementById("profile-link")
-    var password = document.getElementById("password-link")
-
-    profile.className = ""
-    password.className = ""
-
-    var selectedButton = document.getElementById(selectedButtonId)
-    selectedButton.className = "menu-link-selected"
-}
 
 export default ColumnMenuLayout

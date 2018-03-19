@@ -40,6 +40,9 @@
     font-size: 16px;
     font-family: $systemfont;
     font-weight: 500;
+    text-decoration: none;
+    text-align: center;
+    line-height: 30px;
 
     &#events-button {
         grid-column: 4;
