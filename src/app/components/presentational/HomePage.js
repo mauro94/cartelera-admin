@@ -2,6 +2,7 @@ import React from 'react'
 import { BrowserRouter as Router, Route, Link } from "react-router-dom"
 import { history } from 'Config/helper'
 import ColumnMenuLayout from 'Presentational/ColumnMenuLayout'
+import Events from 'Containers/Events'
 
 import 'Style/gridMain.scss';
 import 'Style/columnMenuLayout.scss';
@@ -26,8 +27,8 @@ const HomePage = ({ ...props }) => (
             </div>
         </div>
         <div className="container-content">
-            <Route exact path="/dashboard" component={()=>(<p>home</p>)} />
-            {/* <Route path="/dashboard/profile" render={() => <EditProfile {...props} />}/> */}
+            <Route exact path="/dashboard" component={Events} />
+            <Route path="/dashboard/events" component={Events} />
             <Route path="/dashboard/profile" render={() => <ColumnMenuLayout {...props} />}/>
         </div>
     </div>
