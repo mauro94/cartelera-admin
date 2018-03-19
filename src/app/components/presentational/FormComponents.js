@@ -22,6 +22,7 @@ export const FormButtonSubmit = ({ errors, isSubmitting, isEditProfile, touched 
                 touched.firstName && !errors.firstName &&
                 touched.lastName && !errors.lastName &&
                 touched.password && !errors.password &&
+                touched.passwordConfirm && !errors.passwordConfirm &&
                 touched.office && !errors.office &&
                 touched.phoneNumber && !errors.phoneNumber && 
                 !errors.campus &&
