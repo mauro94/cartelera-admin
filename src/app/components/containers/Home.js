@@ -4,12 +4,12 @@ import { withRouter } from 'react-router-dom'
 import { thunks } from 'Logic/actions/thunks'
 import { history, loggedIn } from 'Config/helper'
 import { Status } from 'Config/constants'
-import { 
+import {
     navbarButtonUser,
     navbarButtonEvents,
     navbarButtonCategories,
     navbarButtonSponsors
- } from 'Presentational/HomeComponents'
+} from 'Presentational/HomeComponents'
 import HomePage from 'Presentational/HomePage';
 import 'Style/main.scss'
 
@@ -23,35 +23,35 @@ class Home extends React.Component {
         this.categoriesButton = null
         this.sponsorsButton = null
     }
-    
+
     componentWillReceiveProps(nextProps) {
-        if(nextProps.user.status != Status.WaitingOnServer) {
+        if (nextProps.user.status != Status.WaitingOnServer) {
             switch (nextProps.user.current.userType) {
                 // Admin
-                case "administrator":
+                case "admin":
                     this.userType = "Administrador"
                     this.profileButton = navbarButtonUser
                     this.eventsButton = navbarButtonEvents
                     this.categoriesButton = navbarButtonCategories
                     this.sponsorsButton = navbarButtonSponsors
-                break;
+                    break;
                 // Sponsor
                 case "sponsor":
                     this.userType = "Sponsor"
                     this.profileButton = navbarButtonUser
                     this.eventsButton = navbarButtonEvents
-                break;
+                    break;
                 default:
                     // Solicitante
-                break;
-            } 
+                    break;
+            }
         }
     }
 
     render() {
         if (this.props.loading)
-            return  <HomePage 
-                userType={this.userType} 
+            return <HomePage
+                userType={this.userType}
                 profileButton={null}
                 eventsButton={null}
                 categoriesButton={null}
@@ -59,8 +59,8 @@ class Home extends React.Component {
                 logout={null}
                 user={null}
             />
-        return <HomePage 
-            userType={this.userType} 
+        return <HomePage
+            userType={this.userType}
             profileButton={this.profileButton}
             eventsButton={this.eventsButton}
             categoriesButton={this.categoriesButton}
