@@ -3,13 +3,14 @@ import { BrowserRouter as Router, Route, Link, NavLink } from "react-router-dom"
 import { history } from 'Config/helper'
 import EditProfile from 'Containers/EditProfile'
 import {checkboxPublished, checkboxCanceled as CheckboxCanceled} from 'Presentational/EventsCheckbox'
+import Events from 'Containers/Events'
 
 import 'Style/eventsMenuLayout.scss';
 
 const EventsPageLayout = () => (
     <div className="grid-container container-events">
         <div className="events-title">
-            <h1 id="event-title">Eventos</h1>
+            <h1 id="event-title"></h1>
         </div>
         <div className="container-events-filter-1">
             <div className="filter-link filter-link-1" id="filter-link-1">
@@ -25,7 +26,7 @@ const EventsPageLayout = () => (
             <Route exact path="/dashboard/events/past" render={() => <CheckboxCanceled checkboxClass={"filter-checkbox filter-link-1"}/>}/>
         </div>
         <div className="container-events-all">
-            <p>EVENTOS</p>
+            <Events />
         </div>
     </div>
 )
@@ -44,7 +45,7 @@ const activateTabPast = (match, location) => {
     if (document.getElementById("filter-link-1") == null) 
         return true
     if (location.pathname == "/dashboard/events/past") {
-        document.getElementById("event-title").innerHTML = "Eventos Cancelados"
+        document.getElementById("event-title").innerHTML = "Eventos Pasados"
         return true
     }
     return false
