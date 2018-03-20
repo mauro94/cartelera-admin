@@ -13,7 +13,11 @@ export const login = (loginAttempt) => {
             .then(response => {
                 setSession(response.data.authToken, response.data.id, response.data.isNewbie)
                 dispatch(createAction(UserActions.Login, response.data, null, Status.Ready))
+<<<<<<< Updated upstream
                 history.push(response.data.isNewbie ? '/login/newbie' : '/dashboard')
+=======
+                history.push(response.data.isNewbie ? '/login/newbie' : '/')
+>>>>>>> Stashed changes
             })
             .catch((error) => {
                 dispatch(
