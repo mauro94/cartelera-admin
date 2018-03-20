@@ -5,6 +5,12 @@ export const UserActions = Object.freeze({
     Logout: 'LOGOUT'
 })
 
+export const EventActions = Object.freeze({
+    UserEvents: 'USEREVENTS',
+    All: 'ALL',
+    Current: 'CURRENT'
+})
+
 export const Status = Object.freeze({
     WaitingOnServer: 'WAITING_ON_SERVER',
     WaitingOnUser: 'WAITING_ON_USER',
