@@ -6,7 +6,9 @@ export const UserActions = Object.freeze({
 })
 
 export const EventActions = Object.freeze({
-    UserEvents: 'USEREVENTS'
+    UserEvents: 'USEREVENTS',
+    All: 'ALL',
+    Current: 'CURRENT'
 })
 
 export const Status = Object.freeze({
