@@ -27,8 +27,26 @@ const HomePage = ({ ...props }) => (
             </div>
         </div>
         <div className="container-content">
-            <Route exact path="/dashboard" component={EventsPageLayout} />
-            <Route path="/dashboard/events" component={EventsPageLayout} />
+            <Route exact path="/" render={() => {
+                history.replace('/dashboard/events/upcoming')
+                return(
+                    <EventsPageLayout/>
+                )
+            }}/>
+            <Route exact path="/dashboard" render={() => {
+                history.replace('/dashboard/events/upcoming')
+                return(
+                    <EventsPageLayout/>
+                )
+            }}/>
+            <Route exact path="/dashboard/events" render={() => {
+                history.replace('/dashboard/events/upcoming')
+                return(
+                    <EventsPageLayout/>
+                )
+            }}/>
+            <Route path="/dashboard/events/upcoming" component={EventsPageLayout} />
+            <Route path="/dashboard/events/past" component={EventsPageLayout} />
             <Route path="/dashboard/profile" render={() => <ColumnMenuLayout {...props} />}/>
         </div>
     </div>

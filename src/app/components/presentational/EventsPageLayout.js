@@ -10,14 +10,14 @@ import 'Style/eventsMenuLayout.scss';
 const EventsPageLayout = () => (
     <div className="grid-container container-events">
         <div className="events-title">
-            <h1 id="event-title"></h1>
+            <h1 id="event-title">Administrar Eventos</h1>
         </div>
         <div className="container-events-filter-1">
             <div className="filter-link filter-link-1" id="filter-link-1">
-                <NavLink activeClassName="filter-selected" to={"/dashboard/events/upcoming"} isActive={activateTabUpcoming}>Próximos</NavLink>
+                <NavLink activeClassName="filter-selected" to={"/dashboard/events/upcoming"}>Próximos</NavLink>
             </div>
             <div className="filter-link filter-link-2" id="filter-link-2">
-                <NavLink activeClassName="filter-selected" to={"/dashboard/events/past"} isActive={activateTabPast}>Pasados</NavLink>
+                <NavLink activeClassName="filter-selected" to={"/dashboard/events/past"}>Pasados</NavLink>
             </div>
         </div>
         <div className="container-events-filter-2">
@@ -30,26 +30,5 @@ const EventsPageLayout = () => (
         </div>
     </div>
 )
-
-const activateTabUpcoming = (match, location) => {
-    if (document.getElementById("filter-link-1") == null) 
-        return true
-    if (location.pathname == "/dashboard/events/upcoming") {
-        document.getElementById("event-title").innerHTML = "Eventos Próximos"
-        return true
-    }
-    return false
-}
-
-const activateTabPast = (match, location) => {
-    if (document.getElementById("filter-link-1") == null) 
-        return true
-    if (location.pathname == "/dashboard/events/past") {
-        document.getElementById("event-title").innerHTML = "Eventos Pasados"
-        return true
-    }
-    return false
-}
-
 
 export default EventsPageLayout
