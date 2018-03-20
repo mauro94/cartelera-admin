@@ -24,22 +24,22 @@ class FirstLogin extends React.Component {
 
     render() {
         require('Style/gridColumns2.scss');
-        
+
         if (this.props.loading)
             return <p>Loading...</p>
 
         return (
             <div>
-                < FormMessageWelcome mail={ this.props.user.email }/>
+                < FormMessageWelcome mail={this.props.user.email} />
                 <Formik
                     validationSchema={
                         Yup.object().shape({
                             firstName: Yup.string().required("Nombre requerido"),
                             lastName: Yup.string().required("Apellido requerido"),
-                            password: Yup.string().min(6,"Mínimo 6 caracteres").required("Contraseña requerida"),
+                            password: Yup.string().min(6, "Mínimo 6 caracteres").required("Contraseña requerida"),
                             passwordConfirm: Yup.string().oneOf([Yup.ref('password'), null], "Contraseñas deben ser iguales").required("Confirmación requerida"),
                             office: Yup.string().required("Oficina requerida"),
-                            phoneNumber: Yup.string().matches(/^\+?\d+$/, "Teléfono inválido").min(8,"Mínimo 8 caracteres").required("Teléfono requerido")
+                            phoneNumber: Yup.string().matches(/^\+?\d+$/, "Teléfono inválido").min(8, "Mínimo 8 caracteres").required("Teléfono requerido")
                         })
                     }
                     initialValues={{
@@ -67,17 +67,17 @@ class FirstLogin extends React.Component {
                         isSubmitting
                     }) => {
                         return (
-                            <ProfileDetailsForm 
-                                handleSubmit={ handleSubmit } 
-                                error={ this.props.error } 
-                                errors={ errors }
-                                touched={ touched } 
-                                isSubmitting={ isSubmitting } 
-                                campusList={ campusList }
-                                logout={ this.props.logout }
-                                isEditProfile={ false }
+                            <ProfileDetailsForm
+                                handleSubmit={handleSubmit}
+                                error={this.props.error}
+                                errors={errors}
+                                touched={touched}
+                                isSubmitting={isSubmitting}
+                                campusList={campusList}
+                                logout={this.props.logout}
+                                isEditProfile={false}
                             />)
-                        }
+                    }
                     }
                 </Formik>
             </div>
@@ -97,7 +97,7 @@ const mapDispatchToProps = (dispatch, props) => {
         handleSubmit: profileDetails => {
             for (var key in props.user) {
                 if (profileDetails.hasOwnProperty(key)) {
-                    if (props.user[key] != profileDetails[key]) {
+                    if (props.user[key] == profileDetails[key] && key != "id") {
                         delete profileDetails[key]
                     }
                 }
