@@ -19,6 +19,20 @@ function event(state = defaultState, action) {
                 status: action.status,
                 error: action.error
             }
+        case EventActions.All:
+            return {
+                ...state,
+                all: action.object,
+                status: action.status,
+                error: action.error,
+            }
+        case EventActions.Current:
+            return {
+                ...state,
+                current: action.object,
+                status: action.status,
+                error: action.error,
+            }
     }
     return state
 }
