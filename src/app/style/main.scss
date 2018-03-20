@@ -79,15 +79,17 @@ p {
 }
 
 h1 {
-  font-weight: 700;
-  color: $themeColor-black;
+  font-weight: 600;
+  font-size: 36px;
+  color: $themeColor-darkBlue;
+  grid-row: 1;
 
   @media #{$mobileScreenSize} {
     font-size: 24px;
   }
 
   @media #{$desktopScreenSize} {
-    font-size: 48px;
+    font-size: 36px;
   }
 }
 
