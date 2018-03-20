@@ -8,7 +8,7 @@ import EventsPage from 'Presentational/EventsPage';
 import { isEmpty } from 'Config/helper'
 var Spinner = require('react-spinkit');
 
-let component = <Spinner name="pulse" />
+let component = <div className="spinner"><Spinner name="pulse" /></div>
 
 class Events extends React.Component {
     componentWillMount() {
