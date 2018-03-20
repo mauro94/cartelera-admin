@@ -26,13 +26,18 @@ class Event extends React.Component {
             else
                 component = <EventDetails event={nextProps.event} />
         }
+
+        else if (this.props.loading && nextProps.failed) {
+            component = <div className='no-events'>
+                    No se ha encontrado el evento</div>
+        }
     }
 
     render() {
         return (
-            <div className={'event-container'}>
+            <React.Fragment>
                 {component}
-            </div>)
+            </React.Fragment>)
     }
 }
 
@@ -40,7 +45,8 @@ const mapStateToProps = state => {
     return {
         event: state.event.current,
         loading: state.event.status == Status.WaitingOnServer,
-        ready: state.event.status == Status.Ready
+        ready: state.event.status == Status.Ready,
+        failed: state.event.status == Status.Failed
     }
 }
 
