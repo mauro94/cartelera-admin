@@ -3,7 +3,7 @@ import {
     Status
 } from 'Config/constants'
 import { createAction } from 'Logic/actions'
-import { request, setSession, rmSession, history, getToken, setCurrentUserNewbie,  objectToSnakeCase} from 'Config/helper'
+import { request, setSession, rmSession, history, getToken, setCurrentUserNewbie, objectToSnakeCase } from 'Config/helper'
 
 export const login = (loginAttempt) => {
     return (dispatch) => {
@@ -77,7 +77,7 @@ export const update = (profileDetails) => {
             })
             .catch((error) => {
                 dispatch(
-                    createAction(UserActions.Update, profileDetails, error.response? error.response.data : error.message,
+                    createAction(UserActions.Update, profileDetails, error.response ? error.response.data : error.message,
                         Status.Failed))
             })
     }
