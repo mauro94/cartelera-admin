@@ -2,7 +2,7 @@ import React from 'react'
 import { BrowserRouter as Router, Route, Link } from "react-router-dom"
 import { history } from 'Config/helper'
 import ColumnMenuLayout from 'Presentational/ColumnMenuLayout'
-import Events from 'Containers/Events'
+import EventsPageLayout from 'Presentational/EventsPageLayout'
 
 import 'Style/gridMain.scss';
 import 'Style/columnMenuLayout.scss';
@@ -13,7 +13,7 @@ const HomePage = ({ ...props }) => (
         <div className="container-navbar">
             <div className="container-navbar-logo">
                 <div className="navbar-logo">
-                    <Link to={"/dashboard"}><img className="logo" src={logo} /></Link>
+                    <Link to={"/dashboard/events/upcoming"}><img className="logo" src={logo} /></Link>
                 </div>
                 <div className="user">
                     {props.userType}
@@ -27,8 +27,8 @@ const HomePage = ({ ...props }) => (
             </div>
         </div>
         <div className="container-content">
-            <Route exact path="/dashboard" component={Events} />
-            <Route path="/dashboard/events" component={Events} />
+            <Route exact path="/dashboard" component={EventsPageLayout} />
+            <Route path="/dashboard/events" component={EventsPageLayout} />
             <Route path="/dashboard/profile" render={() => <ColumnMenuLayout {...props} />}/>
         </div>
     </div>

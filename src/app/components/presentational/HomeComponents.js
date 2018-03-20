@@ -14,7 +14,7 @@ export const navbarButtonUser = ({ ...props }) => (
 )
 
 export const navbarButtonEvents = ({ ...props }) => (
-    <NavLink className="navbar-button" activeClassName="selected-button-view" id="events-button" to={"/dashboard/events"} isActive={events}>Eventos</NavLink>
+    <NavLink className="navbar-button" activeClassName="selected-button-view" id="events-button" to={"/dashboard/events/upcoming"} isActive={events}>Eventos</NavLink>
 )
 
 export const navbarButtonCategories = ({ ...props }) => (
@@ -37,6 +37,10 @@ const events = (match, location) => {
     if (location.pathname == "/dashboard")
         return true
     if (location.pathname == "/dashboard/events")
+        return true
+    if (location.pathname == "/dashboard/events/upcoming")
+        return true
+    if (location.pathname == "/dashboard/events/past")
         return true
     return false
 }

@@ -1,0 +1,122 @@
+@import 'themeColors';
+
+.container-events {
+    grid-template-rows: 3rem 3rem 3rem auto;
+}
+
+.container-events-filter-1 {
+    display: grid;
+    grid-template-columns: 7rem 7rem auto;
+    grid-row: 2;
+}
+
+.container-events-filter-2 {
+    display: grid;
+    grid-template-columns: 10rem 10rem auto;
+    grid-row: 3;
+}
+
+.container-events-all {
+    grid-row: 4;
+}
+
+.filter-selected {
+    border-color: $themeColor-lightBlue;
+    color: $themeColor-lightBlue;
+    border-bottom: 4px solid;
+}
+
+.filter-link-1 {
+    grid-column: 1;
+}
+
+.filter-link-2 {
+    grid-column: 2;
+}
+
+.filter-link {
+    height: auto;
+    margin-bottom: 2rem;
+    font-size: 16px;
+
+    &>a {
+        color: $themeColor-black;
+        font-weight: 500;
+
+        &:link {
+            color: $themeColor-black;
+            text-decoration: none;
+        }
+
+        &:visited {
+            color: $themeColor-black;
+            text-decoration: none;
+        }
+
+        &:hover {
+            color: $themeColor-lightBlue;
+        }
+
+        &:active {
+            color: $themeColor-lightBlue;
+        }
+    }
+}
+
+.checkbox-label input {
+    font-size: 16px;
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.checkbox-label {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: $themeColor-white;
+  }
+  
+  .checkbox-label:hover input ~ .checkmark {
+    background-color: $themeColor-light;
+  }
+  
+  .checkbox-label input:checked ~ .checkmark {
+    background-color: $themeColor-lightBlue;
+  }
+  
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  .checkbox-label input:checked ~ .checkmark:after {
+    display: block;
+  }
+  
+  .checkbox-label .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid $themeColor-white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
