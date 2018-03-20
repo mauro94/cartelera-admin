@@ -55,7 +55,18 @@ export const logout = () => {
 }
 
 export const update = (profileDetails) => {
-    let snakeProfileDetails = objectToSnakeCase("user", profileDetails)
+    let snakeProfileDetails = {
+        user: {
+            password: profileDetails.password,
+            password_confirmation: profileDetails.password,
+            first_name: profileDetails.firstName,
+            last_name: profileDetails.lastName,
+            office: profileDetails.office,
+            phone_number: profileDetails.phoneNumber,
+            campus: profileDetails.campus,
+            is_newbie: false
+        }
+    }
 
     return (dispatch) => {
         dispatch(createAction(UserActions.Update, null,
