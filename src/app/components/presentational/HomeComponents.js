@@ -14,7 +14,7 @@ export const navbarButtonUser = ({ ...props }) => (
 )
 
 export const navbarButtonEvents = ({ ...props }) => (
-    <NavLink className="navbar-button" activeClassName="selected-button-view" id="events-button" to={"/dashboard/events"}>Eventos</NavLink>
+    <NavLink className="navbar-button" activeClassName="selected-button-view" id="events-button" to={"/dashboard/eventos"} isActive={events}>Eventos</NavLink>
 )
 
 export const navbarButtonCategories = ({ ...props }) => (
@@ -29,6 +29,14 @@ const editProfile = (match, location) => {
     if (location.pathname == "/dashboard/profile/edit")
         return true
     if (location.pathname == "/dashboard/profile/password")
+        return true
+    return false
+}
+
+const events = (match, location) => {
+    if (location.pathname == "/dashboard")
+        return true
+    if (location.pathname == "/dashboard/eventos")
         return true
     return false
 }

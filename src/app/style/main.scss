@@ -1,5 +1,6 @@
 @import 'themeColors';
 @import 'setup';
+@import 'select';
 @import url('https://fonts.googleapis.com/css?family=Barlow:100,200,300,400,500,600,700,800,900&subset=latin-ext');
 
 html {
@@ -79,15 +80,17 @@ p {
 }
 
 h1 {
-  font-weight: 700;
-  color: $themeColor-black;
+  font-weight: 600;
+  font-size: 36px;
+  color: $themeColor-darkBlue;
+  grid-row: 1;
 
   @media #{$mobileScreenSize} {
     font-size: 24px;
   }
 
   @media #{$desktopScreenSize} {
-    font-size: 48px;
+    font-size: 36px;
   }
 }
 
@@ -152,6 +155,20 @@ h3 {
   border: 0;
 }
 
+.button-unpublish {
+  margin-top: 5px;
+  font-size: 14px;
+  min-width: 100px;
+  max-width: 100px;
+  background: $themeColor-darkBlue;
+  color: $themeColor-white;
+  border-radius: 7px;
+  height: 35px;
+  float: right;
+  border: 0;
+  justify-content: center;
+}
+
 #newbie-logout {
   color: red;
 }
@@ -167,3 +184,21 @@ h3 {
   top: 15%;
   right: 2%;
 }
+
+.modifyButtons{
+  display: flex;
+  height: auto;
+  vertical-align: middle;
+  width: 300px;
+
+  span{
+    align-self: center;
+    margin: 0px;
+    &.label {
+      align-self: flex-start;
+      margin: 4px;
+    }
+  }
+  
+}
+
