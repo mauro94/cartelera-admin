@@ -63,7 +63,7 @@ export const withAuth = (Component) => {
             }
         }
         componentWillMount() {
-            if (isEmpty(this.props.user)) {
+            if (isEmpty(this.props.user) || isEmpty(this.props.user.email)) {
                 if (!loggedIn())
                     history.replace('/login')
                 else {

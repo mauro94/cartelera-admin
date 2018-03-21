@@ -22,13 +22,14 @@ class Home extends React.Component {
             profileButton: null,
             eventsButton: null,
             categoriesButton: null,
-            sponsorsButton: null
+            sponsorsButton: null,
+            user: null
         }
     }
 
     componentWillMount() {
-        if (!isEmpty(this.props.user) && !isEmpty(this.props.user.current)) {
-            switch (this.props.user.current.userType) {
+        if (!isEmpty(this.props.user)) {
+            switch (this.props.user.userType) {
                 // Admin
                 case "admin":
                     this.setState({
@@ -36,7 +37,8 @@ class Home extends React.Component {
                         profileButton: navbarButtonUser,
                         eventsButton: navbarButtonEvents,
                         categoriesButton: navbarButtonCategories,
-                        sponsorsButton: navbarButtonSponsors
+                        sponsorsButton: navbarButtonSponsors,
+                        user: this.props.user
                     })
                     break;
                 // Sponsor
@@ -44,7 +46,8 @@ class Home extends React.Component {
                     this.setState({
                         userType: "Sponsor",
                         profileButton: navbarButtonUser,
-                        eventsButton: navbarButtonEvents
+                        eventsButton: navbarButtonEvents,
+                        user: this.props.user
                     })
                     break;
                 default:
@@ -55,8 +58,8 @@ class Home extends React.Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        if (this.props.loading && !nextProps.loading && !isEmpty(this.props.user.current)) {
-            switch (nextProps.user.current.userType) {
+        if (this.props.loading && !nextProps.loading && !isEmpty(this.props.user)) {
+            switch (nextProps.user.userType) {
                 // Admin
                 case "admin":
                     this.setState({
@@ -64,7 +67,8 @@ class Home extends React.Component {
                         profileButton: navbarButtonUser,
                         eventsButton: navbarButtonEvents,
                         categoriesButton: navbarButtonCategories,
-                        sponsorsButton: navbarButtonSponsors
+                        sponsorsButton: navbarButtonSponsors,
+                        user: nextProps.user
                     })
                     break;
                 // Sponsor
@@ -72,7 +76,8 @@ class Home extends React.Component {
                     this.setState({
                         userType: "Sponsor",
                         profileButton: navbarButtonUser,
-                        eventsButton: navbarButtonEvents
+                        eventsButton: navbarButtonEvents,
+                        user: nextProps.user
                     })
                     break;
                 default:
@@ -90,14 +95,14 @@ class Home extends React.Component {
             categoriesButton={this.state.categoriesButton}
             sponsorsButton={this.state.sponsorsButton}
             logout={this.props.logout}
-            user={this.props.user.current}
+            user={this.state.user}
         />
     }
 }
 
 const mapStateToProps = state => {
     return {
-        user: state.user,
+        user: state.user.current,
         loading: state.user.status == Status.WaitingOnServer
     }
 }
