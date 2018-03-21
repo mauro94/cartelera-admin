@@ -22,7 +22,10 @@ const EventsPage = ({ events }) => {
 const EventGridItem = ({ event, index }) => {
     event.hashtag = ['code', 'hack', 'business']
     return (
-        <div className={"grid-item"} style={gridItemArea(index)}>
+        <Link
+            to={'/dashboard/event/' + event.id}
+            className={"grid-item"}
+            style={gridItemArea(index)}>
             <div className="image">
                 <img src={event.photo}
                     className={event.cancelled ? 'cancelled' : ''} />
@@ -37,7 +40,7 @@ const EventGridItem = ({ event, index }) => {
                         <Hashtags hashtag={event.hashtag} index={index} />}
                 </div>
             </div>
-        </div>
+        </Link>
     )
 }
 
