@@ -64,7 +64,7 @@ export const withAuth = (Component) => {
         }
         componentWillMount() {
             if (isEmpty(this.props.user)) {
-                if (!loggedIn)
+                if (!loggedIn())
                     history.replace('/login')
                 else {
                     //TODO: ask server if token is valid
@@ -75,7 +75,7 @@ export const withAuth = (Component) => {
                     }
                 }
             }
-            else if (loggedIn) {
+            else if (loggedIn() && !this.props.loading) {
                 this.setState({
                     component: <Component {...this.props} />
                 })
@@ -84,7 +84,7 @@ export const withAuth = (Component) => {
         componentWillReceiveProps(nextProps) {
             if (this.props.loading && nextProps.ready && !isEmpty(nextProps.user)) {
                 this.setState({
-                    component: <Component {...this.props} />
+                    component: <Component {...nextProps} />
                 })
             }
         }
@@ -128,7 +128,7 @@ export const objectToSnakeCase = (objectName, object) => {
 const month = ["enero", "febrero", "marzo", "abril", "mayo",
     "junio", "julio", "agosto", "septiembre", "octubre",
     "noviembre", "diciembre"]
-    
+
 export const formatDate = (eventDate) => {
     let d = new Date(eventDate)
     return d.getDate() + " de " + month[d.getMonth()]

@@ -5,9 +5,11 @@ import Sponsors from 'Containers/Sponsors'
 const SponsorsPage = () => {
     return (
         <div className='sponsors-page'>
-            <h1>Sponsors</h1>
+            <header>
+                <h1>Sponsors</h1>
+            </header>
             <div className='content'>
-                <header>
+                <header className='secondary'>
                     <AddSponsor />
                 </header>
                 <Sponsors />
