@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom"
 import { history } from 'Config/helper'
 import ColumnMenuLayout from 'Presentational/ColumnMenuLayout'
 import EventsPageLayout from 'Presentational/EventsPageLayout'
+import EventPage from 'Presentational/EventPage'
 
 import 'Style/gridMain.scss';
 import 'Style/columnMenuLayout.scss';
@@ -47,6 +48,7 @@ const HomePage = ({ ...props }) => (
             }}/>
             <Route path="/dashboard/events/upcoming" component={EventsPageLayout} />
             <Route path="/dashboard/events/past" component={EventsPageLayout} />
+            <Route exact path="/dashboard/event/:id" component={EventPage} />
             <Route path="/dashboard/profile" render={() => <ColumnMenuLayout {...props} />}/>
         </div>
     </div>

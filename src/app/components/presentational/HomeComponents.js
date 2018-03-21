@@ -36,7 +36,7 @@ const editProfile = (match, location) => {
 const events = (match, location) => {
     if (location.pathname == "/dashboard")
         return true
-    if (location.pathname == "/dashboard/events")
+    if (location.pathname == "/dashboard/eventos")
         return true
     if (location.pathname == "/dashboard/events/upcoming")
         return true

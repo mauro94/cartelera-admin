@@ -2,8 +2,18 @@ import {
     UserActions,
     Status
 } from 'Config/constants'
+
+import {
+    request,
+    setSession,
+    rmSession,
+    history,
+    getToken,
+    setCurrentUserNewbie,
+    objectToSnakeCase
+} from 'Config/helper'
+
 import { createAction } from 'Logic/actions'
-import { request, setSession, rmSession, history, getToken, setCurrentUserNewbie,  objectToSnakeCase} from 'Config/helper'
 
 export const login = (loginAttempt) => {
     return (dispatch) => {
@@ -11,8 +21,18 @@ export const login = (loginAttempt) => {
             null, Status.WaitingOnServer))
         request.post('/auth_user', loginAttempt)
             .then(response => {
-                setSession(response.data.authToken, response.data.id, response.data.isNewbie)
-                dispatch(createAction(UserActions.Login, response.data, null, Status.Ready))
+                setSession(
+                    response.data.authToken,
+                    response.data.id,
+                    response.data.isNewbie
+                )
+                dispatch(
+                    createAction(
+                        UserActions.Login,
+                        response.data,
+                        null,
+                        Status.Ready
+                    ))
                 history.push(response.data.isNewbie ? '/login/newbie' : '/dashboard')
             })
             .catch((error) => {
@@ -33,7 +53,13 @@ export const get = (id) => {
             }
         })
             .then(response => {
-                dispatch(createAction(UserActions.Get, response.data, null, Status.Ready))
+                dispatch(
+                    createAction(
+                        UserActions.Get,
+                        response.data,
+                        null,
+                        Status.Ready
+                    ))
             })
             .catch((error) => {
                 dispatch(
@@ -77,8 +103,12 @@ export const update = (profileDetails) => {
             })
             .catch((error) => {
                 dispatch(
-                    createAction(UserActions.Update, profileDetails, error.response? error.response.data : error.message,
-                        Status.Failed))
+                    createAction(
+                        UserActions.Update,
+                        profileDetails,
+                        error.response ? error.response.data : error.message,
+                        Status.Failed
+                    ))
             })
     }
 }
