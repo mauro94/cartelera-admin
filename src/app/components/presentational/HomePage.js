@@ -30,7 +30,7 @@ const HomePage = ({ ...props }) => (
         <div className="container-content">
             <Route exact path="/dashboard" component={Events} />
             <Route exact path="/dashboard/eventos" component={Events} />
-            <Route exact path="/dashboard/eventos/:id?" component={EventPage} />
+            <Route exact path="/dashboard/eventos/:id" component={EventPage} />
             {/* <Route path="/dashboard/profile" render={() => <EditProfile {...props} />}/> */}
             <Route path="/dashboard/profile" render={() => <ColumnMenuLayout {...props} />}/>
         </div>
