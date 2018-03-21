@@ -21,9 +21,9 @@ const EventsPageLayout = () => (
             </div>
         </div>
         <div className="container-events-filter-2">
-            <Route exact path="/dashboard/events/upcoming" component={checkboxPublished} />
+            {/* <Route exact path="/dashboard/events/upcoming" component={checkboxPublished} />
             <Route exact path="/dashboard/events/upcoming" render={() => <CheckboxCanceled checkboxClass={"filter-checkbox filter-link-2"}/>} />
-            <Route exact path="/dashboard/events/past" render={() => <CheckboxCanceled checkboxClass={"filter-checkbox filter-link-1"}/>}/>
+            <Route exact path="/dashboard/events/past" render={() => <CheckboxCanceled checkboxClass={"filter-checkbox filter-link-1"}/>}/> */}
         </div>
         <div className="container-events-all">
             <Events />
