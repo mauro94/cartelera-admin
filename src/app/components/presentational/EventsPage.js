@@ -4,12 +4,12 @@ import { Link } from 'react-router-dom'
 
 let lastRow, rowHeight;
 
-const EventsPage = ({ events }) => {
+const EventsPage = ({ ...props }) => {
     lastRow = [1, 1, 1, 1]
     rowHeight = 6
     return (
         <React.Fragment>
-            {events.map((event, index) => (
+            {props.events[props.eventType].map((event, index) => (
                 <EventGridItem
                     event={event}
                     index={index}

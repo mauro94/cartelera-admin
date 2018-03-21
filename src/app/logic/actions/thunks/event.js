@@ -9,7 +9,11 @@ export const all = () => {
     return (dispatch) => {
         dispatch(createAction(EventActions.UserEvents, null,
             null, Status.WaitingOnServer))
-        request.get('/events')
+        request.get('/event_list', {
+            headers: {
+                'Authorization': 'Bearer ' + getToken()
+            }
+        })
             .then(response => {
                 dispatch(
                     createAction(EventActions.UserEvents, response.data, null,

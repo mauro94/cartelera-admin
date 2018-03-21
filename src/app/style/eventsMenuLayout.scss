@@ -28,6 +28,9 @@
 
 .container-events-all {
     grid-row: 4;
+    >a {
+        text-decoration: none;
+    }
 }
 
 .filter-selected {
