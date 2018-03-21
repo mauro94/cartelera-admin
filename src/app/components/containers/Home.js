@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { thunks } from 'Logic/actions/thunks'
-import { history, loggedIn } from 'Config/helper'
+import { history, loggedIn, isEmpty } from 'Config/helper'
 import { Status } from 'Config/constants'
 import {
     navbarButtonUser,
@@ -17,29 +17,63 @@ import 'Style/main.scss'
 class Home extends React.Component {
     constructor() {
         super()
-        this.userType = ""
-        this.profileButton = null
-        this.eventsButton = null
-        this.categoriesButton = null
-        this.sponsorsButton = null
+        this.state = {
+            userType: "",
+            profileButton: null,
+            eventsButton: null,
+            categoriesButton: null,
+            sponsorsButton: null
+        }
     }
 
-    componentWillReceiveProps(nextProps) {
-        if (nextProps.user.status != Status.WaitingOnServer) {
-            switch (nextProps.user.current.userType) {
+    componentWillMount() {
+        if (!isEmpty(this.props.user) && !isEmpty(this.props.user.current)) {
+            switch (this.props.user.current.userType) {
                 // Admin
                 case "admin":
-                    this.userType = "Administrador"
-                    this.profileButton = navbarButtonUser
-                    this.eventsButton = navbarButtonEvents
-                    this.categoriesButton = navbarButtonCategories
-                    this.sponsorsButton = navbarButtonSponsors
+                    this.setState({
+                        userType: "Administrador",
+                        profileButton: navbarButtonUser,
+                        eventsButton: navbarButtonEvents,
+                        categoriesButton: navbarButtonCategories,
+                        sponsorsButton: navbarButtonSponsors
+                    })
                     break;
                 // Sponsor
                 case "sponsor":
-                    this.userType = "Sponsor"
-                    this.profileButton = navbarButtonUser
-                    this.eventsButton = navbarButtonEvents
+                    this.setState({
+                        userType: "Sponsor",
+                        profileButton: navbarButtonUser,
+                        eventsButton: navbarButtonEvents
+                    })
+                    break;
+                default:
+                    // Solicitante
+                    break;
+            }
+        }
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (this.props.loading && !nextProps.loading && !isEmpty(this.props.user.current)) {
+            switch (nextProps.user.current.userType) {
+                // Admin
+                case "admin":
+                    this.setState({
+                        userType: "Administrador",
+                        profileButton: navbarButtonUser,
+                        eventsButton: navbarButtonEvents,
+                        categoriesButton: navbarButtonCategories,
+                        sponsorsButton: navbarButtonSponsors
+                    })
+                    break;
+                // Sponsor
+                case "sponsor":
+                    this.setState({
+                        userType: "Sponsor",
+                        profileButton: navbarButtonUser,
+                        eventsButton: navbarButtonEvents
+                    })
                     break;
                 default:
                     // Solicitante
@@ -49,22 +83,12 @@ class Home extends React.Component {
     }
 
     render() {
-        if (this.props.loading)
-            return <HomePage
-                userType={this.userType}
-                profileButton={null}
-                eventsButton={null}
-                categoriesButton={null}
-                sponsorsButton={null}
-                logout={null}
-                user={null}
-            />
         return <HomePage
-            userType={this.userType}
-            profileButton={this.profileButton}
-            eventsButton={this.eventsButton}
-            categoriesButton={this.categoriesButton}
-            sponsorsButton={this.sponsorsButton}
+            userType={this.state.userType}
+            profileButton={this.state.profileButton}
+            eventsButton={this.state.eventsButton}
+            categoriesButton={this.state.categoriesButton}
+            sponsorsButton={this.state.sponsorsButton}
             logout={this.props.logout}
             user={this.props.user.current}
         />
