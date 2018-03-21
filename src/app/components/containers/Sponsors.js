@@ -19,6 +19,9 @@ class Sponsors extends React.Component {
             (!this.props.user || isEmpty(this.props.user.all))) {
             this.props.loadUsers()
         }
+        else if (this.props.ready) {
+            this.setState({ loading: false })
+        }
     }
 
     componentWillReceiveProps(nextProps) {

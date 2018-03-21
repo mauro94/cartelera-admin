@@ -7,7 +7,9 @@ const SponsorsPage = () => {
         <div className='sponsors-page'>
             <h1>Sponsors</h1>
             <div className='content'>
-                <AddSponsor />
+                <header>
+                    <AddSponsor />
+                </header>
                 <Sponsors />
             </div>
         </div>

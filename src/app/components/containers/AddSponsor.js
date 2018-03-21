@@ -4,10 +4,6 @@ import { connect } from 'react-redux'
 import { thunks } from 'Logic/actions/thunks'
 
 class AddSponsor extends React.Component {
-    constructor() {
-        super()
-    }
-
     render() {
         return (
             <AddCallout name="pulse" add={this.props.add} />

@@ -1,4 +1,4 @@
-@import 'themeColors';
+@import 'colors';
 .sponsors-page {
     button {
         width: 100px;
@@ -10,7 +10,7 @@
         text-align: center;
         cursor: pointer;
         font-size: 18px;
-        font-family: 'Barlow';
+        font-family: 'Barlow', sans-serig;
         font-weight: 400;
     }
 }

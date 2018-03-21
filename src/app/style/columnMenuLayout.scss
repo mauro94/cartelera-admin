@@ -1,4 +1,4 @@
-@import 'common/themeColors';
+@import 'common/colors';
 
 .container-column-menu {
     grid-template-columns: 30% auto;
@@ -50,5 +50,5 @@
 .menu-link-selected {
     border-color: $themeColor-lightBlue;
     color: $themeColor-lightBlue;
-    border-bottom: 4px solid;;
+    border-bottom: 4px solid;
 }

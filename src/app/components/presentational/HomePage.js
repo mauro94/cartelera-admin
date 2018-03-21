@@ -2,7 +2,7 @@ import React from 'react'
 import { BrowserRouter as Router, Route, Link } from "react-router-dom"
 import { history } from 'Config/helper'
 import ColumnMenuLayout from 'Presentational/ColumnMenuLayout'
-import Events from 'Containers/Events'
+import EventsPageLayout from 'Presentational/EventsPageLayout'
 import EventPage from 'Presentational/EventPage'
 import SponsorsPage from 'Presentational/SponsorsPage'
 
@@ -15,7 +15,7 @@ const HomePage = ({ ...props }) => (
         <div className="container-navbar">
             <div className="container-navbar-logo">
                 <div className="navbar-logo">
-                    <Link to={"/dashboard"}><img className="logo" src={logo} /></Link>
+                    <Link to={"/dashboard/events/upcoming"}><img className="logo" src={logo} /></Link>
                 </div>
                 <div className="user">
                     {props.userType}
@@ -29,11 +29,28 @@ const HomePage = ({ ...props }) => (
             </div>
         </div>
         <div className="container-content">
-            <Route exact path="/dashboard" component={Events} />
-            <Route exact path="/dashboard/eventos" component={Events} />
-            <Route exact path="/dashboard/eventos/:id?" component={EventPage} />
+            <Route exact path="/" render={() => {
+                history.replace('/dashboard/events/upcoming')
+                return (
+                    <EventsPageLayout />
+                )
+            }} />
+            <Route exact path="/dashboard" render={() => {
+                history.replace('/dashboard/events/upcoming')
+                return (
+                    <EventsPageLayout />
+                )
+            }} />
+            <Route exact path="/dashboard/events" render={() => {
+                history.replace('/dashboard/events/upcoming')
+                return (
+                    <EventsPageLayout />
+                )
+            }} />
+            <Route path="/dashboard/events/upcoming" component={EventsPageLayout} />
+            <Route path="/dashboard/events/past" component={EventsPageLayout} />
+            <Route exact path="/dashboard/event/:id" component={EventPage} />
             <Route exact path="/dashboard/sponsors" component={SponsorsPage} />
-            {/* <Route path="/dashboard/profile" render={() => <EditProfile {...props} />}/> */}
             <Route path="/dashboard/profile" render={() => <ColumnMenuLayout {...props} />} />
         </div>
     </div>

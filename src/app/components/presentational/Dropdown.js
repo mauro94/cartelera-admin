@@ -4,21 +4,22 @@ import { DownArrow } from 'Images/downArrow'
 export default class Dropdown extends React.Component {
     constructor(props) {
         super(props);
-        let splicedData = { ...props.data }
-        delete splicedData[Object.keys(props.data)[0]]
+        let splicedData = { ...props.data.options }
+        delete splicedData[Object.keys(props.data.options)[props.data.selected]]
         this.state = {
-            selected: props.data[Object.keys(props.data)[0]],
+            selected: props.data.options[props.data.selected],
             showOptions: false,
             options: splicedData
         }
         this.toggleOptions = this.toggleOptions.bind(this)
+        this.handleSelect = this.props.handleSelect
     }
 
-    select(option) {
-        let splicedData = { ...this.props.data }
-        delete splicedData[option]
+    componentWillReceiveProps(nextProps) {
+        let splicedData = { ...nextProps.data.options }
+        delete splicedData[Object.keys(nextProps.data.options)[nextProps.data.selected]]
         this.setState({
-            selected: this.props.data[option],
+            selected: nextProps.data.options[nextProps.data.selected],
             showOptions: false,
             options: splicedData
         })
@@ -32,7 +33,7 @@ export default class Dropdown extends React.Component {
 
     render() {
         return (
-            <div className='selected-and-hidden'>
+            <React.Fragment>
                 <div className={
                     'select' + (this.state.showOptions ? ' focused' : '')
                 }
@@ -44,12 +45,12 @@ export default class Dropdown extends React.Component {
                 </div>
                 {this.state.showOptions && <div className='hidden-select'>
                     {Object.keys(this.state.options).map((key) =>
-                        <div key={key} onClick={() => this.select(key)}>
+                        <div key={key} onClick={() => this.handleSelect(key)}>
                             {this.state.options[key]}
                         </div>
                     )}
                 </div>}
-            </div>
+            </React.Fragment>
         )
     }
 }

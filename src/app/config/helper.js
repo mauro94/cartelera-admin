@@ -124,3 +124,12 @@ export const objectToSnakeCase = (objectName, object) => {
 
     return snakeObject
 }
+
+const month = ["enero", "febrero", "marzo", "abril", "mayo",
+    "junio", "julio", "agosto", "septiembre", "octubre",
+    "noviembre", "diciembre"]
+    
+export const formatDate = (eventDate) => {
+    let d = new Date(eventDate)
+    return d.getDate() + " de " + month[d.getMonth()]
+}

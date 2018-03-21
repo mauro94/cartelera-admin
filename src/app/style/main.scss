@@ -1,4 +1,4 @@
-@import 'common/themeColors';
+@import 'common/colors';
 @import 'setup';
 @import 'common/select';
 @import 'common/button';
@@ -11,10 +11,19 @@ html {
 
 html, body, #root{
   height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 div {
   height: inherit;
+}
+
+.react-confirm-alert{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 // Images
@@ -24,7 +33,7 @@ div {
 }
 
 // Inputs
-input, select {
+.form-field > input, select, .password-form-field > input{
   font-size: 16px;
   background: $themeColor-white;
   border: 1px solid $themeColor-light;
@@ -78,7 +87,7 @@ input:-ms-input-placeholder {
 }
 
 p {
-  color: $themeColor-darkBlue;
+  //color: $themeColor-darkBlue;
 }
 
 h1 {
@@ -86,6 +95,7 @@ h1 {
   font-size: 36px;
   color: $themeColor-darkBlue;
   grid-row: 1;
+  margin-bottom: 2px;
 
   @media #{$mobileScreenSize} {
     font-size: 24px;
@@ -93,6 +103,22 @@ h1 {
 
   @media #{$desktopScreenSize} {
     font-size: 36px;
+  }
+}
+
+h2 {
+  font-weight: 600;
+  font-size: 30px;
+  color: $themeColor-black;
+  grid-row: 1;
+  margin-bottom: 2px;
+
+  @media #{$mobileScreenSize} {
+    font-size: 22px;
+  }
+
+  @media #{$desktopScreenSize} {
+    font-size: 30px;
   }
 }
 
@@ -187,11 +213,18 @@ h3 {
   right: 2%;
 }
 
+.spinner {
+  top: 50%;
+  left: 50%;
+  margin: auto;
+  position: absolute;
+}
 .modifyButtons{
   display: flex;
   height: auto;
   vertical-align: middle;
   width: 300px;
+  margin-top: 12px;
 
   span{
     align-self: center;
@@ -203,4 +236,53 @@ h3 {
   }
   
 }
+
+.helpIcon{
+  margin-left: 5px;
+  color: $themeColor-light
+}
+
+.modal-confirmation{
+  height: auto;
+  text-align: center;
+}
+
+.modal-confirmation-buttons{
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+}
+
+.cancel-event-button,
+.modal-confirm-button,
+.modal-cancel-button{
+  font-family: $systemfont;
+  margin: 15px;
+  display: block;
+  font-size: 14px;
+  min-width: 230px;
+  max-width: 230px;
+  background: $themeColor-lightBlue;
+  color: $themeColor-white;
+  border-radius: 7px;
+  height: 35px;
+  border: 0;
+  justify-content: center;
+}
+
+.modal-cancel-button{
+  background: $themeColor-red;
+  margin-right: 5px;
+}
+
+.cancel-event-button{
+  background: $themeColor-red;
+  margin-left: 0px;
+}
+
+.cancel-event-button:disabled {
+  background: $themeColor-light;
+  color: $themeColor-white;
+}
+
 

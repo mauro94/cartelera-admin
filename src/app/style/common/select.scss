@@ -1,8 +1,9 @@
-@import 'themeColors';
+@import 'colors';
 
 .select {
   display: inline-flex;
-  padding: 4px 10px 4px 10px;
+  width: 100px;
+  padding: 5px 10px 5px 10px;
   justify-content: center;
   background-color: $themeColor-lightLight;
   border-radius: 5px;
@@ -40,16 +41,18 @@
 }
 
 .hidden-select {
+  text-align: center;
   background-color: $themeColor-lightLight;
+  border-radius: 5px;
   cursor: default;
   div {
     border-radius: 5px;
-    padding: 4px;
+    padding: 5px 10px 5px 10px;
   }
 }
 
 .hidden-select div:hover {
-  background-color: $themeColor-lightLight;
+  background-color: $themeColor-light;
 }
 
 .selected-and-hidden{

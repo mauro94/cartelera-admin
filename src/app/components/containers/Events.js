@@ -4,13 +4,17 @@ import { withRouter } from 'react-router-dom'
 import { thunks } from 'Logic/actions/thunks'
 import { history, loggedIn } from 'Config/helper'
 import { Status } from 'Config/constants'
-import { EventsPage } from 'Presentational/EventsPage';
+import EventsPage from 'Presentational/EventsPage';
 import { isEmpty } from 'Config/helper'
 var Spinner = require('react-spinkit');
 
-let component = <Spinner name="pulse" />
-
 class Events extends React.Component {
+    constructor() {
+        super()
+        this.state = {
+            component: <div className="spinner"><Spinner name="pulse" /></div>
+        }
+    }
     componentWillMount() {
         if (!this.props.loading && (!this.props.event || isEmpty(this.props.event.all))) {
             this.props.loadEvents()
@@ -20,12 +24,14 @@ class Events extends React.Component {
     componentWillReceiveProps(nextProps) {
         if (this.props.loading && nextProps.ready) {
             if (!isEmpty(nextProps.events))
-                component = <EventsPage />
+                this.setState({
+                    component: <EventsPage {...nextProps} />
+                })
         }
     }
 
     render() {
-        return component
+        return this.state.component
     }
 }
 
