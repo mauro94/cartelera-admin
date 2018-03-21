@@ -4,6 +4,7 @@ import { history } from 'Config/helper'
 import ColumnMenuLayout from 'Presentational/ColumnMenuLayout'
 import Events from 'Containers/Events'
 import EventPage from 'Presentational/EventPage'
+import SponsorsPage from 'Presentational/SponsorsPage'
 
 import 'Style/gridMain.scss';
 import 'Style/columnMenuLayout.scss';
@@ -31,8 +32,9 @@ const HomePage = ({ ...props }) => (
             <Route exact path="/dashboard" component={Events} />
             <Route exact path="/dashboard/eventos" component={Events} />
             <Route exact path="/dashboard/eventos/:id?" component={EventPage} />
+            <Route exact path="/dashboard/sponsors" component={SponsorsPage} />
             {/* <Route path="/dashboard/profile" render={() => <EditProfile {...props} />}/> */}
-            <Route path="/dashboard/profile" render={() => <ColumnMenuLayout {...props} />}/>
+            <Route path="/dashboard/profile" render={() => <ColumnMenuLayout {...props} />} />
         </div>
     </div>
 )

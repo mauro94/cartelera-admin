@@ -2,8 +2,6 @@ import React from 'react'
 import { Field } from 'formik'
 import PropTypes from 'prop-types'
 import { makeOption } from 'Config/helper'
-import FontAwesomeIcon from '@fortawesome/react-fontawesome'
-import { faEye, faEyeSlash } from '@fortawesome/fontawesome-free-solid'
 import { Password } from 'Presentational/InputFields/password'
 
 export const EmailComponent = ({
@@ -56,6 +54,6 @@ export const SelectComponent = ({
     </div>
   );
 
-const Option =  element => (
-    <option key={element.key} value={element.key}> {element.text} </option>
+const Option = element => (
+  <option key={element.key} value={element.key}> {element.text} </option>
 )

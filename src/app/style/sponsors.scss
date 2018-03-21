@@ -1,0 +1,105 @@
+.sponsors-page {
+    display: grid;
+    grid-template-rows: 100px auto 100px;
+    height: auto;
+    .content {
+        display: grid;
+        grid-auto-rows: auto auto;
+        grid-gap: 50px;
+        .add {
+            display: grid;
+            justify-content: right;
+            min-height: 80px;
+            align-items: center;
+            .callout-input {
+                grid-column: 1;
+                display: grid;
+                align-items: center;
+                grid-auto-flow: column;
+                .input-with-icon {
+                    border-radius: 7px;
+                    padding-left: 10px;
+                    background-color: $themeColor-lightLight;
+                    svg {
+                        color: $themeColor-light;
+                    }
+                    input {
+                        border: none;
+                        background-color: $themeColor-lightLight;
+                        width: 250px;
+                    }
+                }
+                .pointer {
+                    border: solid 10px transparent;
+                    border-left-color: $themeColor-lightLight;
+                }
+            }
+            button.new {
+                grid-column: 2;
+            }
+        }
+    }
+}
+
+.list {
+    display: grid;
+    grid-auto-rows: 50px;
+    margin: 0 50px;
+    .list-item {
+        display: grid;
+        grid-auto-flow: column;
+        grid-template-columns: 200px 200px auto 100px;
+        border-bottom: solid 1px $themeColor-lightLight;
+        align-content: center;
+        background-color: transparent;
+        align-items: center;
+        .list-item-data {
+            &.edit {
+                display: none;
+                svg {
+                    color: $themeColor-darkBlue;
+                }
+            }
+            &.tags {
+                display: grid;
+                grid-auto-flow: column;
+                justify-content: right;
+                grid-gap: 50px
+            }
+            .blue {
+                color: $themeColor-darkBlue;
+            }
+            .orange {
+                color: $themeColor-orange;
+            }
+            .purple {
+                color: $themeColor-purple
+            }
+        }
+    }
+    .list-item:hover {
+        background-color: $themeColor-lightLightBlue;
+        .list-item-data.edit {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+}
+
+.tag {
+    border-radius: 7px;
+    border: solid 1px $themeColor-light;
+    padding: 5px;
+    min-width: 60px;
+    text-align: center;
+    font-weight: 300;
+    &.icon {
+        min-width: 30px;
+    }
+}
+
+.tag.icon:hover {
+    cursor: pointer;
+    border-color: $themeColor-lightBlue;
+}

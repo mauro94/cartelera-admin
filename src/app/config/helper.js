@@ -9,7 +9,7 @@ import { UserActions, Status } from 'Config/constants'
 import { update } from 'Logic/actions/thunks/user';
 
 export function isEmpty(object) {
-    return !object || (Object.keys(object).length === 0) || object == null
+    return !object || (Object.keys(object).length === 0) || object == null || object.length == 0
 }
 
 export const request = axios.create({
@@ -56,27 +56,47 @@ export const rmSession = () => {
 
 export const withAuth = (Component) => {
     class AuthenticatedComponent extends React.Component {
+        constructor() {
+            super()
+            this.state = {
+                component: <p>Loading...</p>
+            }
+        }
         componentWillMount() {
-            if (isEmpty(this.props.user) && !loggedIn()) {
-                history.replace('/login')
+            if (isEmpty(this.props.user)) {
+                if (!loggedIn)
+                    history.replace('/login')
+                else {
+                    //TODO: ask server if token is valid
+                    //if not, rmToken and redirect to login
+                    this.props.getUser(getSessionUserId())
+                    if (isCurrentUserNewbie() && this.props.location.pathname != "/login/newbie") {
+                        history.replace('/login/newbie')
+                    }
+                }
             }
             else if (loggedIn) {
-                //TODO: ask server if token is valid
-                //if not, rmToken and redirect to login
-                if (isCurrentUserNewbie() && this.props.location.pathname != "/login/newbie") {
-                    history.replace('/login/newbie')
-                }
-                this.props.getUser(getSessionUserId())
+                this.setState({
+                    component: <Component {...this.props} />
+                })
+            }
+        }
+        componentWillReceiveProps(nextProps) {
+            if (this.props.loading && nextProps.ready && !isEmpty(nextProps.user)) {
+                this.setState({
+                    component: <Component {...this.props} />
+                })
             }
         }
         render() {
-            return <Component {...this.props} />
+            return this.state.component
         }
     }
     const mapStateToProps = (state) => {
         return {
             user: state.user.current,
-            loading: state.user.status == Status.WaitingOnServer
+            loading: state.user.status == Status.WaitingOnServer,
+            ready: state.user.status == Status.Ready
         }
     }
 
@@ -97,7 +117,7 @@ export const objectToSnakeCase = (objectName, object) => {
     var snakeObject = {}
 
     snakeObject[objectName] = {}
-    
+
     for (var key in object) {
         snakeObject[objectName][snakeCase(key)] = object[key]
     }

@@ -112,3 +112,59 @@ export const update = (profileDetails) => {
             })
     }
 }
+
+export const create = (email) => {
+    return (dispatch) => {
+        dispatch(createAction(UserActions.Create, null,
+            null, Status.WaitingOnServer))
+        request.post('/sponsor/', { user: { email: email } }, {
+            headers: {
+                'Authorization': 'Bearer ' + getToken()
+            }
+        })
+            .then(response => {
+                dispatch(
+                    createAction(
+                        UserActions.Create,
+                        response.data,
+                        null,
+                        Status.Ready
+                    ))
+            })
+            .catch((error) => {
+                dispatch(
+                    createAction(
+                        UserActions.Create,
+                        null,
+                        error.response.data,
+                        Status.Failed
+                    ))
+            })
+    }
+}
+
+export const all = () => {
+    return (dispatch) => {
+        dispatch(createAction(UserActions.All, null,
+            null, Status.WaitingOnServer))
+        request.get('/users', {
+            headers: {
+                'Authorization': 'Bearer ' + getToken()
+            }
+        })
+            .then(response => {
+                dispatch(
+                    createAction(
+                        UserActions.All,
+                        response.data,
+                        null,
+                        Status.Ready
+                    ))
+            })
+            .catch((error) => {
+                dispatch(
+                    createAction(UserActions.All, null, error.response.data,
+                        Status.Failed))
+            })
+    }
+}
