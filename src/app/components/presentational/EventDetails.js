@@ -49,7 +49,8 @@ export default class EventDetails extends React.Component {
                 customUI: ({ onClose }) => {
                   return (
                     <div className='modal-confirmation'>
-                      <h1> {confirmationTitle} </h1>
+                      <h2> {confirmationTitle} </h2>
+                      <h1> {this.props.event.name} </h1>
                       <p> {confirmationMsg} </p>
                       <p>Desea continuar?</p>
                       <div className='modal-confirmation-buttons'>
@@ -79,7 +80,8 @@ export default class EventDetails extends React.Component {
             customUI: ({ onClose }) => {
                 return (
                 <div className='modal-confirmation'>
-                    <h1> {confirmationTitle} </h1>
+                    <h2> {confirmationTitle} </h2>
+                    <h1> {this.props.event.name} </h1>
                     <p> {confirmationMsg} </p>
                     <p>Desea continuar?</p>
                     <div className='modal-confirmation-buttons'>
