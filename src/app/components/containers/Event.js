@@ -10,9 +10,13 @@ import Error from 'Presentational/Error'
 
 var Spinner = require('react-spinkit');
 
-let component = <Spinner name="pulse" />
-
 class Event extends React.Component {
+    constructor() {
+        super()
+        this.state = {
+            component: <Spinner name="pulse" />
+        }
+    }
     componentWillMount() {
         if (!this.props.loading && isEmpty(this.props.event)) {
             this.props.loadEvent(this.props.id)
@@ -22,24 +26,30 @@ class Event extends React.Component {
     componentWillReceiveProps(nextProps) {
         if (this.props.loading && nextProps.ready) {
             if (isEmpty(nextProps.event))
-                component = <Error message='No se ha encontrado el evento'/>
+                this.setState({
+                    component: <Error message='No se ha encontrado el evento' />
+                })
             else
-                component = <EventDetails 
-                event={nextProps.event} 
-                unpublish={() => nextProps.unpublishEvent(nextProps.event.id)} 
-                publish={() => nextProps.publishEvent(nextProps.event.id)}
-                cancel={() => nextProps.cancelEvent(nextProps.event.id)}/>
+                this.setState({
+                    component: <EventDetails
+                        event={nextProps.event}
+                        unpublish={() => nextProps.unpublishEvent(nextProps.event.id)}
+                        publish={() => nextProps.publishEvent(nextProps.event.id)}
+                        cancel={() => nextProps.cancelEvent(nextProps.event.id)} />
+                })
         }
 
         else if (this.props.loading && nextProps.failed) {
-            component = <Error message='No se ha encontrado el evento'/>
+            this.setState({
+                component: <Error message='No se ha encontrado el evento' />
+            })
         }
     }
 
     render() {
         return (
             <React.Fragment>
-                {component}
+                {this.state.component}
             </React.Fragment>)
     }
 }

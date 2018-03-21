@@ -4,6 +4,7 @@ import { history } from 'Config/helper'
 import ColumnMenuLayout from 'Presentational/ColumnMenuLayout'
 import EventsPageLayout from 'Presentational/EventsPageLayout'
 import EventPage from 'Presentational/EventPage'
+import SponsorsPage from 'Presentational/SponsorsPage'
 
 import 'Style/gridMain.scss';
 import 'Style/columnMenuLayout.scss';
@@ -30,26 +31,27 @@ const HomePage = ({ ...props }) => (
         <div className="container-content">
             <Route exact path="/" render={() => {
                 history.replace('/dashboard/events/upcoming')
-                return(
-                    <EventsPageLayout/>
+                return (
+                    <EventsPageLayout />
                 )
-            }}/>
+            }} />
             <Route exact path="/dashboard" render={() => {
                 history.replace('/dashboard/events/upcoming')
-                return(
-                    <EventsPageLayout/>
+                return (
+                    <EventsPageLayout />
                 )
-            }}/>
+            }} />
             <Route exact path="/dashboard/events" render={() => {
                 history.replace('/dashboard/events/upcoming')
-                return(
-                    <EventsPageLayout/>
+                return (
+                    <EventsPageLayout />
                 )
-            }}/>
+            }} />
             <Route path="/dashboard/events/upcoming" component={EventsPageLayout} />
             <Route path="/dashboard/events/past" component={EventsPageLayout} />
             <Route exact path="/dashboard/event/:id" component={EventPage} />
-            <Route path="/dashboard/profile" render={() => <ColumnMenuLayout {...props} />}/>
+            <Route exact path="/dashboard/sponsors" component={SponsorsPage} />
+            <Route path="/dashboard/profile" render={() => <ColumnMenuLayout {...props} />} />
         </div>
     </div>
 )

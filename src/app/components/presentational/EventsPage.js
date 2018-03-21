@@ -1,5 +1,5 @@
 import React from 'react';
-import { isEmpty, formatDate } from 'Config/helper'
+import { isEmpty, formatDate, history } from 'Config/helper'
 import { Link } from 'react-router-dom'
 
 let lastRow, rowHeight;
@@ -48,20 +48,24 @@ const Hashtags = ({ hashtag, index }) => {
     return (
         <React.Fragment>
             {hashtag.map(h =>
-                <Link to='/' key={"h-" + index + "-" + h}>
+                <div onClick={() => redirect()} key={"h-" + index + "-" + h}>
                     {"#" + h}
-                </Link>
+                </div>
             )}
         </React.Fragment>
     )
 }
 
+const redirect = () => {
+    history.push("/");
+}
+
 const gridItemArea = (index) => {
     let column = (index % 4) + 1
-    let oldRow = lastRow[index%4];
-    lastRow[index%4] += rowHeight;
+    let oldRow = lastRow[index % 4];
+    lastRow[index % 4] += rowHeight;
     return {
-        gridRow: oldRow + " / " + lastRow[index%4],
+        gridRow: oldRow + " / " + lastRow[index % 4],
         gridColumn: column + " / " + column
     }
 }

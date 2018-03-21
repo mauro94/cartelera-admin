@@ -6,7 +6,8 @@ import {
 var defaultState = {
     current: {},
     status: Status.Ready,
-    error: {}
+    error: {},
+    all: []
 }
 
 function user(state = defaultState, action) {
@@ -16,9 +17,28 @@ function user(state = defaultState, action) {
         case UserActions.Update:
         case UserActions.Get:
             return {
+                ...state,
                 current: action.object,
                 status: action.status,
                 error: action.error
+            }
+        case UserActions.All:
+            return {
+                ...state,
+                all: action.object,
+                status: action.status,
+                error: action.error
+            }
+        case UserActions.Create:
+            let all = state.all
+            if (action.status == Status.Ready) {
+                all = [...state.all, action.object]
+                return {
+                    ...state,
+                    all: all,
+                    status: action.status,
+                    error: action.error
+                }
             }
         default:
             return state

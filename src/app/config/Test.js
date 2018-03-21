@@ -24,3 +24,66 @@ export const campusList = [
     { key: 'TMP', text: 'Campus Tampico' },
     { key: 'TOL', text: 'Campus Toluca' },
     { key: 'ZAC', text: 'Campus Zacatecas' }]
+
+export const sponsors = [
+    {
+        "id": 2,
+        "email": "mail@mail.com",
+        "firstName": null,
+        "lastName": null,
+        "office": null,
+        "phoneNumber": null,
+        "campus": null,
+        "userType": "sponsor",
+        "isNewbie": true,
+        "disabled": false
+    },
+    {
+        "id": 6,
+        "email": "sponsor@mail.com",
+        "firstName": null,
+        "lastName": null,
+        "office": null,
+        "phoneNumber": null,
+        "campus": null,
+        "userType": "sponsor",
+        "isNewbie": true,
+        "disabled": false
+    },
+    {
+        "id": 7,
+        "email": "test@mail.com",
+        "firstName": null,
+        "lastName": null,
+        "office": null,
+        "phoneNumber": null,
+        "campus": null,
+        "userType": "sponsor",
+        "isNewbie": true,
+        "disabled": false
+    },
+    {
+        "id": 8,
+        "email": "pato@mail.com",
+        "firstName": null,
+        "lastName": null,
+        "office": null,
+        "phoneNumber": null,
+        "campus": null,
+        "userType": "admin",
+        "isNewbie": true,
+        "disabled": true
+    },
+    {
+        "id": 1,
+        "email": "a@a.com",
+        "firstName": "Abraham",
+        "lastName": "Rodriguez",
+        "office": "A3-101",
+        "phoneNumber": "55-55-55-55",
+        "campus": "MTY",
+        "userType": "admin",
+        "isNewbie": false,
+        "disabled": false
+    }
+]

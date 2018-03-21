@@ -8,9 +8,13 @@ import EventsPage from 'Presentational/EventsPage';
 import { isEmpty } from 'Config/helper'
 var Spinner = require('react-spinkit');
 
-let component = <div className="spinner"><Spinner name="pulse" /></div>
-
 class Events extends React.Component {
+    constructor() {
+        super()
+        this.state = {
+            component: <div className="spinner"><Spinner name="pulse" /></div>
+        }
+    }
     componentWillMount() {
         if (!this.props.loading && (!this.props.event || isEmpty(this.props.event.all))) {
             this.props.loadEvents()
@@ -20,12 +24,14 @@ class Events extends React.Component {
     componentWillReceiveProps(nextProps) {
         if (this.props.loading && nextProps.ready) {
             if (!isEmpty(nextProps.events))
-                component = <EventsPage {...nextProps}/>
+                this.setState({
+                    component: <EventsPage {...nextProps} />
+                })
         }
     }
 
     render() {
-        return component
+        return this.state.component
     }
 }
 

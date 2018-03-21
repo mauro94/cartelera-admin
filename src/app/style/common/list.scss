@@ -1,0 +1,50 @@
+@import 'tags';
+
+.list {
+    display: grid;
+    grid-auto-rows: 50px;
+    margin: 0 50px;
+    border: solid 1px #eeeeee;
+    border-radius: 7px;
+    .list-item {
+        display: grid;
+        grid-auto-flow: column;
+        grid-template-columns: 200px 200px auto 100px;
+        border-bottom: solid 1px $themeColor-lightLight;
+        align-content: center;
+        background-color: transparent;
+        align-items: center;
+        padding-left: 50px;
+        .list-item-data {
+            &.edit {
+                display: none;
+                svg {
+                    color: $themeColor-darkBlue;
+                }
+            }
+            &.tags {
+                display: grid;
+                grid-auto-flow: column;
+                justify-content: right;
+                grid-gap: 50px
+            }
+            .blue {
+                color: $themeColor-darkBlue;
+            }
+            .orange {
+                color: $themeColor-orange;
+            }
+            .purple {
+                color: $themeColor-purple
+            }
+        }
+    }
+    .list-item:hover {
+        background-color: $themeColor-lightLightBlue;
+        .list-item-data.edit {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+}

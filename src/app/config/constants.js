@@ -2,12 +2,14 @@ export const UserActions = Object.freeze({
     Login: 'LOGIN',
     Update: 'UPDATE_USER',
     Get: 'GET_USER',
-    Logout: 'LOGOUT'
+    Logout: 'LOGOUT',
+    All: 'ALL_USERS',
+    Create: 'CREATE_USER'
 })
 
 export const EventActions = Object.freeze({
     UserEvents: 'USEREVENTS',
-    All: 'ALL',
+    All: 'ALL_EVENTS',
     Current: 'CURRENT',
     Update: 'UPDATE'
 })

@@ -1,0 +1,16 @@
+.tag {
+    border-radius: 7px;
+    border: solid 1px $themeColor-light;
+    padding: 5px;
+    min-width: 60px;
+    text-align: center;
+    font-weight: 300;
+    &.icon {
+        min-width: 30px;
+    }
+}
+
+.tag.icon:hover {
+    cursor: pointer;
+    border-color: $themeColor-lightBlue;
+}
