@@ -1,5 +1,5 @@
 import React from 'react';
-import { isEmpty, formatDate } from 'Config/helper'
+import { isEmpty, formatDate, history } from 'Config/helper'
 import { Link } from 'react-router-dom'
 
 let lastRow, rowHeight;
@@ -57,7 +57,7 @@ const Hashtags = ({ hashtag, index }) => {
 }
 
 const redirect = () => {
-    this.context.router.push("/");
+    history.push("/");
 }
 
 const gridItemArea = (index) => {
