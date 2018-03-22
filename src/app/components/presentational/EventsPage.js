@@ -34,7 +34,7 @@ const EventGridItem = ({ event, index }) => {
             </div>
             <div className="text">
                 <div className="event-grid-title">{event.name}</div>
-                <div className="event-grid-date">{formatDate(event.startDate)}</div>
+                <div className="event-grid-date">{formatDate(event.start_datetime)}</div>
                 <div className="event-grid-hashtags">
                     {event.hashtag &&
                         <Hashtags hashtag={event.hashtag} index={index} />}
