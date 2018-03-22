@@ -52,7 +52,7 @@ export default class EventDetails extends React.Component {
                       <h2> {confirmationTitle} </h2>
                       <h1> {this.props.event.name} </h1>
                       <p> {confirmationMsg} </p>
-                      <p>Desea continuar?</p>
+                      <p>¿Desea continuar?</p>
                       <div className='modal-confirmation-buttons'>
                         <button className='modal-cancel-button' onClick={() => {
                             this.closePublishModal()
@@ -83,7 +83,7 @@ export default class EventDetails extends React.Component {
                     <h2> {confirmationTitle} </h2>
                     <h1> {this.props.event.name} </h1>
                     <p> {confirmationMsg} </p>
-                    <p>Desea continuar?</p>
+                    <p>¿Desea continuar?</p>
                     <div className='modal-confirmation-buttons'>
                     <button className='modal-confirm-button' onClick={() => {
                         onClose()
