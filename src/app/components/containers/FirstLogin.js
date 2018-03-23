@@ -1,13 +1,13 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { thunks } from 'Logic/actions/thunks'
-import { ProfileDetailsForm } from 'Presentational/ProfileDetailsForm'
+import { Index as ProfileForm  } from 'Presentational/profile/forms/Index'
 import { history, isCurrentUserNewbie, withAuth } from 'Config/helper'
 import { Formik, Form, Field } from 'formik';
 import { Status } from 'Config/constants'
 import Yup from 'yup';
 import { campusList } from 'Config/Test'
-import { FormMessageWelcome } from 'Presentational/FormComponents'
+import { FormMessageWelcome } from 'Presentational/elements/Form'
 
 class FirstLogin extends React.Component {
     componentWillMount() {
@@ -67,7 +67,7 @@ class FirstLogin extends React.Component {
                         isSubmitting
                     }) => {
                         return (
-                            <ProfileDetailsForm
+                            <ProfileForm
                                 handleSubmit={handleSubmit}
                                 error={this.props.error}
                                 errors={errors}

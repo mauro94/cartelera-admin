@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Link, NavLink } from "react-router-dom"
 import { history } from 'Config/helper'
 import EditProfile from 'Containers/EditProfile'
 
-const ColumnMenuLayout = ({ ...props }) => (
+const Index = ({ ...props }) => (
     <div className="grid-container container-column-menu">
         <div className="container-menu-elements">
             <div className="menu-link">
@@ -20,4 +20,4 @@ const ColumnMenuLayout = ({ ...props }) => (
     </div>
 )
 
-export default ColumnMenuLayout
+export default Index

@@ -1,10 +1,10 @@
 
 import React from 'react';
 import { Formik, Form, Field } from 'formik';
-import { EmailComponent, PasswordComponent } from 'Presentational/InputFields';
+import { EmailComponent, PasswordComponent } from 'Presentational/elements/Input';
 import { isEmpty } from 'Config/helper'
 
-export const LoginForm = ({ handleSubmit, error, errors, touched, isSubmitting }) => (
+export const FormComponent = ({ handleSubmit, error, errors, touched, isSubmitting }) => (
     <Form>
         {!isEmpty(error) && <p className="message-error">{error}</p>}
         

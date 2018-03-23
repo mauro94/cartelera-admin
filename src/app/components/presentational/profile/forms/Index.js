@@ -1,10 +1,10 @@
 import React, { Fragment } from 'react'
 import { Formik, Form, Field } from 'formik';
-import { SelectComponent, TextComponent, EmailComponent, PasswordComponent } from 'Presentational/InputFields';
+import { SelectComponent, TextComponent, EmailComponent, PasswordComponent } from 'Presentational/elements/Input';
 import { isEmpty } from 'Config/helper'
-import { FormButtonSignout, FormButtonSubmit } from 'Presentational/FormComponents'
+import { FormButtonSignout, FormButtonSubmit } from 'Presentational/elements/Form'
 
-export const ProfileDetailsForm = ({ handleSubmit, error, errors, touched, isSubmitting, campusList, logout , isEditProfile}) => (
+export const Index = ({ handleSubmit, error, errors, touched, isSubmitting, campusList, logout , isEditProfile}) => (
     <Form>
         {/*reqres error, change to our api (unauthorized)*/}
         {!isEmpty(error) && <p className="message-error">{error}</p>}

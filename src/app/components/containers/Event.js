@@ -2,11 +2,11 @@
 
 import { connect } from 'react-redux'
 import React from 'react'
-import EventDetails from 'Presentational/EventDetails'
+import { Edit as EventEdit } from 'Presentational/events/Edit'
 import { thunks } from 'Logic/actions/thunks'
 import { Status } from 'Config/constants'
 import { isEmpty } from 'Config/helper'
-import Error from 'Presentational/Error'
+import Error from 'Presentational/elements/Error'
 
 var Spinner = require('react-spinkit');
 
@@ -31,7 +31,7 @@ class Event extends React.Component {
                 })
             else
                 this.setState({
-                    component: <EventDetails
+                    component: <EventEdit
                         event={nextProps.event}
                         unpublish={() => nextProps.unpublishEvent(nextProps.event.id)}
                         publish={() => nextProps.publishEvent(nextProps.event.id)}

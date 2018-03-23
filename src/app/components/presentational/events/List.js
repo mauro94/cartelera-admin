@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 let lastRow, rowHeight;
 
-const EventsPage = ({ ...props }) => {
+const List = ({ ...props }) => {
     lastRow = [1, 1, 1, 1]
     rowHeight = 6
     return (
@@ -71,4 +71,4 @@ const gridItemArea = (index) => {
 }
 
 
-export default EventsPage
+export default List

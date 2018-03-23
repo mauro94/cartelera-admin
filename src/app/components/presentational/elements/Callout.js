@@ -3,7 +3,7 @@ import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import { faEnvelope } from '@fortawesome/fontawesome-free-regular'
 import { faCheck } from '@fortawesome/fontawesome-free-solid'
 
-export default class AddCallout extends React.Component {
+export default class Callout extends React.Component {
     constructor() {
         super()
         this.handleClick = this.handleClick.bind(this);

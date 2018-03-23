@@ -2,12 +2,12 @@ import React from 'react'
 import { BrowserRouter as Router, Route, Link, NavLink } from "react-router-dom"
 import { history } from 'Config/helper'
 import EditProfile from 'Containers/EditProfile'
-import {checkboxPublished, checkboxCanceled as CheckboxCanceled} from 'Presentational/EventsCheckbox'
+import { CheckboxPublished, CheckboxCanceled } from 'Presentational/elements/Checkbox'
 import Events from 'Containers/Events'
 
 import 'Style/eventsMenuLayout.scss';
 
-const EventsPageLayout = () => (
+const Index = () => (
     <div className="grid-container container-events">
         <div className="events-title">
             <h1 id="event-title">Administrar Eventos</h1>
@@ -32,4 +32,4 @@ const EventsPageLayout = () => (
     </div>
 )
 
-export default EventsPageLayout
+export default Index

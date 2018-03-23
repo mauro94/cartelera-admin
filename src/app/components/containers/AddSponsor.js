@@ -1,12 +1,12 @@
 import React from 'react'
-import AddCallout from 'Presentational/AddCallout'
+import Callout from 'Presentational/elements/Callout'
 import { connect } from 'react-redux'
 import { thunks } from 'Logic/actions/thunks'
 
 class AddSponsor extends React.Component {
     render() {
         return (
-            <AddCallout name="pulse" add={this.props.add} />
+            <Callout name="pulse" add={this.props.add} />
         )
     }
 }

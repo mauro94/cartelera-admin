@@ -4,7 +4,7 @@ import Login from 'Containers/Login'
 import FirstLogin from 'Containers/FirstLogin'
 import logo from 'Images/logo.svg'
 
-const LoginPage = () => (
+const Index = () => (
     <div className="grid-container container-login">
         <div className="login-logo">
             <img className="logo" src={logo} />
@@ -16,4 +16,4 @@ const LoginPage = () => (
     </div>
 )
 
-export default LoginPage
+export default Index

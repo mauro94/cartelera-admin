@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { thunks } from 'Logic/actions/thunks'
 import { Status } from 'Config/constants'
-import SponsorList from 'Presentational/SponsorList'
+import { List as SponsorList } from 'Presentational/sponsors/List'
 import { isEmpty } from 'Config/helper'
 
 var Spinner = require('react-spinkit');

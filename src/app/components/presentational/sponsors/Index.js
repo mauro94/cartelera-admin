@@ -2,7 +2,7 @@ import React from 'react'
 import AddSponsor from 'Containers/AddSponsor'
 import Sponsors from 'Containers/Sponsors'
 
-const SponsorsPage = () => {
+const Index = () => {
     return (
         <div className='sponsors-page'>
             <header>
@@ -17,4 +17,4 @@ const SponsorsPage = () => {
         </div>
     )
 }
-export default SponsorsPage
+export default Index
