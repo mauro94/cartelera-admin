@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom'
 import { thunks } from 'Logic/actions/thunks'
 import { history, loggedIn } from 'Config/helper'
 import { Status } from 'Config/constants'
-import EventsPage from 'Presentational/EventsPage';
+import EventsList from 'Presentational/events/List';
 import { isEmpty } from 'Config/helper'
 var Spinner = require('react-spinkit');
 
@@ -25,7 +25,7 @@ class Events extends React.Component {
         if (this.props.loading && nextProps.ready) {
             if (!isEmpty(nextProps.events))
                 this.setState({
-                    component: <EventsPage {...nextProps} />
+                    component: <EventsList {...nextProps} />
                 })
         }
     }

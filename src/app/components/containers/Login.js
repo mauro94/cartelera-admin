@@ -4,7 +4,7 @@ import { thunks } from 'Logic/actions/thunks'
 import { history, loggedIn, isCurrentUserNewbie } from 'Config/helper'
 import { Status } from 'Config/constants'
 import { Formik, Form, Field } from 'formik';
-import { LoginForm } from 'Presentational/LoginForm'
+import { FormComponent as LoginForm } from 'Presentational/login/Form'
 import Yup from 'yup';
 
 class Login extends React.Component {

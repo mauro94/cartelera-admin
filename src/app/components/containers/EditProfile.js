@@ -1,14 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { thunks } from 'Logic/actions/thunks'
-import { ProfileDetailsForm } from 'Presentational/ProfileDetailsForm'
-import { PasswordForm } from 'Presentational/PasswordForm'
+import { ProfileFormsIndex } from 'Presentational/profile/forms/Index'
+import { ProfileFormsPassword } from 'Presentational/profile/forms/Password'
 import { history } from 'Config/helper'
 import { Status } from 'Config/constants'
 import { Formik, Form, Field } from 'formik';
 import Yup from 'yup';
 import { campusList } from 'Config/Test'
-import { FormMessageEditProfile } from 'Presentational/FormComponents'
+import { FormMessageEditProfile } from 'Presentational/elements/Form'
 
 class EditProfile extends React.Component {
     render() {
@@ -61,7 +61,7 @@ class EditProfile extends React.Component {
                             isSubmitting
                         }) => {
                             return (
-                                <ProfileDetailsForm 
+                                <ProfileFormsIndex 
                                     handleSubmit={ handleSubmit } 
                                     error={ this.props.error } 
                                     errors={ errors }
@@ -112,7 +112,7 @@ class EditProfile extends React.Component {
                             isSubmitting
                         }) => {
                             return (
-                                <PasswordForm 
+                                <ProfileFormsPassword 
                                     handleSubmit={ handleSubmit } 
                                     error={ this.props.error } 
                                     errors={ errors }

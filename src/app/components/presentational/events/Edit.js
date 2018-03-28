@@ -1,11 +1,11 @@
 import React from 'react'
-import Dropdown from 'Presentational/Dropdown'
+import Dropdown from 'Presentational/elements/Dropdown'
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import { faInfoCircle } from '@fortawesome/fontawesome-free-solid'
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css'
 
-export default class EventDetails extends React.Component {
+export default class EventsEdit extends React.Component {
     constructor(props) {
         super(props);
         this.state = {

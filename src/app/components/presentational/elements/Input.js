@@ -2,7 +2,7 @@ import React from 'react'
 import { Field } from 'formik'
 import PropTypes from 'prop-types'
 import { makeOption } from 'Config/helper'
-import { Password } from 'Presentational/InputFields/password'
+import { Password } from 'Presentational/elements/Password'
 
 export const EmailComponent = ({
   field, // { name, value, onChange, onBlur }

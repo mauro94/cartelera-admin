@@ -1,10 +1,10 @@
 import React, { Fragment } from 'react'
 import { Formik, Form, Field } from 'formik';
-import { PasswordComponent } from 'Presentational/InputFields';
+import { PasswordComponent } from 'Presentational/elements/Input';
 import { isEmpty } from 'Config/helper'
-import { FormButtonSubmitPassword } from 'Presentational/FormComponents'
+import { FormButtonSubmitPassword } from 'Presentational/elements/Form'
 
-export const PasswordForm = ({ handleSubmit, error, errors, touched, isSubmitting, isEditProfile }) => (
+export const ProfileFormsPassword = ({ handleSubmit, error, errors, touched, isSubmitting, isEditProfile }) => (
     <Form>
         {!isEmpty(error) && <p className="message-error">{error}</p>}
 
