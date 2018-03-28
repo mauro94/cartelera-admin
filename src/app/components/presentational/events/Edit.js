@@ -5,7 +5,7 @@ import { faInfoCircle } from '@fortawesome/fontawesome-free-solid'
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css'
 
-export default class Edit extends React.Component {
+export default class EventsEdit extends React.Component {
     constructor(props) {
         super(props);
         this.state = {

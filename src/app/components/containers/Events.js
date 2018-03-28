@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom'
 import { thunks } from 'Logic/actions/thunks'
 import { history, loggedIn } from 'Config/helper'
 import { Status } from 'Config/constants'
-import { List as EventsList } from 'Presentational/events/List';
+import EventsList from 'Presentational/events/List';
 import { isEmpty } from 'Config/helper'
 var Spinner = require('react-spinkit');
 

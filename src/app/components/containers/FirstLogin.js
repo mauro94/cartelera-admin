@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { thunks } from 'Logic/actions/thunks'
-import { Index as ProfileForm  } from 'Presentational/profile/forms/Index'
+import { ProfileFormsIndex } from 'Presentational/profile/forms/Index'
 import { history, isCurrentUserNewbie, withAuth } from 'Config/helper'
 import { Formik, Form, Field } from 'formik';
 import { Status } from 'Config/constants'
@@ -67,7 +67,7 @@ class FirstLogin extends React.Component {
                         isSubmitting
                     }) => {
                         return (
-                            <ProfileForm
+                            <ProfileFormsIndex
                                 handleSubmit={handleSubmit}
                                 error={this.props.error}
                                 errors={errors}

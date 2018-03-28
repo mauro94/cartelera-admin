@@ -4,7 +4,7 @@ import { SelectComponent, TextComponent, EmailComponent, PasswordComponent } fro
 import { isEmpty } from 'Config/helper'
 import { FormButtonSignout, FormButtonSubmit } from 'Presentational/elements/Form'
 
-export const Index = ({ handleSubmit, error, errors, touched, isSubmitting, campusList, logout , isEditProfile}) => (
+export const ProfileFormsIndex = ({ handleSubmit, error, errors, touched, isSubmitting, campusList, logout , isEditProfile}) => (
     <Form>
         {/*reqres error, change to our api (unauthorized)*/}
         {!isEmpty(error) && <p className="message-error">{error}</p>}

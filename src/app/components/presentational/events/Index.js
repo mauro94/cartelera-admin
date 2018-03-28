@@ -7,7 +7,7 @@ import Events from 'Containers/Events'
 
 import 'Style/eventsMenuLayout.scss';
 
-const Index = () => (
+const EventsIndex = () => (
     <div className="grid-container container-events">
         <div className="events-title">
             <h1 id="event-title">Administrar Eventos</h1>
@@ -32,4 +32,4 @@ const Index = () => (
     </div>
 )
 
-export default Index
+export default EventsIndex

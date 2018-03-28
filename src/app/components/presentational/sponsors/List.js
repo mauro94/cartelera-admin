@@ -3,7 +3,7 @@ import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import { faEdit } from '@fortawesome/fontawesome-free-regular'
 import { Tag, TagIcon } from 'Presentational/elements/Tag'
 
-const List = ({ sponsors }) => (
+const SponsorsList = ({ sponsors }) => (
     <div className='list'>
         {sponsors.map((s, i) =>
             <SponsorRow sponsor={s} key={'sponsor-' + s.id + '-' + i} />
@@ -33,4 +33,4 @@ const SponsorRow = ({ sponsor }) => (
 )
 
 
-export default List
+export default SponsorsList
