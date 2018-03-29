@@ -18,34 +18,6 @@ class Main extends React.Component {
         }
     }
 
-    // componentWillMount() {
-    //     if (!isEmpty(this.props.user)) {
-    //         switch (this.props.user.userType) {
-    //             case "admin":
-    //                 this.setState({
-    //                     userType: "Administrador",
-    //                     profileButton: navbarButtonUser,
-    //                     eventsButton: navbarButtonEvents,
-    //                     categoriesButton: navbarButtonCategories,
-    //                     sponsorsButton: navbarButtonSponsors,
-    //                     user: this.props.user
-    //                 })
-    //                 break;
-    //             case "sponsor":
-    //                 this.setState({
-    //                     userType: "Sponsor",
-    //                     profileButton: navbarButtonUser,
-    //                     eventsButton: navbarButtonEvents,
-    //                     user: this.props.user
-    //                 })
-    //                 break;
-    //             default:
-    //                 // Solicitante
-    //                 break;
-    //         }
-    //     }
-    // }
-
     componentWillMount() {
         if (!this.props.loading) {
             switch (this.props.user.userType) {
