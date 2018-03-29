@@ -20,11 +20,6 @@ const EventsIndex = () => (
                 <NavLink activeClassName="filter-selected" to={"/dashboard/events/past"}>Pasados</NavLink>
             </div>
         </div>
-        <div className="container-events-filter-2">
-            {/* <Route exact path="/dashboard/events/upcoming" component={checkboxPublished} />
-            <Route exact path="/dashboard/events/upcoming" render={() => <CheckboxCanceled checkboxClass={"filter-checkbox filter-link-2"}/>} />
-            <Route exact path="/dashboard/events/past" render={() => <CheckboxCanceled checkboxClass={"filter-checkbox filter-link-1"}/>}/> */}
-        </div>
         <div className="container-events-all">
             <Route path="/dashboard/events/upcoming" render={() => <Events eventType="upcoming" />} />
             <Route path="/dashboard/events/past" render={() => <Events eventType="past" />} />

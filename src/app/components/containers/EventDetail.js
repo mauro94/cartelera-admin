@@ -1,5 +1,3 @@
-
-
 import { connect } from 'react-redux'
 import React from 'react'
 import EventsEdit from 'Presentational/events/Edit'
@@ -35,7 +33,11 @@ class EventDetail extends React.Component {
                         event={nextProps.event}
                         unpublish={() => nextProps.unpublishEvent(nextProps.event.id)}
                         publish={() => nextProps.publishEvent(nextProps.event.id)}
-                        cancel={() => nextProps.cancelEvent(nextProps.event.id)} />
+                        cancel={() => nextProps.cancelEvent(nextProps.event.id)}
+                        publishedStates={{
+                            options:  {'1': 'Pública', '0' : 'No pública'},
+                            selected: (nextProps.event.published ? '1': '0')
+                        }} />
                 })
         }
 
