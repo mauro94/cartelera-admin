@@ -50,7 +50,7 @@ const SponsorLayout = ({ ...props }) => (
             }} />
             <Route path="/dashboard/events/upcoming" component={EventsIndex} />
             <Route path="/dashboard/events/past" component={EventsIndex} />
-            <Route exact path="/dashboard/event/:id" render={({ match }) => <EventDetail id={match.params.id} />}/>
+            <Route path="/dashboard/event/:id" render={({ match }) => <EventDetail id={match.params.id} />}/>
             <Route path="/dashboard/profile" render={() => <ProfileIndex {...props} />} />
         </div>
     </div>

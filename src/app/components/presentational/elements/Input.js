@@ -36,7 +36,7 @@ export const TextComponent = ({
   );
 
 export const SelectComponent = ({
-  campusList,
+  list,
   instruction,
   field, // { name, value, onChange, onBlur }
   form: { touched, errors }, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
@@ -49,7 +49,7 @@ export const SelectComponent = ({
       <select
         {...field}
         {...props}>
-        {campusList.map(Option)}
+        {list.map(Option)}
       </select>
     </div>
   );

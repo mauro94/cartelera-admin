@@ -28,7 +28,7 @@ export const ProfileFormsIndex = ({ handleSubmit, error, errors, touched, isSubm
         {touched.phoneNumber && errors.phoneNumber && <p className="message-error">{errors.phoneNumber}</p>}
 
         <Field name="campus"
-            campusList={campusList}
+            list={campusList}
             className={((touched.campus && errors.campus) ? 'emptyField' : 'readyField')}
             component={SelectComponent}/>
         {touched.campus && errors.campus && <p className="message-error">{errors.campus}</p>}

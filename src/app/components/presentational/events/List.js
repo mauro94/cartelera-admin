@@ -23,7 +23,7 @@ const EventGridItem = ({ event, index }) => {
     event.hashtag = ['code', 'hack', 'business']
     return (
         <Link
-            to={'/dashboard/event/' + event.id}
+            to={'/dashboard/event/' + event.id + '/general'}
             className={"grid-item"}
             style={gridItemArea(index)}>
             <div className="image">
