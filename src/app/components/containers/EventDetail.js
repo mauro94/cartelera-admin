@@ -17,7 +17,7 @@ class EventDetail extends React.Component {
     }
     componentWillMount() {
         if (!this.props.loading && isEmpty(this.props.event)) {
-            this.props.loadEvent(this.props.id)
+            this.props.loadEvent(this.props.id.split('/')[3])
         }
     }
 

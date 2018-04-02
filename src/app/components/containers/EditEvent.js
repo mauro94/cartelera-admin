@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { thunks } from 'Logic/actions/thunks'
 import { EventsFormsIndex } from 'Presentational/events/forms/Index'
-import { ProfileFormsPassword } from 'Presentational/profile/forms/Password'
+import { EventsFormsDetails } from 'Presentational/events/forms/Details'
 import { history } from 'Config/helper'
 import { Status } from 'Config/constants'
 import { Formik, Form, Field } from 'formik';
@@ -54,17 +54,24 @@ class EditEvent extends React.Component {
                     handleSubmit,
                     isSubmitting
                 }) => {
+                    var component = <EventsFormsIndex 
+                                    handleSubmit={ handleSubmit } 
+                                    error={ this.props.error } 
+                                    errors={ errors }
+                                    touched={ touched } 
+                                    isSubmitting={ isSubmitting } 
+                                    campusList={ campusList }
+                                    categoryList={ categoryList } />
+                    if (history.location.pathname.includes("details"))
+                        component = <EventsFormsDetails 
+                                    handleSubmit={ handleSubmit } 
+                                    error={ this.props.error } 
+                                    errors={ errors }
+                                    touched={ touched } 
+                                    isSubmitting={ isSubmitting } />
                     return (
                         <React.Fragment>
-                            <EventsFormsIndex 
-                                handleSubmit={ handleSubmit } 
-                                error={ this.props.error } 
-                                errors={ errors }
-                                touched={ touched } 
-                                isSubmitting={ isSubmitting } 
-                                campusList={ campusList }
-                                categoryList={ categoryList }
-                            />
+                            {component}
                             <div className="event-actions-container">
                     
                             </div>
