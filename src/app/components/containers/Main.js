@@ -23,12 +23,12 @@ class Main extends React.Component {
             switch (this.props.user.userType) {
                 case "admin":
                     this.setState({
-                        component: < AdminLayout {...this.props} />
+                        component: <AdminLayout {...this.props} />
                     })
                     break;
                 case "sponsor":
                     this.setState({
-                        component: < SponsorLayout {...this.props} />
+                        component: <SponsorLayout {...this.props} />
                     })
                     break;
                 default:

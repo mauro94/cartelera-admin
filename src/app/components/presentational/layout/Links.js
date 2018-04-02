@@ -2,6 +2,7 @@ import React from 'react'
 
 import { Link, NavLink } from "react-router-dom"
 import { history, isActive } from 'Config/helper'
+import logo from 'Images/logo.svg'
 
 export const UsersLink = () => (
     <NavLink
@@ -40,7 +41,7 @@ export const UpcomingLink = () => (
     </Link>
 )
 
-export const ProfileLinks = ({ props }) => (
+export const ProfileLinks = props => (
     <div className="dropdown" >
         <NavLink
             className="navbar-button"

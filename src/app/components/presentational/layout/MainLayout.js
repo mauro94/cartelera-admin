@@ -2,11 +2,9 @@ import React from 'react'
 
 import 'Style/gridMain.scss'
 import 'Style/columnMenuLayout.scss'
-import logo from 'Images/logo.svg'
-
 import { UpcomingLink } from './Links'
 
-export const Layout = ({ props }) => (
+export const Layout = props => (
     <div className="grid-container container-home">
         <div className="container-navbar">
             <div className="container-navbar-logo">
@@ -17,13 +15,13 @@ export const Layout = ({ props }) => (
             </div>
             <div className="container-navbar-buttons">
                 {props.links.map(
-                    link => <React.Fragment>{link}</React.Fragment>
+                    (link, index) => <React.Fragment key={'link-' + index}>{link}</React.Fragment>
                 )}
             </div>
         </div>
         <div className="container-content">
             {props.routes.map(
-                route => <React.Fragment>{route}</React.Fragment>
+                (route, index) => <React.Fragment key={'route-' + index}>{route}</React.Fragment>
             )}
         </div>
     </div>

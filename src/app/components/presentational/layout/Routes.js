@@ -1,12 +1,13 @@
 import React from 'react'
-
 import { Route } from "react-router-dom"
+import { history } from 'Config/helper'
+
 import SponsorsIndex from 'Presentational/sponsors/Index'
 import ProfileIndex from 'Presentational/profile/Index'
 import EventsIndex from 'Presentational/events/Index'
 import EventDetail from 'Containers/EventDetail'
 
-export const EventsRoutes = ({ props }) => (
+export const EventsRoutes = props => (
     <React.Fragment>
         <Route exact path="/" render={() => {
             history.replace('/dashboard/events/upcoming')
@@ -32,9 +33,9 @@ export const EventsRoutes = ({ props }) => (
     </React.Fragment>
 )
 
-export const UsersRoute = ({ props }) => (
+export const UsersRoute = props => (
     <Route exact path="/dashboard/sponsors" component={SponsorsIndex} />
 )
-export const ProfileRoute = ({ props }) => (
+export const ProfileRoute = props => (
     <Route path="/dashboard/profile" render={() => <ProfileIndex {...props} />} />
 )
