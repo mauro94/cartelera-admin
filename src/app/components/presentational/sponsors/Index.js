@@ -6,7 +6,7 @@ const SponsorsIndex = () => {
     return (
         <div className='sponsors-page'>
             <header>
-                <h1>Sponsors</h1>
+                <h1>Usuarios</h1>
             </header>
             <div className='content'>
                 <header className='secondary'>

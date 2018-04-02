@@ -20,11 +20,11 @@ const AdminLayout = ({ ...props }) => (
                 <div className="user">SuperAdmin</div>
             </div>
             <div className="container-navbar-buttons">
-                <NavLink className="navbar-button" activeClassName="selected-button-view" id="sponsors-button" to={"/dashboard/sponsors"}>Sponsors</NavLink>
+                <NavLink className="navbar-button" activeClassName="selected-button-view" id="sponsors-button" to={"/dashboard/sponsors"}>Usuarios</NavLink>
                 <NavLink className="navbar-button" activeClassName="selected-button-view" id="categories-button" to={"/dashboard/categories"}>Categorías</NavLink>
                 <NavLink className="navbar-button" activeClassName="selected-button-view" id="events-button" to={"/dashboard/events/upcoming"} isActive={events}>Eventos</NavLink>
                 <div className="dropdown">
-                    <NavLink className="navbar-button" activeClassName="selected-button-view" id="user-button" to={"/dashboard/profile/edit"} isActive={editProfile}>{ props.user.firstName }</NavLink>
+                    <NavLink className="navbar-button" activeClassName="selected-button-view" id="user-button" to={"/dashboard/profile/edit"} isActive={editProfile}>{props.user.firstName}</NavLink>
                     <div className="dropdown-content">
                         <Link to={"/dashboard/profile/edit"}>Pérfil</Link>
                         <Link to={"/login"} onClick={() => { props.logout() }}>Cerrar Sesión</Link>
@@ -53,7 +53,7 @@ const AdminLayout = ({ ...props }) => (
             }} />
             <Route path="/dashboard/events/upcoming" component={EventsIndex} />
             <Route path="/dashboard/events/past" component={EventsIndex} />
-            <Route exact path="/dashboard/event/:id" render={({ match }) => <EventDetail id={match.params.id} />}/>
+            <Route exact path="/dashboard/event/:id" render={({ match }) => <EventDetail id={match.params.id} />} />
             <Route exact path="/dashboard/sponsors" component={SponsorsIndex} />
             <Route path="/dashboard/profile" render={() => <ProfileIndex {...props} />} />
         </div>
