@@ -2,10 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { thunks } from 'Logic/actions/thunks'
-import { history, loggedIn, isEmpty } from 'Config/helper'
 import { Status } from 'Config/constants'
-import AdminLayout from 'Presentational/layout/Admin'
-import SponsorLayout from 'Presentational/layout/Sponsor'
+import { AdminLayout, SponsorLayout } from 'Presentational/layout'
 import 'Style/main.scss'
 
 var Spinner = require('react-spinkit');
