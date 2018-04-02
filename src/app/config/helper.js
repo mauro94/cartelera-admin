@@ -54,6 +54,8 @@ export const rmSession = () => {
     localStorage.removeItem('SESSION_USER_IS_NEWBIE')
 }
 
+export const isActive = to => (match, location) => location.pathname.includes(to)
+
 export const withAuth = (Component) => {
     class AuthenticatedComponent extends React.Component {
         constructor() {
