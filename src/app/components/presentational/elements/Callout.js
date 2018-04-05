@@ -1,6 +1,7 @@
 import React from 'react'
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import { faCheck } from '@fortawesome/fontawesome-free-solid'
+import { Plus } from 'Images/plus'
 
 export default class Callout extends React.Component {
     constructor(props) {
@@ -45,7 +46,10 @@ export default class Callout extends React.Component {
                         <button
                             className='new'
                             onClick={this.handleClick}>
-                            Nuevo
+                            <div className='plus'>
+                                <Plus />
+                            </div>
+                            Agregar {this.props.type}
                         </button>
                     }
                     {this.state.showCallout &&

@@ -1,65 +1,107 @@
 import React from 'react'
-import { isEmpty } from 'Config/helper'
+import { Form, Field } from 'formik';
+import { isEmpty, haveSameKeys, capitalizeFirstLetter } from 'Config/helper'
+import { Labels } from 'Config/constants'
 
-export const FormMessageWelcome = ({ mail }) => (
-    <p>         
-        ¡Hola {mail}! <br/>
+export const WelcomeMessage = ({ mail }) => (
+    <p>
+        ¡Hola {mail}! <br />
         Antes de continuar, por favor completa tus datos:
     </p>
 )
 
-export const FormMessageEditProfile = ({ name }) => (
-    <p>         
-        ¡Hola {name}! <br/>
-        Aqui puedes modificar los datos de tu pérfil:
+export const EditProfileMessage = ({ name }) => (
+    <p>
+        ¡Hola {name}! <br />
+        Aquí puedes modificar los datos de tu perfil:
     </p>
 )
 
-export const FormButtonSubmit = ({ errors, isSubmitting, isEditProfile, touched }) => {
-    if (!isEditProfile) 
-        return (
-            <button className="button-submit" disabled={((
-                touched.firstName && !errors.firstName &&
-                touched.lastName && !errors.lastName &&
-                touched.password && !errors.password &&
-                touched.passwordConfirm && !errors.passwordConfirm &&
-                touched.office && !errors.office &&
-                touched.phoneNumber && !errors.phoneNumber && 
-                !errors.campus &&
-                !isSubmitting) ? false : true)}>
-                Continuar
-            </button>
-        )
-    else 
-        return(
-            <button className="button-submit" 
-                    disabled={
-                        !isEmpty(errors) || 
-                        isSubmitting }>
-                Actualizar
-            </button>
-        )   
+export const Entry = (props) => (
+    <React.Fragment>
+        <Field
+            name={props.attr}
+            className={((props.touched[props.attr] && props.errors[props.attr]) ?
+                'emptyField' : 'readyField')}
+            component={props.component}
+            placeholder={capitalizeFirstLetter(Labels[props.attr])}
+        />
+        {
+            props.touched[props.attr] &&
+            props.errors[props.attr] &&
+            <p className="message-error">{props.errors[props.attr]}</p>
+        }
+    </React.Fragment>
+)
+
+export const EntrySelect = (props) => (
+    <React.Fragment>
+        <Field
+            name="campus"
+            list={props.list}
+            className={((props.touched.campus && props.errors.campus) ?
+                'emptyField' : 'readyField')}
+            component={props.component} />
+        {
+            props.touched.campus &&
+            props.errors.campus &&
+            <p className="message-error">{props.errors.campus}</p>
+        }
+    </React.Fragment>
+)
+
+const filledValues = (values) => {
+    for (var key in values) {
+        if (!values[key] && (typeof values[key] != 'boolean'))
+            return false
+    }
+    return true
 }
 
-export const FormButtonSubmitPassword = ({ errors, isSubmitting, touched }) => {
+export const SubmitButton = (props) => {
+    let emptyValues = !filledValues(props.values)
+    let untouched = isEmpty(props.touched)
+    let hasErrors = !isEmpty(props.errors)
+    let disabled = untouched ||
+        (props.allRequired && emptyValues) ||
+        hasErrors ||
+        props.isSubmitting
     return (
-        <button className="button-submit" disabled={((
-            touched.password && !errors.password &&
-            touched.passwordConfirm && !errors.passwordConfirm &&
-            !isSubmitting) ? false : true)}>
-            Cambiar Contraseña
-        </button>
-    )
+        <button className="button-submit" disabled={disabled}>
+            {props.children}
+        </button >)
 }
 
-export const FormButtonSignout = ({ logout, isEditProfile }) => {
-    if (!isEditProfile) 
-        return (
-            <button className="button-newbie-logout" onClick={logout}>Cerrar Sesión</button>
-        )
-    else 
-        return(
-            <button hidden className="button-newbie-logout">Cerrar Sesión</button>
-        )
-    
+export const FormComponent = (props) => {
+    let entries = props.data.map((d, index) => {
+        let newProps = {
+            ...props,
+            attr: d.name,
+            component: d.component,
+            key: `Entry-${index}`
+        }
+        if (d.list) {
+            return <EntrySelect
+                {...newProps}
+                list={d.list} />
+        }
+        return <Entry {...newProps} />
+    })
+    return (
+        <Form>
+            {!isEmpty(props.error) && <p className="message-error">{props.error}</p>}
+            {entries}
+            <div className="form-field buttons">
+                <SubmitButton
+                    {...props}
+                    allRequired={props.allRequired}>
+                    {props.submitTitle}
+                </SubmitButton>
+                {props.canLogout &&
+                    <button className="button-newbie-logout" onClick={props.logout}>
+                        Cerrar Sesión
+                </button>
+                }
+            </div>
+        </Form >)
 }

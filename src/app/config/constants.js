@@ -26,3 +26,28 @@ export const Status = Object.freeze({
     Ready: 'READY',
     Failed: 'FAILED'
 })
+
+export const UserTypes = Object.freeze({
+    Sponsor: 'sponsor',
+    Admin: 'admin'
+})
+
+export const UserForms = Object.freeze({
+    Password: 'password',
+    Basic: 'basic'
+})
+
+export const Labels = Object.freeze({
+    email: 'correo electrónico',
+    'phone-number': 'teléfono',
+    phoneNumber: 'teléfono',
+    office: 'oficina',
+    campus: 'campus',
+    enabled: 'estado',
+    passwordConfirm: 'confirmar contraseña',
+    password: 'contraseña',
+    firstName: 'nombre',
+    lastName: 'apellido'
+})
+
+export const TemporaryPassword = '123456'
