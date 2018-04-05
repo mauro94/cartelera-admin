@@ -1,18 +1,15 @@
 import React from 'react'
 import { Formik } from 'formik'
 import Yup from 'yup'
-import {
-    PasswordComponent,
-    FormComponent as Form
-} from 'Presentational/elements';
-import { isEmpty, formValidations } from 'Config/helper'
+import { PasswordComponent, FormComponent as Form } from 'Presentational/elements';
+import { FormValidations } from 'Global/constants'
 
 const Password = ({ user, handleSubmit }) => (
     <Formik
         validationSchema={
             Yup.object().shape({
-                password: formValidations.password,
-                passwordConfirm: formValidations.passwordConfirm
+                password: FormValidations.password,
+                passwordConfirm: FormValidations.passwordConfirm
             })
         }
         initialValues={{

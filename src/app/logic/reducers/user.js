@@ -2,7 +2,7 @@ import {
     UserActions,
     Status,
     UserTypes
-} from 'Config/constants'
+} from 'Global/constants'
 
 var defaultState = {
     current: {},
@@ -25,11 +25,6 @@ const compareUsers = (a, b) => {
     else if ((a.firstName && !b.firstName) || b.firstName > a.firstName)
         return -1
     return 0
-}
-
-const getInitials = (user) => {
-    let result = user.firstName ? user.firstName[0] + user.lastName[0] : user.email[0]
-    return result.toUpperCase()
 }
 
 function user(state = defaultState, action) {

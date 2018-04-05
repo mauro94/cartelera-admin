@@ -1,5 +1,5 @@
 import React from 'react';
-import { isEmpty, formatDate, history } from 'Config/helper'
+import { history } from 'Global/helper'
 import { Link } from 'react-router-dom'
 
 let lastRow, rowHeight;
@@ -34,7 +34,9 @@ const EventGridItem = ({ event, index }) => {
             </div>
             <div className="text">
                 <div className="event-grid-title">{event.name}</div>
-                <div className="event-grid-date">{formatDate(event.start_datetime)}</div>
+                <div className="event-grid-date">
+                    {event.start_datetime.spanishDate()}
+                </div>
                 <div className="event-grid-hashtags">
                     {event.hashtag &&
                         <Hashtags hashtag={event.hashtag} index={index} />}

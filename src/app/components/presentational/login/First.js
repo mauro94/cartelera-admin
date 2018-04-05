@@ -1,18 +1,17 @@
 import React from 'react'
-import { EditUser } from 'Containers/users'
-import { history, isCurrentUserNewbie, withAuth } from 'Config/helper'
-import { UserForms } from 'Config/constants'
+import { EditUser, withAuth } from 'Containers'
+import { history, Session, UserForms } from 'Global/helper'
 import { WelcomeMessage } from 'Presentational/elements/Form'
 
 class FirstLogin extends React.Component {
     componentWillMount() {
-        if (!isCurrentUserNewbie()) {
+        if (!Session.isNewbie()) {
             history.replace('/dashboard')
         }
     }
 
     componentWillReceiveProps(nextProps) {
-        if (!isCurrentUserNewbie()) {
+        if (!Session.isNewbie()) {
             history.replace('/dashboard')
         }
     }

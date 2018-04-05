@@ -1,8 +1,6 @@
 import React from 'react'
 import { Field } from 'formik'
-import PropTypes from 'prop-types'
-import { makeOption } from 'Config/helper'
-import { Password } from 'Presentational/elements/Password'
+export { Password as PasswordComponent } from 'Presentational/elements/Password'
 
 export const EmailComponent = ({
   field, // { name, value, onChange, onBlur }
@@ -18,8 +16,6 @@ export const EmailComponent = ({
       />
     </div>
   );
-
-export const PasswordComponent = Password
 
 export const TextComponent = ({
   field, // { name, value, onChange, onBlur }

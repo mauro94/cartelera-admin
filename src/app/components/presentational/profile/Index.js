@@ -1,7 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Link, NavLink } from "react-router-dom"
-import { history } from 'Config/helper'
-import { UserForms } from 'Config/constants'
+import { UserForms } from 'Global/constants'
 import { EditUser } from 'Containers/users'
 
 const ProfileIndex = ({ ...props }) => (

@@ -1,6 +1,6 @@
 import React from 'react'
 import Avatar from 'react-avatar';
-import { getInitials } from 'Config/helper'
+import { getInitials } from 'Global/helper'
 
 const UserAvatar = (props) => (
     <Avatar

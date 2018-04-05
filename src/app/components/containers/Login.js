@@ -1,18 +1,15 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { thunks } from 'Logic/actions/thunks'
-import { history, loggedIn, isCurrentUserNewbie } from 'Config/helper'
-import { Status } from 'Config/constants'
-import { Formik, Form, Field } from 'formik';
-import { FormComponent as LoginForm } from 'Presentational/login/Form'
-import Yup from 'yup';
+import { history, Session, Status, FormValidations } from 'Global/index'
+import { BasicLogin as LoginForm } from 'Presentational/login/Form'
 
 class Login extends React.Component {
     componentWillMount() {
-        if (loggedIn() && !isCurrentUserNewbie()) {
+        if (loggedIn() && !Session.isNewbie()) {
             history.replace('/dashboard')
         }
-        else if (loggedIn() && isCurrentUserNewbie()) {
+        else if (loggedIn() && Session.isNewbie()) {
             history.replace('/login/newbie')
         }
     }
@@ -24,41 +21,7 @@ class Login extends React.Component {
             return <p>Loading...</p>
 
         return (
-            <Formik
-                validationSchema={
-                    Yup.object().shape({
-                        email: Yup.string().email("Correo no valido").required("Correo requerido"),
-                        password: Yup.string().min(6,"Mínimo 6 caracteres").required("Contraseña requerida")
-                    })
-                }
-                initialValues={{
-                    email: '',
-                    password: ''
-                }}
-                onSubmit={(values, action) => { 
-                    this.props.handleSubmit(values)
-                    action.setSubmitting(false)
-                }}>
-                {({
-                    values,
-                    errors,
-                    touched,
-                    handleChange,
-                    handleBlur,
-                    handleSubmit,
-                    isSubmitting
-                }) => {
-                    return (
-                        <LoginForm 
-                            handleSubmit={ handleSubmit } 
-                            error={ this.props.error } 
-                            errors={ errors }
-                            touched={ touched } 
-                            isSubmitting={ isSubmitting } 
-                        />)
-                    }   
-                }
-            </Formik>
+            <LoginForm handleSubmit={this.props.handleSubmit} />
         )
     }
 }

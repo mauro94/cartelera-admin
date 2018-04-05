@@ -1,7 +1,7 @@
 import React from 'react'
 import { AddUser, AddSucceeded, AddFailed } from 'Presentational/users/Add'
-import { Status, UserActions } from 'Config/constants'
-import { waitingOnAction, actionSucceded, actionFailed } from 'Config/helper'
+import { Status, UserActions } from 'Global/constants'
+import { waitingOnAction, actionSucceded, actionFailed } from 'Containers/helper'
 import { connect } from 'react-redux'
 import { thunks } from 'Logic/actions/thunks'
 import { confirmAlert } from 'react-confirm-alert';

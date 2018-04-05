@@ -1,6 +1,5 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Link, NavLink } from "react-router-dom"
-import { history } from 'Config/helper'
 import { CheckboxPublished, CheckboxCanceled } from 'Presentational/elements/Checkbox'
 import Events from 'Containers/Events'
 

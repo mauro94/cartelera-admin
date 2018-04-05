@@ -1,114 +1,26 @@
-import {
-    EventActions,
-    Status
-} from 'Config/constants'
-import { history, request, getToken } from 'Config/helper'
-import { createAction } from 'Logic/actions'
+import { EventActions } from 'Global/constants'
+import { api, request, authotizedRequest } from 'Logic/actions'
 
 export const all = () => {
-    return (dispatch) => {
-        dispatch(createAction(EventActions.UserEvents, null,
-            null, Status.WaitingOnServer))
-        request.get('/event_list', {
-            headers: {
-                'Authorization': 'Bearer ' + getToken()
-            }
-        })
-            .then(response => {
-                dispatch(
-                    createAction(EventActions.UserEvents, response.data, null,
-                        Status.Ready))
-            })
-            .catch((error) => {
-                dispatch(
-                    createAction(EventActions.UserEvents, null, error.response.data,
-                        Status.Failed))
-            })
-    }
+    return dispatch => api({
+        dispatch: dispatch,
+        actionType: EventActions.All,
+        request: () => authorizedRequest.get('/event_list'),
+    })
 }
-
 
 export const get = (id) => {
-    return (dispatch) => {
-        dispatch(createAction(EventActions.Current, null,
-            null, Status.WaitingOnServer))
-        request.get('/events/' + id)
-            .then(response => {
-                dispatch(
-                    createAction(EventActions.Current, response.data, null,
-                        Status.Ready))
-            })
-            .catch((error) => {
-                dispatch(
-                    createAction(EventActions.Current, null, error.response.data,
-                        Status.Failed))
-            })
-    }
+    return dispatch => api({
+        dispatch: dispatch,
+        actionType: EventActions.All,
+        request: () => request.get(`/events/${id}`),
+    })
 }
 
-export const unpublish = (id) => {
-    return (dispatch) => {
-        dispatch(createAction(EventActions.Update, null,
-            null, Status.WaitingOnServer))
-        request.put('/events/' + id + '/unpublish/', {}, {
-            headers: {
-                'Authorization': 'Bearer ' + getToken()
-            }
-        })
-            .then(response => {
-                dispatch(
-                    createAction(EventActions.Update, response.data, null,
-                        Status.Ready))
-            })
-            .catch((error) => {
-                dispatch(
-                    createAction(EventActions.Update, null, error.response.data,
-                        Status.Failed))
-            })
-    }
-}
-
-
-export const publish = (id) => {
-    return (dispatch) => {
-        dispatch(createAction(EventActions.Update, null,
-            null, Status.WaitingOnServer))
-        request.put('/events/' + id + '/publish/', {}, {
-            headers: {
-                'Authorization': 'Bearer ' + getToken()
-            }
-        })
-            .then(response => {
-                dispatch(
-                    createAction(EventActions.Update, response.data, null,
-                        Status.Ready))
-            })
-            .catch((error) => {
-                dispatch(
-                    createAction(EventActions.Update, null, error.response.data,
-                        Status.Failed))
-            })
-    }
-}
-
-export const cancel = (id) => {
-    return (dispatch) => {
-        dispatch(createAction(EventActions.Update, null,
-            null, Status.WaitingOnServer))
-        request.put('/events/' + id + '/cancel/', {}, {
-            headers: {
-                'Authorization': 'Bearer ' + getToken()
-            }
-        })
-            .then(response => {
-                dispatch(
-                    createAction(EventActions.Update, response.data, null,
-                        Status.Ready))
-            })
-            .catch((error) => {
-                dispatch(
-                    createAction(EventActions.Update, null, error.response.data,
-                        Status.Failed))
-            })
-    }
+export const update = (event) => {
+    return dispatch => api({
+        dispatch: dispatch,
+        actionType: EventActions.All,
+        request: () => authorizedRequest.put(`/events/${event.id}/`, { event })
+    })
 }

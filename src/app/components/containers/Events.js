@@ -2,11 +2,9 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { thunks } from 'Logic/actions/thunks'
-import { history, loggedIn } from 'Config/helper'
-import { Status } from 'Config/constants'
-import EventsList from 'Presentational/events/List';
-import { isEmpty } from 'Config/helper'
-var Spinner = require('react-spinkit');
+import { Status } from 'Global/constants'
+import EventsList from 'Presentational/events/List'
+var Spinner = require('react-spinkit')
 
 class Events extends React.Component {
     constructor() {
@@ -16,14 +14,14 @@ class Events extends React.Component {
         }
     }
     componentWillMount() {
-        if (!this.props.loading && (!this.props.event || isEmpty(this.props.event.all))) {
+        if (!this.props.loading && (!this.props.event || this.props.event.all.empty())) {
             this.props.loadEvents()
         }
     }
 
     componentWillReceiveProps(nextProps) {
         if (this.props.loading && nextProps.ready) {
-            if (!isEmpty(nextProps.events))
+            if (!nextProps.events.empty())
                 this.setState({
                     component: <EventsList {...nextProps} />
                 })

@@ -1,7 +1,6 @@
 import React from 'react'
+import { UserTypes, TemporaryPassword } from 'Global/constants'
 import { Callout, FeedbackModal } from 'Presentational/elements'
-import { UserTypes, TemporaryPassword } from 'Config/constants'
-import { capitalizeFirstLetter } from 'Config/helper'
 
 export const AddUser = (props) => (
     <Callout add={props.add} type={props.type} />
@@ -9,7 +8,7 @@ export const AddUser = (props) => (
 
 export const AddSucceeded = (props) => (
     <FeedbackModal
-        title={capitalizeFirstLetter(UserTypes[props.type]) + ' agregado'}
+        title={UserTypes[props.type].initialToUpper() + ' agregado'}
         subtitle={props.user.email}
         handleOk={props.handleOk}>
         Contraseña temporal: <h1>{TemporaryPassword}</h1>

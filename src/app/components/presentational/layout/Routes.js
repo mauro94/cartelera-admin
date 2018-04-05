@@ -1,9 +1,9 @@
 import React from 'react'
 import { Route } from "react-router-dom"
-import { history } from 'Config/helper'
+import { history } from 'Global/helper'
 
 import UsersIndex from 'Presentational/users/'
-import ProfileIndex from 'Presentational/profile/Index'
+import ProfileIndex from 'Presentational/profile'
 import EventsIndex from 'Presentational/events/Index'
 import EventDetail from 'Containers/EventDetail'
 

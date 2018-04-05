@@ -1,7 +1,6 @@
 import React from 'react'
 import { AddUser, UserList } from 'Containers/users'
-import { UserTypes } from 'Config/constants'
-import { capitalizeFirstLetter } from 'Config/helper'
+import { UserTypes } from 'Global/constants'
 import { Route } from 'react-router-dom'
 import { Pill } from 'Presentational/elements'
 
@@ -11,7 +10,7 @@ const UsersLayout = (props) => (
             <h1>Usuarios</h1>
             <div className='tool-bar'>
                 <Pills path={props.match.url} />
-                <AddUser type={capitalizeFirstLetter(getType(props.location))} />
+                <AddUser type={(getType(props.location)).initialToUpper()} />
             </div>
         </div>
         <ContentRoute {...props} />

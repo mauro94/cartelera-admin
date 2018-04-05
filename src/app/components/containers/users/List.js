@@ -1,10 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { thunks } from 'Logic/actions/thunks'
-import { Status, UserActions } from 'Config/constants'
+import { Status, UserActions } from 'Global/constants'
 import { UsersList, UserShow } from 'Presentational/users'
 import { Error } from 'Presentational/elements'
-import { isEmpty, waitingOnAction, actionFailed, actionSucceded } from 'Config/helper'
+import { waitingOnAction, actionSucceded, actionFailed } from 'Containers/helper'
 
 var Spinner = require('react-spinkit');
 
@@ -24,7 +24,7 @@ class Users extends React.Component {
     }
     componentWillMount() {
         if ((!this.props.loading) &&
-            (!this.props.user || isEmpty(this.props.user.all))) {
+            (!this.props.user || empty(this.props.user.all))) {
             this.props.loadUsers()
         }
         else if (this.props.ready) {

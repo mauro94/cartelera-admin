@@ -1,7 +1,6 @@
 import React from 'react'
 import { Form, Field } from 'formik';
-import { isEmpty, haveSameKeys, capitalizeFirstLetter } from 'Config/helper'
-import { Labels } from 'Config/constants'
+import { Labels } from 'Global/constants'
 
 export const WelcomeMessage = ({ mail }) => (
     <p>
@@ -21,10 +20,11 @@ export const Entry = (props) => (
     <React.Fragment>
         <Field
             name={props.attr}
+            list={props.list}
             className={((props.touched[props.attr] && props.errors[props.attr]) ?
                 'emptyField' : 'readyField')}
             component={props.component}
-            placeholder={capitalizeFirstLetter(Labels[props.attr])}
+            placeholder={Labels[props.attr].initialToUpper()}
         />
         {
             props.touched[props.attr] &&
@@ -34,34 +34,10 @@ export const Entry = (props) => (
     </React.Fragment>
 )
 
-export const EntrySelect = (props) => (
-    <React.Fragment>
-        <Field
-            name="campus"
-            list={props.list}
-            className={((props.touched.campus && props.errors.campus) ?
-                'emptyField' : 'readyField')}
-            component={props.component} />
-        {
-            props.touched.campus &&
-            props.errors.campus &&
-            <p className="message-error">{props.errors.campus}</p>
-        }
-    </React.Fragment>
-)
-
-const filledValues = (values) => {
-    for (var key in values) {
-        if (!values[key] && (typeof values[key] != 'boolean'))
-            return false
-    }
-    return true
-}
-
 export const SubmitButton = (props) => {
-    let emptyValues = !filledValues(props.values)
-    let untouched = isEmpty(props.touched)
-    let hasErrors = !isEmpty(props.errors)
+    let emptyValues = !props.values.filled()
+    let untouched = props.touched.empty()
+    let hasErrors = !props.errors.empty()
     let disabled = untouched ||
         (props.allRequired && emptyValues) ||
         hasErrors ||
@@ -73,28 +49,22 @@ export const SubmitButton = (props) => {
 }
 
 export const FormComponent = (props) => {
-    let entries = props.data.map((d, index) => {
-        let newProps = {
-            ...props,
-            attr: d.name,
-            component: d.component,
-            key: `Entry-${index}`
-        }
-        if (d.list) {
-            return <EntrySelect
-                {...newProps}
+    let entries = props.data.map(
+        (d, index) => (
+            <Entry
+                {...props}
+                attr={d.name}
+                component={d.component}
+                key={`Entry-${index}`}
                 list={d.list} />
-        }
-        return <Entry {...newProps} />
-    })
+        ))
+
     return (
         <Form>
-            {!isEmpty(props.error) && <p className="message-error">{props.error}</p>}
+            {!props.error.empty() && <p className="message-error">{props.error}</p>}
             {entries}
             <div className="form-field buttons">
-                <SubmitButton
-                    {...props}
-                    allRequired={props.allRequired}>
+                <SubmitButton {...props}>
                     {props.submitTitle}
                 </SubmitButton>
                 {props.canLogout &&

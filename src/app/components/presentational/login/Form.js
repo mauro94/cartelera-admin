@@ -1,21 +1,40 @@
 
-import React from 'react';
-import { Formik, Form, Field } from 'formik';
-import { EmailComponent, PasswordComponent } from 'Presentational/elements/Input';
-import { isEmpty } from 'Config/helper'
+import React from 'react'
+import { Formik } from 'formik'
+import { FormValidations } from 'Global/constants'
+import {
+    EmailComponent,
+    PasswordComponent,
+    FormComponent as Form
+} from 'Presentational/elements'
+import Yup from 'yup'
 
-export const FormComponent = ({ handleSubmit, error, errors, touched, isSubmitting }) => (
-    <Form>
-        {!isEmpty(error) && <p className="message-error">{error}</p>}
-        
-        <Field name="email" id={"emailLoginField"} className={((touched.email && errors.email) ? 'emptyField' : 'readyField')} component={EmailComponent}/>
-        { touched.email && errors.email && <p className="message-error">{errors.email}</p> }
-        
-        <Field name="password" id={"passwordLoginField"} className={((touched.password && errors.password)? 'emptyField' : 'readyField')} component={PasswordComponent} />
-        { touched.password && errors.password && <p className="message-error">{errors.password}</p> }
-        
-        <div className="form-field">
-            <button className="button-submit" disabled={((touched.email && !errors.email && touched.password && !errors.password && !isSubmitting) ? false : true)}>Iniciar Sesión</button>
-        </div>
-    </Form>
+export const BasicLogin = () => (
+    <Formik
+        validationSchema={
+            Yup.object().shape({
+                email: FormValidations.email,
+                password: FormValidations.password
+            })
+        }
+        initialValues={{ email: '', password: '' }}
+        onSubmit={(values, action) => {
+            this.props.handleSubmit(values)
+            action.setSubmitting(false)
+        }}>
+        {(...props) => (<BasicForm {...props} />)}
+    </Formik>
 )
+
+const BasicForm = (props) => {
+    let data = [
+        { name: 'email', component: EmailComponent },
+        { name: 'password', component: PasswordComponent }
+    ]
+    return (
+        <Form
+            {...props}
+            data={data}
+            submitTitle={'Iniciar Sesión'} />
+    )
+}

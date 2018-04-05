@@ -4,8 +4,7 @@ import { connect } from 'react-redux'
 import React from 'react'
 import EventsEdit from 'Presentational/events/Edit'
 import { thunks } from 'Logic/actions/thunks'
-import { Status } from 'Config/constants'
-import { isEmpty } from 'Config/helper'
+import { Status } from 'Global/constants'
 import Error from 'Presentational/elements/Error'
 
 var Spinner = require('react-spinkit');
@@ -18,14 +17,14 @@ class EventDetail extends React.Component {
         }
     }
     componentWillMount() {
-        if (!this.props.loading && isEmpty(this.props.event)) {
+        if (!this.props.loading && this.props.event.empty()) {
             this.props.loadEvent(this.props.id)
         }
     }
 
     componentWillReceiveProps(nextProps) {
         if (this.props.loading && nextProps.ready) {
-            if (isEmpty(nextProps.event))
+            if (nextProps.event.empty())
                 this.setState({
                     component: <Error message='No se ha encontrado el evento' />
                 })
