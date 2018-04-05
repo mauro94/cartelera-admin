@@ -1,11 +1,10 @@
 import React from 'react'
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
-import { faEnvelope } from '@fortawesome/fontawesome-free-regular'
 import { faCheck } from '@fortawesome/fontawesome-free-solid'
 
 export default class Callout extends React.Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.handleClick = this.handleClick.bind(this);
         this.handleOutsideClick = this.handleOutsideClick.bind(this);
         this.state = {
@@ -40,7 +39,7 @@ export default class Callout extends React.Component {
             <div ref={node => { this.node = node; }}>
                 <div className='add'>
                     {this.state.showCallout &&
-                        <CalloutInput inputRef={(el) => { this.inputRef = el }} />
+                        <CalloutInput inputRef={(el) => { this.inputRef = el }} placeholder={this.props.placeholder} type={this.props.type} icon={this.props.icon} />
                     }
                     {!this.state.showCallout &&
                         <button
@@ -64,10 +63,10 @@ export default class Callout extends React.Component {
 const CalloutInput = (props) => (
     <div className='callout-input'>
         <div className='input-with-icon'>
-            <FontAwesomeIcon icon={faEnvelope} />
+            <FontAwesomeIcon icon={props.icon} />
             <input
-                placeholder='example@example.com'
-                type='email'
+                placeholder={props.placeholder}
+                type={props.type}
                 ref={props.inputRef}
             />
         </div>
