@@ -21,7 +21,6 @@ const EventsEdit = ({...props}) => (
         </div>
         <div className="event-details-container">
             <div className="event-options-container">
-                <br></br>
                 <div className="menu-link ">
                     <NavLink activeClassName="menu-link-selected" to={"/dashboard/event/"+props.event.id+"/general"}>General</NavLink>
                 </div>
@@ -32,12 +31,16 @@ const EventsEdit = ({...props}) => (
                     <NavLink activeClassName="menu-link-selected" to={"/dashboard/event/"+props.event.id+"/details"}>Detalle</NavLink>
                 </div>
                 <div className="menu-link ">
+                    <NavLink activeClassName="menu-link-selected" to={"/dashboard/event/"+props.event.id+"/registration/local"}>Registro</NavLink>
+                </div>
+                <div className="menu-link ">
                     <NavLink activeClassName="menu-link-selected" to={"/dashboard/event/"+props.event.id+"/optional"}>Opcional</NavLink>
                 </div>
             </div>
             <div className="event-data-container">
                 <Route path={"/dashboard/event/"+props.event.id+"/general"} render={() => <EditEvent {...props} />} />
                 <Route path={"/dashboard/event/"+props.event.id+"/details"} render={() => <EditEvent {...props} />} />
+                <Route path={"/dashboard/event/"+props.event.id+"/registration"} render={() => <EditEvent {...props} />} />
             </div>
         </div>        
     </React.Fragment>

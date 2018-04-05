@@ -20,7 +20,6 @@ export const request = axios.create({
     }
 })
 
-
 export const history = createBrowserHistory()
 
 export const loggedIn = () => {
@@ -133,3 +132,16 @@ export const formatDate = (eventDate) => {
     let d = new Date(eventDate)
     return d.getDate() + " de " + month[d.getMonth()]
 }
+
+export var labels = {
+    email: 'correo electrónico',
+    'phone-number': 'teléfono',
+    phoneNumber: 'teléfono',
+    office: 'oficina',
+    campus: 'campus',
+    enabled: 'estado'
+}
+
+export const capitalizeFirstLetter = (string) => (
+    string.charAt(0).toUpperCase() + string.slice(1)
+)

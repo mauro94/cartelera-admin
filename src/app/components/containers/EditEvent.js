@@ -3,14 +3,45 @@ import { connect } from 'react-redux'
 import { thunks } from 'Logic/actions/thunks'
 import { EventsFormsIndex } from 'Presentational/events/forms/Index'
 import { EventsFormsDetails } from 'Presentational/events/forms/Details'
+import { EventsFormsRegistration } from 'Presentational/events/forms/Registration'
+import { EventsFormsActions } from 'Presentational/events/forms/Actions'
 import { history } from 'Config/helper'
 import { Status } from 'Config/constants'
 import { Formik, Form, Field } from 'formik';
 import Yup from 'yup';
 import { campusList, categoryList } from 'Config/Test'
 import { FormMessageEditProfile } from 'Presentational/elements/Form'
+import { withRouter, NavLink } from "react-router-dom"
 
 class EditEvent extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            registration_type: '1',
+            registration_select: {
+                options:  {
+                    '1': <NavLink to={`/dashboard/event/${props.event.id}/details/local-registration`}>
+                Registro del Sistema</NavLink>,
+                '0' : <NavLink to={`/dashboard/event/${props.event.id}/details/external-registration`}>Registro Externo</NavLink>},
+                selected: ('1')
+            }
+        }
+        this.handleSelectOption = this.handleSelectOption.bind(this)
+    }
+
+    handleSelectOption(val){
+        this.setState({
+            registration_type: val,
+            registration_select: {
+                options:  {
+                    '1': <NavLink to={`/dashboard/event/${this.props.event.id}/details/local-registration`}>
+                Registro del Sistema</NavLink>,
+                '0' : <NavLink to={`/dashboard/event/${this.props.event.id}/details/external-registration`}>Registro Externo</NavLink>},
+                selected: val
+            }
+        })
+    }
+
     render() {
         if (this.props.loading)
             return <p>Loading...</p>
@@ -61,7 +92,8 @@ class EditEvent extends React.Component {
                                     touched={ touched } 
                                     isSubmitting={ isSubmitting } 
                                     campusList={ campusList }
-                                    categoryList={ categoryList } />
+                                    categoryList={ categoryList }
+                                    handleFormChange={ this.handleFormChange } />
                     if (history.location.pathname.includes("details"))
                         component = <EventsFormsDetails 
                                     handleSubmit={ handleSubmit } 
@@ -69,13 +101,27 @@ class EditEvent extends React.Component {
                                     errors={ errors }
                                     touched={ touched } 
                                     isSubmitting={ isSubmitting } />
+                    if (history.location.pathname.includes("registration"))
+                    component = <EventsFormsRegistration 
+                                handleSubmit={ handleSubmit } 
+                                error={ this.props.error } 
+                                errors={ errors }
+                                touched={ touched } 
+                                isSubmitting={ isSubmitting } 
+                                handleSelectOption={ this.handleSelectOption }
+                                registration_select={ this.state.registration_select }
+                                handleFormChange={ this.handleFormChange }
+                                eventid={ this.props.event.id }/>
                     return (
                         <React.Fragment>
                             {component}
-                            <div className="event-actions-container">
-                    
-                            </div>
-                        </React.Fragment>
+                            <EventsFormsActions
+                                    handleSubmit={ handleSubmit } 
+                                    error={ this.props.error } 
+                                    errors={ errors }
+                                    touched={ touched } 
+                                    isSubmitting={ isSubmitting } />
+                            </React.Fragment>
                     )}
                 }
             </Formik>
@@ -101,9 +147,8 @@ const mapDispatchToProps = (dispatch, props) => {
                 }
             }
             dispatch(thunks.user.update(profileDetails))
-        },
-        logout: () => { dispatch(thunks.user.logout()) }
+        }
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(EditEvent)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(EditEvent))
