@@ -85,15 +85,17 @@
     .show {
         border-left: solid 1px $themeColor-lightLight;
         display: grid;
-        grid-template-rows: 150px auto auto;
+        grid-template-rows: 1fr 1fr auto;
         height: auto;
         grid-gap: 10px;
         .title {
             grid-row: 1;
             display: grid;
-            padding: 20px;
+            padding-left: 50px;
+            padding-top: 30px;
             grid-template-columns: 120px auto auto;
             align-items: center;
+            align-self: baseline;
             .name {
                 grid-column: 2;
                 font-size: 32px;

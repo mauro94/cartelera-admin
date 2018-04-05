@@ -34,9 +34,25 @@ export const Entry = (props) => (
     </React.Fragment>
 )
 
+export const EntrySelect = (props) => (
+    <React.Fragment>
+        <Field
+            name="campus"
+            list={props.list}
+            className={((props.touched.campus && props.errors.campus) ?
+                'emptyField' : 'readyField')}
+            component={props.component} />
+        {
+            props.touched.campus &&
+            props.errors.campus &&
+            <p className="message-error">{props.errors.campus}</p>
+        }
+    </React.Fragment>
+)
+
 const filledValues = (values) => {
     for (var key in values) {
-        if (values[key] == '')
+        if (!values[key] && (typeof values[key] != 'boolean'))
             return false
     }
     return true
@@ -44,8 +60,11 @@ const filledValues = (values) => {
 
 export const SubmitButton = (props) => {
     let emptyValues = !filledValues(props.values)
-    let disabled = (props.allRequired && emptyValues) ||
-        !isEmpty(props.errors) ||
+    let untouched = isEmpty(props.touched)
+    let hasErrors = !isEmpty(props.errors)
+    let disabled = untouched ||
+        (props.allRequired && emptyValues) ||
+        hasErrors ||
         props.isSubmitting
     return (
         <button className="button-submit" disabled={disabled}>
@@ -54,19 +73,24 @@ export const SubmitButton = (props) => {
 }
 
 export const FormComponent = (props) => {
-    let entries = props.data.map((d, index) => <Entry
-        attr={d.name}
-        errors={props.errors}
-        touched={props.touched}
-        component={d.component}
-        key={`Entry-${index}`} />
-    )
+    let entries = props.data.map((d, index) => {
+        let newProps = {
+            ...props,
+            attr: d.name,
+            component: d.component,
+            key: `Entry-${index}`
+        }
+        if (d.list) {
+            return <EntrySelect
+                {...newProps}
+                list={d.list} />
+        }
+        return <Entry {...newProps} />
+    })
     return (
         <Form>
             {!isEmpty(props.error) && <p className="message-error">{props.error}</p>}
-
             {entries}
-
             <div className="form-field buttons">
                 <SubmitButton
                     {...props}

@@ -40,6 +40,7 @@ const Basic = ({ user, handleSubmit, logout }) => {
             initialValues={initialValues}
             onSubmit={(values, action) => {
                 values.id = user.id
+                values.isNewbie = false
                 handleSubmit(values)
                 action.setSubmitting(false)
             }}>
@@ -54,7 +55,7 @@ const BasicForm = (props) => {
         { name: 'lastName', component: TextComponent },
         { name: 'office', component: TextComponent },
         { name: 'phoneNumber', component: TextComponent },
-        { name: 'campus', component: SelectCampus }
+        { name: 'campus', component: SelectComponent, list: campusList }
     ]
     if (props.isNewbie) {
         data = [
@@ -72,9 +73,5 @@ const BasicForm = (props) => {
             logout={props.logout} />
     )
 }
-
-const SelectCampus = (props) => (
-    <SelectComponent {...props} list={campusList} />
-)
 
 export default Basic

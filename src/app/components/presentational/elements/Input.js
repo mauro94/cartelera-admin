@@ -35,24 +35,18 @@ export const TextComponent = ({
     </div>
   );
 
-export const SelectComponent = ({
-  list,
-  instruction,
-  field, // { name, value, onChange, onBlur }
-  form: { touched, errors }, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
-  ...props
-}) => (
-    <div className="form-field">
-      <div>
-        <label>{instruction}</label>
-      </div>
-      <select
-        {...field}
-        {...props}>
-        {list.map(Option)}
-      </select>
+export const SelectComponent = (props) => (
+  <div className="form-field">
+    <div>
+      <label>{props.instruction}</label>
     </div>
-  );
+    <select
+      {...props.field}
+      {...props}>
+      {props.list.map(Option)}
+    </select>
+  </div>
+);
 
 const Option = element => (
   <option key={element.key} value={element.key}> {element.text} </option>

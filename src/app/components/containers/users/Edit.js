@@ -41,9 +41,9 @@ class Edit extends React.Component {
     }
 
     handleSubmit(user) {
-        for (var key in this.state.user) {
+        for (var key in this.props.user) {
             if (user.hasOwnProperty(key)) {
-                if (this.state.user[key] == user[key] && key != "id") {
+                if (this.props.user[key] == user[key] && key != "id") {
                     delete user[key]
                 }
             }
