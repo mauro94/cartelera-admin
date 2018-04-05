@@ -1,0 +1,51 @@
+@import 'common/header';
+@import 'common/list';
+@import 'common/tags';
+
+.categories-page {
+    display: grid;
+    grid-template-rows: 100px auto 100px;
+    height: auto;
+    .content {
+        display: grid;
+        grid-auto-rows: auto auto;
+        grid-gap: 50px;
+        .add {
+            display: grid;
+            justify-content: right;
+            min-height: 80px;
+            align-items: center;
+            .callout-input {
+                grid-column: 1;
+                display: grid;
+                align-items: center;
+                grid-auto-flow: column;
+                .input-with-icon {
+                    border-radius: 7px;
+                    padding: 0 10px;
+                    background-color: $themeColor-lightLight;
+                    svg {
+                        color: $themeColor-light;
+                        margin-right: 10px;
+                    }
+                    input {
+                        border: none;
+                        background-color: $themeColor-lightLight;
+                        width: 250px;
+                        font-size: 18px;
+                        min-height: 30px;
+                        font-family: 'Barlow', sans-serig;
+                        font-weight: 300;
+                    }
+                }
+                .pointer {
+                    border: solid 10px transparent;
+                    border-left-color: $themeColor-lightLight;
+                }
+            }
+            button.new {
+                grid-column: 2;
+            }
+        }
+    }
+}
