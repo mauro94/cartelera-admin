@@ -1,4 +1,4 @@
-import { Session, history, UserActions, Status } from 'Global/index'
+import { history, Format, Session, Status, UserActions } from 'Global/'
 import { createAction } from 'Logic/actions'
 import { api, request, authorizedRequest } from './helper'
 
@@ -42,7 +42,7 @@ export const update = (profileDetails) => {
         dispatch: dispatch,
         actionType: UserActions.Update,
         request: () => authorizedRequest.put(`/users/${profileDetails.id}`,
-            profileDetails.snakeCase('user')),
+            Format.snakeCase('user', profileDetails)),
         onSuccess: (response) => Session.isNewbie(false)
     })
 }

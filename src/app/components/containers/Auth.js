@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 
-import { Status, Session } from 'Global/'
+import { Format, Session, Status } from 'Global/'
 import { thunks } from 'Logic/actions/thunks'
 
 export const withAuth = (Component) => {
@@ -14,7 +14,7 @@ export const withAuth = (Component) => {
             }
         }
         componentWillMount() {
-            if (this.props.user.empty() || this.props.user.email.empty()) {
+            if (Format.empty(this.props.user) || Format.empty(this.props.user.email)) {
                 if (!Session.exists())
                     history.replace('/login')
                 else {
@@ -33,7 +33,7 @@ export const withAuth = (Component) => {
             }
         }
         componentWillReceiveProps(nextProps) {
-            if (this.props.loading && nextProps.ready && !nextProps.user.empty()) {
+            if (this.props.loading && nextProps.ready && !Format.empty(nextProps.user)) {
                 this.setState({
                     component: <Component {...nextProps} />
                 })

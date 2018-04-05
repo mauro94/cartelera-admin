@@ -1,6 +1,6 @@
 import React from 'react'
 import { Form, Field } from 'formik';
-import { Labels } from 'Global/constants'
+import { Labels, Format } from 'Global/'
 
 export const WelcomeMessage = ({ mail }) => (
     <p>
@@ -35,9 +35,9 @@ export const Entry = (props) => (
 )
 
 export const SubmitButton = (props) => {
-    let emptyValues = !props.values.filled()
-    let untouched = props.touched.empty()
-    let hasErrors = !props.errors.empty()
+    let emptyValues = !Format.filled(props.values)
+    let untouched = Format.empty(props.touched)
+    let hasErrors = !Format.empty(props.errors)
     let disabled = untouched ||
         (props.allRequired && emptyValues) ||
         hasErrors ||
@@ -61,7 +61,7 @@ export const FormComponent = (props) => {
 
     return (
         <Form>
-            {!props.error.empty() && <p className="message-error">{props.error}</p>}
+            {!Format.empty(props.error) && <p className="message-error">{props.error}</p>}
             {entries}
             <div className="form-field buttons">
                 <SubmitButton {...props}>

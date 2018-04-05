@@ -1,3 +1,4 @@
+import { Format } from 'Global/'
 const SessionKeys = Object.freeze({
     Token: 'SESSION_TOKEN',
     Id: 'SESSION_USER_ID',
@@ -25,7 +26,7 @@ export const isNewbie = (isNewbie = null) => {
 }
 
 export const exists = () => {
-    return !(localStorage.getItem(SessionKeys.Token)).empty()
+    return !Format.empty(localStorage.getItem(SessionKeys.Token))
 }
 
 export const rm = () => {
