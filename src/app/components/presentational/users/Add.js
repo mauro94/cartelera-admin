@@ -4,7 +4,7 @@ import { UserTypes, TemporaryPassword } from 'Config/constants'
 import { capitalizeFirstLetter } from 'Config/helper'
 
 export const AddUser = (props) => (
-    <Callout add={props.add} type={props.type} />
+    <Callout add={this.props.add} placeholder="example@example.com" type={props.type} icon={ faListAlt } />
 )
 
 export const AddSucceeded = (props) => (
