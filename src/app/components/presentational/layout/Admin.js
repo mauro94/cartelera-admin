@@ -1,7 +1,7 @@
 import React from 'react'
 import Layout from './MainLayout'
 import { UsersLink, CategoriesLink, EventsLink, ProfileLinks } from './Links'
-import { EventsRoutes, UsersRoute, ProfileRoute } from './Routes'
+import { UsersRoute, CategoriesRoute, EventsRoutes, ProfileRoute } from './Routes'
 
 export const AdminLayout = props => (
     <Layout
