@@ -14,6 +14,12 @@ export const EventActions = Object.freeze({
     Update: 'UPDATE'
 })
 
+export const CategoryActions = Object.freeze({
+    All: 'ALL_CATEGORIES',
+    Update: 'UPDATE_CATEGORY',
+    Create: 'CREATE_CATEGORY'
+})
+
 export const Status = Object.freeze({
     WaitingOnServer: 'WAITING_ON_SERVER',
     WaitingOnUser: 'WAITING_ON_USER',
