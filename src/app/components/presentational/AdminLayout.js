@@ -5,6 +5,7 @@ import ProfileIndex from 'Presentational/profile/Index'
 import EventsIndex from 'Presentational/events/Index'
 import EventDetail from 'Containers/EventDetail'
 import SponsorsIndex from 'Presentational/sponsors/Index'
+import CategoriesIndex from 'Presentational/categories/Index'
 
 import 'Style/gridMain.scss';
 import 'Style/columnMenuLayout.scss';
@@ -55,6 +56,7 @@ const AdminLayout = ({ ...props }) => (
             <Route path="/dashboard/events/past" component={EventsIndex} />
             <Route exact path="/dashboard/event/:id" render={({ match }) => <EventDetail id={match.params.id} />} />
             <Route exact path="/dashboard/sponsors" component={SponsorsIndex} />
+            <Route exact path="/dashboard/categories" component={CategoriesIndex} />
             <Route path="/dashboard/profile" render={() => <ProfileIndex {...props} />} />
         </div>
     </div>
