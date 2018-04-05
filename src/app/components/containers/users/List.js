@@ -1,9 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { thunks } from 'Logic/actions/thunks'
-import { Status } from 'Config/constants'
+import { Status, UserActions } from 'Config/constants'
 import { UsersList, UserShow } from 'Presentational/users'
-import { isEmpty } from 'Config/helper'
+import { Error } from 'Presentational/elements'
+import { isEmpty, waitingOnAction, actionFailed, actionSucceded } from 'Config/helper'
 
 var Spinner = require('react-spinkit');
 
@@ -11,11 +12,15 @@ class Users extends React.Component {
     constructor() {
         super();
         this.state = {
-            loading: true,
+            error: false,
+            waiting: true,
             selectedIndex: 0,
+            component: <Spinner name="pulse" />,
             users: []
         }
         this.showUser = this.showUser.bind(this)
+        this.handleSuccess = this.handleSuccess.bind(this)
+        this.handleError = this.handleError.bind(this)
     }
     componentWillMount() {
         if ((!this.props.loading) &&
@@ -23,29 +28,46 @@ class Users extends React.Component {
             this.props.loadUsers()
         }
         else if (this.props.ready) {
-            this.setState({
-                loading: false,
-                selectedIndex: 0,
-                users: this.props.user.all[this.props.type]
-            })
+            this.handleSuccess(this.props.user.all[this.props.type])
         }
     }
 
     componentWillReceiveProps(nextProps) {
-        if ((this.props.loading) && nextProps.ready) {
-            if (!isEmpty(nextProps.user.all))
-                this.setState({
-                    loading: false,
-                    selectedIndex: 0,
-                    users: nextProps.user.all[this.props.type]
-                })
+        if (this.props.type != nextProps.type) {
+            this.handleSuccess(nextProps.user.all[nextProps.type])
         }
-        else if (this.props.type != nextProps.type) {
+        if (waitingOnAction(this.props, nextProps, UserActions.All)) {
             this.setState({
-                selectedIndex: 0,
-                users: nextProps.user.all[nextProps.type]
+                waiting: true,
+                error: false,
+                component: <Spinner name="pulse" />
             })
         }
+        else if (actionSucceded(this.state.waiting, nextProps, UserActions.All)) {
+            this.handleSuccess(nextProps.user.all[nextProps.type])
+        }
+        else if (actionFailed(this.state.waiting, nextProps, UserActions.All)) {
+            this.handleError()
+        }
+    }
+
+    handleSuccess(list) {
+        this.setState({
+            error: false,
+            waiting: false,
+            selectedIndex: 0,
+            users: list
+        })
+    }
+
+    handleError() {
+        this.setState({
+            error: true,
+            waiting: false,
+            selectedIndex: 0,
+            component: <Error message='No se encontraron usuarios' />,
+            users: []
+        })
     }
 
     showUser(index) {
@@ -55,20 +77,18 @@ class Users extends React.Component {
     }
 
     render() {
+        if (this.state.waiting || this.state.error) {
+            return this.state.component
+        }
         return (
-            <React.Fragment>
-                {this.state.loading && <Spinner name="pulse" />}
-                {!this.state.loading &&
-                    <React.Fragment>
-                        <UsersList
-                            users={this.state.users}
-                            show={this.showUser}
-                            selectedIndex={this.state.selectedIndex} />
-                        <UserShow
-                            user={this.state.users[this.state.selectedIndex]} />
-                    </React.Fragment>
-                }
-            </React.Fragment>
+            (<React.Fragment>
+                <UsersList
+                    users={this.state.users}
+                    show={this.showUser}
+                    selectedIndex={this.state.selectedIndex} />
+                <UserShow
+                    user={this.state.users[this.state.selectedIndex]} />
+            </React.Fragment>)
         )
     }
 }
@@ -77,7 +97,10 @@ const mapStateToProps = state => {
     return {
         user: state.user,
         loading: state.user.status == Status.WaitingOnServer,
-        ready: state.user.status == Status.Ready
+        failed: state.user.status == Status.Failed,
+        ready: state.user.status == Status.Ready,
+        error: state.user.error,
+        action: state.user.lastAction
     }
 }
 
@@ -85,9 +108,6 @@ const mapDispatchToProps = dispatch => {
     return {
         loadUsers: () => {
             dispatch(thunks.user.all())
-        },
-        getAvatar: (email) => {
-            dispatch(thunks.user.avatar(email))
         }
     }
 }

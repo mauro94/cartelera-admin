@@ -4,8 +4,7 @@ export const UserActions = Object.freeze({
     Get: 'GET_USER',
     Logout: 'LOGOUT',
     All: 'ALL_USERS',
-    Create: 'CREATE_USER',
-    Avatar: 'AVATAR'
+    Create: 'CREATE_USER'
 })
 
 export const EventActions = Object.freeze({
@@ -44,3 +43,5 @@ export const Labels = Object.freeze({
     firstName: 'nombre',
     lastName: 'apellido'
 })
+
+export const TemporaryPassword = '123456'

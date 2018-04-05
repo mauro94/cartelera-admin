@@ -8,7 +8,8 @@ var defaultState = {
     current: {},
     status: Status.Ready,
     error: {},
-    all: {}
+    all: {},
+    lastAction: ''
 }
 
 const compareUsers = (a, b) => {
@@ -42,6 +43,7 @@ function user(state = defaultState, action) {
                 current: action.object,
                 status: action.status,
                 error: action.error,
+                lastAction: action.type
             }
         case UserActions.All:
             let userDictionary = undefined
@@ -62,7 +64,8 @@ function user(state = defaultState, action) {
                 ...state,
                 all: userDictionary || action.object,
                 status: action.status,
-                error: action.error
+                error: action.error,
+                lastAction: action.type
             }
         case UserActions.Create:
             if (action.status == Status.Ready) {
@@ -75,8 +78,15 @@ function user(state = defaultState, action) {
                     ...state,
                     all: all,
                     status: action.status,
-                    error: action.error
+                    error: action.error,
+                    lastAction: action.type
                 }
+            }
+            return {
+                ...state,
+                status: action.status,
+                error: action.error,
+                lastAction: action.type
             }
         default:
             return state

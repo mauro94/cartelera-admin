@@ -86,6 +86,17 @@ export const capitalizeFirstLetter = (string) => (
     string.charAt(0).toUpperCase() + string.slice(1)
 )
 
+export const waitingOnAction = (prevProps, nextProps, action) => {
+    return (!(prevProps.loading && prevProps.action == action) &&
+        (nextProps.loading && nextProps.action == action))
+}
+export const actionSucceded = (wasWaiting, nextProps, action) => {
+    return (wasWaiting && nextProps.ready && nextProps.action == action)
+}
+export const actionFailed = (wasWaiting, nextProps, action) => {
+    return (wasWaiting && nextProps.failed && nextProps.action == action)
+}
+
 export const getInitials = (user) => {
     return user.firstName ?
         `${user.firstName[0]} ${user.lastName[0]}`

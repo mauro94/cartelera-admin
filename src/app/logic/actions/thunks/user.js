@@ -15,8 +15,6 @@ import {
 
 import { createAction } from 'Logic/actions'
 
-var md5 = require('md5');
-
 export const login = (loginAttempt) => {
     return (dispatch) => {
         dispatch(createAction(UserActions.Login, null,

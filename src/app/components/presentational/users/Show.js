@@ -49,10 +49,10 @@ const Details = (props) => (
             {<FontAwesomeIcon icon={faPhone} /> && props.user.phoneNumber}
         </DetailEntry>
         <DetailEntry label='office'>
-            {props.user.office || ''}
+            {props.user.office}
         </DetailEntry>
         <DetailEntry label='campus'>
-            {props.user.campus || ''}
+            {props.user.campus}
         </DetailEntry>
     </div>
 )
