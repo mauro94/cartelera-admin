@@ -1,0 +1,22 @@
+.pill-bar {
+    display: flex;
+    flex-flow: row;
+    min-height: 80px;
+    align-items: center;
+    .pill {
+        font-size: 18px;
+        margin-right: 20px;
+        padding: 10px;
+        text-decoration: none;
+        color: $themeColor-light;
+        font-weight: 500;
+        border-radius: 8px;
+    }
+    .pill:hover {
+        color: $themeColor-black;
+    }
+    .selected-pill {
+        background-color: $themeColor-lightLight;
+        color: $themeColor-black;
+    }
+}

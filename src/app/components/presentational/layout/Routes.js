@@ -2,7 +2,7 @@ import React from 'react'
 import { Route } from "react-router-dom"
 import { history } from 'Config/helper'
 
-import SponsorsIndex from 'Presentational/sponsors/Index'
+import UsersIndex from 'Presentational/users/'
 import ProfileIndex from 'Presentational/profile/Index'
 import EventsIndex from 'Presentational/events/Index'
 import EventDetail from 'Containers/EventDetail'
@@ -34,8 +34,8 @@ export const EventsRoutes = props => (
 )
 
 export const UsersRoute = props => (
-    <Route exact path="/dashboard/sponsors" component={SponsorsIndex} />
+    <Route path='/dashboard/usuarios' component={UsersIndex} />
 )
 export const ProfileRoute = props => (
-    <Route path="/dashboard/profile" render={() => <ProfileIndex {...props} />} />
+    <Route path="/dashboard/perfil" render={() => <ProfileIndex {...props} />} />
 )

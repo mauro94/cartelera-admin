@@ -7,6 +7,32 @@ import decode from 'jwt-decode'
 import { thunks } from 'Logic/actions/thunks'
 import { UserActions, Status } from 'Config/constants'
 import { update } from 'Logic/actions/thunks/user';
+import Yup from 'yup'
+
+export const haveSameKeys = (a, b) => {
+    var aKeys = Object.keys(a).sort();
+    var bKeys = Object.keys(b).sort();
+    return JSON.stringify(aKeys) === JSON.stringify(bKeys);
+}
+
+export var formValidations = {
+    password: Yup.string()
+        .min(6, "Mínimo 6 caracteres")
+        .required("Contraseña requerida"),
+    passwordConfirm: Yup.string()
+        .required("Confirmación de contraseña requerida")
+        .oneOf([Yup.ref('password'), null], "Contraseñas deben ser iguales"),
+    firstName: Yup.string()
+        .required("Nombre requerido"),
+    lastName: Yup.string()
+        .required("Apellido requerido"),
+    office: Yup.string()
+        .required("Oficina requerida"),
+    phoneNumber: Yup.string()
+        .matches(/^\+?\d+$/, "Teléfono inválido")
+        .min(8, "Mínimo 8 caracteres")
+        .required("Teléfono requerido")
+}
 
 export function isEmpty(object) {
     return !object || (Object.keys(object).length === 0) || object == null || object.length == 0
@@ -55,6 +81,22 @@ export const rmSession = () => {
 }
 
 export const isActive = to => (match, location) => location.pathname.includes(to)
+
+export const capitalizeFirstLetter = (string) => (
+    string.charAt(0).toUpperCase() + string.slice(1)
+)
+
+export const getInitials = (user) => {
+    return user.firstName ?
+        `${user.firstName[0]} ${user.lastName[0]}`
+        : user.email[0]
+}
+
+export const getUserTitle = (user) => {
+    return user.firstName ?
+        `${user.firstName} ${user.lastName}`
+        : user.email
+}
 
 export const withAuth = (Component) => {
     class AuthenticatedComponent extends React.Component {

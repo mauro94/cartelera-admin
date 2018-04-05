@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import { Route, IndexRoute } from "react-router-dom"
 import Login from 'Containers/Login'
-import FirstLogin from 'Containers/FirstLogin'
+import FirstLogin from './First'
 import logo from 'Images/logo.svg'
 
 const LoginIndex = () => (

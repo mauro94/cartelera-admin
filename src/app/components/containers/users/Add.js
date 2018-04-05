@@ -3,10 +3,10 @@ import Callout from 'Presentational/elements/Callout'
 import { connect } from 'react-redux'
 import { thunks } from 'Logic/actions/thunks'
 
-class AddSponsor extends React.Component {
+class AddUser extends React.Component {
     render() {
         return (
-            <Callout name="pulse" add={this.props.add} />
+            <Callout name="pulse" add={this.props.add} type={this.props.type} />
         )
     }
 }
@@ -23,4 +23,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddSponsor)
+export default connect(mapStateToProps, mapDispatchToProps)(AddUser)

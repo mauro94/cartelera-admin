@@ -8,8 +8,8 @@ export const UsersLink = () => (
     <NavLink
         className="navbar-button"
         activeClassName="selected-button-view"
-        id="sponsors-button"
-        to={"/dashboard/sponsors"}>
+        id="users-button"
+        to={"/dashboard/usuarios"}>
         Usuarios
     </NavLink>
 )
@@ -47,12 +47,12 @@ export const ProfileLinks = props => (
             className="navbar-button"
             activeClassName="selected-button-view"
             id="user-button"
-            to={"/dashboard/profile/edit"}
-            isActive={isActive('profile')}>
+            to={"/dashboard/perfil/editar"}
+            isActive={isActive('perfil')}>
             {props.name}
         </NavLink>
         <div className="dropdown-content">
-            <Link to={"/dashboard/profile/edit"}>Perfil</Link>
+            <Link to={"/dashboard/perfil/editar"}>Perfil</Link>
             <Link
                 to={"/login"}
                 onClick={() => { props.logout() }}>

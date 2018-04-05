@@ -4,7 +4,8 @@ export const UserActions = Object.freeze({
     Get: 'GET_USER',
     Logout: 'LOGOUT',
     All: 'ALL_USERS',
-    Create: 'CREATE_USER'
+    Create: 'CREATE_USER',
+    Avatar: 'AVATAR'
 })
 
 export const EventActions = Object.freeze({
@@ -19,4 +20,27 @@ export const Status = Object.freeze({
     WaitingOnUser: 'WAITING_ON_USER',
     Ready: 'READY',
     Failed: 'FAILED'
+})
+
+export const UserTypes = Object.freeze({
+    Sponsor: 'sponsor',
+    Admin: 'admin'
+})
+
+export const UserForms = Object.freeze({
+    Password: 'password',
+    Basic: 'basic'
+})
+
+export const Labels = Object.freeze({
+    email: 'correo electrónico',
+    'phone-number': 'teléfono',
+    phoneNumber: 'teléfono',
+    office: 'oficina',
+    campus: 'campus',
+    enabled: 'estado',
+    passwordConfirm: 'confirmar contraseña',
+    password: 'contraseña',
+    firstName: 'nombre',
+    lastName: 'apellido'
 })

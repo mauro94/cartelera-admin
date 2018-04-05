@@ -25,7 +25,7 @@ export const campusList = [
     { key: 'TOL', text: 'Campus Toluca' },
     { key: 'ZAC', text: 'Campus Zacatecas' }]
 
-export const sponsors = [
+export const users = [
     {
         "id": 2,
         "email": "mail@mail.com",
