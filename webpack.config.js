@@ -28,7 +28,7 @@ module.exports = {
         alias: {
             Config: 'src/app/config/',
             Containers: 'src/app/components/containers/',
-            Global: 'src/app/global/',
+            Helpers: 'src/app/helpers/',
             Images: 'src/app/images/',
             Logic: 'src/app/logic/',
             Presentational: 'src/app/components/presentational/',
@@ -44,7 +44,7 @@ module.exports = {
             title: 'Cartelera - Admin',
             chunksSortMode: 'dependency',
             template: path.resolve('src/app/config/index.ejs')
-        }),
+        })
     ],
 
     module: {

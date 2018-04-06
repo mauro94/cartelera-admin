@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { thunks } from 'Logic/actions/thunks'
-import { history, Session, Status, FormValidations } from 'Global/index'
+import { history, Session, Status, FormValidations } from 'Helpers/index'
 import { BasicLogin as LoginForm } from 'Presentational/login/Form'
 
 class Login extends React.Component {

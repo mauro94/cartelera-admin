@@ -1,5 +1,5 @@
 import React from 'react';
-import { history } from 'Global/helper'
+import { history } from 'Helpers/index'
 import { Link } from 'react-router-dom'
 
 let lastRow, rowHeight;

@@ -1,4 +1,4 @@
-import { EventActions } from 'Global/constants'
+import { EventActions } from 'Helpers/constants'
 import { api, request, authotizedRequest } from 'Logic/actions'
 
 export const all = () => {

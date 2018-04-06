@@ -3,8 +3,7 @@ import { UserAvatar, Tag } from 'Presentational/elements';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import { faEnvelope } from '@fortawesome/fontawesome-free-regular'
 import { faPhone, faPencilAlt } from '@fortawesome/fontawesome-free-solid'
-import { getUserTitle } from 'Global/helper'
-import { Labels } from 'Global/constants'
+import { Format, getUserTitle, Labels } from 'Helpers/index'
 
 const UserShow = (props) => (
     <div className='show'>
@@ -59,7 +58,7 @@ const Details = (props) => (
 
 const DetailEntry = (props) => (
     <div className={'entry ' + props.label}>
-        <div className='label'>{Labels[props.label].initialToUpper}</div>
+        <div className='label'>{Format.initialToUpper(Labels[props.label])}</div>
         <div className='value'>
             {props.children}
         </div>

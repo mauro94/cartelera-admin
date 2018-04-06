@@ -1,6 +1,6 @@
 import React from 'react'
 import { Router, Switch, Route } from 'react-router-dom'
-import { history } from 'Global/helper'
+import { history } from 'Helpers/index'
 import { Main, withAuth } from 'Containers/'
 import { LoginLayout } from 'Presentational/login'
 

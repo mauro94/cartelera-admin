@@ -1,6 +1,6 @@
 import React from 'react'
-import { AddUser, UserList } from 'Containers/users'
-import { UserTypes } from 'Global/constants'
+import { Add as AddUser, List as UserList } from 'Containers/users'
+import { UserTypes } from 'Helpers/constants'
 import { Route } from 'react-router-dom'
 import { Pill } from 'Presentational/elements'
 
@@ -10,7 +10,7 @@ const UsersLayout = (props) => (
             <h1>Usuarios</h1>
             <div className='tool-bar'>
                 <Pills path={props.match.url} />
-                <AddUser type={(getType(props.location)).initialToUpper()} />
+                <AddUser type={getType(props.location)} />
             </div>
         </div>
         <ContentRoute {...props} />

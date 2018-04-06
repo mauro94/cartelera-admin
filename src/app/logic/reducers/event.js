@@ -1,7 +1,7 @@
 import {
     EventActions,
     Status
-} from 'Global/constants'
+} from 'Helpers/constants'
 
 var defaultState = {
     all: [],

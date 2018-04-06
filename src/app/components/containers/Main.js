@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { thunks } from 'Logic/actions/thunks'
-import { Status } from 'Global/constants'
+import { Status } from 'Helpers/constants'
 import { AdminLayout, SponsorLayout } from 'Presentational/layout'
 import 'Style/main.scss'
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Route } from "react-router-dom"
-import { history } from 'Global/helper'
+import { history } from 'Helpers/index'
 
 import UsersIndex from 'Presentational/users/'
 import ProfileIndex from 'Presentational/profile'

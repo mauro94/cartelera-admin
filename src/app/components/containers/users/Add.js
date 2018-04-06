@@ -1,6 +1,6 @@
 import React from 'react'
 import { AddUser, AddSucceeded, AddFailed } from 'Presentational/users/Add'
-import { Status, UserActions } from 'Global/constants'
+import { Status, UserActions } from 'Helpers/constants'
 import { waitingOnAction, actionSucceded, actionFailed } from 'Containers/helper'
 import { connect } from 'react-redux'
 import { thunks } from 'Logic/actions/thunks'

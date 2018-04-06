@@ -1,6 +1,6 @@
 import React from 'react'
 import { EditUser, withAuth } from 'Containers'
-import { history, Session, UserForms } from 'Global/helper'
+import { history, Session, UserForms } from 'Helpers'
 import { WelcomeMessage } from 'Presentational/elements/Form'
 
 class FirstLogin extends React.Component {

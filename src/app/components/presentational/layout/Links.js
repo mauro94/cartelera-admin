@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { Link, NavLink } from "react-router-dom"
-import { isActive } from 'Global/helper'
+import { isActive } from 'Helpers/index'
 import logo from 'Images/logo.svg'
 
 export const UsersLink = () => (

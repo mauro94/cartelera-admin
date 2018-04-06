@@ -8,7 +8,7 @@ import {
     FormComponent as Form
 } from 'Presentational/elements'
 import { campusList } from 'Config/Test'
-import { FormValidations } from 'Global/constants'
+import { FormValidations } from 'Helpers/constants'
 
 const Basic = ({ user, handleSubmit, logout }) => {
     let validations = {

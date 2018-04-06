@@ -1,7 +1,7 @@
 
 import React from 'react'
 import { Formik } from 'formik'
-import { FormValidations } from 'Global/constants'
+import { FormValidations } from 'Helpers/constants'
 import {
     EmailComponent,
     PasswordComponent,

@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { thunks } from 'Logic/actions/thunks'
-import { Status, UserForms } from 'Global/constants'
+import { Status, UserForms } from 'Helpers/constants'
 import { Basic, Password } from 'Presentational/profile/forms'
 
 class Edit extends React.Component {

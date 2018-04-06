@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 
-import { Format, Session, Status } from 'Global/'
+import { Format, Session, Status } from 'Helpers/index'
 import { thunks } from 'Logic/actions/thunks'
 
 export const withAuth = (Component) => {

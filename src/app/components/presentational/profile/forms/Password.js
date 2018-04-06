@@ -2,7 +2,7 @@ import React from 'react'
 import { Formik } from 'formik'
 import Yup from 'yup'
 import { PasswordComponent, FormComponent as Form } from 'Presentational/elements';
-import { FormValidations } from 'Global/constants'
+import { FormValidations } from 'Helpers/constants'
 
 const Password = ({ user, handleSubmit }) => (
     <Formik

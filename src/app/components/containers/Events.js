@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { thunks } from 'Logic/actions/thunks'
-import { Format, Status } from 'Global/'
+import { Format, Status } from 'Helpers/index'
 import EventsList from 'Presentational/events/List'
 var Spinner = require('react-spinkit')
 

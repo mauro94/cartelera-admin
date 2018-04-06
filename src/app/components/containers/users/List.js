@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { thunks } from 'Logic/actions/thunks'
-import { Status, UserActions } from 'Global/constants'
+import { Status, UserActions, Format } from 'Helpers/'
 import { UsersList, UserShow } from 'Presentational/users'
 import { Error } from 'Presentational/elements'
 import { waitingOnAction, actionSucceded, actionFailed } from 'Containers/helper'
@@ -24,7 +24,7 @@ class Users extends React.Component {
     }
     componentWillMount() {
         if ((!this.props.loading) &&
-            (!this.props.user || empty(this.props.user.all))) {
+            (!this.props.user || Format.empty(this.props.user.all))) {
             this.props.loadUsers()
         }
         else if (this.props.ready) {

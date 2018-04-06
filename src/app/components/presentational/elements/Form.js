@@ -1,6 +1,6 @@
 import React from 'react'
 import { Form, Field } from 'formik';
-import { Labels, Format } from 'Global/'
+import { Labels, Format } from 'Helpers/index'
 
 export const WelcomeMessage = ({ mail }) => (
     <p>
@@ -24,7 +24,7 @@ export const Entry = (props) => (
             className={((props.touched[props.attr] && props.errors[props.attr]) ?
                 'emptyField' : 'readyField')}
             component={props.component}
-            placeholder={Labels[props.attr].initialToUpper()}
+            placeholder={Format.initialToUpper(Labels[props.attr])}
         />
         {
             props.touched[props.attr] &&

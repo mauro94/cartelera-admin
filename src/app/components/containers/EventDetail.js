@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import React from 'react'
 import EventsEdit from 'Presentational/events/Edit'
 import { thunks } from 'Logic/actions/thunks'
-import { Format, Status } from 'Global/'
+import { Format, Status } from 'Helpers/index'
 import Error from 'Presentational/elements/Error'
 
 var Spinner = require('react-spinkit');

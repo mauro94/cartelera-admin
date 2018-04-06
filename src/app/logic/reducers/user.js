@@ -2,7 +2,7 @@ import {
     UserActions,
     Status,
     UserTypes
-} from 'Global/constants'
+} from 'Helpers/constants'
 
 var defaultState = {
     current: {},

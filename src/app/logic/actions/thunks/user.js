@@ -1,12 +1,12 @@
-import { history, Format, Session, Status, UserActions } from 'Global/'
+import { history, Format, Session, Status, UserActions } from 'Helpers/index'
 import { createAction } from 'Logic/actions'
-import { api, request, authorizedRequest } from './helper'
+import { api, normalRequest, authorizedRequest } from 'Logic/actions/thunks/helper'
 
 export const login = (loginAttempt) => {
     return dispatch => api({
         dispatch: dispatch,
         actionType: UserActions.Login,
-        request: () => request.post('/auth_user', loginAttempt),
+        request: () => normalRequest.post('/auth_user', loginAttempt),
         onSuccess: (response) => {
             Session.set(
                 response.data.authToken,
@@ -19,11 +19,13 @@ export const login = (loginAttempt) => {
 }
 
 export const get = (id) => {
-    return dispatch => api({
-        dispatch: dispatch,
-        actionType: UserActions.Get,
-        request: () => authorizedRequest.get(`/users/${id}`)
-    })
+    return (dispatch) => {
+        api({
+            dispatch: dispatch,
+            actionType: UserActions.Get,
+            request: () => authorizedRequest.get(`/users/${id}`)
+        })
+    }
 }
 
 export const logout = () => {

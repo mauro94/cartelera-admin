@@ -8,8 +8,8 @@
       "Config/*": [
         "./src/app/config/*"
       ],
-      "Global/*": [
-        "./src/app/global/*"
+      "Helpers/*": [
+        "./src/app/helpers/*"
       ],
       "Logic/*": [
         "./src/app/logic/*"

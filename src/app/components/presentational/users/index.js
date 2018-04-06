@@ -1,7 +1,3 @@
-import Layout from './Layout'
-import List from './List'
-import Show from './Show'
-
-export const UsersList = List
-export const UserShow = Show
-export default Layout
+export { default as Layout } from './Layout'
+export { default as UsersList } from './List'
+import { default as UserShow } from './Show'
