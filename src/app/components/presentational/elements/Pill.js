@@ -5,11 +5,7 @@ const Pill = (props) => (
     <NavLink
         className="pill"
         activeClassName="selected-pill"
-        to={{
-            pathname: props.path,
-            hash: props.hash
-        }}
-        isActive={() => location.hash == props.hash}>
+        to={props.path}>
         {props.children}
     </NavLink>
 )

@@ -31,7 +31,7 @@ class Add extends React.Component {
         confirmAlert({
             customUI: ({ onClose }) =>
                 <AddFailed
-                    type={this.props.type}
+                    type={this.props.query}
                     user={this.state.user}
                     error='Ya existe un usuario registrado con este correo'
                     handleOk={onClose} />
@@ -44,7 +44,7 @@ class Add extends React.Component {
         confirmAlert({
             customUI: ({ onClose }) =>
                 <AddSucceeded
-                    type={this.props.type}
+                    type={this.props.query}
                     user={this.state.user}
                     handleOk={onClose} />
         })
@@ -64,7 +64,7 @@ class Add extends React.Component {
     }
     render() {
         return (
-            <AddUser add={this.handleAdd} type={this.props.type} />
+            <AddUser add={this.handleAdd} type={this.props.query} />
         )
     }
 }
@@ -75,7 +75,7 @@ const mapStateToProps = state => {
         failed: state.user.status == Status.Failed,
         ready: state.user.status == Status.Ready,
         error: state.user.error,
-        action: state.user.lastAction
+        action: state.user.action
     }
 }
 

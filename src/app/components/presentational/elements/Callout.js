@@ -17,9 +17,11 @@ export default class Callout extends React.Component {
     handleClick() {
         if (!this.state.showCallout) {
             // attach/remove event handler
-            document.addEventListener('click', this.handleOutsideClick, false);
+            document.addEventListener('click',
+                this.handleOutsideClick, false);
         } else {
-            document.removeEventListener('click', this.handleOutsideClick, false);
+            document.removeEventListener('click',
+                this.handleOutsideClick, false);
         }
 
         this.setState(prevState => ({
@@ -41,7 +43,8 @@ export default class Callout extends React.Component {
             <div ref={node => { this.node = node; }}>
                 <div className='add'>
                     {this.state.showCallout &&
-                        <CalloutInput inputRef={(el) => { this.inputRef = el }} />
+                        <CalloutInput
+                            inputRef={(el) => { this.inputRef = el }} />
                     }
                     {!this.state.showCallout &&
                         <button
@@ -56,7 +59,8 @@ export default class Callout extends React.Component {
                     {this.state.showCallout &&
                         <button
                             className='new'
-                            onClick={() => this.props.add(this.inputRef.value)}>
+                            onClick={() =>
+                                this.props.add(this.inputRef.value)}>
                             <FontAwesomeIcon icon={faCheck} />
                         </button>}
                 </div>

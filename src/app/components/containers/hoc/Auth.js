@@ -1,26 +1,30 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
+import Spinner from 'react-spinkit'
 
-import { Format, Session, Status } from 'Helpers/index'
+import { actionSucceded } from 'Containers/helper'
+import { Entity, Session, Status, history, UserActions, CurrentUserActions } from 'Helpers/index'
 import { thunks } from 'Logic/actions/thunks'
 
 export const withAuth = (Component) => {
     class AuthenticatedComponent extends React.Component {
-        constructor() {
-            super()
+        constructor(props) {
+            super(props)
+            this.missingUser = Entity.isEmpty(props.user) || Entity.isEmpty(props.user.email)
             this.state = {
-                component: <p>Loading...</p>
+                component: this.missingUser ?
+                    <Spinner name="pulse" /> : <Component {...this.props} />
             }
         }
         componentWillMount() {
-            if (Format.empty(this.props.user) || Format.empty(this.props.user.email)) {
+            if (this.missingUser) {
                 if (!Session.exists())
                     history.replace('/login')
                 else {
                     //TODO: ask server if token is valid
                     //if not, rmToken and redirect to login
-                    this.props.getUser(Session.userId())
+                    this.props.getUser(Session.getUserId())
                     if (Session.isNewbie() && this.props.location.pathname != "/login/newbie") {
                         history.replace('/login/newbie')
                     }
@@ -30,13 +34,15 @@ export const withAuth = (Component) => {
                 this.setState({
                     component: <Component {...this.props} />
                 })
+                this.missingUser = false
             }
         }
         componentWillReceiveProps(nextProps) {
-            if (this.props.loading && nextProps.ready && !Format.empty(nextProps.user)) {
+            if (actionSucceded(this.missingUser, nextProps, CurrentUserActions.Get)) {
                 this.setState({
                     component: <Component {...nextProps} />
                 })
+                this.missingUser = false
             }
         }
         render() {
@@ -45,15 +51,17 @@ export const withAuth = (Component) => {
     }
     const mapStateToProps = (state) => {
         return {
-            user: state.user.current,
-            loading: state.user.status == Status.WaitingOnServer,
-            ready: state.user.status == Status.Ready
+            user: state.currentUser.show,
+            loading: state.currentUser.status == Status.WaitingOnServer,
+            ready: state.currentUser.status == Status.Ready,
+            action: state.currentUser.action,
+            status: state.currentUser.status
         }
     }
 
     const mapDispatchToProps = (dispatch) => {
         return {
-            getUser: (id) => dispatch(thunks.user.get(id))
+            getUser: (id) => dispatch(thunks.user.get(id, true))
         }
     }
     return withRouter(connect(

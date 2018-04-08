@@ -3,12 +3,12 @@ import { UserTypes, TemporaryPassword, Format } from 'Helpers/'
 import { Callout, FeedbackModal } from 'Presentational/elements'
 
 export const AddUser = (props) => (
-    <Callout add={props.add} type={Format.initialToUpper(props.type)} />
+    <Callout add={props.add} type={props.type} />
 )
 
 export const AddSucceeded = (props) => (
     <FeedbackModal
-        title={Format.initialToUpper(UserTypes[props.type]) + ' agregado'}
+        title={Format.capitalize(UserTypes[props.type]) + ' agregado'}
         subtitle={props.user.email}
         handleOk={props.handleOk}>
         Contraseña temporal: <h1>{TemporaryPassword}</h1>

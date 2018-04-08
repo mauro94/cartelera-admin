@@ -1,54 +1,65 @@
 import React from 'react'
-import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
+import { connect } from 'react-redux'
+import Spinner from 'react-spinkit'
+
+import { Status, CurrentUserActions, Entity } from 'Helpers/index'
 import { thunks } from 'Logic/actions/thunks'
-import { Status } from 'Helpers/constants'
 import { AdminLayout, SponsorLayout } from 'Presentational/layout'
 import 'Style/main.scss'
-
-var Spinner = require('react-spinkit');
 
 class Main extends React.Component {
     constructor() {
         super()
         this.state = {
-            component: <Spinner name="pulse" />
+            component: <Spinner name='pulse' />,
         }
+        this.handleUserReceived = this.handleUserReceived.bind(this)
     }
 
     componentWillMount() {
-        if (!this.props.loading) {
-            switch (this.props.user.userType) {
-                case "admin":
-                    this.setState({
-                        component: <AdminLayout {...this.props} />
-                    })
-                    break;
-                case "sponsor":
-                    this.setState({
-                        component: <SponsorLayout {...this.props} />
-                    })
-                    break;
-                default:
-                    // Solicitante
-                    break;
-            }
+        if (!Entity.isEmpty(this.props.user)) {
+            this.handleUserReceived(this.props.user)
+        }
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (Entity.isEmpty(this.props.user) && !Entity.isEmpty(nextProps.user)) {
+            this.handleUserReceived(this.props.user)
+        }
+    }
+
+    handleError() {
+        this.setState({
+            component: <Error message='No se ha encontrado al usuario que inició la sesión' />,
+        })
+    }
+
+    handleUserReceived(user) {
+        switch (user.userType) {
+            case 'admin':
+                this.setState({
+                    component: <AdminLayout {...this.props} />
+                })
+                break;
+            case 'sponsor':
+                this.setState({
+                    component: <SponsorLayout {...this.props} />
+                })
+                break;
+            default:
+                break;
         }
     }
 
     render() {
-        return (
-            <React.Fragment>
-                {this.state.component}
-            </React.Fragment>
-        )
+        return this.state.component
     }
 }
 
 const mapStateToProps = state => {
     return {
-        user: state.user.current,
-        loading: state.user.status == Status.WaitingOnServer
+        currentUser: state.currentUser.show
     }
 }
 

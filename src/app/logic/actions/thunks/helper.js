@@ -2,33 +2,30 @@ import axios from 'axios'
 import { Session, Status } from 'Helpers/index'
 import { createAction } from 'Logic/actions'
 
-export const normalRequest = (
+export const request = (
     axios.create({
         //baseURL: 'https://5a8e3738b5a3130012909abb.mockapi.io/api',
-        baseURL: 'https://cartelera-api.herokuapp.com/',
-        headers: {
-            'Accept': 'application/vnd.cartelera-api.v1',
-        }
+        baseURL: 'https://cartelera-api.herokuapp.com/'
     })
 )
 
-export const authorizedRequest = (
-    axios.create({
-        //baseURL: 'https://5a8e3738b5a3130012909abb.mockapi.io/api',
-        baseURL: 'https://cartelera-api.herokuapp.com/',
-        headers: {
-            'Accept': 'application/vnd.cartelera-api.v1',
-            'Authorization': `Bearer ${Session.token()}`
-        }
-    })
-)
+const acceptHeader = { 'Accept': 'application/vnd.cartelera-api.v1' }
 
-export const api = ({ dispatch, actionType, request, onSuccess, onError }) => {
+export const headers = {
+    withoutAuth: () => acceptHeader
+    ,
+    withAuth: () => ({
+        ...acceptHeader,
+        'Authorization': `Bearer ${Session.getToken()}`
+    })
+}
+
+export const serverCall = ({ dispatch, actionType, call, onSuccess, onError }) => {
     dispatch(createAction(actionType, null, null, Status.WaitingOnServer))
-    request()
+    call()
         .then(response => {
             if (onSuccess) {
-                onSuccess()
+                onSuccess(response)
             }
             dispatch(createAction(
                 actionType,

@@ -9,7 +9,7 @@ import {
 } from 'Presentational/elements'
 import Yup from 'yup'
 
-export const BasicLogin = () => (
+export const BasicLogin = (props) => (
     <Formik
         validationSchema={
             Yup.object().shape({
@@ -19,10 +19,10 @@ export const BasicLogin = () => (
         }
         initialValues={{ email: '', password: '' }}
         onSubmit={(values, action) => {
-            this.props.handleSubmit(values)
+            props.handleSubmit(values)
             action.setSubmitting(false)
         }}>
-        {(...props) => (<BasicForm {...props} />)}
+        {props => (<BasicForm {...props} />)}
     </Formik>
 )
 

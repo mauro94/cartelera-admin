@@ -1,26 +1,33 @@
 import { EventActions } from 'Helpers/constants'
-import { api, request, authotizedRequest } from 'Logic/actions'
+import { serverCall, request, headers } from './helper'
 
 export const all = () => {
-    return dispatch => api({
+    return dispatch => serverCall({
         dispatch: dispatch,
         actionType: EventActions.All,
-        request: () => authorizedRequest.get('/event_list'),
+        call: () => request.get(
+            '/event_list',
+            { headers: headers.withAuth() }),
     })
 }
 
 export const get = (id) => {
-    return dispatch => api({
+    return dispatch => serverCall({
         dispatch: dispatch,
-        actionType: EventActions.All,
-        request: () => request.get(`/events/${id}`),
+        actionType: EventActions.Get,
+        call: () => request.get(
+            `/events/${id}`,
+            { headers: headers.withoutAuth() }),
     })
 }
 
 export const update = (event) => {
-    return dispatch => api({
+    return dispatch => serverCall({
         dispatch: dispatch,
-        actionType: EventActions.All,
-        request: () => authorizedRequest.put(`/events/${event.id}/`, { event })
+        actionType: EventActions.Update,
+        call: () => request.put(
+            `/events/${event.id}/`,
+            { event },
+            { headers: headers.withAuth() })
     })
 }

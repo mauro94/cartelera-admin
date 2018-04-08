@@ -1,66 +1,80 @@
-import { history, Format, Session, Status, UserActions } from 'Helpers/index'
+import { history, Format, Session, Status, CurrentUserActions, UserActions, SessionActions } from 'Helpers/index'
 import { createAction } from 'Logic/actions'
-import { api, normalRequest, authorizedRequest } from 'Logic/actions/thunks/helper'
+import { serverCall, request, headers } from 'Logic/actions/thunks/helper'
 
 export const login = (loginAttempt) => {
-    return dispatch => api({
+    return dispatch => serverCall({
         dispatch: dispatch,
-        actionType: UserActions.Login,
-        request: () => normalRequest.post('/auth_user', loginAttempt),
+        actionType: SessionActions.Login,
+        call: () => request.post(
+            '/auth_user',
+            loginAttempt,
+            { headers: headers.withoutAuth() }),
         onSuccess: (response) => {
-            Session.set(
+            Session.create(
                 response.data.authToken,
                 response.data.id,
                 response.data.isNewbie
             )
-            history.push(response.data.isNewbie ? '/login/newbie' : '/dashboard')
+            history.replace(response.data.isNewbie ? '/login/newbie' : '/')
         }
     })
 }
 
-export const get = (id) => {
+export const get = (id, current = false) => {
+    let actionType = current ? CurrentUserActions.Get : UserActions.Get
     return (dispatch) => {
-        api({
+        serverCall({
             dispatch: dispatch,
-            actionType: UserActions.Get,
-            request: () => authorizedRequest.get(`/users/${id}`)
+            actionType: actionType,
+            call: () => request.get(
+                `/users/${id}`,
+                { headers: headers.withAuth() })
         })
     }
 }
 
 export const logout = () => {
-    //TODO: api call for logging out
+    //TODO: server call for logging out
     return (dispatch) => {
-        Session.rm()
+        Session.destroy()
         dispatch(
-            createAction(UserActions.Logout, null, null,
+            createAction(SessionActions.Logout, null, null,
                 Status.Ready))
         history.replace('/login')
     }
 }
 
-export const update = (profileDetails) => {
-    return dispatch => api({
+export const update = (user, current = false) => {
+    let actionType = current ? CurrentUserActions.Update : UserActions.Update
+    return dispatch => serverCall({
         dispatch: dispatch,
         actionType: UserActions.Update,
-        request: () => authorizedRequest.put(`/users/${profileDetails.id}`,
-            Format.snakeCase('user', profileDetails)),
-        onSuccess: (response) => Session.isNewbie(false)
+        call: () => request.put(
+            `/users/${user.id}`,
+            Format.snakeCase('user', user),
+            { headers: headers.withAuth() }),
+        onSuccess: (response) => Session.setNewbie(false)
     })
 }
 
 export const create = (email) => {
-    return dispatch => api({
+    return dispatch => serverCall({
         dispatch: dispatch,
         actionType: UserActions.Create,
-        request: () => authorizedRequest.post('/sponsor/', { user: { email: email } })
+        call: () => request.post(
+            '/sponsor/',
+            { user: { email: email } },
+            { headers: headers.withAuth() })
     })
 }
 
 export const all = () => {
-    return dispatch => api({
+    return dispatch => serverCall({
         dispatch: dispatch,
         actionType: UserActions.All,
-        request: () => authorizedRequest.get('/users')
+        call: () => request.get(
+            '/users',
+            { headers: headers.withAuth() })
     })
 }

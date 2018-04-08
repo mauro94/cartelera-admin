@@ -1,6 +1,6 @@
 import React from 'react'
 import { Form, Field } from 'formik';
-import { Labels, Format } from 'Helpers/index'
+import { Labels, Entity, Format } from 'Helpers/index'
 
 export const WelcomeMessage = ({ mail }) => (
     <p>
@@ -24,7 +24,7 @@ export const Entry = (props) => (
             className={((props.touched[props.attr] && props.errors[props.attr]) ?
                 'emptyField' : 'readyField')}
             component={props.component}
-            placeholder={Format.initialToUpper(Labels[props.attr])}
+            placeholder={Format.capitalize(Labels[props.attr])}
         />
         {
             props.touched[props.attr] &&
@@ -35,9 +35,9 @@ export const Entry = (props) => (
 )
 
 export const SubmitButton = (props) => {
-    let emptyValues = !Format.filled(props.values)
-    let untouched = Format.empty(props.touched)
-    let hasErrors = !Format.empty(props.errors)
+    let emptyValues = Entity.hasEmptyElements(props.values)
+    let untouched = Entity.isEmpty(props.touched)
+    let hasErrors = !Entity.isEmpty(props.errors)
     let disabled = untouched ||
         (props.allRequired && emptyValues) ||
         hasErrors ||
@@ -61,7 +61,7 @@ export const FormComponent = (props) => {
 
     return (
         <Form>
-            {!Format.empty(props.error) && <p className="message-error">{props.error}</p>}
+            {!Entity.isEmpty(props.error) && <p className="message-error">{props.error}</p>}
             {entries}
             <div className="form-field buttons">
                 <SubmitButton {...props}>

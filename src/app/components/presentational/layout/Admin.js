@@ -15,7 +15,7 @@ export const AdminLayout = props => (
         routes={[
             <EventsRoutes />,
             <UsersRoute />,
-            <ProfileRoute {...props} />
+            <ProfileRoute user={props.user} />
         ]}
     />
 )

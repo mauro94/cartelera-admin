@@ -6,10 +6,10 @@ import { BasicLogin as LoginForm } from 'Presentational/login/Form'
 
 class Login extends React.Component {
     componentWillMount() {
-        if (loggedIn() && !Session.isNewbie()) {
+        if (Session.exists() && !Session.isNewbie()) {
             history.replace('/dashboard')
         }
-        else if (loggedIn() && Session.isNewbie()) {
+        else if (Session.exists() && Session.isNewbie()) {
             history.replace('/login/newbie')
         }
     }

@@ -1,60 +1,57 @@
 import React from 'react'
 
-import { Link, NavLink } from "react-router-dom"
-import { isActive } from 'Helpers/index'
+import { Link, NavLink } from 'react-router-dom'
 import logo from 'Images/logo.svg'
 
 export const UsersLink = () => (
     <NavLink
-        className="navbar-button"
-        activeClassName="selected-button-view"
-        id="users-button"
-        to={"/dashboard/usuarios"}>
+        className='navbar-button'
+        activeClassName='selected-button-view'
+        id='users-button'
+        to={'/usuarios'}>
         Usuarios
     </NavLink>
 )
 
 export const CategoriesLink = () => (
     <NavLink
-        className="navbar-button"
-        activeClassName="selected-button-view"
-        id="categories-button"
-        to={"/dashboard/categories"}>
+        className='navbar-button'
+        activeClassName='selected-button-view'
+        id='categories-button'
+        to={'/categorias'}>
         Categorías
     </NavLink>
 )
 
 export const EventsLink = () => (
     <NavLink
-        className="navbar-button"
-        activeClassName="selected-button-view"
-        id="events-button"
-        to={"/dashboard/events/upcoming"}
-        isActive={isActive('event')}>
+        className='navbar-button'
+        activeClassName='selected-button-view'
+        id='events-button'
+        to={'/eventos'}>
         Eventos
     </NavLink>
 )
 
 export const UpcomingLink = () => (
-    <Link to={"/dashboard/events/upcoming"}>
-        <img className="logo" src={logo} />
+    <Link to={'/eventos'}>
+        <img className='logo' src={logo} />
     </Link>
 )
 
 export const ProfileLinks = props => (
-    <div className="dropdown" >
+    <div className='dropdown' >
         <NavLink
-            className="navbar-button"
-            activeClassName="selected-button-view"
-            id="user-button"
-            to={"/dashboard/perfil/editar"}
-            isActive={isActive('perfil')}>
+            className='navbar-button'
+            activeClassName='selected-button-view'
+            id='user-button'
+            to={'/perfil'}>
             {props.name}
         </NavLink>
-        <div className="dropdown-content">
-            <Link to={"/dashboard/perfil/editar"}>Perfil</Link>
+        <div className='dropdown-content'>
+            <Link to={'/perfil/editar'}>Perfil</Link>
             <Link
-                to={"/login"}
+                to={'/login'}
                 onClick={() => { props.logout() }}>
                 Cerrar Sesión
             </Link>

@@ -1,41 +1,18 @@
 import React from 'react'
-import { Route } from "react-router-dom"
-import { history } from 'Helpers/index'
+import { Route, Redirect } from 'react-router-dom'
+import { Layout as UsersLayout } from 'Presentational/users'
+import { Layout as ProfileLayout } from 'Presentational/profile'
+import { Layout as EventsLayout } from 'Presentational/events/index'
 
-import UsersIndex from 'Presentational/users/'
-import ProfileIndex from 'Presentational/profile'
-import EventsIndex from 'Presentational/events/Index'
-import EventDetail from 'Containers/EventDetail'
-
-export const EventsRoutes = props => (
-    <React.Fragment>
-        <Route exact path="/" render={() => {
-            history.replace('/dashboard/events/upcoming')
-            return (
-                <EventsIndex />
-            )
-        }} />
-        <Route exact path="/dashboard" render={() => {
-            history.replace('/dashboard/events/upcoming')
-            return (
-                <EventsIndex />
-            )
-        }} />
-        <Route exact path="/dashboard/events" render={() => {
-            history.replace('/dashboard/events/upcoming')
-            return (
-                <EventsIndex />
-            )
-        }} />
-        <Route path="/dashboard/events/upcoming" component={EventsIndex} />
-        <Route path="/dashboard/events/past" component={EventsIndex} />
-        <Route exact path="/dashboard/event/:id" render={({ match }) => <EventDetail id={match.params.id} />} />
-    </React.Fragment>
+export const DefaultRoute = props => (
+    <Route exact path='/' render={() => <Redirect to='eventos' />} />
 )
-
+export const EventsRoutes = props => (
+    <Route path='/eventos' render={EventsLayout} />
+)
 export const UsersRoute = props => (
-    <Route path='/dashboard/usuarios' component={UsersIndex} />
+    <Route path='/usuarios' render={UsersLayout} />
 )
 export const ProfileRoute = props => (
-    <Route path="/dashboard/perfil" render={() => <ProfileIndex {...props} />} />
+    <Route path='/perfil' render={() => <ProfileLayout user={props.user} />} />
 )

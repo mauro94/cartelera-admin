@@ -26,13 +26,6 @@
     border-top: solid 0.1rem $themeColor-light;
 }
 
-.container-events-all {
-    grid-row: 4;
-    >a {
-        text-decoration: none;
-    }
-}
-
 .filter-selected {
     border-color: $themeColor-lightBlue;
     color: $themeColor-lightBlue;
@@ -142,6 +135,10 @@
     grid-row-gap: 20px;
     grid-template-columns: repeat(4, 1fr);
     grid-auto-rows: 30px;
+    grid-auto-rows: 300px;
+    >a {
+        text-decoration: none;
+    }
 }
 
 .grid-item {

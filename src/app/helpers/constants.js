@@ -1,19 +1,27 @@
 import Yup from 'yup'
 
-export const UserActions = Object.freeze({
-    Login: 'LOGIN',
-    Update: 'UPDATE_USER',
-    Get: 'GET_USER',
-    Logout: 'LOGOUT',
-    All: 'ALL_USERS',
-    Create: 'CREATE_USER'
+export const EventActions = Object.freeze({
+    All: 'ALL_EVENTS',
+    Create: 'CREATE_EVENT',
+    Get: 'GET_EVENT',
+    Update: 'UPDATE_EVENT'
 })
 
-export const EventActions = Object.freeze({
-    UserEvents: 'USEREVENTS',
-    All: 'ALL_EVENTS',
-    Current: 'CURRENT',
-    Update: 'UPDATE'
+export const SessionActions = Object.freeze({
+    Login: 'LOGIN',
+    Logout: 'LOGOUT',
+})
+
+export const CurrentUserActions = Object.freeze({
+    Get: 'GET_CURRENT_USER',
+    Update: 'UPDATE_CURRENT_USER'
+})
+
+export const UserActions = Object.freeze({
+    All: 'ALL_USERS',
+    Create: 'CREATE_USER',
+    Get: 'GET_USER',
+    Update: 'UPDATE_USER'
 })
 
 export const Status = Object.freeze({
@@ -34,7 +42,6 @@ export const UserForms = Object.freeze({
 
 export const Labels = Object.freeze({
     email: 'correo electrónico',
-    'phone-number': 'teléfono',
     phoneNumber: 'teléfono',
     office: 'oficina',
     campus: 'campus',
@@ -42,7 +49,9 @@ export const Labels = Object.freeze({
     passwordConfirm: 'confirmar contraseña',
     password: 'contraseña',
     firstName: 'nombre',
-    lastName: 'apellido'
+    lastName: 'apellido',
+    upcoming: 'próximos',
+    past: 'pasados'
 })
 
 export const Months = Object.freeze([
@@ -51,6 +60,7 @@ export const Months = Object.freeze([
     "noviembre", "diciembre"
 ])
 
+// bad security
 export const TemporaryPassword = Object.freeze('123456')
 
 export const FormValidations = Object.freeze({

@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link, NavLink } from 'react-router-dom'
 
 export const CheckboxPublished = () => (
     <div className="filter-checkbox filter-link-1">

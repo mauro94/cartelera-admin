@@ -3,7 +3,7 @@ import { UserAvatar, Tag } from 'Presentational/elements';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import { faEnvelope } from '@fortawesome/fontawesome-free-regular'
 import { faPhone, faPencilAlt } from '@fortawesome/fontawesome-free-solid'
-import { Format, getUserTitle, Labels } from 'Helpers/index'
+import { Format, Labels } from 'Helpers/index'
 
 const UserShow = (props) => (
     <div className='show'>
@@ -23,6 +23,12 @@ const Actions = (props) => (
         </button>
     </div>
 )
+
+const getUserTitle = (user) => {
+    return user.firstName ?
+        `${user.firstName} ${user.lastName}`
+        : user.email
+}
 
 const Title = (props) => (
     <div className='title'>
@@ -44,7 +50,7 @@ const Details = (props) => (
         <DetailEntry label='enabled'>
             {props.user.enabled ? 'Activo' : 'Inactivo'}
         </DetailEntry>
-        <DetailEntry label='phone-number'>
+        <DetailEntry label='phoneNumber'>
             {<FontAwesomeIcon icon={faPhone} /> && props.user.phoneNumber}
         </DetailEntry>
         <DetailEntry label='office'>
@@ -58,7 +64,7 @@ const Details = (props) => (
 
 const DetailEntry = (props) => (
     <div className={'entry ' + props.label}>
-        <div className='label'>{Format.initialToUpper(Labels[props.label])}</div>
+        <div className='label'>{Format.capitalize(Labels[props.label])}</div>
         <div className='value'>
             {props.children}
         </div>

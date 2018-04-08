@@ -48,7 +48,7 @@ class Edit extends React.Component {
                 }
             }
         }
-        this.props.update(user)
+        this.props.update(user, this.props.match.location.includes('perfil'))
     }
 
     componentDidMount() {
@@ -73,7 +73,7 @@ class Edit extends React.Component {
     }
 
     render() {
-        return (<React.Fragment>{this.state.component}</React.Fragment>)
+        return this.state.component
     }
 }
 

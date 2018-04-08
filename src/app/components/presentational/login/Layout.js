@@ -5,7 +5,7 @@ import LoginForm from 'Containers/Login'
 import NewbieForm from './First'
 import logo from 'Images/logo.svg'
 
-const LoginIndex = () => (
+const Login = () => (
     <div className="grid-container container-login">
         <div className="login-logo">
             <img className="logo" src={logo} />
@@ -16,3 +16,5 @@ const LoginIndex = () => (
         </div>
     </div>
 )
+
+export default Login

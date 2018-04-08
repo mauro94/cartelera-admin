@@ -1,3 +1,3 @@
-export { withAuth } from './Auth'
+export { withAuth } from './hoc/Auth'
 export * from './users'
-export { default as Main } from './Main'
+export { default as MainLayout } from './Main'
