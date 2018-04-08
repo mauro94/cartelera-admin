@@ -1,7 +1,8 @@
 import React from 'react'
-import { EditUser, withAuth } from 'Containers'
+import { EditUser, withAuth } from 'Containers/index'
 import { history, Session, UserForms } from 'Helpers'
 import { WelcomeMessage } from 'Presentational/elements/Form'
+import 'Style/gridColumns2.scss'
 
 class FirstLogin extends React.Component {
     componentWillMount() {
@@ -17,15 +18,10 @@ class FirstLogin extends React.Component {
     }
 
     render() {
-        require('Style/gridColumns2.scss');
-
-        if (this.props.loading)
-            return <p>Loading...</p>
-
         return (
             <div>
                 <WelcomeMessage mail={this.props.user.email} />
-                <EditUser user={this.props.user} form={UserForms.Basic} />
+                <EditUser user={this.props.currentUser} form={UserForms.Basic} />
             </div>
         )
     }

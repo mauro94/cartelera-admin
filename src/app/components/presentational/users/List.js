@@ -1,18 +1,11 @@
 import React from 'react'
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import { faEnvelope } from '@fortawesome/fontawesome-free-regular'
-import { UserAvatar } from 'Presentational/elements'
-import { load } from 'Containers/hoc'
 import { Link, Redirect, Route, Switch } from 'react-router-dom'
-import { Entity } from 'Helpers/index'
+import { getDefaultUserId, getPath, isActive } from './helper'
+import { load } from 'Containers/hoc'
 import ShowUser from 'Presentational/users/Show'
-
-const getDefaultUserId = (users) => {
-    if (!Entity.isEmpty(users)) {
-        return users[0].id
-    }
-    return -2
-}
+import { UserAvatar } from 'Presentational/elements'
 
 const UsersList = (props) => {
     let defaultId = getDefaultUserId(props.users)
@@ -56,14 +49,6 @@ const Entry = (props) => (
         <UserAvatar user={props.user} size={50} />
         <RowTitle user={props.user} />
     </Row>
-)
-
-const isActive = (props) => (
-    props.location.pathname == getPath(props)
-)
-
-const getPath = (props) => (
-    `/usuarios/${props.type}/${props.item.id}`
 )
 
 const Row = (props) => (

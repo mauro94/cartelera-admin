@@ -1,24 +1,13 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
-import Spinner from 'react-spinkit'
-
-import { actionSucceded } from 'Containers/helper'
-import { Entity, Session, Status, history, UserActions, CurrentUserActions } from 'Helpers/index'
+import { Entity, Session, history, CurrentUserActions } from 'Helpers/index'
 import { thunks } from 'Logic/actions/thunks'
 
 export const withAuth = (Component) => {
     class AuthenticatedComponent extends React.Component {
-        constructor(props) {
-            super(props)
-            this.missingUser = Entity.isEmpty(props.user) || Entity.isEmpty(props.user.email)
-            this.state = {
-                component: this.missingUser ?
-                    <Spinner name="pulse" /> : <Component {...this.props} />
-            }
-        }
-        componentWillMount() {
-            if (this.missingUser) {
+        componentDidMount() {
+            if (Entity.isEmpty(this.props.currentUser.show)) {
                 if (!Session.exists())
                     history.replace('/login')
                 else {
@@ -30,32 +19,22 @@ export const withAuth = (Component) => {
                     }
                 }
             }
-            else if (Session.exists() && !this.props.loading) {
-                this.setState({
-                    component: <Component {...this.props} />
-                })
-                this.missingUser = false
-            }
-        }
-        componentWillReceiveProps(nextProps) {
-            if (actionSucceded(this.missingUser, nextProps, CurrentUserActions.Get)) {
-                this.setState({
-                    component: <Component {...nextProps} />
-                })
-                this.missingUser = false
-            }
         }
         render() {
-            return this.state.component
+            return <Component
+                currentUser={this.props.currentUser.show}
+                action={CurrentUserActions.Get}
+                reducer={{
+                    status: this.props.currentUser.status,
+                    action: this.props.currentUser.action,
+                    error: this.props.currentUser.error
+                }}
+            />
         }
     }
     const mapStateToProps = (state) => {
         return {
-            user: state.currentUser.show,
-            loading: state.currentUser.status == Status.WaitingOnServer,
-            ready: state.currentUser.status == Status.Ready,
-            action: state.currentUser.action,
-            status: state.currentUser.status
+            currentUser: state.currentUser
         }
     }
 

@@ -3,9 +3,10 @@ import Dropdown from 'Presentational/elements/Dropdown'
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import { faInfoCircle } from '@fortawesome/fontawesome-free-solid'
 import { confirmAlert } from 'react-confirm-alert';
+import { load } from 'Containers/hoc'
 import 'react-confirm-alert/src/react-confirm-alert.css'
 
-export default class EventsEdit extends React.Component {
+class EditEvent extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -119,3 +120,5 @@ export default class EventsEdit extends React.Component {
         )
     }
 }
+
+export default load('event', EditEvent)

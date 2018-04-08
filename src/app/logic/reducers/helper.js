@@ -40,10 +40,13 @@ export const StateManager = {
         }
     },
     create: (oldState, action) => {
+        let newState = Object.assign({}, oldState)
+        if (action.status == Status.Ready) {
+            newState.all = [action.object, ...oldState.all]
+        }
         return {
-            ...oldState,
+            ...newState,
             action: action.type,
-            all: [action.object, ...oldState.all],
             error: action.error,
             show: action.object,
             status: action.status

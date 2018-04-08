@@ -1,11 +1,11 @@
 import React from 'react'
 import { Route, Redirect, Switch } from 'react-router-dom'
-import { Edit as EditEvent } from 'Containers/events'
 import AllEvents from './All'
+import { Edit as EditEvent } from 'Containers/events'
 
 import 'Style/eventsMenuLayout.scss';
 
-const EventsIndex = () => (
+const EventsLayout = () => (
     <Switch>
         <Route
             exact
@@ -17,4 +17,4 @@ const EventsIndex = () => (
     </Switch>
 )
 
-export default EventsIndex
+export default EventsLayout

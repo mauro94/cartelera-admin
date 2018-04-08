@@ -5,27 +5,24 @@ import { Status, UserForms } from 'Helpers/constants'
 import { Basic, Password } from 'Presentational/profile/forms'
 
 class Edit extends React.Component {
-    constructor(props) {
-        super(props)
-        this.handleSubmit = this.handleSubmit.bind(this)
-        this.setComponent = this.setComponent.bind(this)
-
-        this.state = {
-            form: props.form,
-            component: <div>Loading...</div>,
-            user: {
-                firstName: props.user.firstName || '',
-                lastName: props.user.lastName || '',
-                office: props.user.office || '',
-                phoneNumber: props.user.phoneNumber || '',
-                campus: props.user.campus || 'MTY',
-                id: props.user.id || '1',
-                isNewbie: props.user.isNewbie
-            }
+    componentWillReceiveProps() {
+        if (this.props.form != nextProps.form) {
+            this.setState({
+                form: nextProps.form,
+                user: {
+                    firstName: nextProps.user.firstName || '',
+                    lastName: nextProps.user.lastName || '',
+                    office: nextProps.user.office || '',
+                    phoneNumber: nextProps.user.phoneNumber || '',
+                    campus: nextProps.user.campus || 'MTY',
+                    id: nextProps.user.id || '1',
+                    isNewbie: nextProps.user.isNewbie
+                }
+            })
         }
     }
 
-    setComponent(formType) {
+    getForm(formType) {
         if (formType == UserForms.Basic)
             return (
                 <Basic
@@ -37,7 +34,6 @@ class Edit extends React.Component {
                 <Password
                     user={this.state.user}
                     handleSubmit={this.handleSubmit} />)
-        return <div>Loading...</div>
     }
 
     handleSubmit(user) {
@@ -51,36 +47,13 @@ class Edit extends React.Component {
         this.props.update(user, this.props.match.location.includes('perfil'))
     }
 
-    componentDidMount() {
-        this.setState({
-            component: this.setComponent(this.state.form)
-        })
-    }
-
-    componentWillReceiveProps(nextProps) {
-        if (nextProps.form != this.props.form) {
-            if (nextProps.form == UserForms.Basic) {
-                this.setState({
-                    component: this.setComponent(UserForms.Basic)
-                })
-            }
-            else if (nextProps.form == UserForms.Password) {
-                this.setState({
-                    component: this.setComponent(UserForms.Password)
-                })
-            }
-        }
-    }
-
     render() {
-        return this.state.component
+        return this.getForm(this.props.form)
     }
 }
 
 const mapStateToProps = state => {
     return {
-        error: state.user.error,
-        loading: state.user.status == Status.WaitingOnServer
     }
 }
 

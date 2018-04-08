@@ -1,7 +1,6 @@
 import React from 'react'
-import { Add as AddUser, List as UsersList } from 'Containers/users'
-import { UserTypes } from 'Helpers/constants'
 import { Route, Redirect } from 'react-router-dom'
+import { Add as AddUser, List as UsersList } from 'Containers/users'
 import { Pill } from 'Presentational/elements'
 
 const UsersLayout = (props) => (
@@ -10,7 +9,7 @@ const UsersLayout = (props) => (
             <h1>Usuarios</h1>
             <div className='tool-bar'>
                 <Pills path={props.match.url} />
-                <AddUser query={props.location.search} />
+                <AddUser query={props.match.params.type} />
             </div>
         </div>
         <Route

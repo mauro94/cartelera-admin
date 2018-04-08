@@ -1,8 +1,7 @@
 import React from 'react'
-import { Route, NavLink, Redirect, Switch } from 'react-router-dom'
+import { Route, NavLink } from 'react-router-dom'
 import { List as EventsList } from 'Containers/events'
-
-import 'Style/eventsMenuLayout.scss';
+import 'Style/eventsMenuLayout.scss'
 
 const AllEvents = () => (
     <div className='grid-container container-events'>
@@ -18,7 +17,7 @@ const Routes = () => (
     <div className='container-events-all'>
         <Route
             path='/eventos'
-            render={({ _, location }) => <EventsList query={location.search} />} />
+            render={({ location }) => <EventsList query={location.search} />} />
     </div>
 )
 
@@ -28,7 +27,8 @@ const Links = () => (
             <NavLink
                 activeClassName='filter-selected'
                 to={{ search: '?tipo=proximos' }}
-                isActive={(_, location) => location.search == ('') || location.search.includes('proximos')}>
+                isActive={({ location }) => location.search == ('')
+                    || location.search.includes('proximos')}>
                 Próximos
             </NavLink>
         </div>
@@ -36,7 +36,7 @@ const Links = () => (
             <NavLink
                 activeClassName='filter-selected'
                 to={{ search: '?tipo=pasados' }}
-                isActive={(_, location) => location.search.includes('pasados')}>
+                isActive={({ location }) => location.search.includes('pasados')}>
                 Pasados
             </NavLink>
         </div>

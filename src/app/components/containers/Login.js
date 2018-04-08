@@ -1,8 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { thunks } from 'Logic/actions/thunks'
-import { history, Session, Status, FormValidations } from 'Helpers/index'
+import { history, Session } from 'Helpers/index'
 import { BasicLogin as LoginForm } from 'Presentational/login/Form'
+import 'Style/gridColumns2.scss'
 
 class Login extends React.Component {
     componentWillMount() {
@@ -15,11 +16,6 @@ class Login extends React.Component {
     }
 
     render() {
-        require('Style/gridColumns2.scss');
-
-        if (this.props.loading)
-            return <p>Loading...</p>
-
         return (
             <LoginForm handleSubmit={this.props.handleSubmit} />
         )
@@ -28,8 +24,6 @@ class Login extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        error: state.user.error,
-        loading: state.user.status == Status.WaitingOnServer
     }
 }
 

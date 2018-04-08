@@ -10,12 +10,12 @@ export const AdminLayout = props => (
             <UsersLink />,
             <CategoriesLink />,
             <EventsLink />,
-            <ProfileLinks name={props.user.firstName} logout={props.logout} />
+            <ProfileLinks name={props.currentUser.firstName} logout={props.logout} />
         ]}
         routes={[
             <EventsRoutes />,
             <UsersRoute />,
-            <ProfileRoute user={props.user} />
+            <ProfileRoute user={props.currentUser} />
         ]}
     />
 )

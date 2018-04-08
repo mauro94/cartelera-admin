@@ -12,8 +12,7 @@ export const request = (
 const acceptHeader = { 'Accept': 'application/vnd.cartelera-api.v1' }
 
 export const headers = {
-    withoutAuth: () => acceptHeader
-    ,
+    withoutAuth: () => acceptHeader,
     withAuth: () => ({
         ...acceptHeader,
         'Authorization': `Bearer ${Session.getToken()}`

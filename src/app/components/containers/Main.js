@@ -1,42 +1,15 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
-import Spinner from 'react-spinkit'
 
-import { Status, CurrentUserActions, Entity } from 'Helpers/index'
+import { load } from 'Containers/hoc'
 import { thunks } from 'Logic/actions/thunks'
 import { AdminLayout, SponsorLayout } from 'Presentational/layout'
 import 'Style/main.scss'
 
 class Main extends React.Component {
-    constructor() {
-        super()
-        this.state = {
-            component: <Spinner name='pulse' />,
-        }
-        this.handleUserReceived = this.handleUserReceived.bind(this)
-    }
-
     componentWillMount() {
-        if (!Entity.isEmpty(this.props.user)) {
-            this.handleUserReceived(this.props.user)
-        }
-    }
-
-    componentWillReceiveProps(nextProps) {
-        if (Entity.isEmpty(this.props.user) && !Entity.isEmpty(nextProps.user)) {
-            this.handleUserReceived(this.props.user)
-        }
-    }
-
-    handleError() {
-        this.setState({
-            component: <Error message='No se ha encontrado al usuario que inició la sesión' />,
-        })
-    }
-
-    handleUserReceived(user) {
-        switch (user.userType) {
+        switch (this.props.currentUser.userType) {
             case 'admin':
                 this.setState({
                     component: <AdminLayout {...this.props} />
@@ -59,7 +32,6 @@ class Main extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        currentUser: state.currentUser.show
     }
 }
 
@@ -69,7 +41,7 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default withRouter(connect(
+export default load('currentUser', withRouter(connect(
     mapStateToProps,
     mapDispatchToProps
-)(Main))
+)(Main)))

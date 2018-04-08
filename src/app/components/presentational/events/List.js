@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-
 import { load } from 'Containers/hoc'
 import { history, Format } from 'Helpers/index'
 
