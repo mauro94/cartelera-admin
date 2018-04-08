@@ -25,6 +25,13 @@ export const campusList = [
     { key: 'TOL', text: 'Campus Toluca' },
     { key: 'ZAC', text: 'Campus Zacatecas' }]
 
+export const categoryList = [
+    { key: 'Congreso', text: 'Congreso' },
+    { key: 'Simposio', text: 'Simposio' },
+    { key: 'Taller', text: 'Taller' },
+    { key: 'Panel', text: 'Panel' },
+    { key: 'Fiesta', text: 'Fiesta' }]
+
 export const users = [
     {
         "id": 2,

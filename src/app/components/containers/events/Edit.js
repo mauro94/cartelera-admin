@@ -1,5 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
+import { categoryList, campusList } from 'Config/Test'
 import { thunks } from 'Logic/actions/thunks'
 import { default as EditEvent } from 'Presentational/events/Edit'
 import { Entity, EventActions } from 'Helpers/index';
@@ -14,11 +16,24 @@ class Edit extends React.Component {
             this.props.getEvent(nextProps.id)
         }
     }
+    handleSubmit(values) {
+        for (var key in props.event.show) {
+            if (values.hasOwnProperty(key)) {
+                if (props.event.show[key] == values[key] && key != "id") {
+                    delete values[key]
+                }
+            }
+        }
+        this.props.updateEvent()
+    }
     render() {
         return (
             <EditEvent
                 action={EventActions.Get}
+                campusList={campusList}
+                categoryList={categoryList}
                 event={this.props.event.show}
+                handleSubmit={this.handleSubmit}
                 reducer={{
                     status: this.props.event.status,
                     action: this.props.event.action,
@@ -43,4 +58,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Edit)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Edit))

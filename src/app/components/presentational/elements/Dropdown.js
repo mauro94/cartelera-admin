@@ -45,7 +45,7 @@ export default class Dropdown extends React.Component {
                 </div>
                 {this.state.showOptions && <div className='hidden-select'>
                     {Object.keys(this.state.options).map((key) =>
-                        <div key={key} onClick={() => this.handleSelect(key)}>
+                        <div key={key} onClick={() => this.handleSelect(key, this.props)}>
                             {this.state.options[key]}
                         </div>
                     )}

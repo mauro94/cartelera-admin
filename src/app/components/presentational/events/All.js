@@ -27,7 +27,7 @@ const Links = () => (
             <NavLink
                 activeClassName='filter-selected'
                 to={{ search: '?tipo=proximos' }}
-                isActive={({ location }) => location.search == ('')
+                isActive={(_, location) => location.search == ('')
                     || location.search.includes('proximos')}>
                 Próximos
             </NavLink>
@@ -36,7 +36,7 @@ const Links = () => (
             <NavLink
                 activeClassName='filter-selected'
                 to={{ search: '?tipo=pasados' }}
-                isActive={({ location }) => location.search.includes('pasados')}>
+                isActive={(_, location) => location.search.includes('pasados')}>
                 Pasados
             </NavLink>
         </div>

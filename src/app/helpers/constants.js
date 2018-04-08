@@ -83,3 +83,9 @@ export const FormValidations = Object.freeze({
     email: Yup.string().email("Correo no valido")
         .required("Correo requerido"),
 })
+
+export const EventFormValidations = Object.freeze({
+    name: Yup.string().required("Nombre requerido"),
+    description: Yup.string().required("Descripción requerida"),
+    location: Yup.string().required("Ubicación requerida")
+})

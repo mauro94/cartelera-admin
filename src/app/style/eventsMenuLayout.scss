@@ -16,14 +16,7 @@
     grid-template-columns: 10rem 10rem auto;
     grid-row: 2;
     line-height: 3rem;
-}
-
-.container-events-filter-2 {
-    display: grid;
-    grid-template-columns: 10rem 10rem auto;
-    grid-row: 3;
-    line-height: 3rem;
-    border-top: solid 0.1rem $themeColor-light;
+    border-bottom: solid 0.1rem $themeColor-light;
 }
 
 .filter-selected {
