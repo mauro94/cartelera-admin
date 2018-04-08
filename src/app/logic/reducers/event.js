@@ -37,7 +37,7 @@ function event(state = defaultState, action) {
         case EventActions.Update:
             if (action.status == Status.Ready) {
                 let index = state.all.findIndex(event => event.id == action.object.id)
-                if (index != -1){
+                if (index != -1) {
                     state.all.splice(index, 1)
                 }
             }

@@ -2,7 +2,8 @@
 @import 'setup';
 @import 'common/select';
 @import 'common/button';
-@import 'sponsors';
+@import 'common/modal';
+@import 'users';
 @import url('https://fonts.googleapis.com/css?family=Barlow:100,200,300,400,500,600,700,800,900&subset=latin-ext');
 
 html {
@@ -255,20 +256,7 @@ h3 {
   color: $themeColor-light
 }
 
-.modal-confirmation{
-  height: auto;
-  text-align: center;
-}
-
-.modal-confirmation-buttons{
-  justify-content: center;
-  display: flex;
-  flex-direction: row;
-}
-
-.cancel-event-button,
-.modal-confirm-button,
-.modal-cancel-button{
+.cancel-event-button {
   font-family: $systemfont;
   margin: 15px;
   display: block;
@@ -281,11 +269,6 @@ h3 {
   height: 35px;
   border: 0;
   justify-content: center;
-}
-
-.modal-cancel-button{
-  background: $themeColor-red;
-  margin-right: 5px;
 }
 
 .cancel-event-button{

@@ -27,7 +27,7 @@ export const EventsFormsDetails = ({ handleSubmit, error, errors, touched, isSub
 
         <div>Informacion de Contacto</div>
         <div>Nombre:</div>
-        <Field name="contact_name" placeholder="Nombre de Contacto" className={((touched.contact_name && errors.contact_name) ? 'emptyField' : 'readyField')} component={TextComponent} />
+        <Field name="contact_name" placeholder="Nombre de contacto" className={((touched.contact_name && errors.contact_name) ? 'emptyField' : 'readyField')} component={TextComponent} />
         {touched.contact_name && errors.contact_name && <p className="message-error">{errors.contact_name}</p>}
 
         <div>Correo:</div>

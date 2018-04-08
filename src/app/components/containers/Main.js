@@ -2,10 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { thunks } from 'Logic/actions/thunks'
-import { history, loggedIn, isEmpty } from 'Config/helper'
 import { Status } from 'Config/constants'
-import AdminLayout from 'Presentational/AdminLayout'
-import SponsorLayout from 'Presentational/SponsorLayout'
+import { AdminLayout, SponsorLayout } from 'Presentational/layout'
 import 'Style/main.scss'
 
 var Spinner = require('react-spinkit');
@@ -23,12 +21,12 @@ class Main extends React.Component {
             switch (this.props.user.userType) {
                 case "admin":
                     this.setState({
-                        component: < AdminLayout {...this.props}/>
+                        component: <AdminLayout {...this.props} />
                     })
                     break;
                 case "sponsor":
                     this.setState({
-                        component: < SponsorLayout {...this.props}/>
+                        component: <SponsorLayout {...this.props} />
                     })
                     break;
                 default:

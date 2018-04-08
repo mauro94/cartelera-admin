@@ -32,7 +32,7 @@ export const categoryList = [
     { key: 'Panel', text: 'Panel' },
     { key: 'Fiesta', text: 'Fiesta' }]
 
-export const sponsors = [
+export const users = [
     {
         "id": 2,
         "email": "mail@mail.com",
