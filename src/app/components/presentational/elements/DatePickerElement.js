@@ -7,8 +7,8 @@ export class DatePickerElement extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            startDate: moment(),
-            endDate: moment(),
+            startDate: RoundMoment(),
+            endDate: RoundMoment(),
             placeholder: props.placeholder
         }
         this.handleChange = this.handleChange.bind(this)
@@ -36,44 +36,48 @@ export class DatePickerElement extends React.Component {
     }
 
     render() {
-        if (this.props.type == "selectsStart")
             return (
-                <DatePicker
-                    showTimeSelect
-                    timeFormat="HH:mm"
-                    minDate={moment()}
-                    maxDate={moment().add(1, "year")}
-                    dateFormat="LLL"
-                    timeCaption="Tiempo"
-                    placeholderText={this.state.placeholder}
-                    locale="es-mx"
-                    isClearable={true}
-                    selected={this.state.startDate}
-                    selectsStart
-                    startDate={this.state.startDate}
-                    endDate={this.state.endDate}
-                    onChange={this.handleChangeStart}
-                />
-            )
-        else
-            return (
-                <DatePicker
-                    showTimeSelect
-                    timeFormat="HH:mm"
-                    minDate={moment()}
-                    maxDate={moment().add(1, "year")}
-                    dateFormat="LLL"
-                    timeCaption="Tiempo"
-                    placeholderText={this.state.placeholder}
-                    locale="es-mx"
-                    isClearable={true}
-                    selected={this.state.endDate}
-                    selectsEnd
-                    startDate={this.state.startDate}
-                    endDate={this.state.endDate}
-                    onChange={this.handleChangeEnd}
-                />
+                <React.Fragment>
+                    <div className="form-field">
+                    <DatePicker
+                        showTimeSelect
+                        timeFormat="HH:mm"
+                        minDate={moment()}
+                        maxDate={moment().add(1, "year")}
+                        dateFormat="LLL"
+                        timeCaption="Tiempo"
+                        placeholderText="Fecha y Hora inicio"
+                        locale="es-mx"
+                        selected={this.state.startDate}
+                        selectsStart
+                        startDate={this.state.startDate}
+                        endDate={this.state.endDate}
+                        onChange={this.handleChangeStart}
+                    />
+                    </div>
+                    <div className="form-field">
+                    <DatePicker
+                        showTimeSelect
+                        timeFormat="HH:mm"
+                        minDate={moment()}
+                        maxDate={moment().add(1, "year")}
+                        dateFormat="LLL"
+                        timeCaption="Tiempo"
+                        placeholderText="Fecha y Hora fin"
+                        locale="es-mx"
+                        selected={this.state.endDate}
+                        selectsEnd
+                        startDate={this.state.startDate}
+                        endDate={this.state.endDate}
+                        onChange={this.handleChangeEnd}
+                    />
+                    </div>
+                </React.Fragment>
             )
     }
 }
 
+const RoundMoment = () => {
+    let remainder = 30 - (moment().minute() % 30)
+    return moment(moment()).add(remainder, "minutes")
+}
