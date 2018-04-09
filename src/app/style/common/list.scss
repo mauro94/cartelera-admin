@@ -2,49 +2,41 @@
 
 .list {
     display: grid;
-    grid-auto-rows: 50px;
-    margin: 0 50px;
-    border: solid 1px #eeeeee;
-    border-radius: 7px;
+    grid-auto-rows: 100px;
+    overflow-y: auto;
     .list-item {
-        display: grid;
-        grid-auto-flow: column;
-        grid-template-columns: 200px 200px auto 100px;
-        border-bottom: solid 1px $themeColor-lightLight;
-        align-content: center;
-        background-color: transparent;
         align-items: center;
-        padding-left: 50px;
+        align-content: center;
+        background-color: #ffffff;
+        border-bottom: solid 1px $themeColor-lightLight;
+        display: grid;
+        grid-template-columns: 50px auto;
+        grid-gap: 10px;
+        height: auto;
+        padding: 20px;
+        text-decoration: none;
+        color: $themeColor-black;
+        &.selected {
+            background-color: $themeColor-lightLightBlue;
+        }
         .list-item-data {
-            &.edit {
-                display: none;
-                svg {
-                    color: $themeColor-darkBlue;
-                }
+            .title {
+                font-size: 18px;
+                font-weight: 400;
             }
-            &.tags {
-                display: grid;
-                grid-auto-flow: column;
-                justify-content: right;
-                grid-gap: 50px
+            .email {
+                font-size: 16px;
+                font-weight: 300;
             }
-            .blue {
-                color: $themeColor-darkBlue;
-            }
-            .orange {
-                color: $themeColor-orange;
-            }
-            .purple {
-                color: $themeColor-purple
-            }
+        }
+        &:first-child {
+            border-radius: 7px 0px 0px;
+        }
+        &:last-child {
+            border-radius: 0px 0px 0px 7px;
         }
     }
     .list-item:hover {
         background-color: $themeColor-lightLightBlue;
-        .list-item-data.edit {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
     }
 }

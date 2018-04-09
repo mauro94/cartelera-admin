@@ -1,45 +1,28 @@
-import {
-    UserActions,
-    Status
-} from 'Config/constants'
+import { UserActions, Entity } from 'Helpers/index'
+import { StateManager } from './helper'
 
-var defaultState = {
-    current: {},
-    status: Status.Ready,
-    error: {},
-    all: []
-}
-
-function user(state = defaultState, action) {
+function user(state = StateManager.defaultState, action) {
     switch (action.type) {
-        case UserActions.Login:
-        case UserActions.Logout:
-        case UserActions.Update:
-        case UserActions.Get:
-            return {
-                ...state,
-                current: action.object,
-                status: action.status,
-                error: action.error
-            }
         case UserActions.All:
-            return {
-                ...state,
-                all: action.object,
-                status: action.status,
-                error: action.error
-            }
+            return StateManager.all(state, action)
         case UserActions.Create:
-            let all = state.all
-            if (action.status == Status.Ready) {
-                all = [...state.all, action.object]
-                return {
-                    ...state,
-                    all: all,
-                    status: action.status,
-                    error: action.error
-                }
+            return StateManager.create(state, action)
+        case UserActions.Get:
+            let newState = Object.assign({}, state)
+            let showIndex = newState.all.findIndex(user =>
+                (user.id == action.object))
+            let newShow = newState.all[showIndex]
+            newShow.selected = true
+            if (!Entity.isEmpty(state.show)) {
+                newState.show.selected = false
             }
+            return {
+                ...newState,
+                show: newShow,
+                action: action.type
+            }
+        case UserActions.Update:
+            return StateManager.update(state, action)
         default:
             return state
     }

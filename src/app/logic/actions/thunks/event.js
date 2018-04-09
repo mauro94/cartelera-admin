@@ -1,114 +1,33 @@
-import {
-    EventActions,
-    Status
-} from 'Config/constants'
-import { history, request, getToken } from 'Config/helper'
-import { createAction } from 'Logic/actions'
+import { EventActions } from 'Helpers/constants'
+import { serverCall, request, headers } from './helper'
 
 export const all = () => {
-    return (dispatch) => {
-        dispatch(createAction(EventActions.UserEvents, null,
-            null, Status.WaitingOnServer))
-        request.get('/event_list', {
-            headers: {
-                'Authorization': 'Bearer ' + getToken()
-            }
-        })
-            .then(response => {
-                dispatch(
-                    createAction(EventActions.UserEvents, response.data, null,
-                        Status.Ready))
-            })
-            .catch((error) => {
-                dispatch(
-                    createAction(EventActions.UserEvents, null, error.response.data,
-                        Status.Failed))
-            })
-    }
+    return dispatch => serverCall({
+        dispatch: dispatch,
+        actionType: EventActions.All,
+        call: () => request.get(
+            '/event_list',
+            { headers: headers.withAuth() }),
+    })
 }
-
 
 export const get = (id) => {
-    return (dispatch) => {
-        dispatch(createAction(EventActions.Current, null,
-            null, Status.WaitingOnServer))
-        request.get('/events/' + id)
-            .then(response => {
-                dispatch(
-                    createAction(EventActions.Current, response.data, null,
-                        Status.Ready))
-            })
-            .catch((error) => {
-                dispatch(
-                    createAction(EventActions.Current, null, error.response.data,
-                        Status.Failed))
-            })
-    }
+    return dispatch => serverCall({
+        dispatch: dispatch,
+        actionType: EventActions.Get,
+        call: () => request.get(
+            `/events/${id}`,
+            { headers: headers.withoutAuth() }),
+    })
 }
 
-export const unpublish = (id) => {
-    return (dispatch) => {
-        dispatch(createAction(EventActions.Update, null,
-            null, Status.WaitingOnServer))
-        request.put('/events/' + id , {event: {cancel_mesage: "Cancelled because of rain", id: id}}, {
-            headers: {
-                'Authorization': 'Bearer ' + getToken()
-            }
-        })
-            .then(response => {
-                dispatch(
-                    createAction(EventActions.Update, response.data, null,
-                        Status.Ready))
-            })
-            .catch((error) => {
-                dispatch(
-                    createAction(EventActions.Update, null, error.response.data,
-                        Status.Failed))
-            })
-    }
-}
-
-
-export const publish = (id) => {
-    return (dispatch) => {
-        dispatch(createAction(EventActions.Update, null,
-            null, Status.WaitingOnServer))
-        request.put('/events/' + id , {event: {published: true, id: id}}, {
-            headers: {
-                'Authorization': 'Bearer ' + getToken()
-            }
-        })
-            .then(response => {
-                dispatch(
-                    createAction(EventActions.Update, response.data, null,
-                        Status.Ready))
-            })
-            .catch((error) => {
-                dispatch(
-                    createAction(EventActions.Update, null, error.response.data,
-                        Status.Failed))
-            })
-    }
-}
-
-export const cancel = (id) => {
-    return (dispatch) => {
-        dispatch(createAction(EventActions.Update, null,
-            null, Status.WaitingOnServer))
-        request.put('/events/' + id , {event: {cancelled: true, id: id}}, {
-            headers: {
-                'Authorization': 'Bearer ' + getToken()
-            }
-        })
-            .then(response => {
-                dispatch(
-                    createAction(EventActions.Update, response.data, null,
-                        Status.Ready))
-            })
-            .catch((error) => {
-                dispatch(
-                    createAction(EventActions.Update, null, error.response.data,
-                        Status.Failed))
-            })
-    }
+export const update = (event) => {
+    return dispatch => serverCall({
+        dispatch: dispatch,
+        actionType: EventActions.Update,
+        call: () => request.put(
+            `/events/${event.id}/`,
+            { event },
+            { headers: headers.withAuth() })
+    })
 }
