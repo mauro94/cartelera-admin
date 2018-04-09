@@ -50,7 +50,7 @@ export const unpublish = (id) => {
     return (dispatch) => {
         dispatch(createAction(EventActions.Update, null,
             null, Status.WaitingOnServer))
-        request.put('/events/' + id + '/unpublish/', {}, {
+        request.put('/events/' + id , {event: {cancel_mesage: "Cancelled because of rain", id: id}}, {
             headers: {
                 'Authorization': 'Bearer ' + getToken()
             }
@@ -73,7 +73,7 @@ export const publish = (id) => {
     return (dispatch) => {
         dispatch(createAction(EventActions.Update, null,
             null, Status.WaitingOnServer))
-        request.put('/events/' + id + '/publish/', {}, {
+        request.put('/events/' + id , {event: {published: true, id: id}}, {
             headers: {
                 'Authorization': 'Bearer ' + getToken()
             }
@@ -95,7 +95,7 @@ export const cancel = (id) => {
     return (dispatch) => {
         dispatch(createAction(EventActions.Update, null,
             null, Status.WaitingOnServer))
-        request.put('/events/' + id + '/cancel/', {}, {
+        request.put('/events/' + id , {event: {cancelled: true, id: id}}, {
             headers: {
                 'Authorization': 'Bearer ' + getToken()
             }

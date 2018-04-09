@@ -39,7 +39,7 @@ export default class EventDetails extends React.Component {
 
     openPublishModal(option) {
         let confirmationTitle = this.props.event.published ? 'Quitar de vista pública' : 'Confirmar publicación'
-        let confirmationMsg = this.props.event.published ? 'El evento dejará de ser visible para el público general' : 'El evento será visible para el público general'
+        let confirmationMsg = this.props.event.published ? 'El evento dejará de ser visible para el público general' : 'El evento será visible para el público general.'
         let lastMsg = this.props.event.published ? 'quitar de vista pública' : 'confirmar publicación'
 
         // if key selected is not the one already selected
@@ -72,7 +72,8 @@ export default class EventDetails extends React.Component {
 
     openCancelModal() {
         let confirmationTitle = 'Cancelar evento'
-        let confirmationMsg = 'El público general verá el evento como cancelado y no se podrá revertir la cancelación'
+        let confirmationMsg = 'El público general verá el evento como cancelado y no se podrá revertir la cancelación.'
+        let textLegend = 'Puede escribir un mensaje de cancelación visible para el público general.'
         let lastMsg = 'cancelar evento'
 
         // Push modal for confirmation
@@ -83,6 +84,8 @@ export default class EventDetails extends React.Component {
                     <h2> {confirmationTitle} </h2>
                     <h1> {this.props.event.name} </h1>
                     <p> {confirmationMsg} </p>
+                    <p> {textLegend} </p>
+                    <textarea name="paragraph_text" cols="40" rows="3" placeholder="Mensaje de cancelación (opcional)"></textarea>
                     <p>Desea continuar?</p>
                     <div className='modal-confirmation-buttons'>
                     <button className='modal-confirm-button' onClick={() => {
@@ -113,7 +116,11 @@ export default class EventDetails extends React.Component {
                     <button className='cancel-event-button'
                     onClick={this.openCancelModal}
                     disabled={this.props.event.cancelled}> {this.props.event.cancelled ? 'Evento cancelado' : 'Cancelar evento'} </button>
+                    {this.props.event.cancelled && 
+                        <small>Mensaje de cancelación</small>
+                    }
                 </div>
+
                 
             </React.Fragment>
         )
