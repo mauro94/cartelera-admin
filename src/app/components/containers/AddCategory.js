@@ -7,7 +7,7 @@ import { faListAlt } from '@fortawesome/fontawesome-free-regular'
 class AddCategory extends React.Component {
     render() {
         return (
-            <Callout name="pulse" add={this.props.add} placeholder="Ejemplo: Deportes" type="text" icon={ faListAlt } />
+            <Callout name="pulse" add={this.props.add} placeholder="Ejemplo: Deportes" type="Categoría" icon={ faListAlt } />
         )
     }
 }

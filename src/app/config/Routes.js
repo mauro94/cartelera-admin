@@ -1,15 +1,14 @@
 import React from 'react'
 import { Router, Switch, Route } from 'react-router-dom'
-import { history, withAuth } from 'Config/helper'
-import Main from 'Containers/Main'
-import LoginIndex from 'Presentational/login/Index'
+import { history } from 'Helpers/index'
+import { MainLayout, withAuth } from 'Containers/index'
+import { LoginLayout } from 'Presentational/login'
 
 const Routes = () => (
     <Router history={history}>
         <Switch>
-            <Route exact path="/" component={withAuth(Main)} />
-            <Route path="/dashboard" component={withAuth(Main)} />
-            <Route path="/login" component={LoginIndex} />
+            <Route exact path="/login" component={LoginLayout} />
+            <Route path="/" component={withAuth(MainLayout)} />
         </Switch>
     </Router>
 )

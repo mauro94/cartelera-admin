@@ -1,32 +1,27 @@
 import React from 'react'
-import { EditUser } from 'Containers/users'
-import { history, isCurrentUserNewbie, withAuth } from 'Config/helper'
-import { UserForms } from 'Config/constants'
+import { EditUser, withAuth } from 'Containers/index'
+import { history, Session, UserForms } from 'Helpers'
 import { WelcomeMessage } from 'Presentational/elements/Form'
+import 'Style/gridColumns2.scss'
 
 class FirstLogin extends React.Component {
     componentWillMount() {
-        if (!isCurrentUserNewbie()) {
+        if (!Session.isNewbie()) {
             history.replace('/dashboard')
         }
     }
 
     componentWillReceiveProps(nextProps) {
-        if (!isCurrentUserNewbie()) {
+        if (!Session.isNewbie()) {
             history.replace('/dashboard')
         }
     }
 
     render() {
-        require('Style/gridColumns2.scss');
-
-        if (this.props.loading)
-            return <p>Loading...</p>
-
         return (
             <div>
                 <WelcomeMessage mail={this.props.user.email} />
-                <EditUser user={this.props.user} form={UserForms.Basic} />
+                <EditUser user={this.props.currentUser} form={UserForms.Basic} />
             </div>
         )
     }

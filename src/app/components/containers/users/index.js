@@ -1,7 +1,3 @@
-import Add from './Add'
-import List from './List'
-import Edit from './Edit'
-
-export const AddUser = Add
-export const UserList = List
-export const EditUser = Edit
+export { default as Add } from './Add'
+export { default as List } from './List'
+export { default as Edit } from './Edit'

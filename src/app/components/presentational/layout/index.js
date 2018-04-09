@@ -1,5 +1,2 @@
-import Admin from './Admin'
-import Sponsor from './Sponsor'
-
-export const AdminLayout = Admin
-export const SponsorLayout = Sponsor
+export { default as AdminLayout } from './Admin'
+export { default as SponsorLayout } from './Sponsor'

@@ -1,121 +1,115 @@
 import React from 'react'
-import Dropdown from 'Presentational/elements/Dropdown'
-import FontAwesomeIcon from '@fortawesome/react-fontawesome'
-import { faInfoCircle } from '@fortawesome/fontawesome-free-solid'
-import { confirmAlert } from 'react-confirm-alert';
-import 'react-confirm-alert/src/react-confirm-alert.css'
+import { BrowserRouter as Router, NavLink, Route, Switch } from 'react-router-dom'
+import { Formik } from 'formik'
+import Yup from 'yup'
+import { load } from 'Containers/hoc'
+import { EventFormValidations } from 'Helpers/constants'
+import * as EventForm from './forms/index'
+import 'Style/eventDetail.scss';
 
-export default class EventsEdit extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            publishedStates: {
-                options: { '1': 'Pública', '0': 'No pública' },
-                selected: (props.event.published ? '1' : '0')
-            }
+const EventsEdit = (props) => (
+    <Router>
+        <React.Fragment>
+            <div className='event-title-container'>
+                <h1> {props.event.name}</h1>
+            </div>
+            <div className='event-details-container'>
+                <Menu id={props.event.id} />
+                <Form {...props}>
+                    <Routes id={props.event.id} />
+                </Form>
+            </div>
+        </React.Fragment>
+    </Router>
+)
+
+const Form = (props) => {
+    let initialValues = {
+        name: props.event.name || '',
+        description: props.event.description || '',
+        location: props.event.location || '',
+        campus: props.event.campus || 'MTY',
+        category: props.event.category || 'Congreso',
+        id: props.event.id || '1'
+    }
+    return <Formik
+        validationSchema={
+            Yup.object().shape(EventFormValidations)
         }
-        this.openPublishModal = this.openPublishModal.bind(this)
-        this.closePublishModal = this.closePublishModal.bind(this)
-        this.openCancelModal = this.openCancelModal.bind(this)
-    }
-
-    componentWillReceiveProps(nextProps) {
-        this.setState({
-            publishedStates: {
-                options: { '1': 'Pública', '0': 'No pública' },
-                selected: (nextProps.event.published ? '1' : '0')
-            }
-        })
-    }
-
-    closePublishModal() {
-        this.setState({
-            publishedStates: {
-                options: { '1': 'Pública', '0': 'No pública' },
-                selected: (this.props.event.published ? '1' : '0')
-            }
-        })
-    }
-
-    openPublishModal(option) {
-        let confirmationTitle = this.props.event.published ? 'Quitar de vista pública' : 'Confirmar publicación'
-        let confirmationMsg = this.props.event.published ? 'El evento dejará de ser visible para el público general' : 'El evento será visible para el público general'
-        let lastMsg = this.props.event.published ? 'quitar de vista pública' : 'confirmar publicación'
-
-        // if key selected is not the one already selected
-        if (this.state.publishedStates.selected != option) {
-            // Push modal for confirmation
-            confirmAlert({
-                customUI: ({ onClose }) => {
-                    return (
-                        <div className='modal-confirmation'>
-                            <h2> {confirmationTitle} </h2>
-                            <h1> {this.props.event.name} </h1>
-                            <p> {confirmationMsg} </p>
-                            <p>Desea continuar?</p>
-                            <div className='modal-confirmation-buttons'>
-                                <button className='modal-cancel-button' onClick={() => {
-                                    this.closePublishModal()
-                                    onClose()
-                                }}>No, cancelar</button>
-                                <button className='modal-confirm-button' onClick={() => {
-                                    (this.props.event.published ? this.props.unpublish() : this.props.publish())
-                                    onClose()
-                                }}>Si, {lastMsg}</button>
-                            </div>
-                        </div>
-                    )
-                }
-            })
-        }
-    }
-
-    openCancelModal() {
-        let confirmationTitle = 'Cancelar evento'
-        let confirmationMsg = 'El público general verá el evento como cancelado y no se podrá revertir la cancelación'
-        let lastMsg = 'cancelar evento'
-
-        // Push modal for confirmation
-        confirmAlert({
-            customUI: ({ onClose }) => {
-                return (
-                    <div className='modal-confirmation'>
-                        <h2> {confirmationTitle} </h2>
-                        <h1> {this.props.event.name} </h1>
-                        <p> {confirmationMsg} </p>
-                        <p>Desea continuar?</p>
-                        <div className='modal-confirmation-buttons'>
-                            <button className='modal-confirm-button' onClick={() => {
-                                onClose()
-                            }}>Salir sin cambios</button>
-                            <button className='modal-cancel-button' onClick={() => {
-                                this.props.cancel()
-                                onClose()
-                            }}>Si, {lastMsg}</button>
-                        </div>
-                    </div>
-                )
-            }
-        })
-
-    }
-
-    render() {
-        return (
-            <React.Fragment>
-                <h1> {this.props.event.name}</h1>
-                <hr />
-                <div className='modifyButtons'>
-                    <span className='label'>Visible en la vista </span>
-                    <span> <Dropdown data={this.state.publishedStates} handleSelect={this.openPublishModal} /> </span>
-                </div>
-                <div>
-                    <button className='cancel-event-button'
-                        onClick={this.openCancelModal}
-                        disabled={this.props.event.cancelled}> {this.props.event.cancelled ? 'Evento cancelado' : 'Cancelar evento'} </button>
-                </div>
-
-            </React.Fragment>
-        )
-    }
+        initialValues={initialValues}
+        mapPropsToValues={initialValues}
+        onSubmit={(values, action) => {
+            // values.id = user.id
+            props.handleSubmit(values)
+            action.setSubmitting(false)
+        }}>
+        {(formProps) => {
+            var routesWithProps = React.Children.map(props.children, child =>
+                React.cloneElement(child, { ...formProps, ...props }))
+            return (
+                <React.Fragment>
+                    {routesWithProps}
+                    <EventForm.Actions {...props} {...formProps} />
+                </React.Fragment>
+            )
+        }}
+    </Formik>
 }
+
+const Menu = (props) => (
+    <div className='event-options-container'>
+        <div className='menu-link '>
+            <NavLink
+                exact
+                activeClassName='menu-link-selected'
+                to={'/eventos/' + props.id + '/editar'}>
+                General
+            </NavLink>
+        </div>
+        <div className='menu-link '>
+            <NavLink
+                activeClassName='menu-link-selected'
+                to={'/eventos/' + props.id + '/editar/imagenes'}>
+                Imágenes
+            </NavLink>
+        </div>
+        <div className='menu-link '>
+            <NavLink
+                activeClassName='menu-link-selected'
+                to={'/eventos/' + props.id + '/editar/detalles'}>
+                Detalle
+            </NavLink>
+        </div>
+        <div className='menu-link '>
+            <NavLink
+                activeClassName='menu-link-selected'
+                to={'/eventos/' + props.id + '/editar/registro/local'}>
+                Registro
+            </NavLink>
+        </div>
+        <div className='menu-link '>
+            <NavLink
+                activeClassName='menu-link-selected'
+                to={'/eventos/' + props.id + '/editar/opcional'}>
+                Opcional
+            </NavLink>
+        </div>
+    </div>
+)
+
+const Routes = (props) => (
+    <div className='event-data-container'>
+        <Route
+            exact
+            path={'/eventos/' + props.id + '/editar'}
+            render={() => <EventForm.General {...props} />} />
+        <Route
+            path={'/eventos/' + props.id + '/editar/detalles'}
+            render={() => <EventForm.Details {...props} />} />
+        <Route
+            path={'/eventos/' + props.id + '/editar/registro'}
+            render={() => <EventForm.Registration {...props} eventid={props.id} />} />
+    </div>
+)
+
+export default load('event', EventsEdit)

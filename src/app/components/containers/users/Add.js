@@ -1,7 +1,7 @@
 import React from 'react'
 import { AddUser, AddSucceeded, AddFailed } from 'Presentational/users/Add'
-import { Status, UserActions } from 'Config/constants'
-import { waitingOnAction, actionSucceded, actionFailed } from 'Config/helper'
+import { Status, UserActions } from 'Helpers/constants'
+import { waitingOnAction, actionSucceded, actionFailed } from 'Containers/helper'
 import { connect } from 'react-redux'
 import { thunks } from 'Logic/actions/thunks'
 import { confirmAlert } from 'react-confirm-alert';
@@ -10,72 +10,65 @@ import 'react-confirm-alert/src/react-confirm-alert.css'
 class Add extends React.Component {
     constructor(props) {
         super(props)
-        this.state = {
-            user: { email: '' },
-            waiting: false
-        }
+        this.waiting = false
         this.handleAdd = this.handleAdd.bind(this)
         this.handleError = this.handleError.bind(this)
         this.handleSuccess = this.handleSuccess.bind(this)
     }
     handleAdd(email) {
         this.props.add(email)
-        this.setState({
-            user: { email: email }
-        })
     }
     handleError() {
-        this.setState({
-            waiting: false
-        })
+        this.waiting = false
         confirmAlert({
             customUI: ({ onClose }) =>
                 <AddFailed
-                    type={this.props.type}
-                    user={this.state.user}
+                    type={this.props.query}
+                    user={this.props.user.show}
                     error='Ya existe un usuario registrado con este correo'
                     handleOk={onClose} />
         })
     }
     handleSuccess() {
-        this.setState({
-            waiting: false
-        })
+        this.waiting = false
         confirmAlert({
             customUI: ({ onClose }) =>
                 <AddSucceeded
-                    type={this.props.type}
-                    user={this.state.user}
+                    type={this.props.query}
+                    user={this.props.user.show}
                     handleOk={onClose} />
         })
     }
     componentWillReceiveProps(nextProps) {
-        if (waitingOnAction(this.props, nextProps, UserActions.Create)) {
-            this.setState({
-                waiting: true
-            })
+        let status = {
+            wasWaiting: this.waiting,
+            reducer: {
+                status: nextProps.user.status,
+                action: nextProps.user.action,
+                error: nextProps.user.error
+            },
+            action: UserActions.Create
         }
-        else if (actionSucceded(this.state.waiting, nextProps, UserActions.Create)) {
+        if (waitingOnAction(status)) {
+            this.waiting = true
+        }
+        else if (actionSucceded(status)) {
             this.handleSuccess()
         }
-        else if (actionFailed(this.state.waiting, nextProps, UserActions.Create)) {
+        else if (actionFailed(status)) {
             this.handleError()
         }
     }
     render() {
         return (
-            <AddUser add={this.handleAdd} type={this.props.type} />
+            <AddUser add={this.handleAdd} type={this.props.query} />
         )
     }
 }
 
 const mapStateToProps = state => {
     return {
-        loading: state.user.status == Status.WaitingOnServer,
-        failed: state.user.status == Status.Failed,
-        ready: state.user.status == Status.Ready,
-        error: state.user.error,
-        action: state.user.lastAction
+        user: state.user
     }
 }
 

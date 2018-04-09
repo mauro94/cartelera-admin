@@ -8,20 +8,20 @@ import {
     FormComponent as Form
 } from 'Presentational/elements'
 import { campusList } from 'Config/Test'
-import { isEmpty, formValidations } from 'Config/helper'
+import { FormValidations } from 'Helpers/constants'
 
 const Basic = ({ user, handleSubmit, logout }) => {
     let validations = {
-        firstName: formValidations.firstName,
-        lastName: formValidations.lastName,
-        office: formValidations.office,
-        phoneNumber: formValidations.phoneNumber
+        firstName: FormValidations.firstName,
+        lastName: FormValidations.lastName,
+        office: FormValidations.office,
+        phoneNumber: FormValidations.phoneNumber
     }
     if (user.isNewbie) {
         validations = {
             ...validations,
-            password: formValidations.password,
-            passwordConfirm: formValidations.passwordConfirm
+            password: FormValidations.password,
+            passwordConfirm: FormValidations.passwordConfirm
         }
     }
     let initialValues = user

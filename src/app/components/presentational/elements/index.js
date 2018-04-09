@@ -1,22 +1,16 @@
-import AvatarEl from './UserAvatar'
-import CalloutEl from './Callout'
-import CheckboxEl from './Checkbox'
-import DropdownEl from './Dropdown'
-import ErrorEl from './Error'
+export { default as UserAvatar } from './UserAvatar'
+export { default as Callout } from './Callout'
+export { CheckboxPublished, CheckboxCanceled } from './Checkbox'
+export { default as Dropdown } from './Dropdown'
+export { default as ErrorElement } from './Error'
+export { default as LoadingElement } from './Loading'
+export { default as Password } from './Password'
+export { default as Pill } from './Pill'
+
 import * as Form from './Form'
 import * as Input from './Input'
 import * as Modal from './Modal'
-import PasswordEl from './Password'
-import PillEl from './Pill'
 import * as TagElements from './Tag'
-
-export const Callout = CalloutEl
-export const Checkbox = CheckboxEl
-export const Dropdown = DropdownEl
-export const ErrorElement = ErrorEl
-export const Password = PasswordEl
-export const Pill = PillEl
-export const UserAvatar = AvatarEl
 
 export const EmailComponent = Input.EmailComponent
 export const PasswordComponent = Input.PasswordComponent

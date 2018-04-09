@@ -1,54 +1,37 @@
 import React from 'react'
-import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
+import { connect } from 'react-redux'
+
+import { load } from 'Containers/hoc'
 import { thunks } from 'Logic/actions/thunks'
-import { Status } from 'Config/constants'
 import { AdminLayout, SponsorLayout } from 'Presentational/layout'
 import 'Style/main.scss'
 
-var Spinner = require('react-spinkit');
-
 class Main extends React.Component {
-    constructor() {
-        super()
-        this.state = {
-            component: <Spinner name="pulse" />
-        }
-    }
-
     componentWillMount() {
-        if (!this.props.loading) {
-            switch (this.props.user.userType) {
-                case "admin":
-                    this.setState({
-                        component: <AdminLayout {...this.props} />
-                    })
-                    break;
-                case "sponsor":
-                    this.setState({
-                        component: <SponsorLayout {...this.props} />
-                    })
-                    break;
-                default:
-                    // Solicitante
-                    break;
-            }
+        switch (this.props.currentUser.userType) {
+            case 'admin':
+                this.setState({
+                    component: <AdminLayout {...this.props} />
+                })
+                break;
+            case 'sponsor':
+                this.setState({
+                    component: <SponsorLayout {...this.props} />
+                })
+                break;
+            default:
+                break;
         }
     }
 
     render() {
-        return (
-            <React.Fragment>
-                {this.state.component}
-            </React.Fragment>
-        )
+        return this.state.component
     }
 }
 
 const mapStateToProps = state => {
     return {
-        user: state.user.current,
-        loading: state.user.status == Status.WaitingOnServer
     }
 }
 
@@ -58,7 +41,7 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default withRouter(connect(
+export default load('currentUser', withRouter(connect(
     mapStateToProps,
     mapDispatchToProps
-)(Main))
+)(Main)))

@@ -35,7 +35,7 @@ div {
 }
 
 // Inputs
-.form-field > input, select, .password-form-field > input{
+.form-field > input, select, .password-form-field > input {
   font-size: 16px;
   background: $themeColor-white;
   border: 1px solid $themeColor-light;
@@ -47,8 +47,8 @@ div {
 }
 
 .form-field {
-  width: 80%;
-  margin-top: 10px;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .password-form-field {
@@ -197,6 +197,19 @@ h3 {
   float: right;
   border: 0;
   justify-content: center;
+}
+
+.button { 
+  margin-right: 0.2rem;
+  margin-top: 5px;
+  font-size: 16px;
+  min-width: 150px;
+  background: $themeColor-light;
+  color: $themeColor-white;
+  border-radius: 7px;
+  height: 35px;
+  float: right;
+  border: 0;
 }
 
 #newbie-logout {

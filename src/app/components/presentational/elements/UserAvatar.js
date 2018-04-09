@@ -1,6 +1,5 @@
 import React from 'react'
 import Avatar from 'react-avatar';
-import { getInitials } from 'Config/helper'
 
 const UserAvatar = (props) => (
     <Avatar
@@ -8,5 +7,11 @@ const UserAvatar = (props) => (
         round={true}
         name={getInitials(props.user)} />
 )
+
+const getInitials = (user) => {
+    return user.firstName ?
+        `${user.firstName[0]} ${user.lastName[0]}`
+        : user.email[0]
+}
 
 export default UserAvatar
