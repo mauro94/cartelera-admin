@@ -21,7 +21,7 @@ class FirstLogin extends React.Component {
         return (
             <div>
                 <WelcomeMessage mail={this.props.user.email} />
-                <EditUser user={this.props.currentUser} form={UserForms.Basic} />
+                <EditUser current user={this.props.currentUser} form={UserForms.Basic} />
             </div>
         )
     }

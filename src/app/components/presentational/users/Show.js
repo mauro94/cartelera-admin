@@ -1,15 +1,17 @@
 import React from 'react'
-import { UserAvatar, Tag } from 'Presentational/elements';
+import { Link } from 'react-router-dom'
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import { faEnvelope } from '@fortawesome/fontawesome-free-regular'
 import { faPhone, faPencilAlt } from '@fortawesome/fontawesome-free-solid'
 import { Format, Labels } from 'Helpers/index'
+import { UserAvatar, Tag } from 'Presentational/elements'
+import 'Style/users/show.scss'
 
 const UserShow = (props) => (
     <div className='show'>
         <Title user={props.user} />
         <Details user={props.user} />
-        <Actions enabled={props.user.enabled} />
+        <Actions enabled={props.user.enabled} id={props.user.id} />
     </div>
 )
 
@@ -18,9 +20,11 @@ const Actions = (props) => (
         <button className={'enabled ' + props.enabled ? 'disable' : 'enable'}>
             {props.enabled ? 'Desactivar' : 'Activar'}
         </button>
-        <button className='edit'>
-            <FontAwesomeIcon icon={faPencilAlt} />Editar
-        </button>
+        <Link to={`${props.id}/editar`}>
+            <button className='edit'>
+                <FontAwesomeIcon icon={faPencilAlt} /> Editar
+            </button>
+        </Link>
     </div>
 )
 

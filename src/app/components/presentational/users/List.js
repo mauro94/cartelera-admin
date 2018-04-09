@@ -2,41 +2,54 @@ import React from 'react'
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import { faEnvelope } from '@fortawesome/fontawesome-free-regular'
 import { Link, Redirect, Route, Switch } from 'react-router-dom'
-import { getDefaultUserId, getPath, isActive } from './helper'
+import { getDefaultUserId, getIndex, getPath, isActive } from './helper'
 import { load } from 'Containers/hoc'
-import ShowUser from 'Presentational/users/Show'
 import { UserAvatar } from 'Presentational/elements'
+import { ShowUser, EditUser } from 'Presentational/users'
+
+const PillsContent = (props) => (
+    <div className='content'>
+        <UsersList {...props} />
+        <SelectedUser {...props} />
+    </div>
+)
+
+const SelectedUser = (props) => (
+    <Switch>
+        <React.Fragment>
+            <Route
+                exact
+                path='/usuarios/:type/'
+                render={() => <Redirect
+                    to={`/usuarios/${props.type}/${getDefaultUserId(props.users)}`} />
+                } />
+            <Route
+                exact
+                path='/usuarios/:type/:id/editar'
+                render={({ match }) =>
+                    <EditUser user={props.users[getIndex(props.users, match)]} />
+                } />
+            <Route
+                exact
+                path='/usuarios/:type/:id'
+                render={({ match }) => (
+                    <ShowUser user={props.users[getIndex(props.users, match)]} />
+                )} />
+        </React.Fragment>
+    </Switch>
+)
 
 const UsersList = (props) => {
-    let defaultId = getDefaultUserId(props.users)
     return (
-        <div className='content'>
-            <div className='list'>
-                {props.users.map((user, index) =>
-                    <Entry
-                        index={index}
-                        key={'User-' + user.id + '-' + index}
-                        type={props.type}
-                        user={user}
-                        location={props.location} />
-                )}
-            </div>
-            <Switch>
-                <React.Fragment>
-                    <Route
-                        path='/usuarios/:type/:id'
-                        render={({ match: { params } }) => {
-                            let index = props.users.findIndex(user => user.id == params.id)
-                            return <ShowUser user={props.users[index]} />
-                        }} />
-                    <Route
-                        exact
-                        path='/usuarios/:type/'
-                        render={() => <Redirect
-                            to={`/usuarios/${props.type}/${defaultId}`} />
-                        } />
-                </React.Fragment>
-            </Switch>
+        <div className='list'>
+            {props.users.map((user, index) =>
+                <Entry
+                    index={index}
+                    key={'User-' + user.id + '-' + index}
+                    type={props.type}
+                    user={user}
+                    location={props.location} />
+            )}
         </div>
     )
 }
@@ -83,4 +96,4 @@ const RowTitle = (props) => (
     </React.Fragment>
 )
 
-export default load('users', UsersList)
+export default load('users', PillsContent)

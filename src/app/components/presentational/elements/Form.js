@@ -17,7 +17,7 @@ export const EditProfileMessage = ({ name }) => (
 )
 
 export const Entry = (props) => (
-    <React.Fragment>
+    <div>
         <Field
             name={props.attr}
             list={props.list}
@@ -31,7 +31,7 @@ export const Entry = (props) => (
             props.errors[props.attr] &&
             <p className="message-error">{props.errors[props.attr]}</p>
         }
-    </React.Fragment>
+    </div>
 )
 
 export const SubmitButton = (props) => {

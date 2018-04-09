@@ -10,8 +10,11 @@ export const StateManager = {
     },
     update: (oldState, action) => {
         let newState = Object.assign({}, oldState)
-        let index = newState.all.findIndex(user => (user.id == action.id))
-        newState.all[index] = action.object
+        if (action.status == Status.Ready) {
+            let index = newState.all.findIndex(
+                user => (user.id == action.object.id))
+            newState.all[index] = action.object
+        }
         return {
             ...newState,
             action: action.type,

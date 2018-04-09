@@ -1,6 +1,7 @@
 import React from 'react'
 import { UserTypes, TemporaryPassword, Format } from 'Helpers/'
 import { Callout, FeedbackModal } from 'Presentational/elements'
+import 'Style/users/add.scss'
 
 export const AddUser = (props) => (
     <Callout add={props.add} type={props.type} />

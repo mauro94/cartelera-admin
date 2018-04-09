@@ -1,0 +1,24 @@
+@import '../common/colors';
+
+div.edit {
+    div {
+        height:auto;
+    }
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr 3fr;
+    grid-gap: 10px;
+    padding: 20px;
+    .label {
+        display: grid;
+        grid-auto-rows: 80px;
+        text-align: right;
+        div {
+            padding-top: 10%;
+        }
+    }
+    form {
+        display: grid;
+        grid-auto-rows: 80px;
+    }
+}

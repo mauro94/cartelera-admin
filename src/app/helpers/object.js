@@ -1,11 +1,11 @@
 import { Months } from './constants'
+import SnakeCase from 'snake-case'
 export const Format = {
     snakeCase: (name, obj) => {
-        var snakeCase = require('snake-case');
-        var snakeObject = obj
+        let snakeObject = {}
         snakeObject[name] = {}
         for (var key in obj) {
-            snakeObject[name][snakeCase(key)] = obj[key]
+            snakeObject[name][SnakeCase(key)] = obj[key]
         }
         return snakeObject
     },

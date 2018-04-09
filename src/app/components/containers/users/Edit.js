@@ -1,27 +1,29 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 import { thunks } from 'Logic/actions/thunks'
 import { Status, UserForms } from 'Helpers/constants'
 import { Basic, Password } from 'Presentational/profile/forms'
 
 class Edit extends React.Component {
-    componentWillReceiveProps() {
-        if (this.props.form != nextProps.form) {
-            this.setState({
-                form: nextProps.form,
-                user: {
-                    firstName: nextProps.user.firstName || '',
-                    lastName: nextProps.user.lastName || '',
-                    office: nextProps.user.office || '',
-                    phoneNumber: nextProps.user.phoneNumber || '',
-                    campus: nextProps.user.campus || 'MTY',
-                    id: nextProps.user.id || '1',
-                    isNewbie: nextProps.user.isNewbie
-                }
-            })
-        }
+    constructor(props) {
+        super(props)
+        this.handleSubmit = this.handleSubmit.bind(this)
     }
-
+    componentWillMount() {
+        this.setState({
+            form: this.props.form,
+            user: {
+                firstName: this.props.user.firstName || '',
+                lastName: this.props.user.lastName || '',
+                office: this.props.user.office || '',
+                phoneNumber: this.props.user.phoneNumber || '',
+                campus: this.props.user.campus || 'MTY',
+                id: this.props.user.id || '1',
+                isNewbie: this.props.user.isNewbie
+            }
+        })
+    }
     getForm(formType) {
         if (formType == UserForms.Basic)
             return (
@@ -35,18 +37,17 @@ class Edit extends React.Component {
                     user={this.state.user}
                     handleSubmit={this.handleSubmit} />)
     }
-
     handleSubmit(user) {
+        let updatedUser = { id: this.props.user.id }
         for (var key in this.props.user) {
             if (user.hasOwnProperty(key)) {
-                if (this.props.user[key] == user[key] && key != "id") {
-                    delete user[key]
+                if (this.props.user[key] != user[key] && key != "id") {
+                    updatedUser[key] = user[key]
                 }
             }
         }
-        this.props.update(user, this.props.match.location.includes('perfil'))
+        this.props.update(updatedUser, this.props.current)
     }
-
     render() {
         return this.getForm(this.props.form)
     }
@@ -57,9 +58,9 @@ const mapStateToProps = state => {
     }
 }
 
-const mapDispatchToProps = (dispatch, props) => {
+const mapDispatchToProps = dispatch => {
     return {
-        update: user => { dispatch(thunks.user.update(user)) },
+        update: (user, isCurrent) => { dispatch(thunks.user.update(user, isCurrent)) },
         logout: () => { dispatch(thunks.user.logout()) }
     }
 }
