@@ -3,7 +3,7 @@ import { BrowserRouter as Router, NavLink, Route, Switch } from 'react-router-do
 import { Formik } from 'formik'
 import Yup from 'yup'
 import { load } from 'Containers/hoc'
-import { EventFormValidations } from 'Helpers/constants'
+import { EventFormValidations, CharacterCount } from 'Helpers/constants'
 import * as EventForm from './forms/index'
 import 'Style/eventDetail.scss';
 
@@ -32,10 +32,13 @@ const Form = (props) => {
         category: props.event.category || 'Congreso',
         id: props.event.id || '1'
     }
+
     return <Formik
         validationSchema={
             Yup.object().shape(EventFormValidations)
         }
+        // initialValues={props.event}
+        // mapPropsToValues={props.event}
         initialValues={initialValues}
         mapPropsToValues={initialValues}
         onSubmit={(values, action) => {
@@ -48,8 +51,10 @@ const Form = (props) => {
                 React.cloneElement(child, { ...formProps, ...props }))
             return (
                 <React.Fragment>
-                    {routesWithProps}
-                    <EventForm.Actions {...props} {...formProps} />
+                    <div className='event-data-container'>
+                        {routesWithProps}
+                        <EventForm.Actions {...props} {...formProps} />
+                    </div>
                 </React.Fragment>
             )
         }}
@@ -98,18 +103,18 @@ const Menu = (props) => (
 )
 
 const Routes = (props) => (
-    <div className='event-data-container'>
+    <React.Fragment>
         <Route
             exact
             path={'/eventos/' + props.id + '/editar'}
-            render={() => <EventForm.General {...props} />} />
+            render={() => <EventForm.General {...props} characterCount={CharacterCount} />} />
         <Route
             path={'/eventos/' + props.id + '/editar/detalles'}
             render={() => <EventForm.Details {...props} />} />
         <Route
             path={'/eventos/' + props.id + '/editar/registro'}
             render={() => <EventForm.Registration {...props} eventid={props.id} />} />
-    </div>
+    </React.Fragment>
 )
 
 export default load('event', EventsEdit)
