@@ -63,6 +63,8 @@ export const Months = Object.freeze([
 // bad security
 export const TemporaryPassword = Object.freeze('123456')
 
+export const CharacterCount = Object.freeze(750)
+
 export const FormValidations = Object.freeze({
     password: Yup.string()
         .min(6, "Mínimo 6 caracteres")
@@ -86,6 +88,6 @@ export const FormValidations = Object.freeze({
 
 export const EventFormValidations = Object.freeze({
     name: Yup.string().required("Nombre requerido"),
-    description: Yup.string().required("Descripción requerida"),
+    description: Yup.string().max(CharacterCount, ` (Limite de ${CharacterCount} caracteres superado)`).required(" (Descripción requerida)"),
     location: Yup.string().required("Ubicación requerida")
 })
