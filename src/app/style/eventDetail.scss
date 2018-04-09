@@ -61,3 +61,25 @@
   .event-data-container > form {
       overflow-y: auto;
   }
+
+  .character-count {
+      height: 20px;
+      font-size: 14px;
+  }
+
+  .description-count {
+    margin-bottom: 0.5rem;
+  }
+
+  .event-form-general {
+      display: grid;
+      grid-template-columns: 15% auto;
+  }
+
+  .form-general-image {
+    grid-column: 1;
+  }
+
+  .form-general-data {
+    grid-column: 2;
+  }
