@@ -6,10 +6,6 @@ export const getDefaultUserId = (users) => {
     return -2
 }
 
-export const getIndex = (objects, match) => (
-    objects.findIndex(obj => obj.id == match.params.id)
-)
-
 export const getPath = (props) => (
     `/usuarios/${props.type}/${props.item.id}`
 )

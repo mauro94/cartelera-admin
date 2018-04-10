@@ -9,7 +9,7 @@ const withFeedback = (Component) => {
             super(props)
             this.waiting = false
             this.state = {
-                status: this.waiting ? Status.WaitingOnServer : Status.Ready
+                status: Status.Ready
             }
         }
         componentWillReceiveProps(nextProps) {
@@ -50,7 +50,6 @@ const withFeedback = (Component) => {
         render() {
             switch (this.state.status) {
                 case Status.WaitingOnServer:
-                    return <LoadingElement />
                 case Status.Ready:
                 case Status.Failed:
                     return <Component

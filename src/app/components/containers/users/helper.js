@@ -1,5 +1,9 @@
 import { Labels, UserTypes } from 'Helpers/constants'
 
+export const getIndex = (objects, match) => (
+    objects.findIndex(obj => obj.id == match.params.id)
+)
+
 export const compareUsers = (a, b) => {
     if (!a.firstName && !b.firstName) {
         if (a.email > b.email)

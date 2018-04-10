@@ -24,9 +24,10 @@ const UsersLayout = (props) => (
 const UsersPage = (props) => (
     <React.Fragment>
         <Header match={props.match} />
-        <UsersList
-            type={props.match.params.type}
-            selectedUserId={props.match.params.id} />
+        <div className='content'>
+            <UsersList
+                type={props.match.params.type} />
+        </div>
     </React.Fragment>
 )
 

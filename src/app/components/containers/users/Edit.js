@@ -20,7 +20,7 @@ class Edit extends React.Component {
                 office: this.props.userToUpdate.office || '',
                 phoneNumber: this.props.userToUpdate.phoneNumber || '',
                 campus: this.props.userToUpdate.campus || 'MTY',
-                id: this.props.userToUpdate.id || '1',
+                id: this.props.userToUpdate.id,
                 isNewbie: this.props.userToUpdate.isNewbie
             }
         })

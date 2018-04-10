@@ -70,12 +70,12 @@ export const create = (user) => {
     })
 }
 
-export const all = () => {
+export const all = (type) => {
     return dispatch => serverCall({
         dispatch: dispatch,
         actionType: UserActions.All,
         call: () => request.get(
-            '/users',
+            `/${type}`,
             { headers: headers.withAuth() })
     })
 }
