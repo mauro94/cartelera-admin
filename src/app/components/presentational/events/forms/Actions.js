@@ -13,5 +13,5 @@ export const EventsFormsActions = ({ handleSubmit, error, errors, touched, isSub
         <button className="button">
             Cancelar
         </button>
-    </div>        
+    </div>
 )

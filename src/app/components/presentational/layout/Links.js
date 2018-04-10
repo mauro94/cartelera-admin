@@ -39,7 +39,7 @@ export const UpcomingLink = () => (
 )
 
 export const ProfileLinks = props => (
-    <div className='dropdown' >
+    <div className='dropdown'>
         <NavLink
             className='navbar-button'
             activeClassName='selected-button-view'

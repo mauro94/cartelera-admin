@@ -59,13 +59,13 @@ export const update = (user, isCurrent = false) => {
     })
 }
 
-export const create = (email) => {
+export const create = (user) => {
     return dispatch => serverCall({
         dispatch: dispatch,
         actionType: UserActions.Create,
         call: () => request.post(
             '/sponsor/',
-            { user: { email: email } },
+            { user: { email: user.email, 'user_type': user.type } },
             { headers: headers.withAuth() })
     })
 }

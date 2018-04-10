@@ -7,7 +7,7 @@ const ProfileLayout = (props) => (
     <div className='grid-container container-column-menu'>
         <Links />
         <Routes user={props.user} />
-    </div >
+    </div>
 )
 
 const Routes = (props) => (
@@ -19,10 +19,18 @@ const Routes = (props) => (
                 render={() => <Redirect to='/perfil/editar' />} />
             <Route
                 path='/perfil/editar'
-                render={() => <EditUser current user={props.user} form={UserForms.Basic} />} />
+                render={() =>
+                    <EditUser
+                        current
+                        user={props.user}
+                        form={UserForms.Basic} />} />
             <Route
                 path='/perfil/contrasena'
-                render={() => <EditUser current user={props.user} form={UserForms.Password} />} />
+                render={() =>
+                    <EditUser
+                        current
+                        user={props.user}
+                        form={UserForms.Password} />} />
         </div>
     </Switch>
 )

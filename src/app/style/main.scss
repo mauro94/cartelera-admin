@@ -152,6 +152,7 @@ h3 {
 // CSS Grid
 .grid-container {
   display: grid;
+  height: auto;
 }
 
 // Messages
@@ -239,10 +240,17 @@ h3 {
 }
 
 .spinner {
-  top: 50%;
-  left: 50%;
-  margin: auto;
-  position: absolute;
+  top: 0;
+  left: 0;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  div.sk-fade-in {
+    height: auto;
+  }
 }
 .modifyButtons{
   display: flex;

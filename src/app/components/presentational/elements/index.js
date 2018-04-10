@@ -23,6 +23,7 @@ export const SubmitButton = Form.SubmitButton
 
 export const FeedbackModal = Modal.Feedback
 export const ConfirmationModal = Modal.Confirmation
+export const ModalAlert = Modal.Alert
 
 export const Tag = TagElements.Tag
 export const TagIcon = TagElements.TagIcon

@@ -1,31 +1,30 @@
 import React from 'react'
 import { Formik } from 'formik'
 import Yup from 'yup'
+import { campusList } from 'Config/Test'
+import { load } from 'Containers/hoc'
+import {
+    CurrentUserFormValidations,
+    BasicUserFormValidations,
+    PasswordFormValidations
+} from 'Helpers/constants'
 import {
     SelectComponent,
     TextComponent,
     PasswordComponent,
     FormComponent as Form
 } from 'Presentational/elements'
-import { campusList } from 'Config/Test'
-import { FormValidations } from 'Helpers/constants'
 
-const Basic = ({ user, handleSubmit, logout }) => {
-    let validations = {
-        firstName: FormValidations.firstName,
-        lastName: FormValidations.lastName,
-        office: FormValidations.office,
-        phoneNumber: FormValidations.phoneNumber
-    }
-    if (user.isNewbie) {
+const Basic = (props) => {
+    let validations = props.current ? CurrentUserFormValidations : BasicUserFormValidations
+    if (props.user.isNewbie && props.current) {
         validations = {
             ...validations,
-            password: FormValidations.password,
-            passwordConfirm: FormValidations.passwordConfirm
+            ...PasswordFormValidations
         }
     }
-    let initialValues = user
-    if (user.isNewbie) {
+    let initialValues = props.user
+    if (props.user.isNewbie && props.current) {
         initialValues = {
             ...initialValues,
             password: '',
@@ -39,12 +38,16 @@ const Basic = ({ user, handleSubmit, logout }) => {
             }
             initialValues={initialValues}
             onSubmit={(values, action) => {
-                values.id = user.id
-                values.isNewbie = false
-                handleSubmit(values)
+                values.id = props.user.id
+                values.isNewbie = props.current
+                props.handleSubmit(values)
                 action.setSubmitting(false)
             }}>
-            {(props) => <BasicForm {...props} isNewbie={user.isNewbie} logout={logout} />}
+            {(formProps) =>
+                <BasicForm {...formProps}
+                    current={props.current}
+                    isNewbie={props.user.isNewbie}
+                    logout={props.logout} />}
         </Formik>
     )
 }
@@ -57,7 +60,7 @@ const BasicForm = (props) => {
         { name: 'phoneNumber', component: TextComponent },
         { name: 'campus', component: SelectComponent, list: campusList }
     ]
-    if (props.isNewbie) {
+    if (props.isNewbie && props.current) {
         data = [
             ...data,
             { name: 'password', component: PasswordComponent },
@@ -67,11 +70,11 @@ const BasicForm = (props) => {
         <Form
             {...props}
             data={data}
-            submitTitle={props.isNewbie ? 'Continuar' : 'Actualizar'}
-            canLogout={props.isNewbie}
-            allRequired={props.isNewbie}
+            submitTitle={props.isNewbie && props.current ? 'Continuar' : 'Actualizar'}
+            canLogout={props.isNewbie && props.current}
+            allRequired={props.isNewbie && props.current}
             logout={props.logout} />
     )
 }
 
-export default Basic
+export default load('user', Basic)

@@ -34,6 +34,7 @@ class Edit extends React.Component {
                 categoryList={categoryList}
                 event={this.props.event.show}
                 handleSubmit={this.handleSubmit}
+                hide
                 reducer={{
                     status: this.props.event.status,
                     action: this.props.event.action,

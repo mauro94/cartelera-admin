@@ -15,5 +15,6 @@ export const getPath = (props) => (
 )
 
 export const isActive = (props) => (
-    props.location.pathname == getPath(props) || props.location.pathname == `${getPath(props)}/editar`
+    props.location.pathname == getPath(props) ||
+    props.location.pathname == `${getPath(props)}/editar`
 )

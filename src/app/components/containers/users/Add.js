@@ -1,68 +1,49 @@
 import React from 'react'
-import { AddUser, AddSucceeded, AddFailed } from 'Presentational/users/Add'
-import { Status, UserActions } from 'Helpers/constants'
-import { waitingOnAction, actionSucceded, actionFailed } from 'Containers/helper'
 import { connect } from 'react-redux'
 import { thunks } from 'Logic/actions/thunks'
-import { confirmAlert } from 'react-confirm-alert';
-import 'react-confirm-alert/src/react-confirm-alert.css'
+import { ModalAlert } from 'Presentational/elements'
+import AddUser, { AddSucceeded, AddFailed } from 'Presentational/users/Add'
+import { UserActions } from 'Helpers/constants'
 
 class Add extends React.Component {
     constructor(props) {
         super(props)
-        this.waiting = false
+        this.email = ''
         this.handleAdd = this.handleAdd.bind(this)
         this.handleError = this.handleError.bind(this)
         this.handleSuccess = this.handleSuccess.bind(this)
     }
     handleAdd(email) {
-        this.props.add(email)
+        this.email = email
+        this.props.add({email: email, type: this.props.type})
     }
     handleError() {
-        this.waiting = false
-        confirmAlert({
-            customUI: ({ onClose }) =>
-                <AddFailed
-                    type={this.props.type}
-                    user={this.props.user.show}
-                    error='Ya existe un usuario registrado con este correo'
-                    handleOk={onClose} />
+        ModalAlert({
+            modal: AddFailed,
+            type: this.props.type,
+            user: this.email,
+            error: this.props.user.error
         })
     }
     handleSuccess() {
-        this.waiting = false
-        confirmAlert({
-            customUI: ({ onClose }) =>
-                <AddSucceeded
-                    type={this.props.type}
-                    user={this.props.user.show}
-                    handleOk={onClose} />
+        ModalAlert({
+            modal: AddSucceeded, type: this.props.type,
+            user: this.props.user.show
         })
     }
-    componentWillReceiveProps(nextProps) {
-        let status = {
-            wasWaiting: this.waiting,
-            reducer: {
-                status: nextProps.user.status,
-                action: nextProps.user.action,
-                error: nextProps.user.error
-            },
-            action: UserActions.Create
-        }
-        if (waitingOnAction(status)) {
-            this.waiting = true
-        }
-        else if (actionSucceded(status)) {
-            this.handleSuccess()
-        }
-        else if (actionFailed(status)) {
-            this.handleError()
-        }
-    }
     render() {
-        return (
-            <AddUser add={this.handleAdd} type={this.props.type} />
-        )
+        return <AddUser
+            add={this.handleAdd}
+            action={UserActions.Create}
+            reducer={{
+                status: this.props.user.status,
+                action: this.props.user.action,
+                error: this.props.user.error
+            }}
+            type={this.props.type}
+            user={this.props.user.show}
+            onSuccess={this.handleSuccess}
+            onError={this.handleError} />
     }
 }
 

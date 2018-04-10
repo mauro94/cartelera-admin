@@ -1,67 +1,90 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom'
+import { CurrentUserActions, UserActions } from 'Helpers/constants'
 import { thunks } from 'Logic/actions/thunks'
-import { Status, UserForms } from 'Helpers/constants'
-import { Basic, Password } from 'Presentational/profile/forms'
+import { ModalAlert } from 'Presentational/elements'
+import { EditSucceeded, EditFailed } from 'Presentational/users/Edit'
 
 class Edit extends React.Component {
     constructor(props) {
         super(props)
         this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleError = this.handleError.bind(this)
+        this.handleSuccess = this.handleSuccess.bind(this)
     }
     componentWillMount() {
         this.setState({
-            form: this.props.form,
             user: {
-                firstName: this.props.user.firstName || '',
-                lastName: this.props.user.lastName || '',
-                office: this.props.user.office || '',
-                phoneNumber: this.props.user.phoneNumber || '',
-                campus: this.props.user.campus || 'MTY',
-                id: this.props.user.id || '1',
-                isNewbie: this.props.user.isNewbie
+                firstName: this.props.userToUpdate.firstName || '',
+                lastName: this.props.userToUpdate.lastName || '',
+                office: this.props.userToUpdate.office || '',
+                phoneNumber: this.props.userToUpdate.phoneNumber || '',
+                campus: this.props.userToUpdate.campus || 'MTY',
+                id: this.props.userToUpdate.id || '1',
+                isNewbie: this.props.userToUpdate.isNewbie
             }
         })
     }
-    getForm(formType) {
-        if (formType == UserForms.Basic)
-            return (
-                <Basic
-                    user={this.state.user}
-                    handleSubmit={this.handleSubmit}
-                    logout={this.props.logout} />)
-        else if (formType == UserForms.Password)
-            return (
-                <Password
-                    user={this.state.user}
-                    handleSubmit={this.handleSubmit} />)
+    handleError() {
+        ModalAlert({
+            modal: EditFailed,
+            type: this.props.type,
+            user: this.email,
+            error: this.props.user.error
+        })
     }
     handleSubmit(user) {
-        let updatedUser = { id: this.props.user.id }
-        for (var key in this.props.user) {
+        let updatedUser = { id: this.props.userToUpdate.id }
+        for (var key in this.props.userToUpdate) {
             if (user.hasOwnProperty(key)) {
-                if (this.props.user[key] != user[key] && key != "id") {
+                if (this.props.userToUpdate[key] != user[key] && key != "id") {
                     updatedUser[key] = user[key]
                 }
             }
         }
         this.props.update(updatedUser, this.props.current)
     }
+    handleSuccess() {
+        ModalAlert({
+            modal: EditSucceeded, type: this.props.type,
+            user: this.props.user.show
+        })
+    }
     render() {
-        return this.getForm(this.props.form)
+        const { children } = this.props;
+        let childrenWithProps = React.Children.map(children, child =>
+            React.cloneElement(child, {
+                action: (this.props.current ?
+                    CurrentUserActions.Update :
+                    UserActions.Update),
+                handleSubmit: this.handleSubmit,
+                logout: (this.props.logout
+                    && this.props.handleLogout),
+                reducer: {
+                    status: this.props.user.status,
+                    action: this.props.user.action,
+                    error: this.props.user.error
+                },
+                user: this.state.user,
+                onSuccess: this.handleSuccess,
+                onError: this.handleError
+            }));
+        return (childrenWithProps)
     }
 }
 
 const mapStateToProps = state => {
     return {
+        user: state.user
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        update: (user, isCurrent) => { dispatch(thunks.user.update(user, isCurrent)) },
-        logout: () => { dispatch(thunks.user.logout()) }
+        update: (user, isCurrent) => {
+            dispatch(thunks.user.update(user, isCurrent))
+        },
+        handleLogout: () => { dispatch(thunks.user.logout()) }
     }
 }
 

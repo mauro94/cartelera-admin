@@ -3,16 +3,11 @@ import { ErrorElement, LoadingElement } from 'Presentational/elements'
 import { actionSucceded, actionFailed, waitingOnAction } from 'Containers/helper'
 import { Entity, Status } from 'Helpers/index'
 
-const load = (loadingResource, Component) => {
+const withFeedback = (Component) => {
     return class extends React.Component {
         constructor(props) {
             super(props)
-            this.waiting = Entity.isEmpty(props[loadingResource]) ||
-                waitingOnAction({
-                    wasWaiting: false,
-                    reducer: props.reducer,
-                    action: props.action
-                })
+            this.waiting = false
             this.state = {
                 status: this.waiting ? Status.WaitingOnServer : Status.Ready
             }
@@ -54,20 +49,10 @@ const load = (loadingResource, Component) => {
         }
         render() {
             switch (this.state.status) {
-                case Status.Failed:
-                    if (this.props.hide) return <ErrorElement
-                        message={this.props.reducer.error} />
                 case Status.WaitingOnServer:
-                    if (this.props.hide) return <LoadingElement />
-                    else return (
-                        <React.Fragment>
-                            <LoadingElement />
-                            <Component
-                                {...this.getProps()} />
-                        </React.Fragment>
-                    )
+                    return <LoadingElement />
                 case Status.Ready:
-                default:
+                case Status.Failed:
                     return <Component
                         {...this.getProps()} />
             }
@@ -75,4 +60,4 @@ const load = (loadingResource, Component) => {
     }
 }
 
-export default load
+export default withFeedback

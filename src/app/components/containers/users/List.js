@@ -26,6 +26,7 @@ class Users extends React.Component {
         return (
             <UsersList
                 action={UserActions.All}
+                hide
                 reducer={{
                     status: this.props.user.status,
                     action: this.props.user.action,

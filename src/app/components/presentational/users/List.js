@@ -14,28 +14,33 @@ const PillsContent = (props) => (
     </div>
 )
 
+const firstChild = props => {
+    const childrenArray = React.Children.toArray(props.children)
+    return childrenArray[0] || null
+}
+
 const SelectedUser = (props) => (
     <Switch>
-        <React.Fragment>
-            <Route
-                exact
-                path='/usuarios/:type/'
-                render={() => <Redirect
-                    to={`/usuarios/${props.type}/${getDefaultUserId(props.users)}`} />
-                } />
-            <Route
-                exact
-                path='/usuarios/:type/:id/editar'
-                render={({ match }) =>
-                    <EditUser user={props.users[getIndex(props.users, match)]} />
-                } />
-            <Route
-                exact
-                path='/usuarios/:type/:id'
-                render={({ match }) => (
-                    <ShowUser user={props.users[getIndex(props.users, match)]} />
-                )} />
-        </React.Fragment>
+        <Route
+            exact
+            path='/usuarios/:type/'
+            render={() => <Redirect
+                to={`/usuarios/${props.type}/${getDefaultUserId(props.users)}`} />
+            } />
+        <Route
+            exact
+            path='/usuarios/:type/:id/editar'
+            render={({ match }) => (
+                <EditUser
+                    type={match.params.type}
+                    user={props.users[getIndex(props.users, match)]} />
+            )} />
+        <Route
+            exact
+            path='/usuarios/:type/:id'
+            render={({ match }) => (
+                <ShowUser user={props.users[getIndex(props.users, match)]} />
+            )} />
     </Switch>
 )
 

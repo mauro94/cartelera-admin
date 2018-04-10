@@ -1,4 +1,5 @@
 import React from 'react'
+import Spinner from 'react-spinkit'
 import { Form, Field } from 'formik';
 import { Labels, Entity, Format } from 'Helpers/index'
 
@@ -43,9 +44,12 @@ export const SubmitButton = (props) => {
         hasErrors ||
         props.isSubmitting
     return (
-        <button className="button-submit" disabled={disabled}>
-            {props.children}
-        </button >)
+        <button
+            className="button-submit"
+            disabled={props.disabled}>
+            {!props.isSubmitting && props.children}
+            {props.isSubmitting && <Spinner name="pulse" />}
+        </button>)
 }
 
 export const FormComponent = (props) => {
@@ -73,5 +77,5 @@ export const FormComponent = (props) => {
                 </button>
                 }
             </div>
-        </Form >)
+        </Form>)
 }

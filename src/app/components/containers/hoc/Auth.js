@@ -24,6 +24,7 @@ export const withAuth = (Component) => {
             return <Component
                 currentUser={this.props.currentUser.show}
                 action={CurrentUserActions.Get}
+                hide
                 reducer={{
                     status: this.props.currentUser.status,
                     action: this.props.currentUser.action,

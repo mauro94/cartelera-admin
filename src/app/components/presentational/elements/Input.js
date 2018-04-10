@@ -66,7 +66,7 @@ export const SelectDate = ({
   ...props
 }) => (
     <div className="form-field">
-      <DatePickerElement {...props.field} {...props}/>
+      <DatePickerElement {...props.field} {...props} />
     </div>
   );
 
