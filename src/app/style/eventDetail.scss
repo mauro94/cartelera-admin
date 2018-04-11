@@ -10,8 +10,8 @@
 .event-details-container {
     display: grid;
     grid-template-columns: 15% auto;
-    grid-template-rows: 10% auto;
-    grid-gap: 3.4rem;
+    grid-template-rows: 16% auto;
+    grid-gap: 2rem;
     height: 90%;
 }
 
@@ -45,13 +45,13 @@
     padding-bottom: 20px;
 
     span{
-        font-size: 13px;
+        font-size: 14px;
         color: $themeColor-darkBlue;
         padding-top: 5px;
     }
 
     .span-warning{
-        font-size: 13px;
+        font-size: 14px;
         color: $themeColor-red-shadow;
         padding-top: 5px;
     }
