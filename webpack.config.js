@@ -9,11 +9,9 @@ module.exports = {
         "react-hot-loader/patch",
         "./src/app/config/index.js"
     ],
-
     output: {
-        path: BUILD_DIR,
-        publicPath: '/',
-        filename: 'bundle.js'
+      path: BUILD_DIR,
+      filename: 'bundle.js'
     },
 
     devtool: "source-map-inline",
@@ -26,15 +24,13 @@ module.exports = {
     resolve: {
         modules: [__dirname, './node_modules'],
         alias: {
+            Style: 'src/app/style',
             Config: 'src/app/config/',
-            Containers: 'src/app/components/containers/',
-            Helpers: 'src/app/helpers/',
-            Images: 'src/app/images/',
             Logic: 'src/app/logic/',
-            Presentational: 'src/app/components/presentational/',
-            Style: 'src/app/style'
+            Containers: 'src/app/components/containers/',
+            Presentational: 'src/app/components/presentational/'
         },
-        extensions: ['*', '.js', '.jsx']
+        extensions: ['*','.js','.jsx']
     },
 
     plugins: [
@@ -44,14 +40,14 @@ module.exports = {
             title: 'Cartelera - Admin',
             chunksSortMode: 'dependency',
             template: path.resolve('src/app/config/index.ejs')
-        })
+        }),
     ],
 
-    module: {
-        rules: [{
+    module : {
+        rules : [{
             loader: 'babel-loader',
-            query: {
-                presets: ['react', 'es2015']
+            query :{
+                presets:['react','es2015']
             },
             test: /\.jsx?$/,
             exclude: /(node_modules|bower_components)/
@@ -62,19 +58,9 @@ module.exports = {
             enforce: "pre"
         },
         {
-            test: /\.(s*)css$/,
-            use: ['style-loader', 'css-loader', 'sass-loader']
-        },
-        {
-            test: /\.(png|svg|jp(e*)g)$/,
-            use: [{
-                loader: 'url-loader',
-                options: {
-                    limit: 8000,
-                    name: 'src/app/images/[hash]-[name].[ext]'
-                }
-            }]
-        }
-        ]
+            test:/\.(s*)css$/,
+            use:['style-loader','css-loader', 'sass-loader']
+         }
+    ]
     }
 };
