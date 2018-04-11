@@ -1,0 +1,85 @@
+@import 'common/colors';
+
+.event-title-container {
+    height: auto;
+    border-bottom: solid 0.1rem $themeColor-light;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+}
+
+.event-details-container {
+    display: grid;
+    grid-template-columns: 15% auto;
+    grid-gap: 2rem;
+    height: 90%;
+}
+
+.event-options-container {
+    grid-column: 1;
+    border-right: solid 0.1rem $themeColor-light;
+    text-align: right;
+    padding-right: 1rem;
+}
+
+.event-data-container {
+    grid-column: 2;
+    display: grid;
+    grid-template-rows: auto 10%;
+}
+
+.event-form {
+    grid-row: 1;
+}
+
+.event-actions-container {
+    grid-row: 2;
+}
+
+.react-datepicker__time-container .react-datepicker__time .react-datepicker__time-box ul.react-datepicker__time-list {
+    margin-left: -40px;
+}
+
+.react-datepicker-wrapper, .react-datepicker__input-container {
+    width: 100%;
+}
+
+.react-datepicker__input-container > input {
+    font-size: 16px;
+    background: $themeColor-white;
+    border: 1px solid $themeColor-light;
+    border-radius: 7px;
+    height: 35px;
+    width: 99%;
+    text-overflow: ellipsis;
+    text-indent: 10px;
+  }
+
+  .hidden-select > div > a, .select > div > a {
+      display: block;
+  }
+
+  .event-data-container > form {
+      overflow-y: auto;
+  }
+
+  .character-count {
+      height: 20px;
+      font-size: 14px;
+  }
+
+  .description-count {
+    margin-bottom: 0.5rem;
+  }
+
+  .event-form-general {
+      display: grid;
+      grid-template-columns: 15% auto;
+  }
+
+  .form-general-image {
+    grid-column: 1;
+  }
+
+  .form-general-data {
+    grid-column: 2;
+  }

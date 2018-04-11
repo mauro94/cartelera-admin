@@ -26,12 +26,13 @@ module.exports = {
     resolve: {
         modules: [__dirname, './node_modules'],
         alias: {
-            Style: 'src/app/style',
             Config: 'src/app/config/',
-            Logic: 'src/app/logic/',
             Containers: 'src/app/components/containers/',
+            Helpers: 'src/app/helpers/',
+            Images: 'src/app/images/',
+            Logic: 'src/app/logic/',
             Presentational: 'src/app/components/presentational/',
-            Images: 'src/app/images/'
+            Style: 'src/app/style'
         },
         extensions: ['*', '.js', '.jsx']
     },
@@ -43,7 +44,7 @@ module.exports = {
             title: 'Cartelera - Admin',
             chunksSortMode: 'dependency',
             template: path.resolve('src/app/config/index.ejs')
-        }),
+        })
     ],
 
     module: {

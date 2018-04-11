@@ -1,3 +1,5 @@
+@import 'colors';
+
 .tag {
     border-radius: 7px;
     border: solid 1px $themeColor-light;
@@ -13,4 +15,11 @@
 .tag.icon:hover {
     cursor: pointer;
     border-color: $themeColor-lightBlue;
+}
+
+.green {
+    color: $green;
+    .tag {
+        border: solid 1px $green;
+    }
 }

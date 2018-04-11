@@ -1,170 +1,81 @@
-import {
-    UserActions,
-    Status
-} from 'Config/constants'
-
-import {
-    request,
-    setSession,
-    rmSession,
-    history,
-    getToken,
-    setCurrentUserNewbie,
-    objectToSnakeCase
-} from 'Config/helper'
-
+import { history, Format, Session, Status, CurrentUserActions, UserActions, SessionActions } from 'Helpers/index'
 import { createAction } from 'Logic/actions'
+import { serverCall, request, headers } from 'Logic/actions/thunks/helper'
 
 export const login = (loginAttempt) => {
-    return (dispatch) => {
-        dispatch(createAction(UserActions.Login, null,
-            null, Status.WaitingOnServer))
-        request.post('/auth_user', loginAttempt)
-            .then(response => {
-                setSession(
-                    response.data.authToken,
-                    response.data.id,
-                    response.data.isNewbie
-                )
-                dispatch(
-                    createAction(
-                        UserActions.Login,
-                        response.data,
-                        null,
-                        Status.Ready
-                    ))
-                history.push(response.data.isNewbie ? '/login/newbie' : '/dashboard')
-            })
-            .catch((error) => {
-                dispatch(
-                    createAction(UserActions.Login, null, error.response.data.error,
-                        Status.Failed))
-            })
-    }
+    return dispatch => serverCall({
+        dispatch: dispatch,
+        actionType: SessionActions.Login,
+        call: () => request.post(
+            '/auth_user',
+            loginAttempt,
+            { headers: headers.withoutAuth() }),
+        onSuccess: (response) => {
+            Session.create(
+                response.data.authToken,
+                response.data.id,
+                response.data.isNewbie
+            )
+            history.replace(response.data.isNewbie ? '/login/newbie' : '/')
+        }
+    })
 }
 
-export const get = (id) => {
+export const get = (id, isCurrent = false) => {
+    let actionType = isCurrent ? CurrentUserActions.Get : UserActions.Get
     return (dispatch) => {
-        dispatch(createAction(UserActions.Get, null,
-            null, Status.WaitingOnServer))
-        request.get('/users/' + id, {
-            headers: {
-                'Authorization': 'Bearer ' + getToken()
-            }
+        serverCall({
+            dispatch: dispatch,
+            actionType: actionType,
+            call: () => request.get(
+                `/users/${id}`,
+                { headers: headers.withAuth() })
         })
-            .then(response => {
-                dispatch(
-                    createAction(
-                        UserActions.Get,
-                        response.data,
-                        null,
-                        Status.Ready
-                    ))
-            })
-            .catch((error) => {
-                dispatch(
-                    createAction(UserActions.Get, null, error.response.data,
-                        Status.Failed))
-            })
     }
 }
 
 export const logout = () => {
     //TODO: server call for logging out
     return (dispatch) => {
-        rmSession()
+        Session.destroy()
         dispatch(
-            createAction(UserActions.Logout, null, null,
+            createAction(SessionActions.Logout, null, null,
                 Status.Ready))
         history.replace('/login')
     }
 }
 
-export const update = (profileDetails) => {
-    let snakeProfileDetails = objectToSnakeCase("user", profileDetails)
-
-    return (dispatch) => {
-        dispatch(createAction(UserActions.Update, null,
-            null, Status.WaitingOnServer))
-        request.put('/users/' + profileDetails.id, snakeProfileDetails, {
-            headers: {
-                'Authorization': 'Bearer ' + getToken()
-            }
-        })
-            .then(response => {
-                let rookie = {
-                    ...response.data,
-                    isNewbie: false
-                }
-                setCurrentUserNewbie(false)
-                dispatch(
-                    createAction(UserActions.Update, rookie, null,
-                        Status.Ready))
-            })
-            .catch((error) => {
-                dispatch(
-                    createAction(
-                        UserActions.Update,
-                        profileDetails,
-                        error.response ? error.response.data : error.message,
-                        Status.Failed
-                    ))
-            })
-    }
+export const update = (user, isCurrent = false) => {
+    let formattedUser = Format.snakeCase('user', user)
+    let actionType = isCurrent ? CurrentUserActions.Update : UserActions.Update
+    return dispatch => serverCall({
+        dispatch: dispatch,
+        actionType: actionType,
+        call: () => request.put(
+            `/users/${user.id}`,
+            formattedUser,
+            { headers: headers.withAuth() }),
+        onSuccess: (response) => Session.setNewbie(false)
+    })
 }
 
-export const create = (email) => {
-    return (dispatch) => {
-        dispatch(createAction(UserActions.Create, null,
-            null, Status.WaitingOnServer))
-        request.post('/sponsor/', { user: { email: email } }, {
-            headers: {
-                'Authorization': 'Bearer ' + getToken()
-            }
-        })
-            .then(response => {
-                dispatch(
-                    createAction(
-                        UserActions.Create,
-                        response.data,
-                        null,
-                        Status.Ready
-                    ))
-            })
-            .catch((error) => {
-                dispatch(
-                    createAction(
-                        UserActions.Create,
-                        null,
-                        error.response.data,
-                        Status.Failed
-                    ))
-            })
-    }
+export const create = (user) => {
+    return dispatch => serverCall({
+        dispatch: dispatch,
+        actionType: UserActions.Create,
+        call: () => request.post(
+            '/sponsor/',
+            { user: { email: user.email, 'user_type': user.type } },
+            { headers: headers.withAuth() })
+    })
 }
 
-export const all = () => {
-    return (dispatch) => {
-        dispatch(createAction(UserActions.All, null,
-            null, Status.WaitingOnServer))
-        request.get('/users', {
-            headers: {
-                'Authorization': 'Bearer ' + getToken()
-            }
-        })
-            .then(response => {
-                dispatch(
-                    createAction(
-                        UserActions.All,
-                        response.data,
-                        null,
-                        Status.Ready
-                    ))
-            })
-            .catch((error) => {
-                dispatch(
-                    createAction(UserActions.All, null, error.response.data,
-                        Status.Failed))
-            })
-    }
+export const all = (type) => {
+    return dispatch => serverCall({
+        dispatch: dispatch,
+        actionType: UserActions.All,
+        call: () => request.get(
+            `/${type}`,
+            { headers: headers.withAuth() })
+    })
 }
