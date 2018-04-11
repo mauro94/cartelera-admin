@@ -78,16 +78,18 @@ export const Confirmation = (props) => (
         <h2>{props.title}</h2>
         <h1>{props.subtitle}</h1>
         <p>{props.confirmationMsg}</p>
-        <p>Desea continuar?</p>
+        <p>¿Desea continuar?</p>
         <div className='modal-confirmation-buttons'>
             <button
                 className='modal-cancel-button'
-                onClick={() => props.handleCancel()}>
+                onClick={() => props.onClose()}>
                 No, cancelar
             </button>
             <button
                 className='modal-confirm-button'
-                onClick={() => props.handleConfirm()}>
+                onClick={() => {
+                            props.handleConfirm() 
+                            props.onClose()}}>
                 Si, {props.lastMsg}
             </button>
         </div>

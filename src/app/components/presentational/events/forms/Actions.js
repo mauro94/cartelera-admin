@@ -4,13 +4,13 @@ import { BrowserRouter as Router, Route, Link, NavLink } from "react-router-dom"
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import { faEye, faBan, faUsers, faUserSecret } from '@fortawesome/fontawesome-free-solid'
 
-export const EventsFormsActions = (props, { handleSubmit, error, errors, touched, isSubmitting}) => (
+export const EventsFormsActions = (props) => (
     <div className="event-actions-container">
         <a className="action-button-container">
             <button className="action-button">
-                <FontAwesomeIcon icon={props.event.published ? faUsers : faUserSecret}/>
+                <FontAwesomeIcon icon={props.event.published ?  faUserSecret : faUsers}/>
             </button>
-            <span>{props.event.published ? "Evento visible": "Evento no visible"}</span>
+            <span>{props.event.published ? "Quitar de vista pública": "Publicar evento"}</span>
         </a>
 
         <a className="action-button-container">
