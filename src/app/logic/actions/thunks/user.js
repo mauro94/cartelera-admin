@@ -21,8 +21,8 @@ export const login = (loginAttempt) => {
     })
 }
 
-export const get = (id, current = false) => {
-    let actionType = current ? CurrentUserActions.Get : UserActions.Get
+export const get = (id, isCurrent = false) => {
+    let actionType = isCurrent ? CurrentUserActions.Get : UserActions.Get
     return (dispatch) => {
         serverCall({
             dispatch: dispatch,
@@ -45,36 +45,37 @@ export const logout = () => {
     }
 }
 
-export const update = (user, current = false) => {
-    let actionType = current ? CurrentUserActions.Update : UserActions.Update
+export const update = (user, isCurrent = false) => {
+    let formattedUser = Format.snakeCase('user', user)
+    let actionType = isCurrent ? CurrentUserActions.Update : UserActions.Update
     return dispatch => serverCall({
         dispatch: dispatch,
-        actionType: UserActions.Update,
+        actionType: actionType,
         call: () => request.put(
             `/users/${user.id}`,
-            Format.snakeCase('user', user),
+            formattedUser,
             { headers: headers.withAuth() }),
         onSuccess: (response) => Session.setNewbie(false)
     })
 }
 
-export const create = (email) => {
+export const create = (user) => {
     return dispatch => serverCall({
         dispatch: dispatch,
         actionType: UserActions.Create,
         call: () => request.post(
             '/sponsor/',
-            { user: { email: email } },
+            { user: { email: user.email, 'user_type': user.type } },
             { headers: headers.withAuth() })
     })
 }
 
-export const all = () => {
+export const all = (type) => {
     return dispatch => serverCall({
         dispatch: dispatch,
         actionType: UserActions.All,
         call: () => request.get(
-            '/users',
+            `/${type}`,
             { headers: headers.withAuth() })
     })
 }

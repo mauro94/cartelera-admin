@@ -15,6 +15,7 @@ class Events extends React.Component {
         return (
             <EventsList
                 events={parseEvents(this.props)}
+                hide
                 reducer={{
                     status: this.props.event.status,
                     action: this.props.event.action,
