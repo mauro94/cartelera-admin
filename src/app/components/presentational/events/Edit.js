@@ -14,6 +14,7 @@ const EventsEdit = (props) => (
                 <h1> {props.event.name}</h1>
             </div>
             <div className='event-details-container'>
+                <EventForm.Actions {...props}/>
                 <Menu id={props.event.id} />
                 <Form {...props}>
                     <Routes id={props.event.id} />
@@ -53,7 +54,6 @@ const Form = (props) => {
                 <React.Fragment>
                     <div className='event-data-container'>
                         {routesWithProps}
-                        <EventForm.Actions {...props} {...formProps} />
                     </div>
                 </React.Fragment>
             )
