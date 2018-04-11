@@ -1,0 +1,13 @@
+header {
+    position: sticky;
+    position: -webkit-sticky;
+    position: -moz-sticky;
+    position: -ms-sticky;
+    position: -o-sticky;
+    top: 0;
+    background-color: white;
+    &.secondary {
+        z-index: 10;
+        background-color: transparent;
+    }
+}

@@ -1,7 +1,8 @@
-import React from 'react'
-import { render } from 'react-dom'
-import Root from 'Config/Root'
- 
+import React from 'react';
+import { render } from 'react-dom';
+import Root from 'Config/Root';
+import Grid from 'react-css-grid';
+
 render(
     <Root/>,
     document.getElementById('root')

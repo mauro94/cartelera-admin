@@ -1,0 +1,54 @@
+@import 'common/colors';
+
+.container-column-menu {
+    grid-template-columns: 15% auto;
+    align-items: center;
+    grid-gap: 2rem;
+}
+
+.container-menu-elements {
+    grid-column: 1;
+    border-right: solid 0.2rem $themeColor-light;
+    height: 80%;
+    text-align: right;
+    padding-right: 2rem;
+}
+
+.container-menu-content {
+    grid-column: 2;
+    height: 80%;
+}
+
+.menu-link {
+    height: auto;
+    margin-bottom: 2rem;
+
+    &>a {
+        color: $themeColor-black;
+        font-weight: 500;
+
+        &:link {
+            color: $themeColor-black;
+            text-decoration: none;
+        }
+
+        &:visited {
+            color: $themeColor-black;
+            text-decoration: none;
+        }
+
+        &:hover {
+            color: $themeColor-lightBlue;
+        }
+
+        &:active {
+            color: $themeColor-lightBlue;
+        }
+    }
+}
+
+.menu-link-selected {
+    border-color: $themeColor-lightBlue;
+    color: $themeColor-lightBlue;
+    border-bottom: 4px solid;
+}

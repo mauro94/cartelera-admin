@@ -1,0 +1,251 @@
+@import 'common/colors';
+
+.container-events {
+    grid-template-rows: 5rem 3rem 3rem 1rem auto;
+}
+
+.events-title {
+    grid-row: 1;
+    >h1{
+        line-height: 2rem;
+    }
+}
+
+.container-events-filter-1 {
+    display: grid;
+    grid-template-columns: 10rem 10rem auto;
+    grid-row: 2;
+    line-height: 3rem;
+    border-bottom: solid 0.1rem $themeColor-light;
+}
+
+.filter-selected {
+    border-color: $themeColor-lightBlue;
+    color: $themeColor-lightBlue;
+    border-bottom: 4px solid;
+}
+
+.filter-link-1 {
+    grid-column: 1;
+}
+
+.filter-link-2 {
+    grid-column: 2;
+}
+
+.filter-link {
+    height: auto;
+    margin-bottom: 2rem;
+    font-size: 18px;
+
+    &>a {
+        color: $themeColor-black;
+        font-weight: 500;
+
+        &:link {
+            color: $themeColor-black;
+            text-decoration: none;
+        }
+
+        &:visited {
+            color: $themeColor-black;
+            text-decoration: none;
+        }
+
+        &:hover {
+            color: $themeColor-lightBlue;
+        }
+
+        &:active {
+            color: $themeColor-lightBlue;
+        }
+    }
+}
+
+.checkbox-label input {
+    font-size: 16px;
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.checkbox-label {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: $themeColor-white;
+    margin-top: 0.8rem;
+}
+  
+.checkbox-label:hover input ~ .checkmark {
+    background-color: $themeColor-light;
+}
+  
+.checkbox-label input:checked ~ .checkmark {
+    background-color: $themeColor-lightBlue;
+}
+  
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+  
+.checkbox-label input:checked ~ .checkmark:after {
+    display: block;
+}
+  
+.checkbox-label .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid $themeColor-white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.container-events-all {
+    display: grid;
+    grid-row: 5;
+    grid-column-gap: 10px;
+    grid-row-gap: 20px;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 30px;
+    grid-auto-rows: 300px;
+    >a {
+        text-decoration: none;
+    }
+}
+
+.grid-item {
+    display: grid;
+    padding: 10px;
+    -o-transition:.2s;
+    -ms-transition:.2s;
+    -moz-transition:.2s;
+    -webkit-transition:.2s;
+    transition: all 300ms ease-in-out;
+    grid-template-rows: 1fr auto;
+    border-radius: 15px;
+    text-decoration: none;
+}
+
+.grid-item:hover {
+    cursor: pointer;
+    background-color: $themeColor-lightLight;
+    .grid-item-overlay {
+        opacity: 0.3;
+    }
+    .cancelled-flag {
+        animation: shake 1s;
+    }
+}
+
+.text {
+    padding-top: 2px;
+    overflow: hidden;
+    height: auto;
+}
+
+.event-grid-title {
+    font-weight: 500;
+    font-size: 18px;
+    color: $themeColor-black;
+}
+
+.event-grid-date {
+    font-weight: 300;
+    font-size: 18px;
+    color: $themeColor-black;
+}
+
+.event-grid-hashtags {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: $themeColor-lightBlue !important;
+    flex-flow: row;
+    display: flex;
+    a {
+        margin-right: 5px;
+        font-family: 'Barlow', sans-serif;
+        font-weight: 400;
+        font-size: 16px;
+        color: $themeColor-lightBlue !important;
+        text-decoration: none;
+    }
+    a:hover {
+        color: $themeColor-darkBlue
+    }
+    div {
+        margin: 3px;
+    }
+}
+
+@keyframes shake {
+    10%, 90% {
+        transform: translate3d(-1px, 0, 0);
+    }
+    
+    20%, 80% {
+        transform: translate3d(2px, 0, 0);
+    }
+  
+    30%, 50%, 70% {
+        transform: translate3d(-4px, 0, 0);
+    }
+  
+    40%, 60% {
+        transform: translate3d(4px, 0, 0);
+    }
+}
+
+.image {
+    overflow: hidden;
+    position: relative;
+    border-radius: 15px;
+    height: auto;
+    img {
+        height: 100%;
+        width: 100%;
+        object-fit: none;
+        &.cancelled {
+          filter: blur(5px);
+        }
+    }
+    .grid-item-overlay {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        opacity: 0;
+        background-color: #000000;
+    }
+    .cancelled-flag {
+        border-radius: 5px;
+        position: absolute;
+        background-color: $flag-color;
+        color: $themeColor-lightLight;
+        right: 0;
+        top: 0;
+        margin: 10px;
+        padding: 10px;
+    }
+}

@@ -1,0 +1,162 @@
+@import 'common/colors';
+
+.event-title-container {
+    height: auto;
+    border-bottom: solid 0.1rem $themeColor-light;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+}
+
+.event-details-container {
+    display: grid;
+    grid-template-columns: 15% auto;
+    grid-template-rows: 16% auto;
+    grid-gap: 2rem;
+    height: 90%;
+}
+
+.event-options-container {
+    grid-column: 1;
+    grid-row: 2; 
+    border-right: solid 0.1rem $themeColor-light;
+    text-align: right;
+    padding-right: 1rem;
+}
+
+
+.event-data-container {
+    grid-column: 2;
+    grid-row: 2; 
+    display: grid;
+    grid-template-rows: auto 10%;
+}
+
+.event-form {
+    grid-row: 1;
+}
+
+.action-button-container{
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-left: 60px;
+    padding-right: 60px;
+    padding-bottom: 20px;
+
+    span{
+        font-size: 14px;
+        color: $themeColor-darkBlue;
+        padding-top: 5px;
+    }
+
+    .span-warning{
+        font-size: 14px;
+        color: $themeColor-red-shadow;
+        padding-top: 5px;
+    }
+
+    .span-disabled{
+        font-size: 13px;
+        color: $themeColor-light;
+        padding-top: 5px;
+    }
+}
+
+.event-actions-container {
+    grid-row: 1;
+    grid-column-start: span 2;
+    justify-self: center;
+
+    .action-button{
+        margin-right: 0.2rem;
+        margin-top: 5px;
+        font-size: 2rem;
+        width: 80px;
+        text-align: center;
+        background: $themeColor-white;
+        color: $themeColor-darkBlue;
+        border-radius: 50%;
+        height: 80px;
+        border: 2px solid $themeColor-darkBlue;
+
+        -webkit-transition: color 1s, background 1s;
+        -moz-transition:    color 1s, background 1s;
+        -ms-transition:     color 1s, background 1s;
+        -o-transition:      color 1s, background 1s;
+        transition:         color 1s, background 1s;
+    }
+    .action-button:hover{
+        background: $themeColor-darkBlue;
+        color: $themeColor-white;
+    }
+
+    .action-button.warning{
+        color: $themeColor-red-shadow;
+        border: 2px solid $themeColor-red-shadow;
+    }
+    .action-button.warning:hover{
+        background: $themeColor-red-shadow;
+        color: $themeColor-white;
+    }
+
+    .action-button.disabled{
+        color: $themeColor-white;
+        background: $themeColor-light;
+        border: 2px solid $themeColor-light;
+    }
+    .action-button.disabled:hover{
+        color: $themeColor-white;
+        background: $themeColor-light;
+        border: 2px solid $themeColor-light;
+    }
+}
+
+.react-datepicker__time-container .react-datepicker__time .react-datepicker__time-box ul.react-datepicker__time-list {
+    margin-left: -40px;
+}
+
+.react-datepicker-wrapper, .react-datepicker__input-container {
+    width: 100%;
+}
+
+.react-datepicker__input-container > input {
+    font-size: 16px;
+    background: $themeColor-white;
+    border: 1px solid $themeColor-light;
+    border-radius: 7px;
+    height: 35px;
+    width: 99%;
+    text-overflow: ellipsis;
+    text-indent: 10px;
+  }
+
+  .hidden-select > div > a, .select > div > a {
+      display: block;
+  }
+
+  .event-data-container > form {
+      overflow-y: auto;
+  }
+
+  .character-count {
+      height: 20px;
+      font-size: 14px;
+  }
+
+  .description-count {
+    margin-bottom: 0.5rem;
+  }
+
+  .event-form-general {
+      display: grid;
+      grid-template-columns: 15% auto;
+  }
+
+  .form-general-image {
+    grid-column: 1;
+  }
+
+  .form-general-data {
+    grid-column: 2;
+  }

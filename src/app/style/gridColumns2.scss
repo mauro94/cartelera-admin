@@ -1,0 +1,22 @@
+@import 'setup';
+
+.container-login {
+    grid-template-columns: 50% auto;
+    grid-gap: 20px;
+    align-content: center;
+}
+
+.login-logo {
+    grid-column: 1;
+    width: 100%;
+    display: flex;
+    justify-content:flex-end;
+    align-items:center;
+}
+
+.login-form {
+    grid-column: 2;
+    width: 100%;
+    display: grid;
+    align-content: center;
+}
