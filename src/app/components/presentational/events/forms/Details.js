@@ -1,20 +1,18 @@
 import React, { Fragment } from 'react'
 import { Formik, Form, Field } from 'formik';
-import { SelectComponent, TextComponent, EmailComponent, SelectDate } from 'Presentational/elements/Input';
+import { SelectComponent, TextComponent, EmailComponent } from 'Presentational/elements/Input';
 import { Entity } from 'Helpers/object'
 import { FormButtonSignout, FormButtonSubmit } from 'Presentational/elements/Form'
 import { Persist } from 'formik-persist'
+import { DatePickerElement } from 'Presentational/elements/DatePickerElement'
+
 
 export const EventsFormsDetails = ({ handleSubmit, error, errors, touched, isSubmitting }) => (
     <Form className="event-form">
         {!Entity.isEmpty(error) && <p className="message-error">{error}</p>}
 
-        <div>Fecha y Hora inicio:</div>
-        <Field name="startDateTime" placeholder="Fecha y Hora inicio" className={((touched.startDateTime && errors.startDateTime) ? 'emptyField' : 'readyField')} type={"selectsStart"} component={SelectDate} />
-        {touched.startDateTime && errors.startDateTime && <p className="message-error">{errors.startDateTime}</p>}
-
-        <div>Fecha y Hora fin:</div>
-        <Field name="endDateTime" placeholder="Fecha y Hora fin" className={((touched.endDateTime && errors.endDateTime) ? 'emptyField' : 'readyField')} type={"selectsEnd"} component={SelectDate} />
+        <div>Fecha y Hora:</div>
+        <Field name="rangeDate" className={((touched.endDateTime && errors.endDateTime) ? 'emptyField' : 'readyField')} component={DatePickerElement} />
         {touched.endDateTime && errors.endDateTime && <p className="message-error">{errors.endDateTime}</p>}
 
         <div>Ubicación:</div>

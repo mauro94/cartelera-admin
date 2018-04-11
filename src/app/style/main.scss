@@ -176,6 +176,10 @@ h3 {
   float: right;
   border: 0;
 }
+.button-submit:hover {
+  background: $themeColor-lightBlue-shadow;
+
+}
 .button-submit:disabled {
   background: $themeColor-light;
   color: $themeColor-white;
@@ -272,10 +276,32 @@ h3 {
 
 .helpIcon{
   margin-left: 5px;
-  color: $themeColor-light
+  color: $themeColor-light;
 }
 
-.cancel-event-button {
+.modal-confirmation{
+  height: auto;
+  text-align: center;
+    textarea {
+      font-family: $systemfont;
+      padding: 7px;
+      background-color: $themeColor-lightLight;
+      border: none;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      resize: none;
+  }
+}
+
+.modal-confirmation-buttons{
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+}
+
+.cancel-event-button,
+.modal-confirm-button,
+.modal-cancel-button{
   font-family: $systemfont;
   margin: 15px;
   display: block;
@@ -290,11 +316,24 @@ h3 {
   justify-content: center;
 }
 
+.modal-cancel-button{
+  background: $themeColor-red;
+  margin-right: 5px;
+}
+.modal-cancel-button:hover{
+  background: $themeColor-red-shadow;
+}
+.modal-confirm-button:hover{
+  background: $themeColor-lightBlue-shadow; 
+}
+
 .cancel-event-button{
   background: $themeColor-red;
   margin-left: 0px;
 }
-
+.cancel-event-button:hover{
+  background: $themeColor-red-shadow;
+}
 .cancel-event-button:disabled {
   background: $themeColor-light;
   color: $themeColor-white;
