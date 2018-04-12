@@ -1,26 +1,17 @@
 @import 'common/colors';
 
 .container-events {
-    grid-template-rows: 10rem 1rem auto;
+    grid-template-rows: 10rem auto;
+    grid-row-gap: 1rem;
 }
 
 .events-title {
-    grid-row: 1;
     align-self: center;
     padding-left: 13%;
-
     >h1{
         line-height: 2rem;
         display: inline;
     }
-}
-
-.container-events-filter-1 {
-    display: grid;
-    grid-template-columns: 10rem 10rem auto;
-    grid-row: 2;
-    line-height: 3rem;
-    border-bottom: solid 0.1rem $themeColor-light;
 }
 
 #toggle-event-filter{
@@ -152,7 +143,6 @@
 
 .container-events-all {
     display: grid;
-    grid-row: 5;
     grid-column-gap: 10px;
     grid-row-gap: 20px;
     grid-template-columns: repeat(4, 1fr);
