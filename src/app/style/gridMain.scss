@@ -1,54 +1,41 @@
 @import 'common/colors';
+@import 'common/pills';
 @import 'setup';
 
 .container {
-    align-items: center;
-    display: grid;
-    grid-template-columns: 10% auto 10%;
-    grid-template-rows: 5rem auto 5rem;
-}
-
-.navbar {
-    align-items: center;;
     display: flex;
-    grid-column: 2;
-    justify-content: space-around;
-    padding: 0 20%;
-    > div {
-        display: flex;
-    }
-    .sb-avatar {
-        margin-right: 10px;
-    }
-    .navbar-button {
+    flex-direction: column;
+    margin: 3% 10%;
+    > .navbar {
         align-items: center;
-        border-radius: 7px;
-        color: $themeColor-light;
         display: flex;
-        font-family: "Barlow", sans-serif;
-        font-size: 18px;
-        font-weight: 500;
-        height: 100%;
         justify-content: space-around;
-        padding: 10px 15px;
-        text-decoration: none;
-        .sb-avatar > div {
-            filter: grayscale(100%);
-            -webkit-transition : -webkit-filter 300ms linear;
-        }
-        &:hover {
-            background-color: $themeColor-lightLight;
-        }
-        &.selected {
-            color: $themeColor-black;
-            background-color: $themeColor-lightLight;
-            .sb-avatar > div {
-                filter: grayscale(0);
+        padding: 0 20%;
+        > div {
+            display: flex;
+            > .navbar-button {
+                align-items: center;
+                display: flex;
+                height: 100%;
+                justify-content: space-around;
+                .sb-avatar > div {
+                    filter: grayscale(100%);
+                    -webkit-transition : -webkit-filter 300ms linear;
+                }
+                &:hover {
+                    background-color: $themeColor-lightLight;
+                }
+                &.selected {
+                    color: $themeColor-black;
+                    background-color: $themeColor-lightLight;
+                    .sb-avatar > div {
+                        filter: grayscale(0);
+                    }
+                }
             }
         }
+        .sb-avatar {
+            margin-right: 10px;
+        }
     }
-}
-
-.container-content {
-    grid-column: 2;
 }

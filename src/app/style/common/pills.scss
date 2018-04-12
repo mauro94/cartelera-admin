@@ -21,3 +21,28 @@
         color: $themeColor-black;
     }
 }
+
+.navbar-button {
+    border-radius: 7px;
+    color: $themeColor-light;
+    display: flex;
+    font-family: "Barlow", sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 10px 15px;
+    text-decoration: none;
+    .sb-avatar > div {
+        filter: grayscale(100%);
+        -webkit-transition : -webkit-filter 300ms linear;
+    }
+    &:hover {
+        background-color: $themeColor-lightLight;
+    }
+    &.selected {
+        color: $themeColor-black;
+        background-color: $themeColor-lightLight;
+        .sb-avatar > div {
+            filter: grayscale(0);
+        }
+    }
+}

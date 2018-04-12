@@ -1,0 +1,18 @@
+@import 'pills';
+
+.profile-container {
+    display: flex;
+    flex-flow: row;
+    .navbar {
+        align-items: flex-end;
+        display: flex;
+        flex-flow: column;
+        width: 30%;
+        .navbar-button {
+            margin: 10px;
+        }
+    }
+    .profile-content {
+        width: 100%;
+    }
+}

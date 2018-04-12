@@ -67,7 +67,7 @@ class Edit extends React.Component {
                 onSuccess: this.handleSuccess,
                 onError: this.handleError
             }));
-        return (childrenWithProps)
+        return childrenWithProps
     }
 }
 

@@ -14,20 +14,18 @@ export const Layout = props => (
                     </div>)
             )}
         </div>
-        <div className='container-content'>
-            <Switch>
-                <React.Fragment>
-                    <DefaultRoute />
-                    {props.routes.map(
-                        (route, index) =>
-                            (<React.Fragment
-                                key={'route-' + index}>
-                                {route}
-                            </React.Fragment>)
-                    )}
-                </React.Fragment>
-            </Switch>
-        </div>
+        <Switch>
+            <React.Fragment>
+                <DefaultRoute />
+                {props.routes.map(
+                    (route, index) =>
+                        (<React.Fragment
+                            key={'route-' + index}>
+                            {route}
+                        </React.Fragment>)
+                )}
+            </React.Fragment>
+        </Switch>
     </div>
 )
 
