@@ -9,16 +9,6 @@ html {
   font-family: $systemfont;
 }
 
-html, body, #root{
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-div {
-  height: inherit;
-}
-
 .react-confirm-alert{
   display: flex;
   flex-direction: column;

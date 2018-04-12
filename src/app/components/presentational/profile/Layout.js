@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route, NavLink, Redirect, Switch } from 'react-router-dom'
-import { UserForms } from 'Helpers/constants'
-import { Edit as EditUser } from 'Containers/users'
+import EditCurrentUser from 'Containers/currentUser/Edit'
+import { Basic as BasicForm, Password as PasswordForm } from 'Presentational/users/forms'
 
 const ProfileLayout = (props) => (
     <div className='grid-container container-column-menu'>
@@ -19,18 +19,26 @@ const Routes = (props) => (
                 render={() => <Redirect to='/perfil/editar' />} />
             <Route
                 path='/perfil/editar'
-                render={() =>
-                    <EditUser
+                render={() => (
+                    <div>
+                        hola!
+                    </div>)} />
+            {/*<Route
+                path='/perfil/editar'
+                render={() => (
+                    <EditCurrentUser
                         current
-                        user={props.user}
-                        form={UserForms.Basic} />} />
+                        userToUpdate={props.user}>
+                        <BasicForm />
+                    </EditCurrentUser>)} />
             <Route
                 path='/perfil/contrasena'
-                render={() =>
-                    <EditUser
+                render={() => (
+                    <EditCurrentUser
                         current
-                        user={props.user}
-                        form={UserForms.Password} />} />
+                        userToUpdate={props.user}>
+                        <PasswordForm />
+                </EditCurrentUser>)} />*/}
         </div>
     </Switch>
 )

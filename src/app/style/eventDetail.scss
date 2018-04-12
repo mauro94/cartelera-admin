@@ -23,7 +23,6 @@
     padding-right: 1rem;
 }
 
-
 .event-data-container {
     grid-column: 2;
     grid-row: 2; 
@@ -80,11 +79,11 @@
         height: 80px;
         border: 2px solid $themeColor-darkBlue;
 
-        -webkit-transition: color 1s, background 1s;
-        -moz-transition:    color 1s, background 1s;
-        -ms-transition:     color 1s, background 1s;
-        -o-transition:      color 1s, background 1s;
-        transition:         color 1s, background 1s;
+        -webkit-transition: color 0.5s, background 0.5s;
+        -moz-transition:    color 0.5s, background 0.5s;
+        -ms-transition:     color 0.5s, background 0.5s;
+        -o-transition:      color 0.5s, background 0.5s;
+        transition:         color 0.5s, background 0.5s;
     }
     .action-button:hover{
         background: $themeColor-darkBlue;

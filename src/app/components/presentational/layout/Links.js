@@ -1,11 +1,12 @@
 import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import logo from 'Images/logo.svg'
+import { UserAvatar } from 'Presentational/elements'
 
 export const UsersLink = () => (
     <NavLink
         className='navbar-button'
-        activeClassName='selected-button-view'
+        activeClassName='selected'
         id='users-button'
         to={'/usuarios'}>
         Usuarios
@@ -15,7 +16,7 @@ export const UsersLink = () => (
 export const CategoriesLink = () => (
     <NavLink
         className='navbar-button'
-        activeClassName='selected-button-view'
+        activeClassName='selected'
         id='categories-button'
         to={'/categorias'}>
         Categorías
@@ -25,35 +26,20 @@ export const CategoriesLink = () => (
 export const EventsLink = () => (
     <NavLink
         className='navbar-button'
-        activeClassName='selected-button-view'
+        activeClassName='selected'
         id='events-button'
         to={'/eventos'}>
         Eventos
     </NavLink>
 )
 
-export const UpcomingLink = () => (
-    <Link to={'/eventos'}>
-        <img className='logo' src={logo} />
-    </Link>
-)
-
 export const ProfileLinks = props => (
-    <div className='dropdown'>
-        <NavLink
-            className='navbar-button'
-            activeClassName='selected-button-view'
-            id='user-button'
-            to={'/perfil'}>
-            {props.name}
-        </NavLink>
-        <div className='dropdown-content'>
-            <Link to={'/perfil/editar'}>Perfil</Link>
-            <Link
-                to={'/login'}
-                onClick={() => { props.logout() }}>
-                Cerrar Sesión
-            </Link>
-        </div>
-    </div>
+    <NavLink
+        className='navbar-button'
+        activeClassName='selected'
+        id='user-button'
+        to={'/perfil'}>
+        <UserAvatar size={25} user={props.user} />
+        <div>{props.user.firstName}</div>
+    </NavLink>
 )

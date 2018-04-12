@@ -7,11 +7,11 @@ export const AdminLayout = props => (
     <Layout
         title={'SuperAdmin'}
         links={[
-            <UsersLink />,
-            <CategoriesLink />,
             <EventsLink />,
+            <CategoriesLink />,
+            <UsersLink />,
             <ProfileLinks
-                name={props.currentUser.firstName}
+                user={props.currentUser}
                 logout={props.logout} />
         ]}
         routes={[

@@ -10,13 +10,19 @@ class Users extends React.Component {
     constructor() {
         super()
         this.renderRoutes = this.renderRoutes.bind(this)
+        this.state = {
+            renderRoutes: false
+        }
     }
-    componentWillMount() {
+    componentDidMount() {
         if (Entity.isEmpty(this.props.user.all)) {
             this.props.getUsers(this.props.type)
             this.setState({
                 renderRoutes: false
             })
+        }
+        else {
+            this.renderRoutes()
         }
     }
     componentWillReceiveProps(nextProps) {
