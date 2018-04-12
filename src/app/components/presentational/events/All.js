@@ -5,7 +5,7 @@ import 'Style/eventsMenuLayout.scss'
 
 const AllEvents = () => (
     <div className='grid-container container-events'>
-        <div className='events-title'>
+        <div className='title'>
             <h1 id='event-title'>Eventos{location.search.includes('pasados') ? " pasados": " próximos"} </h1>
             <h1 id='toggle-event-filter'>
                 <NavLink to={{ search: '?tipo=' + (location.search.includes('pasados') ? "próximos": "pasados") }}>
