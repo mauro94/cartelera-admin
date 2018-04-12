@@ -1,7 +1,9 @@
 @import '../common/colors';
+@import '../common/tags';
 
 .show {
-    border-left: solid 1px $themeColor-lightLight;
+    background-color: $themeColor-lightLight;
+    border-radius: 10px;
     display: grid;
     grid-template-rows: 1fr 1fr auto;
     height: auto;

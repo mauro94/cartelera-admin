@@ -8,11 +8,14 @@ export const DefaultRoute = props => (
     <Route exact path='/' render={() => <Redirect to='eventos' />} />
 )
 export const EventsRoutes = props => (
-    <Route path='/eventos' render={EventsLayout} />
+    <Route path='/eventos' render={(props) =>
+        <div className='page-container'><EventsLayout {...props} /></div>} />
 )
 export const UsersRoute = props => (
-    <Route path='/usuarios' render={UsersLayout} />
+    <Route path='/usuarios' render={(props) =>
+        <div className='page-container'><UsersLayout {...props} /></div>} />
 )
 export const ProfileRoute = props => (
-    <Route path='/perfil' render={() => <ProfileLayout user={props.user} />} />
+    <Route path='/perfil' render={() =>
+        <div className='page-container'><ProfileLayout user={props.user} /></div>} />
 )

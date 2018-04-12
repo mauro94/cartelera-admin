@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { CurrentUserActions } from 'Helpers/constants'
+import { UserActions } from 'Helpers/constants'
 import { thunks } from 'Logic/actions/thunks'
 import { ModalAlert } from 'Presentational/elements'
 import { EditSucceeded, EditFailed } from 'Presentational/users/Edit'

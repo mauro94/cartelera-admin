@@ -1,4 +1,5 @@
 import React from 'react'
+import $ from 'jquery'
 import { connect } from 'react-redux'
 import { withRouter, Redirect, Route } from 'react-router-dom'
 import { getIndex, getUserType, userDictionary } from './helper'
@@ -59,9 +60,8 @@ class Users extends React.Component {
             <Route
                 exact
                 path='/usuarios/:type/:id'
-                render={({ match }) => (
-                    <ShowUser user={this.props.user.all[getIndex(this.props.user.all, match)]} />
-                )} />
+                render={({ match }) => <ShowUser user={this.props.user.all[getIndex(this.props.user.all, match)]} />
+                } />
         </React.Fragment>
         return (
             <Route path='/'>

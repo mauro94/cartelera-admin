@@ -47,7 +47,7 @@ export const Labels = Object.freeze({
     phoneNumber: 'teléfono',
     office: 'oficina',
     campus: 'campus',
-    enabled: 'estado',
+    enabled: 'estatus',
     passwordConfirm: 'confirmar contraseña',
     password: 'contraseña',
     firstName: 'nombre',

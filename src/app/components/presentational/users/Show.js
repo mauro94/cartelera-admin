@@ -7,13 +7,15 @@ import { Format, Labels } from 'Helpers/index'
 import { UserAvatar, Tag } from 'Presentational/elements'
 import 'Style/users/show.scss'
 
-const UserShow = (props) => (
-    <div className='show'>
+const UserShow = (props) => {
+    let selectedItem = document.getElementById(`list-item-${props.user.id}`)
+    selectedItem.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    return <div className='show'>
         <Title user={props.user} />
         <Details user={props.user} />
         <Actions enabled={props.user.enabled} id={props.user.id} />
     </div>
-)
+}
 
 const Actions = (props) => (
     <div className='actions'>

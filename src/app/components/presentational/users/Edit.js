@@ -26,8 +26,10 @@ export const EditFailed = (props) => (
     </FeedbackModal>
 )
 
-const EditUser = (props) => (
-    <div className='edit'>
+const EditUser = (props) => {
+    let selectedItem = document.getElementById(`list-item-${props.user.id}`)
+    selectedItem.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    return <div className='edit'>
         <UserAvatar user={props.user} size={100} />
         <div className='label'>
             <FormLabels array={['firstName',
@@ -40,7 +42,7 @@ const EditUser = (props) => (
             <BasicForm />
         </EditUserForm>
     </div>
-)
+}
 
 const FormLabels = ({ array }) => (
     array.map((label, index) => (

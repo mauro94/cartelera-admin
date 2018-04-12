@@ -1,24 +1,21 @@
-@import 'tags';
+@import 'colors';
 
 .list {
     display: grid;
-    grid-auto-rows: 100px;
+    grid-auto-rows: 80px;
+    grid-gap: 10px;
     overflow-y: auto;
     .list-item {
         align-items: center;
         align-content: center;
-        background-color: #ffffff;
-        border-bottom: solid 1px $themeColor-lightLight;
+        border-radius: 10px;
+        color: black;
         display: grid;
+        filter: opacity(70%);
         grid-template-columns: 50px auto;
-        grid-gap: 10px;
-        height: auto;
+        grid-gap: 20px;
         padding: 20px;
         text-decoration: none;
-        color: $themeColor-black;
-        &.selected {
-            background-color: $themeColor-lightLightBlue;
-        }
         .list-item-data {
             .title {
                 font-size: 18px;
@@ -29,14 +26,17 @@
                 font-weight: 300;
             }
         }
-        &:first-child {
-            border-radius: 7px 0px 0px;
+        &:hover {
+            filter: opacity(100%);
+            cursor: pointer;
+            background-color: $themeColor-lightLight
         }
-        &:last-child {
-            border-radius: 0px 0px 0px 7px;
+        &.selected {
+            filter: opacity(100%);
+            color: white;
+            svg {
+                color: white;
+            }
         }
-    }
-    .list-item:hover {
-        background-color: $themeColor-lightLightBlue;
     }
 }

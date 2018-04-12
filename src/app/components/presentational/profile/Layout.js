@@ -4,10 +4,10 @@ import EditCurrentUser from 'Containers/currentUser/Edit'
 import { Basic as BasicForm, Password as PasswordForm } from 'Presentational/users/forms'
 
 const ProfileLayout = (props) => (
-    <div className='grid-container container-column-menu'>
+    <React.Fragment>
         <Links />
         <Routes user={props.user} />
-    </div>
+    </React.Fragment>
 )
 
 const Routes = (props) => (

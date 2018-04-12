@@ -76,6 +76,7 @@ export const all = (type) => {
         actionType: UserActions.All,
         call: () => request.get(
             `/${type}`,
-            { headers: headers.withAuth() })
+            { headers: headers.withAuth() }),
+        onSuccess: (response) => { Format.sortUsers(response.data) }
     })
 }

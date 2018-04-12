@@ -4,11 +4,11 @@ import { faEnvelope } from '@fortawesome/fontawesome-free-regular'
 import { Link, Redirect, Route, Switch } from 'react-router-dom'
 import { getPath, isActive } from './helper'
 import { load } from 'Containers/hoc'
-import { UserAvatar } from 'Presentational/elements'
+import UserAvatar, { getRandomColor } from 'Presentational/elements/UserAvatar'
 
 const UsersList = (props) => {
     return (
-        <div className='list'>
+        <div className='list' id='users-list'>
             {props.users.map((user, index) =>
                 <Entry
                     index={index}
@@ -31,16 +31,23 @@ const Entry = (props) => (
     </Row>
 )
 
-const Row = (props) => (
-    <Link
+const Row = (props) => {
+    let color = getRandomColor(props.item)
+    return <Link
+        id={`list-item-${props.item.id}`}
         to={getPath(props)}
         key={'Item-' + props.item.id}
         className={`list-item ${
             isActive(props) ?
-                'selected' : ''}`}>
+                'selected' : ''}`}
+        style={{
+            backgroundColor: isActive(props) ?
+                color : ''
+        }}>
         {props.children.map(
             (data, index) => (
                 <div
+                    id={`Item-${props.item.id}-data-${index}`}
                     key={`Item-${props.item.id}-data-${index}`}
                     className='list-item-data'>
                     {data}
@@ -48,7 +55,7 @@ const Row = (props) => (
             )
         )}
     </Link>
-)
+}
 
 const RowTitle = (props) => (
     <React.Fragment>

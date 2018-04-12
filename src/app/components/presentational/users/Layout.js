@@ -1,24 +1,19 @@
 import React from 'react'
-import { Route, Redirect } from 'react-router-dom'
-import { UserTypes } from 'Helpers/constants'
+import { Route, Redirect, NavLink } from 'react-router-dom'
+import { Format } from 'Helpers/object'
 import { Add as AddUser, List as UsersList } from 'Containers/users'
 import { Pill } from 'Presentational/elements'
 import 'Style/users/layout.scss'
 
-const getType = (params) => (
-    params.type.includes(UserTypes.Admin) ?
-        UserTypes.Admin : UserTypes.Sponsor
-)
-
 const UsersLayout = (props) => (
-    <div className='users-page'>
+    <React.Fragment>
         <Route
             exact path='/usuarios/'
             render={() => <Redirect
                 to={`/usuarios/sponsors/`} />
             } />
         <Route path='/usuarios/:type' render={UsersPage} />
-    </div>
+    </React.Fragment>
 )
 
 const UsersPage = (props) => (
@@ -32,24 +27,18 @@ const UsersPage = (props) => (
 )
 
 const Header = (props) => (
-    <div>
-        <h1>Usuarios</h1>
-        <div className='tool-bar'>
-            <Pills />
-            <AddUser type={getType(props.match.params)} />
-        </div>
+    <div className='title'>
+        <h1>{Format.capitalize(props.match.params.type)}</h1>
+        <h1 className='toggle-title-filter'>
+            <NavLink to={`/usuarios/${unactiveLocation(props.match)}`}>
+                {` / ${unactiveLocation(props.match)}`}
+            </NavLink>
+        </h1>
     </div>
 )
 
-const Pills = (props) => (
-    <div className='pill-bar'>
-        <Pill path={'/usuarios/sponsors'}>
-            Sponsors
-        </Pill>
-        <Pill path={'/usuarios/admins'}>
-            Admins
-        </Pill>
-    </div>
+const unactiveLocation = (match) => (
+    match.params.type == 'sponsors' ? 'admins' : 'sponsors'
 )
 
 export default UsersLayout
