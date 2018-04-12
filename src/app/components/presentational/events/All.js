@@ -6,7 +6,7 @@ import 'Style/eventsMenuLayout.scss'
 const AllEvents = () => (
     <React.Fragment>
         <div className='title'>
-            <h1>{`Eventos ${location.search.includes('pasados') ? 'pasados' : 'próximos'}`}</h1>
+            <h1>{`Eventos ${location.search.includes('pasados') ? 'pasados ' : 'próximos '}`}</h1>
             <h1 className='toggle-title-filter'>
                 <NavLink to={{ search: '?tipo=' + (location.search.includes('pasados') ? 'próximos' : 'pasados') }}>
                     /{location.search.includes('pasados') ? ' próximos' : ' pasados'}

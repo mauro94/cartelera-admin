@@ -33,6 +33,12 @@ export const EventsLink = () => (
     </NavLink>
 )
 
+export const UpcomingLink = () => (
+    <Link to={'/eventos'}>
+        <img className='logo' height="50" src={logo}/>
+    </Link>
+)
+
 export const ProfileLinks = props => (
     <NavLink
         className='navbar-button'

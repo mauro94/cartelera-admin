@@ -10,11 +10,13 @@ import 'Style/eventDetail.scss';
 const EventsEdit = (props) => (
     <Router>
         <React.Fragment>
-            <div className='event-title-container'>
-                <h1> {props.event.name}</h1>
+            <div className='title'>
+                <div className="event-top-container">
+                    <h1> {props.event.name}</h1>
+                    <EventForm.Actions {...props}/>
+                </div>
             </div>
             <div className='event-details-container'>
-                <EventForm.Actions {...props}/>
                 <Menu id={props.event.id} />
                 <Form {...props}>
                     <Routes id={props.event.id} />

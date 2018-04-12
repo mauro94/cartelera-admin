@@ -6,7 +6,13 @@
     display: grid;
     >.title {
         align-self: center;
-        padding-left: 13%;
+        padding: 0 10px;
+        text-align: center;
+
+        >p{
+            color: $themeColor-light;
+            cursor: pointer;
+        }
         >h1{
             line-height: 2rem;
             display: inline;
