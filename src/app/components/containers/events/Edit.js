@@ -7,6 +7,14 @@ import { default as EditEvent } from 'Presentational/events/Edit'
 import { Entity, EventActions } from 'Helpers/index';
 
 class Edit extends React.Component {
+    constructor() {
+        super()
+        this.setState({
+            startDatetime: "",
+            endDatetime: ""
+        })
+    }
+
     componentDidMount() {
         if (Entity.isEmpty(this.props.event.show))
             this.props.getEvent(this.props.id)
@@ -15,6 +23,16 @@ class Edit extends React.Component {
         if (this.props.id != nextProps.id) {
             this.props.getEvent(nextProps.id)
         }
+    }
+    handleChangeDatePicker({ startDatetime, endDatetime }) {
+        startDatetime = startDatetime || this.props.startDatetime
+        endDatetime = endDatetime || this.props.endDatetime
+
+        if (startDatetime.isAfter(endDatetime)) {
+            endDatetime = startDatetime
+        }
+
+        this.setState({ startDatetime: startDatetime, endDatetime: endDatetime })
     }
     handleSubmit(values) {
         for (var key in props.event.show) {
@@ -34,6 +52,7 @@ class Edit extends React.Component {
                 categoryList={categoryList}
                 event={this.props.event.show}
                 handleSubmit={this.handleSubmit}
+                handleChangeDatePicker={this.handleChangeDatePicker}
                 reducer={{
                     status: this.props.event.status,
                     action: this.props.event.action,

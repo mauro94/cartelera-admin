@@ -1,10 +1,12 @@
 import React from 'react'
 import { BrowserRouter as Router, NavLink, Route, Switch } from 'react-router-dom'
-import { Formik } from 'formik'
+import { Formik, Form } from 'formik'
 import Yup from 'yup'
 import { load } from 'Containers/hoc'
 import { EventFormValidations, CharacterCount } from 'Helpers/constants'
 import * as EventForm from './forms/index'
+import { Persist } from 'formik-persist'
+
 import 'Style/eventDetail.scss';
 
 const EventsEdit = (props) => (
@@ -15,22 +17,24 @@ const EventsEdit = (props) => (
             </div>
             <div className='event-details-container'>
                 <Menu id={props.event.id} />
-                <Form {...props}>
+                <FormComponent {...props}>
                     <Routes id={props.event.id} />
-                </Form>
+                </FormComponent>
             </div>
         </React.Fragment>
     </Router>
 )
 
-const Form = (props) => {
+const FormComponent = (props) => {
     let initialValues = {
         name: props.event.name || '',
         description: props.event.description || '',
         location: props.event.location || '',
         campus: props.event.campus || 'MTY',
         category: props.event.category || 'Congreso',
-        id: props.event.id || '1'
+        id: props.event.id || '1',
+        startDatetime: props.event.startDatetime || '',
+        endDatetime: props.event.endDatetime || ''
     }
 
     return <Formik
@@ -50,12 +54,12 @@ const Form = (props) => {
             var routesWithProps = React.Children.map(props.children, child =>
                 React.cloneElement(child, { ...formProps, ...props }))
             return (
-                <React.Fragment>
+                <Form>
                     <div className='event-data-container'>
                         {routesWithProps}
                         <EventForm.Actions {...props} {...formProps} />
                     </div>
-                </React.Fragment>
+                </Form>
             )
         }}
     </Formik>

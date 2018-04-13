@@ -1,19 +1,29 @@
 import React, { Fragment } from 'react'
-import { Formik, Form, Field } from 'formik';
+import { Formik, Field } from 'formik';
 import { SelectComponent, TextComponent, EmailComponent } from 'Presentational/elements/Input';
 import { Entity } from 'Helpers/object'
 import { FormButtonSignout, FormButtonSubmit } from 'Presentational/elements/Form'
-import { Persist } from 'formik-persist'
 import { DatePickerElement } from 'Presentational/elements/DatePickerElement'
 
 
-export const EventsFormsDetails = ({ handleSubmit, error, errors, touched, isSubmitting }) => (
-    <Form className="event-form">
+export const EventsFormsDetails = ({ handleSubmit, error, errors, touched, isSubmitting, values, handleChangeDatePicker }) => (
+    <div className="event-form">
         {!Entity.isEmpty(error) && <p className="message-error">{error}</p>}
 
         <div>Fecha y Hora:</div>
-        <Field name="rangeDate" className={((touched.endDateTime && errors.endDateTime) ? 'emptyField' : 'readyField')} component={DatePickerElement} />
-        {touched.endDateTime && errors.endDateTime && <p className="message-error">{errors.endDateTime}</p>}
+        <Field name="startDatetime" className={((touched.startDatetime && errors.startDatetime) ? 'emptyField' : 'readyField')} render={({ field }) => (
+            <DatePickerElement startDatetime={field.value} endDatetime={values.endDatetime} {...field} handleChangeDatePicker={handleChangeDatePicker}/>
+            //   <DatePickerElement startDate={values.startDate} endDate={values.endDate} type="startDate"/>
+            )} 
+        />
+        {touched.startDate && errors.startDate && <p className="message-error">{errors.startDate}</p>}
+
+        {/* <div>Fecha y Hora:</div>
+        <Field name="endDatetime" className={((touched.endDatetime && errors.endDatetime) ? 'emptyField' : 'readyField')} render={(props) => (
+              <DatePickerElement startDatetime={values.startDatetime} endDatetime={values.endDatetime} name="endDatetime" {...props} />
+            )} 
+        />
+        {touched.endDate && errors.endDate && <p className="message-error">{errors.endDate}</p>} */}
 
         <div>Ubicación:</div>
         <Field name="location" placeholder="Ubicación" className={((touched.location && errors.location) ? 'emptyField' : 'readyField')} component={TextComponent} />
@@ -39,7 +49,5 @@ export const EventsFormsDetails = ({ handleSubmit, error, errors, touched, isSub
         <div>Telefono:</div>
         <Field name="contact_phone" placeholder="Teléfono de contacto" className={((touched.contact_phone && errors.contact_phone) ? 'emptyField' : 'readyField')} component={TextComponent} />
         {touched.contact_phone && errors.contact_phone && <p className="message-error">{errors.contact_phone}</p>}
-
-        <Persist name="event-details" />
-    </Form>
+    </div>
 )

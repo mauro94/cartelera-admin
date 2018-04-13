@@ -52,7 +52,6 @@ export const SelectComponent = (props) => (
       <label>{props.instruction}</label>
     </div>
     <select
-      {...props.field}
       {...props}>
       {props.list.map(Option)}
     </select>
@@ -60,15 +59,20 @@ export const SelectComponent = (props) => (
 );
 
 export const SelectDate = ({
-  instruction,
   field, // { name, value, onChange, onBlur }
   form: { touched, errors }, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
   ...props
 }) => (
     <div className="form-field">
-      <DatePickerElement {...props.field} {...props}/>
+      <input
+        type="datetime-local"
+        {...field}
+        {...props}
+        //onClick={this.props.onClick}
+      />
+      <DatePickerElement {...props} />
     </div>
-  );
+)
 
 const Option = element => (
   <option key={element.key} value={element.key}> {element.text} </option>

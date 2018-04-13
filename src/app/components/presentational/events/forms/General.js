@@ -1,13 +1,12 @@
 import React, { Fragment } from 'react'
-import { Formik, Form, Field } from 'formik';
+import { Formik, Field } from 'formik';
 import { SelectComponent, TextComponent, TextAreaComponent, EmailComponent, PasswordComponent } from 'Presentational/elements/Input';
 import { Entity } from 'Helpers/index'
 import { FormButtonSubmit } from 'Presentational/elements/Form'
-import { Persist } from 'formik-persist'
 import { CharactersLeft } from "Presentational/elements/CharactersLeft"
 
 export const EventsFormsIndex = ({ handleSubmit, error, errors, touched, isSubmitting, campusList, categoryList, characterCount, values }) => {
-    return <Form className="event-form event-form-general">
+    return <div className="event-form event-form-general">
         {!Entity.isEmpty(error) && <p className="message-error">{error}</p>}
 
         <div className="form-general-image">
@@ -39,7 +38,5 @@ export const EventsFormsIndex = ({ handleSubmit, error, errors, touched, isSubmi
                 component={SelectComponent} />
             {touched.category && errors.category && <p className="message-error">{errors.category}</p>}
         </div>
-
-        <Persist name="event-general" />
-    </Form>
+    </div>
 }

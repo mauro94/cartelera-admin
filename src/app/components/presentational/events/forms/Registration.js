@@ -7,7 +7,7 @@ import { Persist } from 'formik-persist'
 import { BrowserRouter as Router, Route, Link, NavLink } from 'react-router-dom'
 
 export const EventsFormsRegistration = ({ handleSubmit, error, errors, touched, isSubmitting, handleSelectOption, registration_select, handleFormChange, eventid }) => (
-    <Form>
+    <div>
         {!Entity.isEmpty(error) && <p className='message-error'>{error}</p>}
 
         <Route path={'/eventos/' + eventid + '/editar/registro/local'} render={() =>
@@ -24,7 +24,5 @@ export const EventsFormsRegistration = ({ handleSubmit, error, errors, touched, 
                 {touched.url_registration && errors.url_registration && <p className='message-error'>{errors.url_registration}</p>}
             </React.Fragment>
         } />
-
-        <Persist name='event-details' />
-    </Form>
+    </div>
 )
