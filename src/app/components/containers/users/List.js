@@ -16,7 +16,7 @@ class Users extends React.Component {
         }
     }
     componentDidMount() {
-        if (Entity.isEmpty(this.props.user.all)) {
+        if (Entity.isEmpty(this.props.user.all) || this.props.user.all[0].type != this.props.type) {
             this.props.getUsers(this.props.type)
             this.setState({
                 renderRoutes: false

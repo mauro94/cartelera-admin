@@ -5,7 +5,8 @@ import Yup from 'yup'
 import { load } from 'Containers/hoc'
 import { EventFormValidations, CharacterCount } from 'Helpers/constants'
 import * as EventForm from './forms/index'
-import 'Style/eventDetail.scss';
+import 'Style/eventDetail.scss'
+import 'Style/common/segmentedForm.scss'
 
 const EventsEdit = (props) => (
     <Router>
@@ -13,10 +14,10 @@ const EventsEdit = (props) => (
             <div className='title'>
                 <div className="event-top-container">
                     <h1> {props.event.name}</h1>
-                    <EventForm.Actions {...props}/>
+                    <EventForm.Actions {...props} />
                 </div>
             </div>
-            <div className='event-details-container'>
+            <div className='edit-event-container'>
                 <Menu id={props.event.id} />
                 <Form {...props}>
                     <Routes id={props.event.id} />
@@ -54,9 +55,7 @@ const Form = (props) => {
                 React.cloneElement(child, { ...formProps, ...props }))
             return (
                 <React.Fragment>
-                    <div className='event-data-container'>
-                        {routesWithProps}
-                    </div>
+                    {routesWithProps}
                 </React.Fragment>
             )
         }}
@@ -64,39 +63,44 @@ const Form = (props) => {
 }
 
 const Menu = (props) => (
-    <div className='event-options-container'>
-        <div className='menu-link '>
+    <div className='navbar'>
+        <div>
             <NavLink
                 exact
-                activeClassName='menu-link-selected'
+                activeClassName='selected'
+                className='navbar-button'
                 to={'/eventos/' + props.id + '/editar'}>
                 General
             </NavLink>
         </div>
-        <div className='menu-link '>
+        <div>
             <NavLink
-                activeClassName='menu-link-selected'
+                activeClassName='selected'
+                className='navbar-button'
                 to={'/eventos/' + props.id + '/editar/imagenes'}>
                 Imágenes
             </NavLink>
         </div>
-        <div className='menu-link '>
+        <div>
             <NavLink
-                activeClassName='menu-link-selected'
+                activeClassName='selected'
+                className='navbar-button'
                 to={'/eventos/' + props.id + '/editar/detalles'}>
                 Detalle
             </NavLink>
         </div>
-        <div className='menu-link '>
+        <div>
             <NavLink
-                activeClassName='menu-link-selected'
+                activeClassName='selected'
+                className='navbar-button'
                 to={'/eventos/' + props.id + '/editar/registro/local'}>
                 Registro
             </NavLink>
         </div>
-        <div className='menu-link '>
+        <div>
             <NavLink
-                activeClassName='menu-link-selected'
+                activeClassName='selected'
+                className='navbar-button'
                 to={'/eventos/' + props.id + '/editar/opcional'}>
                 Opcional
             </NavLink>
@@ -105,7 +109,7 @@ const Menu = (props) => (
 )
 
 const Routes = (props) => (
-    <React.Fragment>
+    <div className='edit-event-content'>
         <Route
             exact
             path={'/eventos/' + props.id + '/editar'}
@@ -116,7 +120,7 @@ const Routes = (props) => (
         <Route
             path={'/eventos/' + props.id + '/editar/registro'}
             render={() => <EventForm.Registration {...props} eventid={props.id} />} />
-    </React.Fragment>
+    </div>
 )
 
 export default load('event', EventsEdit)

@@ -5,7 +5,7 @@ import {
     Basic as BasicForm,
     Password as PasswordForm
 } from 'Presentational/users/forms'
-import 'Style/common/segmentedForm.scss';
+import 'Style/common/segmentedForm.scss'
 
 const ProfileLayout = (props) => (
     <React.Fragment>

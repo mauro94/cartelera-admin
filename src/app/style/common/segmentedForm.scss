@@ -1,6 +1,6 @@
 @import 'pills';
 
-.profile-container {
+.edit-event-container, .profile-container {
     display: flex;
     flex-flow: row;
     .navbar {
@@ -12,7 +12,7 @@
             margin: 10px;
         }
     }
-    .profile-content {
+    .edit-event-content, .profile-content {
         width: 100%;
     }
 }
