@@ -8,7 +8,7 @@ import { Entity, EventActions } from 'Helpers/index';
 
 class Edit extends React.Component {
     componentDidMount() {
-        if (Entity.isEmpty(this.props.event.show))
+        if (Entity.isEmpty(this.props.event.show) || this.props.event.show.id != this.props.id)
             this.props.getEvent(this.props.id)
     }
     componentWillReceiveProps(nextProps) {
