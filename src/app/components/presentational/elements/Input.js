@@ -1,10 +1,7 @@
 import React from 'react'
 import { Field } from 'formik'
 export { Password as PasswordComponent } from 'Presentational/elements/Password'
-import DatePicker from 'react-datepicker'
-import moment from 'moment'
-
-import 'react-datepicker/dist/react-datepicker.css'
+import { DatePickerElement } from 'Presentational/elements/DatePickerElement'
 
 export const EmailComponent = ({
   field, // { name, value, onChange, onBlur }
@@ -35,6 +32,20 @@ export const TextComponent = ({
     </div>
   );
 
+export const TextAreaComponent = ({
+  field, // { name, value, onChange, onBlur }
+  form: { touched, errors }, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
+  ...props
+}) => (
+    <div className="form-field">
+      <textarea
+        type="text"
+        {...field}
+        {...props}
+      />
+    </div>
+  );
+
 export const SelectComponent = (props) => (
   <div className="form-field">
     <div>
@@ -55,17 +66,7 @@ export const SelectDate = ({
   ...props
 }) => (
     <div className="form-field">
-      <DatePicker
-        showTimeSelect
-        timeFormat="HH:mm"
-        minDate={moment()}
-        maxDate={moment().add(1, "year")}
-        dateFormat="LLL"
-        timeCaption="Tiempo"
-        placeholderText="Fecha y Hora de Inicio"
-        locale="es-mx"
-        isClearable={true}
-      />
+      <DatePickerElement {...props.field} {...props} />
     </div>
   );
 

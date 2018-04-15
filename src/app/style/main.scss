@@ -4,7 +4,6 @@
 @import 'common/button';
 @import 'categories';
 @import 'common/modal';
-@import 'users';
 @import url('https://fonts.googleapis.com/css?family=Barlow:100,200,300,400,500,600,700,800,900&subset=latin-ext');
 
 html {
@@ -44,6 +43,18 @@ div {
   width: 99%;
   text-overflow: ellipsis;
   text-indent: 10px;
+}
+
+textarea {
+  resize: none;
+  font-size: 16px;
+  background: $themeColor-white;
+  border: 1px solid $themeColor-light;
+  border-radius: 7px;
+  height: 5rem;
+  width: 99%;
+  text-indent: 10px;
+  line-height: 1.5rem;
 }
 
 .form-field {
@@ -93,18 +104,18 @@ p {
 }
 
 h1 {
-  font-weight: 600;
-  font-size: 36px;
-  color: $themeColor-darkBlue;
+  font-weight: 700;
+  font-size: 42px;
+  color: $themeColor-black;
   grid-row: 1;
   margin-bottom: 2px;
 
   @media #{$mobileScreenSize} {
-    font-size: 24px;
+    font-size: 36px;
   }
 
   @media #{$desktopScreenSize} {
-    font-size: 36px;
+    font-size: 42px;
   }
 }
 
@@ -142,6 +153,7 @@ h3 {
 // CSS Grid
 .grid-container {
   display: grid;
+  height: auto;
 }
 
 // Messages
@@ -164,6 +176,10 @@ h3 {
   height: 35px;
   float: right;
   border: 0;
+}
+.button-submit:hover {
+  background: $themeColor-lightBlue-shadow;
+
 }
 .button-submit:disabled {
   background: $themeColor-light;
@@ -229,10 +245,17 @@ h3 {
 }
 
 .spinner {
-  top: 50%;
-  left: 50%;
-  margin: auto;
-  position: absolute;
+  top: 0;
+  left: 0;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  div.sk-fade-in {
+    height: auto;
+  }
 }
 .modifyButtons{
   display: flex;
@@ -254,10 +277,32 @@ h3 {
 
 .helpIcon{
   margin-left: 5px;
-  color: $themeColor-light
+  color: $themeColor-light;
 }
 
-.cancel-event-button {
+.modal-confirmation{
+  height: auto;
+  text-align: center;
+    textarea {
+      font-family: $systemfont;
+      padding: 7px;
+      background-color: $themeColor-lightLight;
+      border: none;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      resize: none;
+  }
+}
+
+.modal-confirmation-buttons{
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+}
+
+.cancel-event-button,
+.modal-confirm-button,
+.modal-cancel-button{
   font-family: $systemfont;
   margin: 15px;
   display: block;
@@ -272,11 +317,24 @@ h3 {
   justify-content: center;
 }
 
+.modal-cancel-button{
+  background: $themeColor-red;
+  margin-right: 5px;
+}
+.modal-cancel-button:hover{
+  background: $themeColor-red-shadow;
+}
+.modal-confirm-button:hover{
+  background: $themeColor-lightBlue-shadow; 
+}
+
 .cancel-event-button{
   background: $themeColor-red;
   margin-left: 0px;
 }
-
+.cancel-event-button:hover{
+  background: $themeColor-red-shadow;
+}
 .cancel-event-button:disabled {
   background: $themeColor-light;
   color: $themeColor-white;

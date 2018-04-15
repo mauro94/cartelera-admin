@@ -1,16 +1,17 @@
 import React from 'react'
 import { Formik } from 'formik'
 import Yup from 'yup'
-import { PasswordComponent, FormComponent as Form } from 'Presentational/elements';
-import { FormValidations } from 'Helpers/constants'
+import { load } from 'Containers/hoc'
+import { PasswordFormValidations } from 'Helpers/constants'
+import {
+    PasswordComponent,
+    FormComponent as Form
+} from 'Presentational/elements';
 
 const Password = ({ user, handleSubmit }) => (
     <Formik
         validationSchema={
-            Yup.object().shape({
-                password: FormValidations.password,
-                passwordConfirm: FormValidations.passwordConfirm
-            })
+            Yup.object().shape(PasswordFormValidations)
         }
         initialValues={{
             password: '',
@@ -35,4 +36,4 @@ const PasswordForm = (props) => (
         submitTitle='Cambiar contraseña' />
 )
 
-export default Password
+export default load('user', Password)

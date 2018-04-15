@@ -8,7 +8,9 @@ export const SponsorLayout = props => (
         title={'Sponsor'}
         links={[
             <EventsLink />,
-            <ProfileLinks name={props.currentUser.firstName} logout={props.logout} />
+            <ProfileLinks
+                name={props.currentUser.firstName}
+                logout={props.logout} />
         ]}
         routes={[
             <EventsRoutes />,

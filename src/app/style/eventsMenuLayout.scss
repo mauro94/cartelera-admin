@@ -1,13 +1,17 @@
 @import 'common/colors';
 
 .container-events {
-    grid-template-rows: 5rem 3rem 3rem 1rem auto;
+    grid-template-rows: 10rem 1rem auto;
 }
 
-.events-title {
+.title {
     grid-row: 1;
+    align-self: center;
+    padding-left: 13%;
+
     >h1{
         line-height: 2rem;
+        display: inline;
     }
 }
 
@@ -19,10 +23,35 @@
     border-bottom: solid 0.1rem $themeColor-light;
 }
 
-.filter-selected {
-    border-color: $themeColor-lightBlue;
-    color: $themeColor-lightBlue;
-    border-bottom: 4px solid;
+#toggle-event-filter{
+    display: inline;
+
+    &>a {
+        color: $themeColor-lighter;
+        -webkit-transition: color 0.5s;
+        -moz-transition:    color 0.5s;
+        -ms-transition:     color 0.5s;
+        -o-transition:      color 0.5s;
+        transition:         color 0.5s;
+
+        &:link {
+            color: $themeColor-lighter;
+            text-decoration: none;
+        }
+
+        &:visited {
+            color: $themeColor-lighter;
+            text-decoration: none;
+        }
+
+        &:hover {
+            color: $themeColor-lightBlue;
+        }
+
+        &:active {
+            color: $themeColor-lightBlue;
+        }
+    }
 }
 
 .filter-link-1 {

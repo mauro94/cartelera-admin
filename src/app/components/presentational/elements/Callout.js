@@ -51,7 +51,7 @@ export default class Callout extends React.Component {
                             <div className='plus'>
                                 <Plus />
                             </div>
-                            Agregar {this.props.type}
+                            {`Agregar ${this.props.type}`}
                         </button>
                     }
                     {this.state.showCallout &&
