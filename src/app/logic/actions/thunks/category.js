@@ -1,63 +1,36 @@
-import {
-    CategoryActions,
-    Status
-} from 'Config/constants'
-
-import { request, history, getToken } from 'Config/helper'
+import { Format, Status, CategoryActions } from 'Helpers/index'
 import { createAction } from 'Logic/actions'
+import { serverCall, request, headers } from 'Logic/actions/thunks/helper'
+
+export const update = (category) => {
+    let actionType = CategoryActions.Update
+    return dispatch => serverCall({
+        dispatch: dispatch,
+        actionType: CategoryActions.Update,
+        call: () => request.put(
+            `/category/${category.id}`,
+            Format.snakeCase('category', category),
+            { headers: headers.withAuth() }),
+    })
+}
 
 export const create = (name) => {
-    return (dispatch) => {
-        dispatch(createAction(CategoryActions.Create, null,
-            null, Status.WaitingOnServer))
-        request.post('/categories/', { category: { name: name } }, {
-            headers: {
-                'Authorization': 'Bearer ' + getToken()
-            }
-        })
-            .then(response => {
-                dispatch(
-                    createAction(
-                        CategoryActions.Create,
-                        response.data,
-                        null,
-                        Status.Ready
-                    ))
-            })
-            .catch((error) => {
-                dispatch(
-                    createAction(
-                        CategoryActions.Create,
-                        null,
-                        error.response.data,
-                        Status.Failed
-                    ))
-            })
-    }
+    return dispatch => serverCall({
+        dispatch: dispatch,
+        actionType: CategoryActions.Create,
+        call: () => request.post(
+            '/categories/',
+            { category: { name: name } },
+            { headers: headers.withAuth() })
+    })
 }
 
 export const all = () => {
-    return (dispatch) => {
-        dispatch(createAction(CategoryActions.All, null,
-            null, Status.WaitingOnServer))
-        request.get('/categories', {
-            headers: {
-                'Authorization': 'Bearer ' + getToken()
-            }
-        })
-            .then(response => {
-                dispatch(
-                    createAction(
-                        CategoryActions.All,
-                        response.data,
-                        null,
-                        Status.Ready
-                    ))
-            })
-            .catch((error) => {
-                dispatch(
-                    createAction(CategoryActions.All, null, error.response.data,
-                        Status.Failed))
-            })
-    }
+    return dispatch => serverCall({
+        dispatch: dispatch,
+        actionType: CategoryActions.All,
+        call: () => request.get(
+            '/categories',
+            { headers: headers.withAuth() })
+    })
 }
