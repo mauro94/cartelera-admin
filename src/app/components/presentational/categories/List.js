@@ -1,11 +1,7 @@
-
 import React from 'react'
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import { load } from 'Containers/hoc'
 import { faTrashAlt, faEdit, faTimesCircle } from '@fortawesome/fontawesome-free-regular'
-import { getDefaultCategoryId } from './helper'
-import { Link, Redirect, Route, Switch } from 'react-router-dom'
-import { Tag, TagIcon } from 'Presentational/elements/Tag'
 
 const CategoriesList = (props) => {
     return (
@@ -29,6 +25,5 @@ const CategoryRow = ({ category }) => (
         </div>
     </div>
 )
-
 
 export default load('categories', CategoriesList)
