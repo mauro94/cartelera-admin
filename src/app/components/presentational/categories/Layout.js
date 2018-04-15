@@ -7,7 +7,7 @@ const CategoriesLayout = (props) => (
         <div>
             <h1>Categorías</h1>
             <div className='tool-bar'>
-                <AddCategory query={props.match.params.type} />
+                <AddCategory />
             </div>
         </div>
         <CategoriesList />
