@@ -1,6 +1,5 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom'
 import { Entity, CategoryActions } from 'Helpers/index'
 import { thunks } from 'Logic/actions/thunks'
 import { CategoriesList } from 'Presentational/categories'
@@ -26,7 +25,7 @@ class Categories extends React.Component {
     }
 }
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = state => {
     return {
         category: state.category
     }
