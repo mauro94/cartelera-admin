@@ -16,7 +16,7 @@ export const UsersRoute = props => (
 )
 
 export const CategoriesRoute = props => (
-    <Route path='/dashboard/categories' component={CategoriesIndex} />
+    <Route path='/categorias' render={CategoriesLayout} />
 )
 
 export const ProfileRoute = props => (

@@ -1,23 +1,34 @@
+
 import React from 'react'
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
-import { faTrashAlt } from '@fortawesome/fontawesome-free-regular'
+import { load } from 'Containers/hoc'
+import { faTrashAlt, faEdit, faTimesCircle } from '@fortawesome/fontawesome-free-regular'
+import { getDefaultCategoryId } from './helper'
+import { Link, Redirect, Route, Switch } from 'react-router-dom'
+import { Tag, TagIcon } from 'Presentational/elements/Tag'
 
-const CategoriesList = ({ categories }) => (
-    <div className='list'>
-        {categories.map((c, i) =>
-            <CategoryRow category={c} key={'category-' + c.id + '-' + i} />
-        )}
-    </div>
-)
+const CategoriesList = (props) => {
+    return (
+        <div className='content'>
+            <div className='list'>
+                {props.categories.map((c, i) =>
+                    <CategoryRow category={c} key={'category-' + c.id + '-' + i} />
+                )}
+            </div>
+        </div>
+    )
+}
 
 const CategoryRow = ({ category }) => (
     <div key={'category-' + category.id} className='list-item'>
         <div className='list-item-data'>{category.name}</div>
         <div className='list-item-data edit'>
-            <TagIcon child={<FontAwesomeIcon icon={faTrashAlt} />} />
+            <FontAwesomeIcon icon={faEdit} />
+            <FontAwesomeIcon icon={faTimesCircle} />
+            <FontAwesomeIcon icon={faTrashAlt} />
         </div>
     </div>
 )
 
 
-export default CategoriesList
+export default load('categories', CategoriesList)
