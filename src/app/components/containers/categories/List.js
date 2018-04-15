@@ -15,6 +15,7 @@ class Categories extends React.Component {
         return (
             <CategoriesList
                 action={CategoryActions.All}
+                hide
                 reducer={{
                     status: this.props.category.status,
                     action: this.props.category.action,
