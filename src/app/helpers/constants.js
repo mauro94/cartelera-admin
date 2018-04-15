@@ -7,6 +7,13 @@ export const EventActions = Object.freeze({
     Update: 'UPDATE_EVENT'
 })
 
+export const CategoryActions = Object.freeze({
+    All: 'ALL_CATEGORIES',
+    Create: 'CREATE_CATEGORY',
+    Update: 'UPDATE_CATEGORY',
+    Get: "GET_CATEGORY"
+})
+
 export const SessionActions = Object.freeze({
     Login: 'LOGIN',
     Logout: 'LOGOUT',
