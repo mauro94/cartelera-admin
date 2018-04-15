@@ -3,7 +3,7 @@ import { Callout, FeedbackModal } from 'Presentational/elements'
 import { faListAlt } from '@fortawesome/fontawesome-free-regular'
 
 export const AddCategory = (props) => (
-    <Callout add={props.add} placeholder="Ejemplo: Deportes" icon={ faListAlt } />
+    <Callout add={props.add} placeholder="Ejemplo: Deportes" type={"Categoría"} icon={ faListAlt } />
 )
 
 export const AddSucceeded = (props) => (
