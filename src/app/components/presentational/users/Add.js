@@ -6,7 +6,7 @@ import 'Style/users/add.scss'
 import { withFeedback } from 'Containers/hoc';
 
 export const AddUser = (props) => (
-    <Callout add={props.add} placeholder="example@example.com" type={props.type} icon={ faEnvelope } />
+    <Callout add={props.add} placeholder="ejemplo@ejemplo.com" type={props.type} icon={ faEnvelope } />
 )
 
 export const AddSucceeded = (props) => (

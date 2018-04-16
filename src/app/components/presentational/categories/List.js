@@ -1,29 +1,51 @@
 import React from 'react'
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
-import { load } from 'Containers/hoc'
 import { faTrashAlt, faEdit, faTimesCircle } from '@fortawesome/fontawesome-free-regular'
+import { Link, Redirect, Route, Switch } from 'react-router-dom'
+import { getPath, isActive } from './helper'
+import { load } from 'Containers/hoc'
 
 const CategoriesList = (props) => {
     return (
-        <div className='content'>
-            <div className='list'>
-                {props.categories.map((c, i) =>
-                    <CategoryRow category={c} key={'category-' + c.id + '-' + i} />
-                )}
-            </div>
+        <div className='list'>
+            {props.categories.map((category, index) =>
+                <Entry
+                    index={index}
+                    key={'Category-' + category.id + '-' + index}
+                    category={category}
+                    location={props.location} />
+            )}
         </div>
     )
 }
 
-const CategoryRow = ({ category }) => (
-    <div key={'category-' + category.id} className='list-item'>
-        <div className='list-item-data'>{category.name}</div>
-        <div className='list-item-data edit'>
-            <FontAwesomeIcon icon={faEdit} />
-            <FontAwesomeIcon icon={faTimesCircle} />
-            <FontAwesomeIcon icon={faTrashAlt} />
+const Entry = (props) => (
+    <Row key={'Category-' + props.category.id}
+        item={props.category}
+        location={props.location}>
+        <RowTitle category={props.category} />
+    </Row>
+)
+
+const Row = (props) => (
+    <Link
+        to={getPath(props)}
+        key={'Item-' + props.item.id}
+        className={`list-item ${ isActive(props) ? 'selected' : ''}`}>
+        <div
+            key={`Item-${props.item.id}-data-0`}
+            className='list-item-data'>
+            {props.children}
         </div>
-    </div>
+    </Link>
+)
+
+const RowTitle = (props) => (
+    <React.Fragment>
+        <div className='category-title'>
+            {props.category.name}
+        </div>
+    </React.Fragment>
 )
 
 export default load('categories', CategoriesList)

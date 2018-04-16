@@ -10,8 +10,7 @@ export const EventActions = Object.freeze({
 export const CategoryActions = Object.freeze({
     All: 'ALL_CATEGORIES',
     Create: 'CREATE_CATEGORY',
-    Update: 'UPDATE_CATEGORY',
-    Get: "GET_CATEGORY"
+    Update: 'UPDATE_CATEGORY'
 })
 
 export const SessionActions = Object.freeze({
@@ -61,6 +60,14 @@ export const Labels = Object.freeze({
     lastName: 'apellido',
     upcoming: 'próximos',
     past: 'pasados'
+})
+
+export const CategoryLabels = Object.freeze({
+    name: 'Categoría',
+    enabled: 'Estado',
+    pastEvents: 'Eventos pasados',
+    presentEvents: 'Eventos actuales',
+    futureEvents: 'Eventos futuros'
 })
 
 export const Months = Object.freeze([

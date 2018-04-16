@@ -1,70 +1,52 @@
 import React from 'react'
-import { AddCategory, AddSucceeded, AddFailed } from 'Presentational/categories/Add'
-import { Status, CategoryActions } from 'Helpers/constants'
-import { waitingOnAction, actionSucceded, actionFailed } from 'Containers/helper'
 import { connect } from 'react-redux'
 import { thunks } from 'Logic/actions/thunks'
-import { confirmAlert } from 'react-confirm-alert';
-import 'react-confirm-alert/src/react-confirm-alert.css'
+import { ModalAlert } from 'Presentational/elements'
+import AddCategory, { AddSucceeded, AddFailed } from 'Presentational/categories/Add'
+import { CategoryActions } from 'Helpers/constants'
 
 class Add extends React.Component {
     constructor(props) {
         super(props)
-        this.waiting = false
         this.handleAdd = this.handleAdd.bind(this)
         this.handleError = this.handleError.bind(this)
         this.handleSuccess = this.handleSuccess.bind(this)
     }
     handleAdd(name) {
+        this.name = name
         this.props.add(name)
     }
     handleError() {
-        this.waiting = false
-        confirmAlert({
-            customUI: ({ onClose }) =>
-                <AddFailed
-                    category={this.props.category.show}
-                    error='Ya existe una categoría con ese nombre'
-                    handleOk={onClose} />
+        ModalAlert({
+            modal: AddFailed,
+            category: this.name,
+            error: this.props.category.error
         })
     }
     handleSuccess() {
-        this.waiting = false
-        confirmAlert({
-            customUI: ({ onClose }) =>
-                <AddSucceeded
-                    category={this.props.category.show}
-                    handleOk={onClose} />
+        ModalAlert({
+            modal: AddSucceeded,
+            category: this.props.category.show
         })
-    }
-    componentWillReceiveProps(nextProps) {
-        let status = {
-            wasWaiting: this.waiting,
-            reducer: {
-                status: nextProps.category.status,
-                action: nextProps.category.action,
-                error: nextProps.category.error
-            },
-            action: CategoryActions.Create
-        }
-        if (waitingOnAction(status)) {
-            this.waiting = true
-        }
-        else if (actionSucceded(status)) {
-            this.handleSuccess()
-        }
-        else if (actionFailed(status)) {
-            this.handleError()
-        }
     }
     render() {
         return (
-            <AddCategory add={this.handleAdd} />
+            <AddCategory
+                add={this.handleAdd}
+                action={CategoryActions.Create}
+                reducer={{
+                    status: this.props.category.status,
+                    action: this.props.category.action,
+                    error: this.props.category.error
+                }}
+                category={this.props.category.show}
+                onSuccess={this.handleSuccess}
+                onError={this.handleError} />
         )
     }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
     return {
         category: state.category
     }

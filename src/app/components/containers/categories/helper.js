@@ -1,6 +1,3 @@
-export const parseCategories = (props) => {
-    if (Entity.isEmpty(props.category.all)) {
-        return []
-    }
-    return props.category.all
-}
+export const getIndex = (objects, match) => (
+    objects.findIndex(obj => obj.id == match.params.id)
+)
