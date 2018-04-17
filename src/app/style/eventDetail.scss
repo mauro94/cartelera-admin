@@ -6,12 +6,15 @@
 }
 
 .event-top-container {
+    max-height: 2rem;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    align-items: center;
 
     >h1{
         text-align: left;
+        margin-top: 0;
     }
 }
 
@@ -62,14 +65,10 @@
 }
 
 .event-actions-container {
-    grid-row: 1;
-    grid-column: 3;
     justify-self: center;
     align-items: center;
     display: flex;
     flex-direction: row;
-    position: relative;
-    top: 10px;    
 
     .action-button{
         margin-right: 0.2rem;

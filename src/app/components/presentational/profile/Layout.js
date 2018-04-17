@@ -59,18 +59,18 @@ const Links = () => (
     <div className='navbar'>
         <div>
             <NavLink
-                className='navbar-button'
+                className='navbar-button callout right'
                 activeClassName='selected'
                 to={'/perfil/editar'}>
-                Editar perfil
+                Perfil
             </NavLink>
         </div>
         <div>
             <NavLink
-                className='navbar-button'
+                className='navbar-button callout right'
                 activeClassName='selected'
                 to={'/perfil/contrasena'}>
-                Cambiar contraseña
+                Contraseña
             </NavLink>
         </div>
     </div>
