@@ -68,7 +68,7 @@ const Menu = (props) => (
             <NavLink
                 exact
                 activeClassName='selected'
-                className='navbar-button'
+                className='navbar-button callout right'
                 to={'/eventos/' + props.id + '/editar'}>
                 General
             </NavLink>
@@ -76,7 +76,7 @@ const Menu = (props) => (
         <div>
             <NavLink
                 activeClassName='selected'
-                className='navbar-button'
+                className='navbar-button callout right'
                 to={'/eventos/' + props.id + '/editar/imagenes'}>
                 Imágenes
             </NavLink>
@@ -84,7 +84,7 @@ const Menu = (props) => (
         <div>
             <NavLink
                 activeClassName='selected'
-                className='navbar-button'
+                className='navbar-button callout right'
                 to={'/eventos/' + props.id + '/editar/detalles'}>
                 Detalle
             </NavLink>
@@ -92,7 +92,7 @@ const Menu = (props) => (
         <div>
             <NavLink
                 activeClassName='selected'
-                className='navbar-button'
+                className='navbar-button callout right'
                 to={'/eventos/' + props.id + '/editar/registro/local'}>
                 Registro
             </NavLink>
@@ -100,7 +100,7 @@ const Menu = (props) => (
         <div>
             <NavLink
                 activeClassName='selected'
-                className='navbar-button'
+                className='navbar-button callout right'
                 to={'/eventos/' + props.id + '/editar/opcional'}>
                 Opcional
             </NavLink>

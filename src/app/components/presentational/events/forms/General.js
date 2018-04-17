@@ -10,9 +10,6 @@ export const EventsFormsIndex = ({ handleSubmit, error, errors, touched, isSubmi
     return <Form className="event-form event-form-general">
         {!Entity.isEmpty(error) && <p className="message-error">{error}</p>}
 
-        <div className="form-general-image">
-            {/* FOTO DE COMO SE VERA EN VISTA PUBLICA */}
-        </div>
         <div className="form-general-data">
             <div>Nombre:</div>
             <Field name="name" placeholder="Nombre" className={((touched.name && errors.name) ? 'emptyField' : 'readyField')} component={TextComponent} />
