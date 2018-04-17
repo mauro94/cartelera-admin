@@ -8,13 +8,17 @@
       color: $themeColor-red;
     }
   }
+
   .modal-confirmation-buttons {
     justify-content: center;
     display: flex;
-    flex-direction: row;
+    flex-direction: column-reverse;
+    align-items: center;
+
     button {
       font-family: $systemfont;
-      margin: 15px;
+      margin: 5px;
+      margin-top: 10px;
       display: block;
       font-size: 14px;
       min-width: 230px;
@@ -26,10 +30,20 @@
       border: 0;
       justify-content: center;
 
+      &:hover{
+        background: $themeColor-lightBlue-shadow;
+      }
+
       &.modal-cancel-button{
-        background: $themeColor-red;
-        margin-right: 5px;
+        background: none;
+        color: $themeColor-blackish;
+        margin: 0;
+      
+        &:hover{
+          text-decoration: underline;
+        }
       }
     }
+
   }
 }

@@ -11,13 +11,11 @@ export const ClosePublishModal = (props) => {
     })
 }
 
-export const OpenPublishModal = (option, props) => {
+export const OpenPublishModal = (props) => {
     let confirmationTitle = props.event.published ? 'Quitar de vista pública' : 'Confirmar publicación'
     let confirmationMsg = props.event.published ? 'El evento dejará de ser visible para el público general' : 'El evento será visible para el público general'
     let lastMsg = props.event.published ? 'quitar de vista pública' : 'confirmar publicación'
 
-    // if key selected is not the one already selected
-    if (props.publishedStates.selected != option) {
         // Push modal for confirmation
         confirmAlert({
             customUI: ({ onClose }) => {
@@ -41,7 +39,7 @@ export const OpenPublishModal = (option, props) => {
                 )
             }
         })
-    }
+    
 }
 
 export const OpenCancelModal = (props) => {
@@ -91,14 +89,12 @@ export const Confirmation = (props) => (
         <div className='modal-confirmation-buttons'>
             <button
                 className='modal-cancel-button'
-                onClick={() => props.onClose()}>
-                No, cancelar
+                onClick={() => props.handleCancel()}>
+                Salir sin cambios
             </button>
             <button
                 className='modal-confirm-button'
-                onClick={() => {
-                            props.handleConfirm() 
-                            props.onClose()}}>
+                onClick={() => props.handleConfirm()}>
                 Si, {props.lastMsg}
             </button>
         </div>

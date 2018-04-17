@@ -7,6 +7,7 @@ import { EventFormValidations, CharacterCount } from 'Helpers/constants'
 import * as EventForm from './forms/index'
 import 'Style/eventDetail.scss'
 import 'Style/common/segmentedForm.scss'
+import { ConfirmationModal } from 'Presentational/elements'
 
 const EventsEdit = (props) => (
     <Router>
@@ -121,6 +122,42 @@ const Routes = (props) => (
             path={'/eventos/' + props.id + '/editar/registro'}
             render={() => <EventForm.Registration {...props} eventid={props.id} />} />
     </div>
+)
+
+export const ConfirmPublish = (props) => (
+    <ConfirmationModal
+        error
+        title={'Confirmar publicación'}
+        subtitle= {props.event.name}
+        confirmationMsg= {'El evento será visible para el público general'}
+        lastMsg= {'confirmar publicación'}
+        handleConfirm={() => {
+            alert("PUBLISH")
+            props.onClose()
+            }}
+        handleCancel={() => {
+            props.onClose()
+        }}>
+        {props.error}
+    </ConfirmationModal>
+)
+
+export const ConfirmUnpublish = (props) => (
+    <ConfirmationModal
+        error
+        title={'Quitar de vista pública'}
+        subtitle= {props.event.name}
+        confirmationMsg= {'El evento dejará de ser visible para el público general'}
+        lastMsg= {'quitar de vista pública'}
+        handleConfirm={() => {
+            alert("UNPUBLISH")
+            props.onClose()
+            }}
+        handleCancel={() => {
+            props.onClose()
+            }}>
+        {props.error}
+    </ConfirmationModal>
 )
 
 export default load('event', EventsEdit)
