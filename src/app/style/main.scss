@@ -283,44 +283,4 @@ h3 {
   flex-direction: row;
 }
 
-.cancel-event-button,
-.modal-confirm-button,
-.modal-cancel-button{
-  font-family: $systemfont;
-  margin: 15px;
-  display: block;
-  font-size: 14px;
-  min-width: 230px;
-  max-width: 230px;
-  background: $themeColor-lightBlue;
-  color: $themeColor-white;
-  border-radius: 7px;
-  height: 35px;
-  border: 0;
-  justify-content: center;
-}
-
-.modal-cancel-button{
-  background: $themeColor-red;
-  margin-right: 5px;
-}
-.modal-cancel-button:hover{
-  background: $themeColor-red-shadow;
-}
-.modal-confirm-button:hover{
-  background: $themeColor-lightBlue-shadow; 
-}
-
-.cancel-event-button{
-  background: $themeColor-red;
-  margin-left: 0px;
-}
-.cancel-event-button:hover{
-  background: $themeColor-red-shadow;
-}
-.cancel-event-button:disabled {
-  background: $themeColor-light;
-  color: $themeColor-white;
-}
-
 

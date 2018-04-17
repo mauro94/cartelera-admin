@@ -7,6 +7,7 @@ const load = (loadingResource, Component) => {
     return class extends React.Component {
         constructor(props) {
             super(props)
+            this.shouldBeEmpty = false
             this.waiting = Entity.isEmpty(props[loadingResource]) ||
                 waitingOnAction({
                     wasWaiting: false,
@@ -24,6 +25,7 @@ const load = (loadingResource, Component) => {
                 action: this.props.action
             }
             if (actionSucceded(status)) {
+                this.shouldBeEmpty = Entity.isEmpty(nextProps[loadingResource])
                 this.waiting = false
                 this.setState({
                     status: Status.Ready,
@@ -41,7 +43,7 @@ const load = (loadingResource, Component) => {
                     this.props.onError()
                 }
             }
-            else if (waitingOnAction(status)) {
+            else if (waitingOnAction(status) || (!this.shouldBeEmpty && Entity.isEmpty(nextProps[loadingResource]))) {
                 this.waiting = true
                 this.setState({
                     status: Status.WaitingOnServer

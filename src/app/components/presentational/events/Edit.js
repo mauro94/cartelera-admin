@@ -131,8 +131,9 @@ export const ConfirmPublish = (props) => (
         subtitle= {props.event.name}
         confirmationMsg= {'El evento será visible para el público general'}
         lastMsg= {'confirmar publicación'}
+        buttonClass={'modal-confirm-button'}
         handleConfirm={() => {
-            alert("PUBLISH")
+            props.togglePublished()
             props.onClose()
             }}
         handleCancel={() => {
@@ -149,13 +150,33 @@ export const ConfirmUnpublish = (props) => (
         subtitle= {props.event.name}
         confirmationMsg= {'El evento dejará de ser visible para el público general'}
         lastMsg= {'quitar de vista pública'}
+        buttonClass={'modal-confirm-button'}
         handleConfirm={() => {
-            alert("UNPUBLISH")
+            props.togglePublished()
             props.onClose()
             }}
         handleCancel={() => {
             props.onClose()
             }}>
+        {props.error}
+    </ConfirmationModal>
+)
+
+export const ConfirmCancel = (props) => (
+    <ConfirmationModal
+        error
+        title={'Cancelar evento'}
+        subtitle= {props.event.name}
+        confirmationMsg= {'El público general verá el evento como cancelado y no se podrá revertir la cancelación.'}
+        lastMsg= {'cancelar evento'}
+        buttonClass={'modal-confirm-cancel-button'}
+        handleConfirm={() => {
+            props.toggleCancelled()
+            props.onClose()
+            }}
+        handleCancel={() => {
+            props.onClose()
+        }}>
         {props.error}
     </ConfirmationModal>
 )

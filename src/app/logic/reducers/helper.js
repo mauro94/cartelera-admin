@@ -1,4 +1,4 @@
-import { Status } from 'Helpers/constants'
+import { Status, Entity } from 'Helpers/index'
 
 export const StateManager = {
     defaultState: {
@@ -10,7 +10,7 @@ export const StateManager = {
     },
     update: (oldState, action) => {
         let newState = Object.assign({}, oldState)
-        if (action.status == Status.Ready) {
+        if (action.status == Status.Ready && !Entity.isEmpty(newState.all)) {
             let index = newState.all.findIndex(
                 user => (user.id == action.object.id))
             newState.all[index] = action.object

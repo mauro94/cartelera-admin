@@ -45,5 +45,17 @@
       }
     }
 
+    .modal-confirm-cancel-button{
+      background: $themeColor-red;
+    }
+    .modal-confirm-cancel-button:hover{
+      background: $themeColor-red-shadow;
+    }
+    
+    .modal-confirm-cancel-button:disabled {
+      background: $themeColor-light;
+      color: $themeColor-white;
+    }
+
   }
 }

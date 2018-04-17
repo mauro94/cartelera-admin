@@ -11,25 +11,25 @@ export const EventsFormsIndex = ({ handleSubmit, error, errors, touched, isSubmi
         {!Entity.isEmpty(error) && <p className="message-error">{error}</p>}
 
         <div className="form-general-data">
-            <div>Nombre:</div>
+            <div>Nombre</div>
             <Field name="name" placeholder="Nombre" className={((touched.name && errors.name) ? 'emptyField' : 'readyField')} component={TextComponent} />
             {touched.name && errors.name && <p className="message-error">{errors.name}</p>}
 
-            <div>Descripción:</div>
+            <div>Descripción</div>
             <Field name="description" placeholder="Descripción" className={((touched.description && errors.description) ? 'emptyField' : 'readyField')} component={TextAreaComponent} />
             <div className="description-count">
                 <CharactersLeft description={values.description} touched={touched.description} errors={errors.description}/>
                 {touched.description && errors.description && <label className="message-error">{errors.description}</label>}
             </div>
 
-            <div>Campus:</div>
+            <div>Campus</div>
             <Field name="campus"
                 list={campusList}
                 className={((touched.campus && errors.campus) ? 'emptyField' : 'readyField')}
                 component={SelectComponent} />
             {touched.campus && errors.campus && <p className="message-error">{errors.campus}</p>}
 
-            <div>Categoría:</div>
+            <div>Categoría</div>
             <Field name="category"
                 list={categoryList}
                 className={((touched.category && errors.category) ? 'emptyField' : 'readyField')}

@@ -60,7 +60,7 @@ export const OpenCancelModal = (props) => {
                         <button className='modal-confirm-button' onClick={() => {
                             onClose()
                         }}>Salir sin cambios</button>
-                        <button className='modal-cancel-button' onClick={() => {
+                        <button className='modal-confirm-cancel-button' onClick={() => {
                             props.cancel()
                             onClose()
                         }}>Si, {lastMsg}</button>
@@ -93,7 +93,7 @@ export const Confirmation = (props) => (
                 Salir sin cambios
             </button>
             <button
-                className='modal-confirm-button'
+                className={props.buttonClass}
                 onClick={() => props.handleConfirm()}>
                 Si, {props.lastMsg}
             </button>
