@@ -34,7 +34,6 @@ textarea {
   background: $themeColor-white;
   border: 1px solid $themeColor-light;
   border-radius: 7px;
-  height: 5rem;
   width: 99%;
   text-indent: 10px;
   line-height: 1.5rem;
@@ -255,32 +254,9 @@ h3 {
       margin: 4px;
     }
   }
-  
 }
 
 .helpIcon{
   margin-left: 5px;
   color: $themeColor-light;
 }
-
-.modal-confirmation{
-  height: auto;
-  text-align: center;
-    textarea {
-      font-family: $systemfont;
-      padding: 7px;
-      background-color: $themeColor-lightLight;
-      border: none;
-      border-radius: 6px;
-      font-size: 0.9rem;
-      resize: none;
-  }
-}
-
-.modal-confirmation-buttons{
-  justify-content: center;
-  display: flex;
-  flex-direction: row;
-}
-
-

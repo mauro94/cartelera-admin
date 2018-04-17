@@ -31,7 +31,7 @@ export const EventsFormsActions = (props) => (
                     ModalAlert({
                         modal: ConfirmCancel,
                         event: props.event,
-                        toggleCancelled: props.toggleCancelled,
+                        handleConfirmCancel: props.handleConfirmCancel,
                         error: props.event.error
                     })
                 }>

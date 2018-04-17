@@ -132,7 +132,7 @@ export const ConfirmPublish = (props) => (
         confirmationMsg= {'El evento será visible para el público general'}
         lastMsg= {'confirmar publicación'}
         buttonClass={'modal-confirm-button'}
-        handleConfirm={() => {
+        handleConfirmCancel={() => {
             props.togglePublished()
             props.onClose()
             }}
@@ -151,7 +151,7 @@ export const ConfirmUnpublish = (props) => (
         confirmationMsg= {'El evento dejará de ser visible para el público general'}
         lastMsg= {'quitar de vista pública'}
         buttonClass={'modal-confirm-button'}
-        handleConfirm={() => {
+        handleConfirmCancel={() => {
             props.togglePublished()
             props.onClose()
             }}
@@ -162,23 +162,54 @@ export const ConfirmUnpublish = (props) => (
     </ConfirmationModal>
 )
 
-export const ConfirmCancel = (props) => (
-    <ConfirmationModal
-        error
-        title={'Cancelar evento'}
-        subtitle= {props.event.name}
-        confirmationMsg= {'El público general verá el evento como cancelado y no se podrá revertir la cancelación.'}
-        lastMsg= {'cancelar evento'}
-        buttonClass={'modal-confirm-cancel-button'}
-        handleConfirm={() => {
-            props.toggleCancelled()
-            props.onClose()
-            }}
-        handleCancel={() => {
-            props.onClose()
-        }}>
-        {props.error}
-    </ConfirmationModal>
-)
+export class ConfirmCancel extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            cancelMessage: ''
+        }
+        this.handleChange = this.handleChange.bind(this)
+    }
+
+    componentDidMount() {
+        this.setState({
+            cancelMessage: ''
+        })
+    }
+
+    handleChange(e) {
+        this.setState({
+            cancelMessage: e.target.value
+        })
+    }
+
+    render() {
+        return (
+            <ConfirmationModal
+                error
+                title={'Cancelar evento'}
+                subtitle= {this.props.event.name}
+                confirmationMsg= {'El público general verá el evento como cancelado y no se podrá revertir la cancelación.'}
+                lastMsg= {'cancelar evento'}
+                buttonClass={'modal-confirm-cancel-button'}
+                handleConfirmCancel={(cancelMessage) => {
+                    this.props.handleConfirmCancel(this.state.cancelMessage)
+                    this.props.onClose()
+                    }}
+                handleCancel={() => {
+                    this.props.onClose()
+                }}>
+                <textarea name="paragraph_text"
+                    cols="20"
+                    rows="3"
+                    placeholder='Mensaje de cancelación para el público (opcional)'
+                    value={this.state.cancelMessage}
+                    onChange={this.handleChange}>
+                </textarea>
+                {this.props.error}
+            </ConfirmationModal>
+        )
+    }
+}
 
 export default load('event', EventsEdit)

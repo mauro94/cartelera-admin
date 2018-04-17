@@ -11,7 +11,7 @@ class Edit extends React.Component {
         super(props)
         this.action = EventActions.Get
         this.togglePublished = this.togglePublished.bind(this)
-        this.toggleCancelled= this.toggleCancelled.bind(this)
+        this.handleConfirmCancel= this.handleConfirmCancel.bind(this)
     }
     componentDidMount() {
         if (Entity.isEmpty(this.props.event.show) || this.props.event.show.id != this.props.id)
@@ -42,11 +42,12 @@ class Edit extends React.Component {
         })
     }
 
-    toggleCancelled() {
+    handleConfirmCancel(cancelMessage) {
         this.action = EventActions.Update
         this.props.updateEvent({
             id: this.props.event.show.id,
-            cancelled: !this.props.event.show.cancelled
+            cancelled: true,
+            cancel_message: cancelMessage
         })
     }
 
@@ -59,7 +60,7 @@ class Edit extends React.Component {
                 event={this.props.event.show}
                 handleSubmit={this.handleSubmit}
                 togglePublished={this.togglePublished}
-                toggleCancelled={this.toggleCancelled}
+                handleConfirmCancel={this.handleConfirmCancel}
                 hide
                 reducer={{
                     status: this.props.event.status,
