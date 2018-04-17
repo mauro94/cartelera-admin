@@ -59,6 +59,9 @@
             &.disable {
                 background-color: $themeColor-red;
             }
+            &.delete {
+                background-color: $themeColor-black;
+            }
         }
     }
 }

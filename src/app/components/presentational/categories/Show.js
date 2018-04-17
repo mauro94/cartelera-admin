@@ -1,8 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
-import { faEnvelope } from '@fortawesome/fontawesome-free-regular'
-import { faPhone, faPencilAlt } from '@fortawesome/fontawesome-free-solid'
+import { faTrashAlt, faPencilAlt } from '@fortawesome/fontawesome-free-solid'
 import { Format, CategoryLabels } from 'Helpers/index'
 import 'Style/categories/show.scss'
 
@@ -16,6 +15,9 @@ const ShowCategory = (props) => (
 
 const Actions = (props) => (
     <div className='actions'>
+        <button className='delete'>
+            <FontAwesomeIcon icon={faTrashAlt} /> Borrar
+        </button>
         <button className={'enabled ' + props.enabled ? 'disable' : 'enable'}>
             {props.enabled ? 'Desactivar' : 'Activar'}
         </button>
