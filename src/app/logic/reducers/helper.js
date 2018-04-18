@@ -12,7 +12,7 @@ export const StateManager = {
         let newState = Object.assign({}, oldState)
         if (action.status == Status.Ready) {
             let index = newState.all.findIndex(
-                user => (user.id == action.object.id))
+                object => (object.id == action.object.id))
             newState.all[index] = action.object
         }
         return {
@@ -59,7 +59,7 @@ export const StateManager = {
         let newState = Object.assign({}, oldState)
         if (action.status == Status.Ready) {
             let index = newState.all.findIndex(
-                category => (category.id == action.object.id))
+                object => (object.id == action.object.id))
             newState.all[index] = {}
         }
         return {
