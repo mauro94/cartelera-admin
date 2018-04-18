@@ -5,6 +5,7 @@ import Spinner from 'react-spinkit'
 import { Labels, Entity, Format } from 'Helpers/index'
 import { CategoryFormValidations } from 'Helpers/constants'
 import { TextComponent } from 'Presentational/elements'
+import { load } from 'Containers/hoc'
 
 const Basic = (props) => {
     let validations = CategoryFormValidations
@@ -16,7 +17,7 @@ const Basic = (props) => {
             }
             initialValues={initialValues}
             onSubmit={(values, action) => {
-                values,
+                values.id = props.category.id,
                 props.handleSubmit(values)
                 action.setSubmitting(false)
             }}>
@@ -31,7 +32,7 @@ const BasicForm = (props) => {
         { name: 'name', component: TextComponent }
     ]
     return (
-        <FormComponent
+        <CategoryFormComponent
             {...props}
             data={data}
             submitTitle='Actualizar'
@@ -39,9 +40,9 @@ const BasicForm = (props) => {
     )
 }
 
-export const FormComponent = (props) => {
+export const CategoryFormComponent = (props) => {
     let entry = 
-            <Entry
+            <CategoryEntry
                 {...props}
                 attr={props.data[0].name}
                 component={props.data.component}
@@ -53,14 +54,14 @@ export const FormComponent = (props) => {
             {!Entity.isEmpty(props.error) && <p className="message-error">{props.error}</p>}
             {entry}
             <div className="form-field buttons">
-                <SubmitButton {...props}>
+                <CategorySubmitButton {...props}>
                     {props.submitTitle}
-                </SubmitButton>
+                </CategorySubmitButton>
             </div>
         </Form>)
 }
 
-export const Entry = (props) => (
+export const CategoryEntry = (props) => (
     <div>
         <Field
             name={props.attr}
@@ -78,7 +79,7 @@ export const Entry = (props) => (
     </div>
 )
 
-export const SubmitButton = (props) => {
+export const CategorySubmitButton = (props) => {
     let emptyValues = Entity.hasEmptyElements(props.values)
     let untouched = Entity.isEmpty(props.touched)
     let hasErrors = !Entity.isEmpty(props.errors)
@@ -95,4 +96,4 @@ export const SubmitButton = (props) => {
         </button>)
 }
 
-export default Basic;
+export default load('category', Basic)

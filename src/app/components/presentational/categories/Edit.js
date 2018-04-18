@@ -18,11 +18,13 @@ export const EditSucceeded = (props) => (
 
 export const EditFailed = (props) => (
     <FeedbackModal
-        error
+        error={props.error}
         title={'Error al editar la categoría'}
-        subtitle={props.category}
-        handleOk={props.onClose}>
-        {props.error}
+        subtitle={props.category.name}
+        handleOk={() => {
+            props.onClose()
+            history.push(`/categorias/${props.category.id}`)
+        }}>
     </FeedbackModal>
 )
 

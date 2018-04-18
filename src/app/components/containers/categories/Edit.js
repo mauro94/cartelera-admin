@@ -21,10 +21,9 @@ class Edit extends React.Component {
         })
     }
     handleError() {
-        console.log("error edit")
         ModalAlert({
             modal: EditFailed,
-            category: this.name,
+            category: this.props.categoryToUpdate,
             error: this.props.category.error
         })
     }
@@ -37,10 +36,9 @@ class Edit extends React.Component {
                 }
             }
         }
-        this.props.update(updatedCategory, this.props.current)
+        this.props.update(updatedCategory)
     }
     handleSuccess() {
-        console.log("success edit")
         ModalAlert({
             modal: EditSucceeded,
             category: this.props.category.show
