@@ -140,10 +140,11 @@ h3 {
 
 // Messages
 .message-error {
-  margin-top: 5px;
+  margin: 10px;
+  margin-top: 0px;
   color: $themeColor-red;
   height: 20px;
-  font-size: 14px;
+  font-size: 13px;
   margin-top: 0;
 }
 
@@ -260,3 +261,91 @@ h3 {
   margin-left: 5px;
   color: $themeColor-light;
 }
+
+.input-container{
+  margin: 10px;
+  margin-bottom: 0px;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  text-align: left;
+  max-width: 100%;
+  
+  .separator {
+    height:3px;
+    width: 100%;
+    background: $themeColor-lightBlue;
+    display: block;
+    transform: scaleX(0) translateY(-2px);
+    transform-origin: 50%;
+    opacity: 0;
+    transition: all .25s linear;
+  }
+
+  .separator-warning {
+    height:3px;
+    width: 100%;
+    background: $themeColor-red;
+    display: block;
+    transform: scaleX(0) translateY(-2px);
+    transform-origin: 50%;
+    opacity: 0;
+    transition: all .25s linear;
+  }
+  
+  
+  :focus {
+    outline-color: transparent;
+    outline-style: none;
+  }
+
+  label{
+    display: block;
+    text-align: left;
+    color: $themeColor-black;
+    font-size: .875em;
+    border: none;
+  }
+  
+   .text-input{
+     overflow: hidden;  
+     margin-bottom: .875em;
+   }
+
+   div.textarea{
+      line-height: 30px;
+   }
+    
+   div.textarea,
+   input[type="text"]{
+     font-family: inherit;
+     width: 100%;
+     padding: 0.7em;
+     padding-left: 0;
+     background: none;
+     color: $themeColor-black;
+     font-size: 1em;
+     font-weight: 500;
+     border: none;
+     border-bottom: 1px solid $themeColor-blackish;
+     overflow-x: scroll;
+
+     /*Some sibling magic happens */
+     &:focus + .separator {
+       transform: scaleX(1) translateY(-2px);   
+       opacity: 1;
+     }
+
+     &.emptyField{
+        border-bottom: 1px solid $themeColor-red;
+     }
+
+     /*Some sibling magic happens */
+     &:focus + .separator-warning {
+       transform: scaleX(1) translateY(-2px);   
+       opacity: 1;
+     } 
+   }
+}
+

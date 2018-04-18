@@ -12,6 +12,13 @@ class Edit extends React.Component {
         this.action = EventActions.Get
         this.togglePublished = this.togglePublished.bind(this)
         this.handleConfirmCancel= this.handleConfirmCancel.bind(this)
+        this.textareaHandleChange = this.textareaHandleChange.bind(this)
+        this.setTextarea = this.setTextarea.bind(this)
+        this.state = {
+            textarea: {
+                description: props.event.show.description || ''
+            }
+        }
     }
     componentDidMount() {
         if (Entity.isEmpty(this.props.event.show) || this.props.event.show.id != this.props.id)
@@ -22,6 +29,15 @@ class Edit extends React.Component {
             this.props.getEvent(nextProps.id)
         }
     }
+
+    setTextarea() {
+        this.setState({
+            textarea: {
+                description: this.props.event.show.description || ''
+            }
+        })
+    }
+
     handleSubmit(values) {
         for (var key in props.event.show) {
             if (values.hasOwnProperty(key)) {
@@ -51,6 +67,15 @@ class Edit extends React.Component {
         })
     }
 
+    textareaHandleChange(e) {
+        //validation here
+        this.setState({
+            textarea: {
+                description: e.target.textContent
+            }
+        })
+    }
+
     render() {
         return (
             <EditEvent
@@ -58,10 +83,13 @@ class Edit extends React.Component {
                 campusList={campusList}
                 categoryList={categoryList}
                 event={this.props.event.show}
+                textarea={this.state.textarea}
+                textareaHandleChange={this.textareaHandleChange}
                 handleSubmit={this.handleSubmit}
                 togglePublished={this.togglePublished}
                 handleConfirmCancel={this.handleConfirmCancel}
                 hide
+                onSuccess={()=>this.setTextarea()}
                 reducer={{
                     status: this.props.event.status,
                     action: this.props.event.action,

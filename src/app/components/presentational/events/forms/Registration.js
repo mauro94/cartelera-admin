@@ -25,6 +25,6 @@ export const EventsFormsRegistration = ({ handleSubmit, error, errors, touched, 
             </React.Fragment>
         } />
 
-        <Persist name='event-details' />
+        <Persist name='event-details'/>
     </Form>
 )

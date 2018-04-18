@@ -40,6 +40,6 @@ export const EventsFormsDetails = ({ handleSubmit, error, errors, touched, isSub
         <Field name="contact_phone" placeholder="Teléfono de contacto" className={((touched.contact_phone && errors.contact_phone) ? 'emptyField' : 'readyField')} component={TextComponent} />
         {touched.contact_phone && errors.contact_phone && <p className="message-error">{errors.contact_phone}</p>}
 
-        <Persist name="event-details" />
+        <Persist name="event-details"/>
     </Form>
 )

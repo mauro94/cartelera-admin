@@ -31,7 +31,7 @@ const EventsEdit = (props) => (
 const Form = (props) => {
     let initialValues = {
         name: props.event.name || '',
-        description: props.event.description || '',
+        description: props.event.description|| '',
         location: props.event.location || '',
         campus: props.event.campus || 'MTY',
         category: props.event.category || 'Congreso',
@@ -39,6 +39,7 @@ const Form = (props) => {
     }
 
     return <Formik
+        enableReinitialize
         validationSchema={
             Yup.object().shape(EventFormValidations)
         }
