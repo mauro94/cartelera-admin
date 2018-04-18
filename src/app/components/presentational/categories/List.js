@@ -1,6 +1,4 @@
 import React from 'react'
-import FontAwesomeIcon from '@fortawesome/react-fontawesome'
-import { faTrashAlt, faEdit, faTimesCircle } from '@fortawesome/fontawesome-free-regular'
 import { Link, Redirect, Route, Switch } from 'react-router-dom'
 import { getPath, isActive } from './helper'
 import { load } from 'Containers/hoc'
