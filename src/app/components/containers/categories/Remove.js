@@ -17,7 +17,6 @@ class Remove extends React.Component {
         this.props.remove(id)
     }
     handleError() {
-        {console.log("error remove")}
         ModalAlert({
             modal: RemoveFailed,
             category: this.name,
@@ -25,7 +24,6 @@ class Remove extends React.Component {
         })
     }
     handleSuccess() {
-        {console.log("success remove")}
         ModalAlert({
             modal: RemoveSucceeded,
             category: this.props.category.show
