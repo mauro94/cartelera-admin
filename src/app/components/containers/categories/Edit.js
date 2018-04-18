@@ -29,7 +29,6 @@ class Edit extends React.Component {
         })
     }
     handleSubmit(category) {
-        console.log("submit edit")
         let updatedCategory = { id: this.props.categoryToUpdate.id }
         for (var key in this.props.categoryToUpdate) {
             if (category.hasOwnProperty(key)) {
@@ -43,7 +42,7 @@ class Edit extends React.Component {
     handleSuccess() {
         console.log("success edit")
         ModalAlert({
-            modal: EditSucceeded, type: this.props.type,
+            modal: EditSucceeded,
             category: this.props.category.show
         })
     }
