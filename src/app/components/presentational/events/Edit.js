@@ -7,7 +7,7 @@ import { EventFormValidations, CharacterCount } from 'Helpers/constants'
 import * as EventForm from './forms/index'
 import 'Style/eventDetail.scss'
 import 'Style/common/segmentedForm.scss'
-import { ConfirmationModal } from 'Presentational/elements'
+import { ConfirmationModal, FeedbackModal } from 'Presentational/elements'
 
 const EventsEdit = (props) => (
     <Router>
@@ -160,6 +160,21 @@ export const ConfirmUnpublish = (props) => (
             }}>
         {props.error}
     </ConfirmationModal>
+)
+
+export const FeedbackCancelled = (props) => (
+    <FeedbackModal
+        title={'Evento cancelado'}
+        subtitle={props.event.name}
+        handleOk={props.onClose}>
+        <div>
+            <textarea name="paragraph_text"
+                cols="20"
+                rows="3"
+                value={props.event.cancelMessage} readOnly>
+            </textarea>
+        </div>
+    </FeedbackModal>
 )
 
 export class ConfirmCancel extends React.Component {

@@ -3,6 +3,7 @@
 .modal-confirmation{
   height: auto;
   text-align: center;
+  min-width: 600px;
 
   textarea {
       font-family: $systemfont;
@@ -19,6 +20,20 @@
       &:focus{
         outline-color: #d4d4d4;
       }
+
+      &:read-only{
+        &:focus{
+          outline: none;
+        }
+      }
+
+      &:disabled{
+        outline-color: none;
+        cursor: default;
+        user-select: none !important;
+      }
+
+      
   }
 
   &.error {
