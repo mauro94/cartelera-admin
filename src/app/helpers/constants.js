@@ -121,3 +121,7 @@ export const EventFormValidations = Object.freeze({
     description: Yup.string().max(CharacterCount, ` (Limite de ${CharacterCount} caracteres superado)`).required(" (Descripción requerida)"),
     location: Yup.string().required("Ubicación requerida")
 })
+
+export const CategoryFormValidations = Object.freeze({
+    name: Yup.string().required("Nombre requerido")
+})
