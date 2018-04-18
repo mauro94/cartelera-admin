@@ -23,11 +23,10 @@ export const RemoveSucceeded = (props) => (
 
 export const RemoveFailed = (props) => (
     <FeedbackModal
-        error
+        error={props.error}
         title={'Error al eliminar la categoría'}
         subtitle={props.category}
         handleOk={props.onClose}>
-        {props.error}
     </FeedbackModal>
 )
 
