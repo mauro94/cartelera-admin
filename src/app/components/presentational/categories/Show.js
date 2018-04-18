@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import { faTrashAlt, faPencilAlt } from '@fortawesome/fontawesome-free-solid'
 import { Format, CategoryLabels } from 'Helpers/index'
+import { Remove as RemoveCategory } from 'Containers/categories'
 import 'Style/categories/show.scss'
 
 const ShowCategory = (props) => (
@@ -15,13 +16,11 @@ const ShowCategory = (props) => (
 
 const Actions = (props) => (
     <div className='actions'>
-        <button className='delete'>
-            <FontAwesomeIcon icon={faTrashAlt} /> Borrar
-        </button>
+        <RemoveCategory id={props.id}/>
         <button className={'enabled ' + props.enabled ? 'disable' : 'enable'}>
             {props.enabled ? 'Desactivar' : 'Activar'}
         </button>
-        <Link to={`${props.id}/editar`}>
+        <Link to={`/categorias/${props.id}/editar`}>
             <button className='edit'>
                 <FontAwesomeIcon icon={faPencilAlt} /> Editar
             </button>
@@ -45,10 +44,10 @@ const Details = (props) => (
         <DetailEntry label='pastEvents'>
             {props.category.name}
         </DetailEntry>
-        <DetailEntry label='presentEvents'>
+        <DetailEntry label='upcomingEvents'>
             {props.category.name}
         </DetailEntry>
-        <DetailEntry label='futureEvents'>
+        <DetailEntry label='totalEvents'>
             {props.category.name}
         </DetailEntry>
     </div>
