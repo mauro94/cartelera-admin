@@ -8,7 +8,7 @@ export const update = (category) => {
         dispatch: dispatch,
         actionType: CategoryActions.Update,
         call: () => request.put(
-            `/category/${category.id}`,
+            `/categories/${category.id}`,
             Format.snakeCase('category', category),
             { headers: headers.withAuth() }),
     })
