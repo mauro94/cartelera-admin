@@ -18,9 +18,6 @@
             font-weight: 300;
             text-align: left;
         }
-        .title-tag {
-            justify-self: right;
-        }
     }
     .details {
         align-items: center;
@@ -59,7 +56,7 @@
             &.disable {
                 background-color: $themeColor-red;
             }
-            &.delete {
+            &.remove {
                 background-color: $themeColor-black;
             }
         }

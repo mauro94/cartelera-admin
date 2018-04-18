@@ -54,5 +54,20 @@ export const StateManager = {
             error: action.error,
             status: action.status
         }
+    },
+    remove: (oldState, action) => {
+        let newState = Object.assign({}, oldState)
+        if (action.status == Status.Ready) {
+            let index = newState.all.findIndex(
+                category => (category.id == action.object.id))
+            newState.all[index] = {}
+        }
+        return {
+            ...newState,
+            action: action.type,
+            error: action.error,
+            show: action.object,
+            status: action.status
+        }
     }
 }

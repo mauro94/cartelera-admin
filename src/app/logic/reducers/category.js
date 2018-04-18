@@ -10,22 +10,10 @@ function category(state = StateManager.defaultState, action) {
                 ...StateManager.create(state, action),
                 error: action.error && 'La categoría ya esta en uso.'
             }
-        case CategoryActions.Get:
-            let newState = Object.assign({}, state)
-            let showIndex = newState.all.findIndex(category =>
-                (category.id == action.object))
-            let newShow = newState.all[showIndex]
-            newShow.selected = true
-            if (!Entity.isEmpty(state.show)) {
-                newState.show.selected = false
-            }
-            return {
-                ...newState,
-                show: newShow,
-                action: action.type
-            }
         case CategoryActions.Update:
             return StateManager.update(state, action)
+        case CategoryActions.Remove:
+            return StateManager.remove(state, action)
         default:
             return state
     }

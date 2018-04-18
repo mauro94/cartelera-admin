@@ -1,5 +1,5 @@
+import { history } from 'Helpers/index'
 import { Format, Status, CategoryActions } from 'Helpers/index'
-import { createAction } from 'Logic/actions'
 import { serverCall, request, headers } from 'Logic/actions/thunks/helper'
 
 export const update = (category) => {
@@ -21,6 +21,16 @@ export const create = (name) => {
         call: () => request.post(
             '/categories/',
             { category: { name: name } },
+            { headers: headers.withAuth() })
+    })
+}
+
+export const remove = (id) => {
+    return dispatch => serverCall({
+        dispatch: dispatch,
+        actionType: CategoryActions.Remove,
+        call: () => request.delete(
+            `/categories/${id}`,
             { headers: headers.withAuth() })
     })
 }

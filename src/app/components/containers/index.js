@@ -12,6 +12,7 @@ export {
 export {
     Add as AddCategory,
     List as CategoriesList,
-    Edit as EditCategory
+    Edit as EditCategory,
+    Remove as RemoveCategory
 } from './categories'
 export { default as MainLayout } from './Main'
