@@ -42,7 +42,10 @@ const Form = (props) => {
         contactEmail: props.event.contactEmail || '',
         contactPhone: props.event.contactPhone || '',
         rangeDatetime: formatToRange(props.event.startDatetime, props.event.endDatetime) || '',
-        publicEvent: formatPublic(props.event.publicEvent) || 'off'
+        publicEvent: formatToggle(props.event.publicEvent) || 'off',
+        facebookUrl: props.event.facebookUrl || '',
+        twitterUrl: props.event.twitterUrl || '',
+        petFriendly: formatToggle(props.event.petFriendly) || 'off'
     }
 
     return <Formik
@@ -242,7 +245,7 @@ const formatCost = (cost) => {
     return ((!cost || cost == 0) ? '0' : cost)
 }
 
-const formatPublic = (publicEvent) => {
+const formatToggle = (publicEvent) => {
     return ( publicEvent ? 'on' : 'off')
 }
 

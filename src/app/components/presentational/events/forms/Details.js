@@ -13,5 +13,9 @@ export const EventsFormsDetails = (props) => (
         <TextField label='contactEmail' {...props}/>
 
         <TextField label='contactPhone' {...props}/>
+
+        <TextField label='facebookUrl' inputSizeSmall {...props}/>
+
+        <TextField label='twitterUrl' inputSizeSmall {...props}/>
     </Form>
 )
