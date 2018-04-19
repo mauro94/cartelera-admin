@@ -12,21 +12,21 @@ class Remove extends React.Component {
         this.handleError = this.handleError.bind(this)
         this.handleSuccess = this.handleSuccess.bind(this)
     }
-    handleRemove(id) {
-        this.id = id
-        this.props.remove(id)
+    handleRemove(categoryToRemove) {
+        this.categoryToRemove = categoryToRemove
+        this.props.remove(categoryToRemove.id)
     }
     handleError() {
         ModalAlert({
             modal: RemoveFailed,
-            category: this.name,
+            category: this.categoryToRemove,
             error: this.props.category.error
         })
     }
     handleSuccess() {
         ModalAlert({
             modal: RemoveSucceeded,
-            category: this.props.category.show
+            category: this.props.categoryToRemove
         })
     }
     render() {
@@ -39,7 +39,7 @@ class Remove extends React.Component {
                     action: this.props.category.action,
                     error: this.props.category.error
                 }}
-                category={this.props.id}
+                category={this.props.categoryToRemove}
                 onSuccess={this.handleSuccess}
                 onError={this.handleError} />
         )

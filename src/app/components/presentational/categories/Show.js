@@ -10,17 +10,17 @@ const ShowCategory = (props) => (
     <div className='show'>
         <Title category={props.category} />
         <Details category={props.category} />
-        <Actions enabled={props.category.enabled} id={props.category.id} />
+        <Actions category={props.category} />
     </div>
 )
 
 const Actions = (props) => (
     <div className='actions'>
-        <RemoveCategory id={props.id}/>
-        <button className={'enabled ' + props.enabled ? 'disable' : 'enable'}>
-            {props.enabled ? 'Desactivar' : 'Activar'}
+        <RemoveCategory categoryToRemove={props.category}/>
+        <button className={'enabled ' + props.category.enabled ? 'disable' : 'enable'}>
+            {props.category.enabled ? 'Desactivar' : 'Activar'}
         </button>
-        <Link to={`/categorias/${props.id}/editar`}>
+        <Link to={`/categorias/${props.category.id}/editar`}>
             <button className='edit'>
                 <FontAwesomeIcon icon={faPencilAlt} /> Editar
             </button>

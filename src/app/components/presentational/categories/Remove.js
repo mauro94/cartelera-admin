@@ -25,7 +25,7 @@ export const RemoveFailed = (props) => (
     <FeedbackModal
         error={props.error}
         title={'Error al eliminar la categoría'}
-        subtitle={props.category}
+        subtitle={props.category.name}
         handleOk={props.onClose}>
     </FeedbackModal>
 )
