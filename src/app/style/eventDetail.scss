@@ -34,7 +34,15 @@
 }
 
 .event-form {
-    grid-row: 1;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.form-general-data{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
 }
 
 .action-button-container{
@@ -126,7 +134,6 @@
     font-size: 16px;
     background: $themeColor-white;
     border: 1px solid $themeColor-light;
-    border-radius: 7px;
     height: 35px;
     width: 99%;
     text-overflow: ellipsis;

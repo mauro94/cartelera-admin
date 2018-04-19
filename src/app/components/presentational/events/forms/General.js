@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 import { Formik, Form, Field } from 'formik';
-import { SelectComponent, TextComponent, TextAreaComponent, EmailComponent, PasswordComponent, TextField, TextFieldArea } from 'Presentational/elements/Input';
+import { TextField, TextFieldArea, Selector, FieldDate } from 'Presentational/elements/Input';
 import { Entity } from 'Helpers/index'
 import { FormButtonSubmit } from 'Presentational/elements/Form'
 import { Persist } from 'formik-persist'
@@ -14,8 +14,16 @@ export const EventsFormsIndex = (props) => {
             <TextField label='name' {...props}/>
 
             <TextFieldArea label='description' {...props}/>
+
+            <TextField label='location' {...props}/>
+
+            <Selector label='campus' inputSizeSmall list={props.campusList} {...props}/>
+
+            <Selector label='category' inputSizeSmall list={props.categoryList}  {...props}/>
+
+            <FieldDate label='rangeDate'{...props}/>
             
         </div>
+        
     </Form>
 }
-

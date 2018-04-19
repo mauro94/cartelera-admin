@@ -2,6 +2,7 @@ import React from 'react'
 import DatePicker from 'react-datepicker'
 import moment from 'moment'
 import 'react-datepicker/dist/react-datepicker.css'
+import { TextFieldDate } from 'Presentational/elements/Input'
 
 export class DatePickerElement extends React.Component {
     constructor(props) {
@@ -37,16 +38,16 @@ export class DatePickerElement extends React.Component {
 
     render() {
             return (
-                <React.Fragment>
-                    <div className="form-field">
+                <div className='date-container'>
+                    <div className='date-picker'>
                     <DatePicker
+                        customInput={<TextFieldDate label='rangeDate' {...this.props}/>}
                         showTimeSelect
                         timeFormat="HH:mm"
                         minDate={moment()}
                         maxDate={moment().add(1, "year")}
                         dateFormat="LLL"
-                        timeCaption="Tiempo"
-                        placeholderText="Fecha y Hora inicio"
+                        timeCaption="Hora"
                         locale="es-mx"
                         selected={this.state.startDate}
                         selectsStart
@@ -54,16 +55,17 @@ export class DatePickerElement extends React.Component {
                         endDate={this.state.endDate}
                         onChange={this.handleChangeStart}
                     />
+                    <span className='separator'> </span>
                     </div>
-                    <div className="form-field">
+                    <div className='date-picker'>
                     <DatePicker
+                        customInput={<TextFieldDate label='rangeDate' {...this.props}/>}
                         showTimeSelect
                         timeFormat="HH:mm"
                         minDate={moment()}
                         maxDate={moment().add(1, "year")}
                         dateFormat="LLL"
-                        timeCaption="Tiempo"
-                        placeholderText="Fecha y Hora fin"
+                        timeCaption="Hora"
                         locale="es-mx"
                         selected={this.state.endDate}
                         selectsEnd
@@ -71,8 +73,9 @@ export class DatePickerElement extends React.Component {
                         endDate={this.state.endDate}
                         onChange={this.handleChangeEnd}
                     />
+                    <span className='separator'> </span>
                     </div>
-                </React.Fragment>
+                </div>
             )
     }
 }

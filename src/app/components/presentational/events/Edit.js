@@ -35,7 +35,12 @@ const Form = (props) => {
         location: props.event.location || '',
         campus: props.event.campus || 'MTY',
         category: props.event.category || 'Congreso',
-        id: props.event.id || '1'
+        id: props.event.id || '1',
+        cost: formatCost(props.event.cost) || '',
+        majors: formatArray(props.event.majors) || '',
+        contactName: props.event.contactName || '',
+        contactEmail: props.event.contactEmail || '',
+        contactPhone: props.event.contactPhone || ''
     }
 
     return <Formik
@@ -88,7 +93,7 @@ const Menu = (props) => (
                 activeClassName='selected'
                 className='navbar-button callout right'
                 to={'/eventos/' + props.id + '/editar/detalles'}>
-                Detalle
+                Contacto
             </NavLink>
         </div>
         <div>
@@ -122,6 +127,9 @@ const Routes = (props) => (
         <Route
             path={'/eventos/' + props.id + '/editar/registro'}
             render={() => <EventForm.Registration {...props} eventid={props.id} />} />
+        <Route
+            path={'/eventos/' + props.id + '/editar/opcional'}
+            render={() => <EventForm.Optional {...props} />} />
     </div>
 )
 
@@ -226,6 +234,28 @@ export class ConfirmCancel extends React.Component {
             </ConfirmationModal>
         )
     }
+}
+
+const formatCost = (cost) => {
+    return ((!cost || cost == 0) ? '0' : cost)
+}
+
+/* CREDITS A NATY */
+const formatArray = (arr) => {
+    let outStr = '';
+    if (arr.length === 1) {
+        outStr = arr[0]
+    } else if (arr.length === 2) {
+        let joiner = arr[1][0].toLowerCase() == 'i' ?
+            ' e ' : ' y '
+        outStr = arr.join(joiner)
+    } else if (arr.length > 2) {
+        let firstWords = arr.splice(0, arr.length - 1)
+        let lastWord = arr[0][0].toLowerCase() == 'i' ?
+            `e ${arr[0]}` : `y ${arr[0]}`
+        outStr = `${firstWords.join(', ')} ${lastWord}`
+    }
+    return outStr;
 }
 
 export default load('event', EventsEdit)

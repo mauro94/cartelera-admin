@@ -55,7 +55,15 @@ export const Labels = Object.freeze({
     upcoming: 'próximos',
     past: 'pasados',
     name: 'nombre',
-    description: "descripción"
+    description: "descripción",
+    category: "categoría",
+    rangeDate: "fecha y hora",
+    cost: "costo",
+    majors: "carreras invitadas",
+    location: "ubicación",
+    contactName: "nombre de contacto",
+    contactEmail: "correo de contacto",
+    contactPhone: "teléfono de contacto",
 })
 
 export const Months = Object.freeze([
@@ -106,5 +114,11 @@ export const PasswordFormValidations = Object.freeze({
 export const EventFormValidations = Object.freeze({
     name: Yup.string().required("Nombre requerido"),
     description: Yup.string().max(CharacterCount, `Limite de ${CharacterCount} caracteres superado. `).required("Descripción requerida"),
-    location: Yup.string().required("Ubicación requerida")
+    location: Yup.string().required("Ubicación requerida"),
+    cost: Yup.string().matches(/^\d+$/, "Costo inválido"),
+    contactName: Yup.string().required("Nombre requerido"),
+    contactEmail: Yup.string().email("Correo no valido"),
+    contactPhone: Yup.string()
+        .matches(/^\+?\d+$/, "Teléfono inválido")
+        .min(8, "Mínimo 8 caracteres")
 })

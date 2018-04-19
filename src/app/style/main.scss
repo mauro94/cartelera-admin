@@ -21,7 +21,6 @@ html {
   font-size: 16px;
   background: $themeColor-white;
   border: 1px solid $themeColor-light;
-  border-radius: 7px;
   height: 35px;
   width: 99%;
   text-overflow: ellipsis;
@@ -33,7 +32,6 @@ textarea {
   font-size: 16px;
   background: $themeColor-white;
   border: 1px solid $themeColor-light;
-  border-radius: 7px;
   width: 99%;
   text-indent: 10px;
   line-height: 1.5rem;
@@ -140,6 +138,7 @@ h3 {
 
 // Messages
 .message-error {
+  width: 100%;
   margin: 10px;
   margin-top: 0px;
   color: $themeColor-red;
@@ -262,8 +261,24 @@ h3 {
   color: $themeColor-light;
 }
 
+.date-container{
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  .date-picker {
+    width: 350px;
+    margin-right: 50px;
+  }
+}
+
+.react-datepicker{
+  button{
+    height: 0 !important;
+  }
+}
+
 .input-container{
-  margin: 10px;
   margin-bottom: 0px;
   margin-top: 20px;
   display: flex;
@@ -271,6 +286,11 @@ h3 {
   width: 100%;
   text-align: left;
   max-width: 100%;
+
+  &.sm{
+    margin-right: 50px;
+    width: 350px;
+  }
   
   .separator {
     height:3px;
@@ -316,13 +336,30 @@ h3 {
    div.textarea{
       line-height: 30px;
    }
-    
+
+   select{
+     border: none;
+     color: $themeColor-black;
+     background: $themeColor-lightLight;
+
+     &:focus{
+      border: 3px solid $themeColor-lightBlue;
+     }
+
+     option {
+      margin: 40px;
+      background: rgba(0, 0, 0, 0.3);
+      color: #fff;
+      text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+      }
+   }
+
    div.textarea,
    input[type="text"]{
      font-family: inherit;
      width: 100%;
      padding: 0.7em;
-     padding-left: 0;
+     padding-left: 7px;
      background: none;
      color: $themeColor-black;
      font-size: 1em;

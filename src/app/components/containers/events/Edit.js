@@ -16,7 +16,7 @@ class Edit extends React.Component {
         this.setTextarea = this.setTextarea.bind(this)
         this.state = {
             textarea: {
-                description: props.event.show.description || ''
+                description: ''
             }
         }
     }
