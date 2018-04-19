@@ -34,16 +34,14 @@ class Categories extends React.Component {
                 path='/categorias'
                 render={({ match }) => {
                     if (!Entity.isEmpty(this.props.category.all)) {
-                        return <Redirect
-                            to={`/categorias/${this.props.category.all[0].id}`} />
+                        return <Redirect to={`/categorias/${this.props.category.all[0].id}`} />
                     }
                 }} />
             <Route
                 exact
                 path='/categorias/:id/editar'
                 render={({ match }) => (
-                    <EditCategory
-                        category={this.props.category.all[getIndex(this.props.category.all, match)]} />
+                    <EditCategory category={this.props.category.all[getIndex(this.props.category.all, match)]} />
                 )} />
             <Route
                 exact
