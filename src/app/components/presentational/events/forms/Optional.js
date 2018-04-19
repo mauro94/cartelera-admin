@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 import { Formik, Form, Field } from 'formik';
-import { TextField } from 'Presentational/elements/Input';
+import { TextField, ToggleField } from 'Presentational/elements/Input';
 import { Entity } from 'Helpers/object'
 import { FormButtonSignout, FormButtonSubmit } from 'Presentational/elements/Form'
 
@@ -11,6 +11,8 @@ export const EventsFormsOptional = (props) => (
         <TextField label='cost' inputSizeSmall {...props}/>
 
         <TextField label='majors' inputSizeSmall {...props}/>
+
+        <ToggleField label='public' inputSizeSmall {...props}/>
         
     </Form>
 )

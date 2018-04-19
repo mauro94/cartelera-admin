@@ -5,21 +5,6 @@ import { DatePickerElement } from 'Presentational/elements/DatePickerElement'
 import { Format, Labels } from 'Helpers/index'
 import { update } from 'Logic/actions/thunks/event';
 
-export const EmailComponent = ({
-  field, // { name, value, onChange, onBlur }
-  form: { touched, errors }, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
-  ...props
-}) => (
-    <div className="form-field">
-      <input
-        type="email"
-        placeholder="Correo Electrónico"
-        {...field}
-        {...props}
-      />
-    </div>
-  );
-
 export const TextField = (props) => (
   <React.Fragment>
   <div className={props.inputSizeSmall ? 'input-container sm' : 'input-container'}>
@@ -55,17 +40,6 @@ export const TextFieldDate = (props) => (
   </React.Fragment>
 )
 
-
-export const FieldDate = (props) => (
-  <Field
-  name={props.label}
-  className={((props.touched[props.label] && props.errors[props.label]) ? 'emptyField' : 'readyField')}
-  updateFormik = {updateFormik}
-  type="text"
-  {...props}
-  component={DatePickerElement}/>
-)
-
 export const TextFieldArea = (props) => (
   <React.Fragment>
   <div className='input-container'>
@@ -99,6 +73,37 @@ export const Selector = (props) => (
   </React.Fragment>
 )
 
+export const ToggleField = (props) => (
+  <React.Fragment>
+  <div className={props.inputSizeSmall ? 'input-container sm' : 'input-container'}>
+      <div className='text-input toggle'>
+          <label>
+          {Format.capitalize(Labels[props.label])}
+          </label>
+          <Field name={props.label}
+                 {...props} 
+                 component={ToggleComponent} />
+      </div>
+      {props.touched[props.label] && props.errors[props.label] && <p className="message-error">{props.errors[props.label]}</p>}
+  </div>
+  </React.Fragment>
+)
+
+export const EmailComponent = ({
+  field, // { name, value, onChange, onBlur }
+  form: { touched, errors }, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
+  ...props
+}) => (
+    <div className="form-field">
+      <input
+        type="email"
+        placeholder="Correo Electrónico"
+        {...field}
+        {...props}
+      />
+    </div>
+  );
+
 
 export const TextComponent = ({
   field, // { name, value, onChange, onBlur }
@@ -113,6 +118,16 @@ export const TextComponent = ({
       />
     </div>
   );
+
+  export const ToggleComponent = (props) => {
+      return <div class="switch-container">
+        <label class="switch">
+          <input class={((props.touched[props.label] && props.errors[props.label]) ? 'switch__input emptyField' : 'switch__input readyField')}
+                 type="checkbox"/>
+          <div class="switch__checkbox"></div>
+        </label>
+      </div>
+  }
 
 export const TextAreaComponent = ({
   field, // { name, value, onChange, onBlur }
@@ -141,11 +156,6 @@ export const TextFieldAreaComponent = (props) => {
       </div>
 }
 
-const updateFormik = (name, value, setValue, setTouched, touched) => {
-  setValue(name, value)
-  setTouched({ touched, [name]: true})
-}
-
 export const SelectComponent = (props) => (
   <div className="form-field">
     <div>
@@ -158,6 +168,21 @@ export const SelectComponent = (props) => (
     </select>
   </div>
 );
+
+export const FieldDate = (props) => (
+  <Field
+  name={props.label}
+  className={((props.touched[props.label] && props.errors[props.label]) ? 'emptyField' : 'readyField')}
+  updateFormik = {updateFormik}
+  type="text"
+  {...props}
+  component={DatePickerElement}/>
+)
+
+const updateFormik = (name, value, setValue, setTouched, touched) => {
+  setValue(name, value)
+  setTouched({ touched, [name]: true})
+}
 
 const Option = element => (
   <option key={element.key} value={element.key}> {element.text} </option>

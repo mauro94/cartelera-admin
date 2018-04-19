@@ -3,6 +3,7 @@
 @import 'common/select';
 @import 'common/button';
 @import 'common/modal';
+@import '/common/switch';
 @import url('https://fonts.googleapis.com/css?family=Barlow:100,200,300,400,500,600,700,800,900&subset=latin-ext');
 
 html {
@@ -331,6 +332,13 @@ h3 {
    .text-input{
      overflow: hidden;  
      margin-bottom: .875em;
+
+     &.toggle{
+       display: flex;
+       flex-direction: row;
+       justify-content: flex-start;
+       align-items: center;
+     }
    }
 
    div.textarea{
@@ -386,3 +394,70 @@ h3 {
    }
 }
 
+
+.switch {
+  align-items: center;
+  display: flex;
+}
+
+.switch__input {
+  display: none;
+  &:checked {
+    + .switch__checkbox {
+      background-color: $switch-on-background-color;
+      box-shadow: $switch-on-box-shadow;
+      &::before {
+        transform: scale(0);
+      }
+      &::after {
+        left: $switch-width - $switch-knob-size - ($switch-padding * 2);
+      }
+    }
+  }
+}
+
+.switch__checkbox {
+  background-color: $switch-border-color;
+  border-radius: $switch-border-radius;
+  cursor: pointer;
+  height: $switch-height;
+  position: relative;
+  transition: $switch-transition;
+  width: $switch-width;
+  &::before, &::after {
+    content: '';
+    bottom: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transition: $switch-transition;
+  }
+  
+  // Knob Track
+  &::before {
+    background-color: $switch-off-background-color;
+    box-shadow: $switch-off-box-shadow;
+    border-radius: inherit;
+    right: 0;
+    transform: scale(1);
+    margin: $switch-border-size;
+  }
+  // Knob
+  &::after {
+    background-color: $switch-knob-background-color;
+    border: $switch-knob-border-width solid $switch-knob-border-color;
+    border-radius: $switch-knob-border-radius;
+    box-shadow: $switch-knob-box-shadow;
+    height: $switch-knob-size;
+    margin-bottom: auto;
+    margin-top: auto;
+    position: absolute;
+    margin: auto $switch-padding;
+    width: $switch-knob-size;
+  }
+}
+
+.switch-container {
+  padding: 10px;
+  margin-left: 20px;
+}

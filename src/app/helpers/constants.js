@@ -66,6 +66,7 @@ export const Labels = Object.freeze({
     contactName: "nombre de contacto",
     contactEmail: "correo de contacto",
     contactPhone: "teléfono de contacto",
+    public: "Exclusivo para alumnos del Tec"
 })
 
 export const Months = Object.freeze([

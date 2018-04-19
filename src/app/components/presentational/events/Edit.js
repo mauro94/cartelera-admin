@@ -259,7 +259,7 @@ const formatArray = (arr) => {
     return outStr;
 }
 
-export const formatToRange = (startDatetime, endDatetime) => {
+const formatToRange = (startDatetime, endDatetime) => {
     let dateRange = {
         "startDatetime" : startDatetime,
         "endDatetime" : endDatetime
