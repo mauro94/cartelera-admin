@@ -12,7 +12,7 @@ export const EventsFormsOptional = (props) => (
 
         <TextField label='majors' inputSizeSmall {...props}/>
 
-        <ToggleField label='public' inputSizeSmall {...props}/>
+        <ToggleField label='publicEvent' toggleMessage="Exclusivo para alumnos del Tec" toggleMessageInfoTrigger="off" {...props}/>
         
     </Form>
 )

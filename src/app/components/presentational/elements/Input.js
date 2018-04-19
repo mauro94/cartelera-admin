@@ -83,8 +83,9 @@ export const ToggleField = (props) => (
           <Field name={props.label}
                  {...props} 
                  component={ToggleComponent} />
+          {!props.inputSizeSmall && (props.values[props.label] == props.toggleMessageInfoTrigger) && <p className="message-toggle-info">{props.toggleMessage}</p>}
       </div>
-      {props.touched[props.label] && props.errors[props.label] && <p className="message-error">{props.errors[props.label]}</p>}
+      {props.inputSizeSmall && (props.values[props.label] == props.toggleMessageInfoTrigger) && <p className="message-toggle-info sm">{props.toggleMessage}</p>}
   </div>
   </React.Fragment>
 )
@@ -120,11 +121,14 @@ export const TextComponent = ({
   );
 
   export const ToggleComponent = (props) => {
-      return <div class="switch-container">
-        <label class="switch">
-          <input class={((props.touched[props.label] && props.errors[props.label]) ? 'switch__input emptyField' : 'switch__input readyField')}
-                 type="checkbox"/>
-          <div class="switch__checkbox"></div>
+      return <div className="switch-container">
+        <label className="switch">
+          <input className={((props.touched[props.label] && props.errors[props.label]) ? 'switch__input emptyField' : 'switch__input readyField')}
+                 type="checkbox"
+                 name={props.field.name}
+                 checked={props.values[props.label] == 'on' ? true: false}
+                 onChange={(e)=> { updateFormik(props.field.name, (e.target.checked ? 'on' : 'off'), props.setFieldValue, props.setTouched, props.touched) }}/>
+          <div className="switch__checkbox"></div>
         </label>
       </div>
   }
@@ -181,7 +185,7 @@ export const FieldDate = (props) => (
 
 const updateFormik = (name, value, setValue, setTouched, touched) => {
   setValue(name, value)
-  setTouched({ touched, [name]: true})
+  setTouched({ ...touched, [name]: true})
 }
 
 const Option = element => (

@@ -41,7 +41,8 @@ const Form = (props) => {
         contactName: props.event.contactName || '',
         contactEmail: props.event.contactEmail || '',
         contactPhone: props.event.contactPhone || '',
-        rangeDatetime: formatToRange(props.event.startDatetime, props.event.endDatetime) || ''
+        rangeDatetime: formatToRange(props.event.startDatetime, props.event.endDatetime) || '',
+        publicEvent: formatPublic(props.event.publicEvent) || 'off'
     }
 
     return <Formik
@@ -239,6 +240,10 @@ export class ConfirmCancel extends React.Component {
 
 const formatCost = (cost) => {
     return ((!cost || cost == 0) ? '0' : cost)
+}
+
+const formatPublic = (publicEvent) => {
+    return ( publicEvent ? 'on' : 'off')
 }
 
 /* CREDITS A NATY */
