@@ -3,8 +3,9 @@ import { Link } from 'react-router-dom'
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import { faTrashAlt, faPencilAlt } from '@fortawesome/fontawesome-free-solid'
 import { Format, CategoryLabels } from 'Helpers/index'
-import { Remove as RemoveCategory } from 'Containers/categories'
+import { Remove as RemoveCategory, Toggle as ToggleCategory } from 'Containers/categories'
 import 'Style/categories/show.scss'
+import { thunks } from 'Logic/actions/thunks'
 
 const ShowCategory = (props) => (
     <div className='show'>
@@ -17,9 +18,7 @@ const ShowCategory = (props) => (
 const Actions = (props) => (
     <div className='actions'>
         <RemoveCategory categoryToRemove={props.category}/>
-        <button className={'enabled ' + props.category.enabled ? 'disable' : 'enable'}>
-            {props.category.enabled ? 'Desactivar' : 'Activar'}
-        </button>
+        <ToggleCategory categoryToToggle={props.category}/>
         <Link to={`/categorias/${props.category.id}/editar`}>
             <button className='edit'>
                 <FontAwesomeIcon icon={faPencilAlt} /> Editar
