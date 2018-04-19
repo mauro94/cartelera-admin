@@ -37,6 +37,18 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
+
+    .name-displayer{
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        width: 100%;
+
+        .sm{
+            margin-right: 30px;
+            width: min-content;
+        }
+    }
 }
 
 .form-general-data{

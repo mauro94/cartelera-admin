@@ -38,6 +38,8 @@ const Form = (props) => {
         id: props.event.id || '1',
         cost: formatCost(props.event.cost) || '',
         majors: formatArray(props.event.majors) || '',
+        languages: formatArray(props.event.languages) || '',
+        suffix: props.event.suffix || '',
         contactName: props.event.contactName || '',
         contactEmail: props.event.contactEmail || '',
         contactPhone: props.event.contactPhone || '',

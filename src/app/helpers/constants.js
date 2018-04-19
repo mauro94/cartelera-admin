@@ -69,7 +69,9 @@ export const Labels = Object.freeze({
     publicEvent: "Abierto a todo el público",
     facebookUrl: "Facebook",
     twitterUrl: "Twitter",
-    petFriendly: "pet-friendly"
+    petFriendly: "pet-friendly",
+    languages: "idiomas ofrecidos",
+    suffix: "prefijo",
 })
 
 export const Months = Object.freeze([
