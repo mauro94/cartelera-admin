@@ -40,7 +40,8 @@ const Form = (props) => {
         majors: formatArray(props.event.majors) || '',
         contactName: props.event.contactName || '',
         contactEmail: props.event.contactEmail || '',
-        contactPhone: props.event.contactPhone || ''
+        contactPhone: props.event.contactPhone || '',
+        rangeDatetime: formatToRange(props.event.startDatetime, props.event.endDatetime) || ''
     }
 
     return <Formik
@@ -256,6 +257,14 @@ const formatArray = (arr) => {
         outStr = `${firstWords.join(', ')} ${lastWord}`
     }
     return outStr;
+}
+
+export const formatToRange = (startDatetime, endDatetime) => {
+    let dateRange = {
+        "startDatetime" : startDatetime,
+        "endDatetime" : endDatetime
+    }
+    return dateRange;
 }
 
 export default load('event', EventsEdit)

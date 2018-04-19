@@ -21,7 +21,7 @@ export const EventsFormsIndex = (props) => {
 
             <Selector label='category' inputSizeSmall list={props.categoryList}  {...props}/>
 
-            <FieldDate label='rangeDate'{...props}/>
+            <FieldDate label='rangeDatetime'{...props}/>
             
         </div>
         

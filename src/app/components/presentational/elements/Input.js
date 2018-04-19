@@ -3,6 +3,7 @@ import { Field } from 'formik'
 export { Password as PasswordComponent } from 'Presentational/elements/Password'
 import { DatePickerElement } from 'Presentational/elements/DatePickerElement'
 import { Format, Labels } from 'Helpers/index'
+import { update } from 'Logic/actions/thunks/event';
 
 export const EmailComponent = ({
   field, // { name, value, onChange, onBlur }
@@ -59,6 +60,7 @@ export const FieldDate = (props) => (
   <Field
   name={props.label}
   className={((props.touched[props.label] && props.errors[props.label]) ? 'emptyField' : 'readyField')}
+  updateFormik = {updateFormik}
   type="text"
   {...props}
   component={DatePickerElement}/>
@@ -134,14 +136,14 @@ export const TextFieldAreaComponent = (props) => {
         name={props.field.name}
         onInput={props.textareaHandleChange}
         onBlur={(e)=> { 
-          updateFormik(props, e)}}>
+          updateFormik(props.field.name, e.target.textContent, props.setFieldValue, props.setTouched, props.touched)}}>
         {props.field.value}
       </div>
 }
 
-const updateFormik = (props, e) => {
-  props.setFieldValue(props.field.name, e.target.textContent)
-  props.setTouched({...props.touched, [props.field.name]: true})
+const updateFormik = (name, value, setValue, setTouched, touched) => {
+  setValue(name, value)
+  setTouched({ touched, [name]: true})
 }
 
 export const SelectComponent = (props) => (
