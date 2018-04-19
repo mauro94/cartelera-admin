@@ -1,13 +1,24 @@
 import React from 'react'
-import { FeedbackModal } from 'Presentational/elements'
+import { FeedbackModal, ConfirmationModal } from 'Presentational/elements'
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import { faTrashAlt } from '@fortawesome/fontawesome-free-regular'
 import { withFeedback } from 'Containers/hoc';
 
 export const RemoveCategory = (props) => (
-    <button className='remove' onClick={() => props.remove(props.category)}>
+    <button className='remove' onClick={() => props.confirm(props.category)}>
         <FontAwesomeIcon icon={faTrashAlt} /> Borrar
     </button>
+)
+
+export const RemoveConfirm = (props) => (
+    <ConfirmationModal
+        title={'Desea eliminar la categoría?'}
+        subtitle={props.category.name}
+        confirmationMsg={'Una vez eliminada, ya no se podrá recuperar.'}
+        lastMsg={'continuar'}
+        onClose={props.onClose}
+        handleConfirm={() => props.remove(props.category)}>
+    </ConfirmationModal>
 )
 
 export const RemoveSucceeded = (props) => (

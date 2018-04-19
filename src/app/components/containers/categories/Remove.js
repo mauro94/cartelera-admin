@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { thunks } from 'Logic/actions/thunks'
 import { ModalAlert } from 'Presentational/elements'
-import RemoveCategory, { RemoveSucceeded, RemoveFailed } from 'Presentational/categories/Remove'
+import RemoveCategory, { RemoveSucceeded, RemoveFailed, RemoveConfirm } from 'Presentational/categories/Remove'
 import { CategoryActions } from 'Helpers/constants'
 
 class Remove extends React.Component {
@@ -11,6 +11,14 @@ class Remove extends React.Component {
         this.handleRemove = this.handleRemove.bind(this)
         this.handleError = this.handleError.bind(this)
         this.handleSuccess = this.handleSuccess.bind(this)
+        this.handleConfirm = this.handleConfirm.bind(this)
+    }
+    handleConfirm(categoryToRemove) {
+        ModalAlert({
+            modal: RemoveConfirm,
+            category: categoryToRemove,
+            remove: this.handleRemove
+        })
     }
     handleRemove(categoryToRemove) {
         this.categoryToRemove = categoryToRemove
@@ -32,7 +40,7 @@ class Remove extends React.Component {
     render() {
         return (
             <RemoveCategory
-                remove={this.handleRemove}
+                confirm={this.handleConfirm}
                 action={CategoryActions.Remove}
                 reducer={{
                     status: this.props.category.status,
