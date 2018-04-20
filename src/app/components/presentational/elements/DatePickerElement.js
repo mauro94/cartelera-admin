@@ -8,8 +8,8 @@ export class DatePickerElement extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            startDate: moment(props.values[props.field.name].startDateTime) || moment(),
-            endDate: moment(props.values[props.field.name].endDateTime) || moment()
+            startDate: moment(props.values[props.field.name].startDatetime) || moment(),
+            endDate: moment(props.values[props.field.name].endDatetime) || moment()
         }
         this.handleChange = this.handleChange.bind(this)
         this.handleChangeStart = this.handleChangeStart.bind(this)

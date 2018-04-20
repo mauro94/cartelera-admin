@@ -3,7 +3,6 @@ import { Formik, Form, Field } from 'formik';
 import { TextField, TextFieldArea, Selector, FieldDate } from 'Presentational/elements/Input';
 import { Entity } from 'Helpers/index'
 import { FormButtonSubmit } from 'Presentational/elements/Form'
-import { Persist } from 'formik-persist'
 import { CharactersLeft } from "Presentational/elements/CharactersLeft"
 
 export const EventsFormsIndex = (props) => {

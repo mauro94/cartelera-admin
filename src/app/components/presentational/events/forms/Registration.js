@@ -3,7 +3,6 @@ import { Formik, Form, Field } from 'formik';
 import { SelectComponent, TextComponent, EmailComponent, SelectDate, TextField, TextFieldArea, FieldDate, FieldSingleDate, ToggleField } from 'Presentational/elements/Input';
 import { Entity } from 'Helpers/object'
 import { FormButtonSignout, FormButtonSubmit } from 'Presentational/elements/Form'
-import { Persist } from 'formik-persist'
 import { BrowserRouter as Router, Route, Link, NavLink } from 'react-router-dom'
 
 export const EventsFormsRegistration = (props) => (
