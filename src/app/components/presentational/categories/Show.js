@@ -18,7 +18,7 @@ const ShowCategory = (props) => (
 const Actions = (props) => (
     <div className='actions'>
         {props.category.totalCount == 0 && <RemoveCategory categoryToRemove={props.category}/>}
-        <ToggleCategory categoryToToggle={props.category}/>
+        {props.category.upcomingCount == 0 && <ToggleCategory categoryToToggle={props.category}/>}
         <Link to={`/categorias/${props.category.id}/editar`}>
             <button className='edit'>
                 <FontAwesomeIcon icon={faPencilAlt} /> Editar
