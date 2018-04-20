@@ -9,11 +9,17 @@ export const EventsFormsRegistration = (props) => (
     <Form className="event-form">
         {!Entity.isEmpty(props.error) && <p className='message-error'>{props.error}</p>}
 
-        <ToggleField label='hasRegistration' toggleMessage="Registro se maneja por fuera/no existe registro" toggleMessageInfoTrigger="off" {...props}/>
+        <div className='registration-toggler'>
+            <ToggleField label='hasRegistration' {...props}/>
 
-        {props.values.hasRegistration == "on" && <TextFieldArea label='registrationMessage' {...props}/>}
+            {props.values.hasRegistration == "on" &&
+                <TextFieldArea label='registrationMessage' {...props}/>
+            }
 
-        {props.values.hasRegistration == "off"  && <TextField label='registrationUrl' {...props}/>}
+            {props.values.hasRegistration == "off"  &&
+                <TextField label='registrationUrl' {...props}/>
+            }
+        </div>
 
         <TextFieldArea label='requirementsToRegister' {...props}/>
 

@@ -50,6 +50,16 @@
         }
     }
 
+    .registration-toggler{
+        background: $themeColor-lightLight;
+        border-radius: 20px;
+        padding: 30px;
+        padding-top: 0px;
+        width: 80%;
+        box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+        margin-bottom: 15px;
+    }
+
     .photo-editor{
         display: flex;
         flex-direction: column;
