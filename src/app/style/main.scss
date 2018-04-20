@@ -354,6 +354,29 @@ h3 {
        align-items: center;
        margin-bottom: 8px;
      }
+
+     .tag-container{
+       margin-top: 12px;
+
+       li{
+          background: $themeColor-lightLight;
+       }
+
+       input{
+         width: -webkit-fill-available;
+         border-radius: 0px;
+         background: $themeColor-lightLight;
+         color: $themeColor-black;
+         border-radius: 15px;
+         border: none;
+         padding: 6px 15px;
+         margin: 15px 0px 0px 0px;
+
+         &:focus{
+            border: none;
+         }
+       }
+     }
    }
 
    div.textarea{
@@ -390,6 +413,7 @@ h3 {
      border: none;
      border-bottom: 1px solid $themeColor-blackish;
      overflow-x: scroll;
+     text-overflow: ellipsis;
 
      /*Some sibling magic happens */
      &:focus + .separator {

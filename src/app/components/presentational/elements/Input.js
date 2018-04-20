@@ -4,6 +4,8 @@ export { Password as PasswordComponent } from 'Presentational/elements/Password'
 import { DatePickerElement } from 'Presentational/elements/DatePickerElement'
 import { Format, Labels } from 'Helpers/index'
 import { update } from 'Logic/actions/thunks/event';
+import { DateSinglePicker } from 'Presentational/elements/DateSinglePicker';
+import {TagManager} from 'Presentational/elements/Tags';
 
 export const TextField = (props) => (
   <React.Fragment>
@@ -20,12 +22,28 @@ export const TextField = (props) => (
   </React.Fragment>
 )
 
+export const TagField = (props) => (
+    <React.Fragment>
+    <div className={props.inputSizeSmall ? 'input-container sm' : 'input-container'}>
+      <div className='text-input'>
+          <label>
+          {Format.capitalize(Labels[props.label])}
+          </label>
+          <Field name={props.label} className={((props.touched[props.label] && props.errors[props.label]) ? 'emptyField' : 'readyField')} type="text" {...props} component={TagManager}/>
+          <span className='separator'> </span>
+      </div>
+      {props.touched[props.label] && props.errors[props.label] && <p className="message-error">{props.errors[props.label]}</p>}
+    </div>
+
+    </React.Fragment>
+)
+
 export const TextFieldDate = (props) => (
   <React.Fragment>
   <div className='input-container'>
       <div className='text-input'>
           <label>
-          {Format.capitalize(Labels[props.label])}
+          {Format.capitalize(Labels[props.fieldId])}
           </label>
           <Field
           onClick={props.onClick}
@@ -182,6 +200,17 @@ export const FieldDate = (props) => (
   {...props}
   component={DatePickerElement}/>
 )
+
+export const FieldSingleDate = (props) => (
+  <Field
+  name={props.label}
+  className={((props.touched[props.label] && props.errors[props.label]) ? 'emptyField' : 'readyField')}
+  updateFormik = {updateFormik}
+  type="text"
+  {...props}
+  component={DateSinglePicker}/>
+)
+
 
 const updateFormik = (name, value, setValue, setTouched, touched) => {
   setValue(name, value)

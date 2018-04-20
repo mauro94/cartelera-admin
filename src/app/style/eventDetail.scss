@@ -49,6 +49,24 @@
             width: min-content;
         }
     }
+
+    .photo-editor{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+
+        .show-image{
+            padding: 20px;
+            width: 300px;
+            height: auto;
+
+            img{
+                width: 100%;
+                border-radius: 10px;
+            }
+        }
+
+    }
 }
 
 .form-general-data{

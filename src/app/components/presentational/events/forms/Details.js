@@ -9,7 +9,7 @@ export const EventsFormsDetails = (props) => (
         {!Entity.isEmpty(props.error) && <p className="message-error">{props.error}</p>}
 
         <div class="name-displayer">
-            <TextField label='suffix' inputSizeSmall {...props}/>
+            <TextField label='prefix' inputSizeSmall {...props}/>
             <TextField label='contactName' {...props}/>
         </div>
 

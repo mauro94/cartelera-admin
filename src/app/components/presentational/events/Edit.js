@@ -39,7 +39,7 @@ const Form = (props) => {
         cost: formatCost(props.event.cost) || '',
         majors: formatArray(props.event.majors) || '',
         languages: formatArray(props.event.languages) || '',
-        suffix: props.event.suffix || '',
+        prefix: props.event.prefix || '',
         contactName: props.event.contactName || '',
         contactEmail: props.event.contactEmail || '',
         contactPhone: props.event.contactPhone || '',
@@ -47,8 +47,17 @@ const Form = (props) => {
         publicEvent: formatToggle(props.event.publicEvent) || 'off',
         facebookUrl: props.event.facebookUrl || '',
         twitterUrl: props.event.twitterUrl || '',
-        petFriendly: formatToggle(props.event.petFriendly) || 'off'
-    }
+        petFriendly: formatToggle(props.event.petFriendly) || 'off',
+        registrationUrl: props.event.registrationUrl || '',
+        registrationMessage: props.event.registrationMessage || '',
+        registrationDeadline: props.event.registrationDeadline || '',
+        hasRegistration: formatToggle(props.event.hasRegistration) || '',
+        hasDeadline: formatToggle(props.event.hasDeadline) || '',
+        requirementsToRegister: props.event.requirementsToRegister || '',
+        tags: props.event.tags || '',
+        photo: props.event.photo || '',
+        schedule: props.event.schedule || ''
+        }
 
     return <Formik
         enableReinitialize
@@ -107,7 +116,7 @@ const Menu = (props) => (
             <NavLink
                 activeClassName='selected'
                 className='navbar-button callout right'
-                to={'/eventos/' + props.id + '/editar/registro/local'}>
+                to={'/eventos/' + props.id + '/editar/registro'}>
                 Registro
             </NavLink>
         </div>
@@ -131,6 +140,9 @@ const Routes = (props) => (
         <Route
             path={'/eventos/' + props.id + '/editar/detalles'}
             render={() => <EventForm.Details {...props} />} />
+        <Route
+            path={'/eventos/' + props.id + '/editar/imagenes'}
+            render={() => <EventForm.Images {...props} />} />
         <Route
             path={'/eventos/' + props.id + '/editar/registro'}
             render={() => <EventForm.Registration {...props} eventid={props.id} />} />

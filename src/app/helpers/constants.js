@@ -58,8 +58,8 @@ export const Labels = Object.freeze({
     description: "descripción",
     category: "categoría",
     rangeDatetime: "fecha y hora",
-    startDatetime: "inicio: fecha y hora",
-    endDatetime: "fin: fecha y hora",
+    startDatetime: "inicio: fecha y hora de inicio",
+    endDatetime: "fin: fecha y hora de fin",
     cost: "costo (MXN)",
     majors: "carreras invitadas",
     location: "ubicación",
@@ -71,7 +71,16 @@ export const Labels = Object.freeze({
     twitterUrl: "Twitter",
     petFriendly: "pet-friendly",
     languages: "idiomas ofrecidos",
-    suffix: "prefijo",
+    prefix: "prefijo",
+    registrationUrl: "liga de registro exterior (e.g. Google Forms)",
+    registrationMessage: "mensaje de confirmación de registro",
+    registrationDeadline: "fecha límite de registro",
+    requirementsToRegister: "requerimientos para registrarse",
+    hasRegistration: "usar funcionalidad de registro de la página",
+    hasDeadline: "registro tiene fecha límite",
+    tags: "Temas relacionados",
+    photo: "imagen del evento",
+    schedule: "horario del evento"
 })
 
 export const Months = Object.freeze([
@@ -128,5 +137,6 @@ export const EventFormValidations = Object.freeze({
     contactEmail: Yup.string().email("Correo no valido").required("Correo requerido"),
     contactPhone: Yup.string()
         .matches(/^\+?\d+$/, "Teléfono inválido")
-        .min(8, "Mínimo 8 caracteres")
+        .min(8, "Mínimo 8 caracteres"),
+    registrationMessage: Yup.string().max(CharacterCount, `Limite de ${CharacterCount} caracteres superado. `)
 })
