@@ -41,13 +41,13 @@ const Details = (props) => (
             {props.category.enabled ? 'Activa' : 'Inactiva'}
         </DetailEntry>
         <DetailEntry label='pastEvents'>
-            {props.category.name}
+            {props.category.pastCount}
         </DetailEntry>
         <DetailEntry label='upcomingEvents'>
-            {props.category.name}
+            {props.category.upcomingCount}
         </DetailEntry>
         <DetailEntry label='totalEvents'>
-            {props.category.name}
+            {props.category.totalCount}
         </DetailEntry>
     </div>
 )
