@@ -17,7 +17,7 @@ const ShowCategory = (props) => (
 
 const Actions = (props) => (
     <div className='actions'>
-        <RemoveCategory categoryToRemove={props.category}/>
+        {props.category.totalCount == 0 && <RemoveCategory categoryToRemove={props.category}/>}
         <ToggleCategory categoryToToggle={props.category}/>
         <Link to={`/categorias/${props.category.id}/editar`}>
             <button className='edit'>
