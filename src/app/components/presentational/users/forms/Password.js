@@ -8,7 +8,7 @@ import {
     FormComponent as Form
 } from 'Presentational/elements';
 
-const Password = ({ user, handleSubmit }) => (
+const Password = (props) => (
     <Formik
         validationSchema={
             Yup.object().shape(PasswordFormValidations)
@@ -16,11 +16,11 @@ const Password = ({ user, handleSubmit }) => (
         initialValues={{
             password: '',
             passwordConfirm: '',
-            id: user.id,
-            isNewbie: user.isNewbie
+            id: props.user.id,
+            isNewbie: props.user.isNewbie
         }}
         onSubmit={(values, action) => {
-            handleSubmit(values)
+            props.handleSubmit(values)
             action.setSubmitting(false)
         }}>
         {(props) => <PasswordForm {...props} />}
@@ -36,4 +36,5 @@ const PasswordForm = (props) => (
         submitTitle='Cambiar contraseña' />
 )
 
-export default load('user', Password)
+// export default load('user', Password)
+export default Password

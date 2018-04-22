@@ -77,4 +77,5 @@ const BasicForm = (props) => {
     )
 }
 
-export default load('user', Basic)
+// export default load('user', Basic)
+export default Basic

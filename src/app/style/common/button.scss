@@ -1,4 +1,19 @@
 @import 'colors';
+
+button {
+    width: 100px;
+    background: $themeColor-lightBlue;
+    color: $themeColor-white;
+    border-radius: 10px;
+    height: 40px;
+    border: 0;
+    text-align: center;
+    cursor: pointer;
+    font-size: 18px;
+    font-family: 'Barlow', sans-serig;
+    font-weight: 400;
+}
+
 .users-page, .categories-page {
     button {
         width: 100px;

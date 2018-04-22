@@ -1,4 +1,5 @@
 import React from 'react'
+import $ from 'jquery'
 import { connect } from 'react-redux'
 import { withRouter, Redirect, Route } from 'react-router-dom'
 import { getIndex, getUserType, userDictionary } from './helper'
@@ -10,13 +11,19 @@ class Users extends React.Component {
     constructor() {
         super()
         this.renderRoutes = this.renderRoutes.bind(this)
+        this.state = {
+            renderRoutes: false
+        }
     }
-    componentWillMount() {
-        if (Entity.isEmpty(this.props.user.all)) {
+    componentDidMount() {
+        if (Entity.isEmpty(this.props.user.all) || this.props.user.all[0].type != this.props.type) {
             this.props.getUsers(this.props.type)
             this.setState({
                 renderRoutes: false
             })
+        }
+        else {
+            this.renderRoutes()
         }
     }
     componentWillReceiveProps(nextProps) {
@@ -53,9 +60,8 @@ class Users extends React.Component {
             <Route
                 exact
                 path='/usuarios/:type/:id'
-                render={({ match }) => (
-                    <ShowUser user={this.props.user.all[getIndex(this.props.user.all, match)]} />
-                )} />
+                render={({ match }) => <ShowUser user={this.props.user.all[getIndex(this.props.user.all, match)]} />
+                } />
         </React.Fragment>
         return (
             <Route path='/'>

@@ -3,20 +3,58 @@
 .modal-confirmation{
   height: auto;
   text-align: center;
+  min-width: 600px;
+
+  textarea {
+      font-family: $systemfont;
+      padding: 10px;
+      background-color: $themeColor-lightLight;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      resize: none;
+      margin: 10px;
+      width: 50%;
+      text-indent: 0;
+
+      &:focus{
+        outline-color: #d4d4d4;
+      }
+
+      &:read-only{
+        &:focus{
+          outline: none;
+        }
+      }
+
+      &:disabled{
+        outline-color: none;
+        cursor: default;
+        user-select: none !important;
+      }
+
+      
+  }
+
   &.error {
     h1 {
       color: $themeColor-red;
     }
   }
+
   .modal-confirmation-buttons {
     justify-content: center;
     display: flex;
-    flex-direction: row;
+    flex-direction: column-reverse;
+    align-items: center;
+
     button {
       font-family: $systemfont;
-      margin: 15px;
+      font-weight: 500;
+      margin: 5px;
+      margin-top: 10px;
       display: block;
-      font-size: 14px;
+      font-size: 16px;
       min-width: 230px;
       max-width: 230px;
       background: $themeColor-lightBlue;
@@ -26,10 +64,34 @@
       border: 0;
       justify-content: center;
 
+      &:hover{
+        background: $themeColor-lightBlue-shadow;
+      }
+
       &.modal-cancel-button{
-        background: $themeColor-red;
-        margin-right: 5px;
+        background: none;
+        color: $themeColor-blackish;
+        margin: 0;
+        font-size: 14px;
+        font-weight: 400;
+      
+        &:hover{
+          text-decoration: underline;
+        }
       }
     }
+
+    .modal-confirm-cancel-button{
+      background: $themeColor-red;
+    }
+    .modal-confirm-cancel-button:hover{
+      background: $themeColor-red-shadow;
+    }
+    
+    .modal-confirm-cancel-button:disabled {
+      background: $themeColor-light;
+      color: $themeColor-white;
+    }
+
   }
 }

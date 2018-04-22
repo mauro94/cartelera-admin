@@ -22,12 +22,13 @@ export const get = (id) => {
 }
 
 export const update = (event) => {
+    let {id, ...updatedFields} = event;
     return dispatch => serverCall({
         dispatch: dispatch,
         actionType: EventActions.Update,
         call: () => request.put(
-            `/events/${event.id}/`,
-            { event },
-            { headers: headers.withAuth() })
+            `/events/${id}/`,
+            { event: updatedFields },
+            { headers: headers.withAuth() }) 
     })
 }

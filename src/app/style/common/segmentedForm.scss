@@ -1,0 +1,50 @@
+@import 'pills';
+
+.edit-event-container, .profile-container {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-around;
+    align-items: flex-start;
+    
+    .navbar {
+        align-items: flex-end;
+        display: flex;
+        flex-flow: column;
+
+        .navbar-button {
+            margin: 10px;
+            float: left;
+
+            &.callout{
+                position: relative;
+                padding: 10px 30px;
+            }
+
+            &.selected {
+                color: $themeColor-black;
+                background-color: $themeColor-lightLight;
+                .sb-avatar > div {
+                    filter: grayscale(0);
+                }
+  
+                &.callout::before {
+                    content: "";
+                    width: 0px;
+                    height: 0px;
+                    border: 0.8em solid transparent;
+                    position: absolute;
+                }
+                
+                &.callout.right::before {
+                    right: -25px;
+                    top: 18%;
+                    border-left: 17px solid $themeColor-lightLight;
+                }
+            }
+        }
+    }
+    .edit-event-content, .profile-content {
+        width: 100%;
+        padding: 0px 20px;
+    }
+}

@@ -1,0 +1,18 @@
+$switch-height: 30px;
+$switch-width: 55px;
+$switch-border-size: 1px;
+$switch-border-radius: $switch-height;
+$switch-border-color: none;
+$switch-transition: all 300ms ease;
+$switch-padding: 0;
+$switch-off-background-color: #5f5f5f;
+$switch-off-box-shadow: none;
+$switch-on-background-color: #fc3;
+$switch-on-box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.21);
+$switch-knob-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.45);
+$switch-knob-border-width: 1px;
+$switch-knob-border-color: none;
+$switch-knob-background-color: #fff;
+$switch-knob-size: $switch-height - ($switch-padding * 2);
+$switch-knob-border-radius: $switch-knob-size;
+$switch-text-spacing: 6px !default;

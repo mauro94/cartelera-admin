@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { UserActions } from 'Helpers/constants'
+import { CurrentUserActions } from 'Helpers/constants'
 import { thunks } from 'Logic/actions/thunks'
 import { ModalAlert } from 'Presentational/elements'
 import { EditSucceeded, EditFailed } from 'Presentational/users/Edit'
@@ -30,7 +30,7 @@ class Edit extends React.Component {
             modal: EditFailed,
             type: this.props.type,
             user: this.email,
-            error: this.props.user.error
+            error: this.props.currentUser.error
         })
     }
     handleSubmit(user) {
@@ -47,39 +47,42 @@ class Edit extends React.Component {
     handleSuccess() {
         ModalAlert({
             modal: EditSucceeded, type: this.props.type,
-            user: this.props.user.show
+            user: this.props.currentUser.show
         })
     }
     render() {
         const { children } = this.props;
         let childrenWithProps = React.Children.map(children, child =>
             React.cloneElement(child, {
-                action: (UserActions.Update),
+                action: CurrentUserActions.Update,
                 handleSubmit: this.handleSubmit,
+                logout: (this.props.logout
+                    && this.props.handleLogout),
                 reducer: {
-                    status: this.props.user.status,
-                    action: this.props.user.action,
-                    error: this.props.user.error
+                    status: this.props.currentUser.status,
+                    action: this.props.currentUser.action,
+                    error: this.props.currentUser.error
                 },
                 user: this.state.user,
                 onSuccess: this.handleSuccess,
                 onError: this.handleError
             }));
-        return (childrenWithProps)
+        return childrenWithProps
     }
 }
 
 const mapStateToProps = state => {
     return {
-        user: state.user
+        currentUser: state.currentUser
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
         update: (user) => {
-            dispatch(thunks.user.update(user))
-        }
+            dispatch(thunks.user.update(user, true))
+        },
+        handleLogout: () => { dispatch(thunks.user.logout()) }
     }
 }
 

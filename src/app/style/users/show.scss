@@ -1,50 +1,48 @@
 @import '../common/colors';
+@import '../common/tags';
 
 .show {
-    border-left: solid 1px $themeColor-lightLight;
-    display: grid;
-    grid-template-rows: 1fr 1fr auto;
-    height: auto;
-    grid-gap: 10px;
+    background-color: $themeColor-lightLight;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     padding: 50px;
     .title {
-        grid-row: 1;
-        display: grid;
-        grid-template-columns: 120px auto auto;
+        display: flex;
         align-items: center;
         align-self: baseline;
         .name {
             font-size: 32px;
             font-weight: 300;
+            margin: 10px;
             text-align: left;
         }
         .title-tag {
             justify-self: right;
         }
     }
-    .details {
-        align-items: center;
-        display: grid;
+    .details-wrapper {
+        display:flex;
+        justify-content: center;
         font-size: 18px;
         font-weight: 300;
-        grid-row: 2;
-        grid-auto-rows: 30px;
-        .entry {
-            display: grid;
-            grid-template-columns: 45% auto;
-            grid-gap: 10px;
-            .label {
-                grid-column: 1;
-                text-align: right;
-                color: grey;
-                font-weight: 200;
-            }
+        .labels {
+            text-align: right;
+            color: grey;
+            font-weight: 200;
+            margin: 10px;
+            width: 150px;
+        }
+        .details {
+            margin: 10px;
+            width: 150px;
         }
     }
     .actions {
-        display: grid;
-        grid-auto-flow: column;
-        justify-content: right;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
         svg {
             color: $themeColor-lightLight;
             padding-right: 10px;

@@ -54,13 +54,40 @@ export const Labels = Object.freeze({
     phoneNumber: 'teléfono',
     office: 'oficina',
     campus: 'campus',
-    enabled: 'estado',
+    enabled: 'estatus',
     passwordConfirm: 'confirmar contraseña',
     password: 'contraseña',
     firstName: 'nombre',
     lastName: 'apellido',
     upcoming: 'próximos',
-    past: 'pasados'
+    past: 'pasados',
+    name: 'nombre',
+    description: "descripción",
+    category: "categoría",
+    rangeDatetime: "fecha y hora",
+    startDatetime: "inicio: fecha y hora de inicio",
+    endDatetime: "fin: fecha y hora de fin",
+    cost: "costo (MXN)",
+    majors: "carreras invitadas",
+    location: "ubicación",
+    contactName: "nombre de contacto",
+    contactEmail: "correo de contacto",
+    contactPhone: "teléfono de contacto",
+    publicEvent: "Abierto a todo el público",
+    facebookUrl: "facebook",
+    twitterUrl: "twitter",
+    petFriendly: "pet-friendly",
+    languages: "idiomas ofrecidos",
+    prefix: "artículo",
+    registrationUrl: "liga de registro exterior (e.g. Google Forms)",
+    registrationMessage: "mensaje de confirmación de registro",
+    registrationDeadline: "fecha límite de registro",
+    requirementsToRegister: "requerimientos para registrarse",
+    hasRegistration: "usar funcionalidad de registro de la página",
+    hasDeadline: "registro tiene fecha límite",
+    tags: "Temas relacionados",
+    photo: "imagen del evento",
+    schedule: "horario del evento"
 })
 
 export const CategoryLabels = Object.freeze({
@@ -118,8 +145,15 @@ export const PasswordFormValidations = Object.freeze({
 
 export const EventFormValidations = Object.freeze({
     name: Yup.string().required("Nombre requerido"),
-    description: Yup.string().max(CharacterCount, ` (Limite de ${CharacterCount} caracteres superado)`).required(" (Descripción requerida)"),
-    location: Yup.string().required("Ubicación requerida")
+    description: Yup.string().max(CharacterCount, `Limite de ${CharacterCount} caracteres superado. `).required("Descripción requerida"),
+    location: Yup.string().required("Ubicación requerida"),
+    cost: Yup.string().matches(/^\d+$/, "Costo inválido"),
+    contactName: Yup.string().required("Nombre requerido"),
+    contactEmail: Yup.string().email("Correo no valido").required("Correo requerido"),
+    contactPhone: Yup.string()
+        .matches(/^\+?\d+$/, "Teléfono inválido")
+        .min(8, "Mínimo 8 caracteres"),
+    registrationMessage: Yup.string().max(CharacterCount, `Limite de ${CharacterCount} caracteres superado. `)
 })
 
 export const CategoryFormValidations = Object.freeze({

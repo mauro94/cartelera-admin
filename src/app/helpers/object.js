@@ -15,7 +15,26 @@ export const Format = {
     },
     capitalize: (str) => {
         return str.charAt(0).toUpperCase() + str.slice(1)
+    },
+    sortUsers: (list) => {
+        list = list.sort((a, b) => compareUsers(a, b))
+        return list
     }
+}
+
+const compareUsers = (a, b) => {
+    if (!a.firstName && !b.firstName) {
+        if (a.email > b.email)
+            return 1
+        else if (a.email < b.email)
+            return -1
+        return 0
+    }
+    else if ((!a.firstName && b.firstName) || a.firstName > b.firstName)
+        return 1
+    else if ((a.firstName && !b.firstName) || b.firstName > a.firstName)
+        return -1
+    return 0
 }
 
 export const Entity = {

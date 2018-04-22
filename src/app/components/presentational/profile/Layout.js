@@ -1,56 +1,76 @@
 import React from 'react'
 import { Route, NavLink, Redirect, Switch } from 'react-router-dom'
-import { UserForms } from 'Helpers/constants'
-import { Edit as EditUser } from 'Containers/users'
+import EditCurrentUser from 'Containers/currentUser/Edit'
+import {
+    Basic as BasicForm,
+    Password as PasswordForm
+} from 'Presentational/users/forms'
+import 'Style/common/segmentedForm.scss'
 
 const ProfileLayout = (props) => (
-    <div className='grid-container container-column-menu'>
-        <Links />
-        <Routes user={props.user} />
-    </div>
+    <React.Fragment>
+        <div className='title'><h1>Perfil</h1></div>
+        <div className='profile-container'>
+            <Links />
+            <SwitchRoutes user={props.user} />
+        </div>
+    </React.Fragment>
 )
 
-const Routes = (props) => (
+const SwitchRoutes = (props) => (
     <Switch>
-        <div className='container-menu-content'>
-            <Route
-                exact
-                path='/perfil'
-                render={() => <Redirect to='/perfil/editar' />} />
-            <Route
-                path='/perfil/editar'
-                render={() =>
-                    <EditUser
-                        current
-                        user={props.user}
-                        form={UserForms.Basic} />} />
-            <Route
-                path='/perfil/contrasena'
-                render={() =>
-                    <EditUser
-                        current
-                        user={props.user}
-                        form={UserForms.Password} />} />
-        </div>
+        <Routes user={props.user} />
     </Switch>
 )
 
+const Routes = (props) => (
+    <div className='profile-content'>
+        <Route
+            exact
+            path='/perfil'
+            render={() => <Redirect to='/perfil/editar' />} />
+        <Route
+            path='/perfil/editar'
+            render={() => <EditBasicForm user={props.user} />} />
+        <Route
+            path='/perfil/contrasena'
+            render={() => <EditPasswordForm user={props.user} />} />
+    </div>
+)
+
+const EditPasswordForm = (props) => (
+    <EditCurrentUser
+        current
+        userToUpdate={props.user}>
+        <PasswordForm />
+    </EditCurrentUser>
+)
+
+const EditBasicForm = (props) => (
+    <EditCurrentUser
+        current
+        userToUpdate={props.user}>
+        <BasicForm />
+    </EditCurrentUser>
+)
+
+
 const Links = () => (
-    <div className='container-menu-elements'>
-        <div className='menu-link'>
+    <div className='navbar'>
+        <div>
             <NavLink
-                className='menu-link'
-                activeClassName='menu-link-selected'
+                className='navbar-button callout right'
+                activeClassName='selected'
                 to={'/perfil/editar'}>
-                Editar perfil
+                Perfil
             </NavLink>
         </div>
-        <div className='menu-link'>
+        <div>
             <NavLink
-                className='menu-link'
-                activeClassName='menu-link-selected'
+                className='navbar-button callout right'
+                activeClassName='selected'
                 to={'/perfil/contrasena'}>
-                Cambiar contraseña
+                Contraseña
             </NavLink>
         </div>
     </div>

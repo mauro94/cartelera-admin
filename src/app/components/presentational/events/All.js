@@ -4,17 +4,17 @@ import { List as EventsList } from 'Containers/events'
 import 'Style/eventsMenuLayout.scss'
 
 const AllEvents = () => (
-    <div className='grid-container container-events'>
+    <React.Fragment>
         <div className='title'>
-            <h1 id='event-title'>Eventos{location.search.includes('pasados') ? " pasados": " próximos"} </h1>
-            <h1 id='toggle-event-filter'>
-                <NavLink to={{ search: '?tipo=' + (location.search.includes('pasados') ? "próximos": "pasados") }}>
-                    /{location.search.includes('pasados') ? " próximos": " pasados"}
+            <h1>{`Eventos ${location.search.includes('pasados') ? 'pasados ' : 'próximos '}`}</h1>
+            <h1 className='toggle-title-filter'>
+                <NavLink to={{ search: '?tipo=' + (location.search.includes('pasados') ? 'próximos' : 'pasados') }}>
+                    /{location.search.includes('pasados') ? ' próximos' : ' pasados'}
                 </NavLink>
             </h1>
         </div>
         <Routes />
-    </div>
+    </React.Fragment>
 )
 
 const Routes = () => (

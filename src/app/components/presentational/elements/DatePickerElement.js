@@ -2,18 +2,25 @@ import React from 'react'
 import DatePicker from 'react-datepicker'
 import moment from 'moment'
 import 'react-datepicker/dist/react-datepicker.css'
+import { TextFieldDate } from 'Presentational/elements/Input'
 
 export class DatePickerElement extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            startDate: RoundMoment(),
-            endDate: RoundMoment(),
-            placeholder: props.placeholder
+            startDate: moment(props.values[props.field.name].startDatetime) || moment(),
+            endDate: moment(props.values[props.field.name].endDatetime) || moment()
         }
         this.handleChange = this.handleChange.bind(this)
         this.handleChangeStart = this.handleChangeStart.bind(this)
         this.handleChangeEnd = this.handleChangeEnd.bind(this)
+    }
+
+    componentWillReceiveProps(nextProps) {
+        this.setState({
+            startDate: moment(nextProps.values[nextProps.field.name].startDatetime),
+            endDate: moment(nextProps.values[nextProps.field.name].endDatetime),
+        })
     }
 
     handleChange({ startDate, endDate }) {
@@ -24,7 +31,7 @@ export class DatePickerElement extends React.Component {
             endDate = startDate
         }
 
-        this.setState({ startDate: startDate, endDate: endDate })
+        this.props.updateFormik(this.props.field.name, formatToRange(startDate, endDate), this.props.setFieldValue, this.props.setTouched, this.props.touched)
     }
 
     handleChangeStart(startDate) {
@@ -37,47 +44,62 @@ export class DatePickerElement extends React.Component {
 
     render() {
             return (
-                <React.Fragment>
-                    <div className="form-field">
-                    <DatePicker
-                        showTimeSelect
-                        timeFormat="HH:mm"
-                        minDate={moment()}
-                        maxDate={moment().add(1, "year")}
-                        dateFormat="LLL"
-                        timeCaption="Tiempo"
-                        placeholderText="Fecha y Hora inicio"
-                        locale="es-mx"
-                        selected={this.state.startDate}
-                        selectsStart
-                        startDate={this.state.startDate}
-                        endDate={this.state.endDate}
-                        onChange={this.handleChangeStart}
-                    />
-                    </div>
-                    <div className="form-field">
-                    <DatePicker
-                        showTimeSelect
-                        timeFormat="HH:mm"
-                        minDate={moment()}
-                        maxDate={moment().add(1, "year")}
-                        dateFormat="LLL"
-                        timeCaption="Tiempo"
-                        placeholderText="Fecha y Hora fin"
-                        locale="es-mx"
-                        selected={this.state.endDate}
-                        selectsEnd
-                        startDate={this.state.startDate}
-                        endDate={this.state.endDate}
-                        onChange={this.handleChangeEnd}
-                    />
-                    </div>
-                </React.Fragment>
+                <div className='date-container'>
+                    {!this.props.hideStart && <div className='date-picker'>
+                        <DatePicker
+                            customInput={<TextFieldDate fieldId='startDatetime' {...this.props}/>}
+                            showTimeSelect
+                            timeFormat="HH:mm"
+                            minDate={moment()}
+                            maxDate={moment().add(1, "year")}
+                            dateFormat="LLL"
+                            timeCaption="Hora"
+                            locale="es-mx"
+                            selected={this.state.startDate}
+                            selectsStart
+                            startDate={this.state.startDate}
+                            endDate={this.state.endDate}
+                            onChange={this.handleChangeStart}
+                            shouldCloseOnSelect={true}
+                        />
+                        <span className='separator'> </span>
+                        </div>
+                    }
+                    {!this.props.hideEnd && 
+                        <div className='date-picker'>
+                        <DatePicker
+                            customInput={<TextFieldDate fieldId='endDatetime' {...this.props}/>}
+                            showTimeSelect
+                            timeFormat="HH:mm"
+                            minDate={moment()}
+                            maxDate={moment().add(1, "year")}
+                            dateFormat="LLL"
+                            timeCaption="Hora"
+                            locale="es-mx"
+                            selected={this.state.endDate}
+                            selectsEnd
+                            startDate={this.state.startDate}
+                            endDate={this.state.endDate}
+                            onChange={this.handleChangeEnd}
+                            shouldCloseOnSelect={true}
+                        />
+                        <span className='separator'> </span>
+                        </div>
+                    }
+                </div>
             )
     }
 }
 
-const RoundMoment = () => {
+const RoundMoment = (props) => {
     let remainder = 30 - (moment().minute() % 30)
     return moment(moment()).add(remainder, "minutes")
+}
+
+const formatToRange = (startDatetime, endDatetime) => {
+    let dateRange = {
+        "startDatetime" : startDatetime.format(),
+        "endDatetime" : endDatetime.format()
+    }
+    return dateRange;
 }

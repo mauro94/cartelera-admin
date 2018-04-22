@@ -7,13 +7,15 @@ import { Format, Labels } from 'Helpers/index'
 import { UserAvatar, Tag } from 'Presentational/elements'
 import 'Style/users/show.scss'
 
-const UserShow = (props) => (
-    <div className='show'>
+const UserShow = (props) => {
+    let selectedItem = document.getElementById(`list-item-${props.user.id}`)
+    selectedItem.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    return <div className='show'>
         <Title user={props.user} />
         <Details user={props.user} />
         <Actions enabled={props.user.enabled} id={props.user.id} />
     </div>
-)
+}
 
 const Actions = (props) => (
     <div className='actions'>
@@ -38,7 +40,7 @@ const Title = (props) => (
     <div className='title'>
         <UserAvatar user={props.user} size={100} />
         <div className='name'>
-            {getUserTitle(props.user)}
+            <p>{getUserTitle(props.user)}</p>
         </div>
         <div className='title-tag green'>
             {props.user.isNewbie && <Tag>Nuevo</Tag>}
@@ -47,32 +49,33 @@ const Title = (props) => (
 )
 
 const Details = (props) => (
-    <div className='details'>
-        <DetailEntry label='email'>
-            {<FontAwesomeIcon icon={faEnvelope} /> && props.user.email}
-        </DetailEntry>
-        <DetailEntry label='enabled'>
-            {props.user.enabled ? 'Activo' : 'Inactivo'}
-        </DetailEntry>
-        <DetailEntry label='phoneNumber'>
-            {<FontAwesomeIcon icon={faPhone} /> && props.user.phoneNumber}
-        </DetailEntry>
-        <DetailEntry label='office'>
-            {props.user.office}
-        </DetailEntry>
-        <DetailEntry label='campus'>
-            {props.user.campus}
-        </DetailEntry>
-    </div>
-)
-
-const DetailEntry = (props) => (
-    <div className={'entry ' + props.label}>
-        <div className='label'>{Format.capitalize(Labels[props.label])}</div>
-        <div className='value'>
-            {props.children}
+    <div className='details-wrapper'>
+        <div className='labels'>
+            <div className='label'>{Format.capitalize(Labels.email)}</div>
+            <div className='label'>{Format.capitalize(Labels.enabled)}</div>
+            <div className='label'>{Format.capitalize(Labels.phoneNumber)}</div>
+            <div className='label'>{Format.capitalize(Labels.office)}</div>
+            <div className='label'>{Format.capitalize(Labels.campus)}</div>
+        </div>
+        <div className='details'>
+            <div className='value'>
+                {<FontAwesomeIcon icon={faEnvelope} /> && props.user.email}
+            </div>
+            <div className='value'>
+                {props.user.enabled ? 'Activo' : 'Inactivo'}
+            </div>
+            <div className='value'>
+                {<FontAwesomeIcon icon={faPhone} /> && props.user.phoneNumber}
+            </div>
+            <div className='value'>
+                {props.user.office}
+            </div>
+            <div className='value'>
+                {props.user.campus}
+            </div>
         </div>
     </div>
 )
+
 
 export default UserShow
