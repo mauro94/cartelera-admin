@@ -7,6 +7,13 @@ export const EventActions = Object.freeze({
     Update: 'UPDATE_EVENT'
 })
 
+export const CategoryActions = Object.freeze({
+    All: 'ALL_CATEGORIES',
+    Create: 'CREATE_CATEGORY',
+    Update: 'UPDATE_CATEGORY',
+    Remove: 'REMOVE_CATEGORY'
+})
+
 export const SessionActions = Object.freeze({
     Login: 'LOGIN',
     Logout: 'LOGOUT',
@@ -54,6 +61,14 @@ export const Labels = Object.freeze({
     lastName: 'apellido',
     upcoming: 'próximos',
     past: 'pasados'
+})
+
+export const CategoryLabels = Object.freeze({
+    name: 'Categoría',
+    enabled: 'Estado',
+    pastEvents: 'Eventos pasados',
+    upcomingEvents: 'Eventos próximos',
+    totalEvents: 'Eventos totales'
 })
 
 export const Months = Object.freeze([
@@ -105,4 +120,8 @@ export const EventFormValidations = Object.freeze({
     name: Yup.string().required("Nombre requerido"),
     description: Yup.string().max(CharacterCount, ` (Limite de ${CharacterCount} caracteres superado)`).required(" (Descripción requerida)"),
     location: Yup.string().required("Ubicación requerida")
+})
+
+export const CategoryFormValidations = Object.freeze({
+    name: Yup.string().required("Nombre requerido")
 })
