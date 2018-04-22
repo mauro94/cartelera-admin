@@ -7,6 +7,13 @@ export const EventActions = Object.freeze({
     Update: 'UPDATE_EVENT'
 })
 
+export const CategoryActions = Object.freeze({
+    All: 'ALL_CATEGORIES',
+    Create: 'CREATE_CATEGORY',
+    Update: 'UPDATE_CATEGORY',
+    Remove: 'REMOVE_CATEGORY'
+})
+
 export const SessionActions = Object.freeze({
     Login: 'LOGIN',
     Logout: 'LOGOUT',
@@ -83,6 +90,14 @@ export const Labels = Object.freeze({
     schedule: "horario del evento"
 })
 
+export const CategoryLabels = Object.freeze({
+    name: 'Categoría',
+    enabled: 'Estado',
+    pastEvents: 'Eventos pasados',
+    upcomingEvents: 'Eventos próximos',
+    totalEvents: 'Eventos totales'
+})
+
 export const Months = Object.freeze([
     "enero", "febrero", "marzo", "abril", "mayo",
     "junio", "julio", "agosto", "septiembre", "octubre",
@@ -139,4 +154,8 @@ export const EventFormValidations = Object.freeze({
         .matches(/^\+?\d+$/, "Teléfono inválido")
         .min(8, "Mínimo 8 caracteres"),
     registrationMessage: Yup.string().max(CharacterCount, `Limite de ${CharacterCount} caracteres superado. `)
+})
+
+export const CategoryFormValidations = Object.freeze({
+    name: Yup.string().required("Nombre requerido")
 })

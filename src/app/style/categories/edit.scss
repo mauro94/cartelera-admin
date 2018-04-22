@@ -1,0 +1,64 @@
+@import '../common/colors';
+@import '../setup';
+
+.edit-category {
+    border-left: solid 1px $themeColor-lightLight;
+    display: grid;
+    grid-template-rows: 1fr 1fr auto;
+    height: auto;
+    grid-gap: 10px;
+    padding: 50px;
+    .actions {
+        display: grid;
+        grid-auto-flow: column;
+        justify-content: right;
+        svg {
+            color: $themeColor-lightLight;
+            padding-right: 10px;
+        }
+        .select {
+            font-size: 18px;
+            font-weight: 400;
+        }
+        button {
+            margin: 25px;
+            width: 100px;
+        }
+    }
+    .label {
+        height: auto;
+        display: grid;
+        grid-row: 1;
+        grid-auto-rows: 70px;
+        text-align: right;
+        .label-grid-item {
+            height: auto;
+            .text {
+                font-size: 35px;
+                color: $themeColor-light;
+                padding-top: 10px;
+                height: auto;
+                font-weight: 300;
+            }
+        }
+    }
+    input {
+        font-size: 32px;
+        font-weight: 250;
+        text-align: left;
+        background: none;
+        border: none;
+        border-bottom: 1px solid #cacacc;
+        border-radius: 0;
+        margin-left: 50px;
+        height: 35px;
+        width: 85%;
+        text-overflow: ellipsis;
+        text-indent: 10px;
+        display: grid;
+        grid-row: 2;
+        grid-template-columns: 120px auto auto;
+        align-items: center;
+        align-self: baseline;
+    }
+}

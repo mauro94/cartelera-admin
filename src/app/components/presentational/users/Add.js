@@ -1,11 +1,12 @@
 import React from 'react'
 import { UserTypes, TemporaryPassword, Format, history } from 'Helpers/index'
 import { Callout, FeedbackModal } from 'Presentational/elements'
+import { faEnvelope } from '@fortawesome/fontawesome-free-regular'
 import 'Style/users/add.scss'
 import { withFeedback } from 'Containers/hoc';
 
-const AddUser = (props) => (
-    <Callout add={props.add} type={props.type} />
+export const AddUser = (props) => (
+    <Callout add={props.add} placeholder="ejemplo@ejemplo.com" type={props.type} icon={ faEnvelope } />
 )
 
 export const AddSucceeded = (props) => (

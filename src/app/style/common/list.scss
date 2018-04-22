@@ -25,6 +25,11 @@
                 font-size: 16px;
                 font-weight: 300;
             }
+            .category-title {
+                font-size: 18px;
+                font-weight: 400;
+                text-overflow: ellipsis;
+            }
         }
         &:hover {
             filter: opacity(100%);

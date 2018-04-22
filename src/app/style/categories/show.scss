@@ -1,0 +1,64 @@
+@import '../common/colors';
+
+.show {
+    border-left: solid 1px $themeColor-lightLight;
+    display: grid;
+    grid-template-rows: 1fr 1fr auto;
+    height: auto;
+    grid-gap: 10px;
+    padding: 50px;
+    .title {
+        grid-row: 1;
+        display: grid;
+        grid-template-columns: 120px auto auto;
+        align-items: center;
+        align-self: baseline;
+        .name {
+            font-size: 32px;
+            font-weight: 300;
+            text-align: left;
+        }
+    }
+    .details {
+        align-items: center;
+        display: grid;
+        font-size: 18px;
+        font-weight: 300;
+        grid-row: 2;
+        grid-auto-rows: 30px;
+        .entry {
+            display: grid;
+            grid-template-columns: 45% auto;
+            grid-gap: 10px;
+            .label {
+                grid-column: 1;
+                text-align: right;
+                color: grey;
+                font-weight: 200;
+            }
+        }
+    }
+    .actions {
+        display: grid;
+        grid-auto-flow: column;
+        justify-content: right;
+        svg {
+            color: $themeColor-lightLight;
+            padding-right: 10px;
+        }
+        .select {
+            font-size: 18px;
+            font-weight: 400;
+        }
+        button {
+            margin: 25px;
+            width: 120px;
+            &.disable {
+                background-color: $themeColor-red;
+            }
+            &.remove {
+                background-color: $themeColor-black;
+            }
+        }
+    }
+}

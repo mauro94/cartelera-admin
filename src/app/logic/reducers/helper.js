@@ -12,7 +12,7 @@ export const StateManager = {
         let newState = Object.assign({}, oldState)
         if (action.status == Status.Ready && !Entity.isEmpty(newState.all) && action.type != EventActions.Update) {
             let index = newState.all.findIndex(
-                user => (user.id == action.object.id))
+                object => (object.id == action.object.id))
             newState.all[index] = action.object
         }
         return {
@@ -52,6 +52,21 @@ export const StateManager = {
             ...newState,
             action: action.type,
             error: action.error,
+            status: action.status
+        }
+    },
+    remove: (oldState, action) => {
+        let newState = Object.assign({}, oldState)
+        if (action.status == Status.Ready) {
+            let index = newState.all.findIndex(
+                object => (object.id == action.object.id))
+            newState.all[index] = {}
+        }
+        return {
+            ...newState,
+            action: action.type,
+            error: action.error,
+            show: action.object,
             status: action.status
         }
     }
