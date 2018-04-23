@@ -10,6 +10,9 @@ class Categories extends React.Component {
     constructor() {
         super()
         this.renderRoutes = this.renderRoutes.bind(this)
+        this.state = {
+            renderRoutes: false
+        }
     }
 
     componentWillMount() {
@@ -18,6 +21,9 @@ class Categories extends React.Component {
             this.setState({
                 renderRoutes: false
             })
+        }
+        else {
+            this.renderRoutes()
         }
     }
 
