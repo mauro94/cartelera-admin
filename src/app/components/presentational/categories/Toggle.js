@@ -1,20 +1,21 @@
 import React from 'react'
-import { FeedbackModal, ConfirmationModal } from 'Presentational/elements'
+import { Button, FeedbackModal, ConfirmationModal } from 'Presentational/elements'
 import { withFeedback } from 'Containers/hoc';
 import { history } from 'Helpers/index'
 
 export const ToggleCategory = (props) => (
-    <button className={'enabled ' + props.category.enabled ? 'disable' : 'enable'}
-            onClick={() => props.confirm(props.category)}>
+    <Button
+        type={props.category.enabled ? 'danger' : 'primary'}
+        handleClick={() => props.confirm(props.category)}>
         {props.category.enabled ? 'Desactivar' : 'Activar'}
-    </button>
+    </Button>
 )
 
 export const ToggleConfirm = (props) => (
     <ConfirmationModal
         title={'Desea ' + (props.category.enabled ? 'desactivar' : 'activar') + ' la categoría?'}
         subtitle={props.category.name}
-        confirmationMsg={props.category.enabled ? 
+        confirmationMsg={props.category.enabled ?
             'Una vez desactivada, ya no se podrá utilizar esta categoría en los eventos hasta que se reactive.' :
             'Una vez activada, se podrá utilizar esta categoría en los eventos.'}
         lastMsg={props.category.enabled ? 'desactivar' : 'activar'}

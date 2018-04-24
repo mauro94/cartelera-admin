@@ -3,7 +3,7 @@ import { Route, Redirect, NavLink } from 'react-router-dom'
 import { Format } from 'Helpers/object'
 import { Add as AddUser, List as UsersList } from 'Containers/users'
 import { Pill } from 'Presentational/elements'
-import 'Style/users/layout.scss'
+import 'Style/common/layouts/expandedList.scss'
 
 const UsersLayout = (props) => (
     <React.Fragment>
@@ -19,7 +19,7 @@ const UsersLayout = (props) => (
 const UsersPage = (props) => (
     <React.Fragment>
         <Header match={props.match} />
-        <div className='users-content'>
+        <div className='expanded-list'>
             <UsersList
                 type={props.match.params.type} />
         </div>

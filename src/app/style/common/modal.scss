@@ -8,7 +8,7 @@
   textarea {
       font-family: $systemfont;
       padding: 10px;
-      background-color: $themeColor-lightLight;
+      background-color: $lightLight;
       border: none;
       border-radius: 6px;
       font-size: 1rem;
@@ -38,7 +38,7 @@
 
   &.error {
     h1 {
-      color: $themeColor-red;
+      color: $red;
     }
   }
 
@@ -48,49 +48,16 @@
     flex-direction: column-reverse;
     align-items: center;
 
-    button {
-      font-family: $systemfont;
-      font-weight: 500;
-      margin: 5px;
-      margin-top: 10px;
-      display: block;
-      font-size: 16px;
-      min-width: 230px;
-      max-width: 230px;
-      background: $themeColor-lightBlue;
-      color: $themeColor-white;
-      border-radius: 7px;
-      height: 35px;
-      border: 0;
-      justify-content: center;
-
-      &:hover{
-        background: $themeColor-lightBlue-shadow;
-      }
-
-      &.modal-cancel-button{
-        background: none;
-        color: $themeColor-blackish;
-        margin: 0;
-        font-size: 14px;
-        font-weight: 400;
-      
-        &:hover{
-          text-decoration: underline;
-        }
-      }
-    }
-
     .modal-confirm-cancel-button{
-      background: $themeColor-red;
+      background: $red;
     }
     .modal-confirm-cancel-button:hover{
-      background: $themeColor-red-shadow;
+      background: $red-shadow;
     }
     
     .modal-confirm-cancel-button:disabled {
-      background: $themeColor-light;
-      color: $themeColor-white;
+      background: $light;
+      color: $white;
     }
 
   }

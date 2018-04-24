@@ -10,6 +10,7 @@ import {
     Entity
 } from 'Helpers/index'
 import {
+    Button,
     TextField,
     SubmitButton
 } from 'Presentational/elements'
@@ -55,29 +56,31 @@ const BasicForm = (props) => (
     <Form className="event-form">
         {!Entity.isEmpty(props.error) && <p className="message-error">{props.error}</p>}
 
-        <TextField label='firstName' inputSizeSmall {...props}/>
+        <TextField label='firstName' inputSizeSmall {...props} />
 
-        <TextField label='lastName' inputSizeSmall {...props}/> 
+        <TextField label='lastName' inputSizeSmall {...props} />
 
-        <TextField label='office' inputSizeSmall {...props}/>
+        <TextField label='office' inputSizeSmall {...props} />
 
-        <TextField label='phoneNumber' inputSizeSmall {...props}/>
+        <TextField label='phoneNumber' inputSizeSmall {...props} />
 
-        <TextField label='campus' inputSizeSmall {...props}/>
+        <TextField label='campus' inputSizeSmall {...props} />
 
-        { props.isNewbie && props.current && <TextField label='password' {...props}/> }
-        { props.isNewbie && props.current && <TextField label='passwordConfirm' {...props}/> }
+        {props.isNewbie && props.current && <TextField label='password' {...props} />}
+        {props.isNewbie && props.current && <TextField label='passwordConfirm' {...props} />}
 
         <div className="form-field buttons">
             <SubmitButton {...props}>
-                { props.isNewbie && props.current ? 'Continuar' : 'Actualizar' }
+                {props.isNewbie && props.current ? 'Continuar' : 'Actualizar'}
             </SubmitButton>
 
             {
                 props.logout &&
-                <button className="button-newbie-logout" onClick={props.logout}>
-                    Cerrar Sesión
-                </button>
+                <Button
+                    type='secondary'
+                    handleClick={() => props.logout()}>
+                    {'Cerrar sesión'}
+                </Button>
             }
         </div>
 

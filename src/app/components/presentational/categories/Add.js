@@ -2,11 +2,11 @@ import React from 'react'
 import { history } from 'Helpers/index'
 import { Callout, FeedbackModal } from 'Presentational/elements'
 import { faListAlt } from '@fortawesome/fontawesome-free-regular'
-import 'Style/categories/add.scss'
-import { withFeedback } from 'Containers/hoc';
+import { withFeedback } from 'Containers/hoc'
+import 'Style/common/simpleAdd.scss'
 
 export const AddCategory = (props) => (
-    <Callout add={props.add} placeholder="Ejemplo: Deportes" type={"Categoría"} icon={ faListAlt } />
+    <Callout add={props.add} placeholder="Ejemplo: Deportes" type={"Categoría"} icon={faListAlt} />
 )
 
 export const AddSucceeded = (props) => (

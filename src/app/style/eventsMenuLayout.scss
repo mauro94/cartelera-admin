@@ -28,7 +28,7 @@
 
 .grid-item:hover {
     cursor: pointer;
-    background-color: $themeColor-lightLight;
+    background-color: $lightLight;
     .grid-item-overlay {
         opacity: 0.3;
     }
@@ -46,19 +46,19 @@
 .event-grid-title {
     font-weight: 500;
     font-size: 18px;
-    color: $themeColor-black;
+    color: $black;
 }
 
 .event-grid-date {
     font-weight: 300;
     font-size: 18px;
-    color: $themeColor-black;
+    color: $black;
 }
 
 .event-grid-hashtags {
     overflow: hidden;
     text-overflow: ellipsis;
-    color: $themeColor-lightBlue !important;
+    color: $light-blue !important;
     flex-flow: row;
     display: flex;
     a {
@@ -66,11 +66,11 @@
         font-family: 'Barlow', sans-serif;
         font-weight: 400;
         font-size: 16px;
-        color: $themeColor-lightBlue !important;
+        color: $light-blue !important;
         text-decoration: none;
     }
     a:hover {
-        color: $themeColor-darkBlue
+        color: $darkBlue
     }
     div {
         margin: 3px;
@@ -121,7 +121,7 @@
         border-radius: 5px;
         position: absolute;
         background-color: $flag-color;
-        color: $themeColor-lightLight;
+        color: $lightLight;
         right: 0;
         top: 0;
         margin: 10px;

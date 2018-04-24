@@ -2,6 +2,7 @@ import React from 'react'
 import Spinner from 'react-spinkit'
 import { Form, Field } from 'formik';
 import { Labels, Entity, Format } from 'Helpers/index'
+import Button from './Button'
 
 export const WelcomeMessage = ({ mail }) => (
     <p>
@@ -44,12 +45,12 @@ export const SubmitButton = (props) => {
         hasErrors ||
         props.isSubmitting
     return (
-        <button
-            className="button-submit"
+        <Button
+            className='button-submit'
             disabled={disabled}>
             {!props.isSubmitting && props.children}
             {props.isSubmitting && <Spinner name="pulse" />}
-        </button>
+        </Button>
     )
 }
 
@@ -73,9 +74,11 @@ export const FormComponent = (props) => {
                     {props.submitTitle}
                 </SubmitButton>
                 {props.logout &&
-                    <button className="button-newbie-logout" onClick={props.logout}>
-                        Cerrar Sesión
-                </button>
+                    <Button
+                        type='secondary'
+                        handleClick={() => props.logout()}>
+                        {'Cerrar sesión'}
+                    </Button>
                 }
             </div>
         </Form>)

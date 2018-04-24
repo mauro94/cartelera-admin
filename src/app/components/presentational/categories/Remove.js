@@ -1,13 +1,17 @@
 import React from 'react'
-import { FeedbackModal, ConfirmationModal } from 'Presentational/elements'
+import { Button, FeedbackModal, ConfirmationModal } from 'Presentational/elements'
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import { faTrashAlt } from '@fortawesome/fontawesome-free-regular'
 import { withFeedback } from 'Containers/hoc';
 
 export const RemoveCategory = (props) => (
-    <button className='remove' onClick={() => props.confirm(props.category)}>
+    <Button
+        type='dark'
+        handleClick={() => {
+            props.confirm(props.category)
+        }}>
         <FontAwesomeIcon icon={faTrashAlt} /> Borrar
-    </button>
+    </Button>
 )
 
 export const RemoveConfirm = (props) => (

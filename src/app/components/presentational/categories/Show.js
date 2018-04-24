@@ -4,13 +4,12 @@ import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import { faTrashAlt, faPencilAlt } from '@fortawesome/fontawesome-free-solid'
 import { Format, CategoryLabels } from 'Helpers/index'
 import { Remove as RemoveCategory, Toggle as ToggleCategory } from 'Containers/categories'
-import 'Style/categories/show.scss'
-import { thunks } from 'Logic/actions/thunks'
+import { Button } from 'Presentational/elements'
 
 const ShowCategory = (props) => {
     let selectedItem = document.getElementById(`list-item-${props.category.id}`)
     selectedItem.scrollIntoView({ behavior: 'smooth', block: 'start' })
-    return <div className='show'>
+    return <div className='expanded-selection'>
         <Title category={props.category} />
         <Details category={props.category} />
         <Actions category={props.category} />
@@ -19,12 +18,12 @@ const ShowCategory = (props) => {
 
 const Actions = (props) => (
     <div className='actions'>
-        {props.category.totalCount == 0 && <RemoveCategory categoryToRemove={props.category}/>}
-        {props.category.upcomingCount == 0 && <ToggleCategory categoryToToggle={props.category}/>}
+        {props.category.totalCount == 0 && <RemoveCategory categoryToRemove={props.category} />}
+        {props.category.upcomingCount == 0 && <ToggleCategory categoryToToggle={props.category} />}
         <Link to={`/categorias/${props.category.id}/editar`}>
-            <button className='edit'>
+            <Button>
                 <FontAwesomeIcon icon={faPencilAlt} /> Editar
-            </button>
+            </Button>
         </Link>
     </div>
 )

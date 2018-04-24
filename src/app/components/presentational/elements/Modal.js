@@ -1,5 +1,6 @@
 import React from 'react'
 import { confirmAlert } from 'react-confirm-alert'
+import Button from './Button'
 import 'react-confirm-alert/src/react-confirm-alert.css'
 
 export const Alert = (props) => {
@@ -18,16 +19,15 @@ export const Confirmation = (props) => (
         <p>¿Desea continuar?</p>
         {props.children}
         <div className='modal-confirmation-buttons'>
-            <button
-                className='modal-cancel-button'
-                onClick={() => props.handleCancel()}>
-                Salir sin cambios
-            </button>
-            <button
-                className={props.buttonClass}
-                onClick={(e) => props.handleConfirmCancel(e)}>
+            <Button
+                type='secondary'
+                handleClick={() => props.handleCancel()}>
+                {'Salir sin cambios'}
+            </Button>
+            <Button
+                handleClick={(e) => props.handleConfirmCancel(e)}>
                 Si, {props.lastMsg}
-            </button>
+            </Button>
         </div>
     </div>
 )
@@ -38,11 +38,10 @@ export const Feedback = (props) => (
         <h1>{props.subtitle}</h1>
         {props.children}
         <div className='modal-confirmation-buttons'>
-            <button
-                className='modal-ok-button'
-                onClick={() => props.handleOk()}>
+            <Button
+                handleClick={() => props.handleOk()}>
                 OK
-            </button>
+            </Button>
         </div>
     </div>
 )

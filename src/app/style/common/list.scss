@@ -1,31 +1,30 @@
 @import 'colors';
 
 .list {
-    display: grid;
-    grid-auto-rows: 80px;
-    grid-gap: 10px;
     overflow-y: auto;
+    min-width: 350px;
     .list-item {
         align-items: center;
         align-content: center;
         border-radius: 10px;
         color: black;
-        display: grid;
+        display: flex;
         filter: opacity(70%);
-        grid-template-columns: 50px auto;
-        grid-gap: 20px;
         padding: 20px;
         text-decoration: none;
         .list-item-data {
             .title {
+                margin-left: 10px;
                 font-size: 18px;
                 font-weight: 400;
             }
             .email {
+                margin-left: 10px;
                 font-size: 16px;
                 font-weight: 300;
             }
             .category-title {
+                margin-left: 10px;
                 font-size: 18px;
                 font-weight: 400;
                 text-overflow: ellipsis;
@@ -34,7 +33,7 @@
         &:hover {
             filter: opacity(100%);
             cursor: pointer;
-            background-color: $themeColor-lightLight
+            background-color: $lightLight
         }
         &.selected {
             filter: opacity(100%);
@@ -42,6 +41,7 @@
             svg {
                 color: white;
             }
+            background-color: $lightLight
         }
     }
 }

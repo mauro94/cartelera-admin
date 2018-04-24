@@ -3,7 +3,6 @@ import EditUserForm from 'Containers/users/Edit'
 import { Labels, Format, history } from 'Helpers/index'
 import { FeedbackModal, UserAvatar } from 'Presentational/elements'
 import BasicForm from 'Presentational/users/forms/Basic'
-import 'Style/users/edit.scss'
 
 export const EditSucceeded = (props) => (
     <FeedbackModal
@@ -29,7 +28,7 @@ export const EditFailed = (props) => (
 const EditUser = (props) => {
     let selectedItem = document.getElementById(`list-item-${props.user.id}`)
     selectedItem.scrollIntoView({ behavior: 'smooth', block: 'start' })
-    return <div className='edit'>
+    return <div className='expanded-selection'>
         <UserAvatar user={props.user} size={100} />
         <div className='label'>
             <FormLabels array={['firstName',

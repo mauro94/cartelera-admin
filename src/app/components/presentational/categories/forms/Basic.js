@@ -4,7 +4,7 @@ import Yup from 'yup'
 import Spinner from 'react-spinkit'
 import { Labels, Entity, Format } from 'Helpers/index'
 import { CategoryFormValidations } from 'Helpers/constants'
-import { TextComponent } from 'Presentational/elements'
+import { TextComponent, Button, SubmitButton } from 'Presentational/elements'
 import { load } from 'Containers/hoc'
 
 const Basic = (props) => {
@@ -18,7 +18,7 @@ const Basic = (props) => {
             initialValues={initialValues}
             onSubmit={(values, action) => {
                 values.id = props.category.id,
-                props.handleSubmit(values)
+                    props.handleSubmit(values)
                 action.setSubmitting(false)
             }}>
             {(formProps) =>
@@ -41,22 +41,22 @@ const BasicForm = (props) => {
 }
 
 export const CategoryFormComponent = (props) => {
-    let entry = 
-            <CategoryEntry
-                {...props}
-                attr={props.data[0].name}
-                component={props.data.component}
-                key='Entry-0'
-                list={props.data.list} />
+    let entry =
+        <CategoryEntry
+            {...props}
+            attr={props.data[0].name}
+            component={props.data.component}
+            key='Entry-0'
+            list={props.data.list} />
 
     return (
         <Form>
             {!Entity.isEmpty(props.error) && <p className="message-error">{props.error}</p>}
             {entry}
             <div className="form-field buttons">
-                <CategorySubmitButton {...props}>
+                <SubmitButton {...props}>
                     {props.submitTitle}
-                </CategorySubmitButton>
+                </SubmitButton>
             </div>
         </Form>)
 }
@@ -87,13 +87,16 @@ export const CategorySubmitButton = (props) => {
         (props.allRequired && emptyValues) ||
         hasErrors ||
         props.isSubmitting
-    return (
-        <button
-            className="button-submit"
-            disabled={props.disabled}>
-            {!props.isSubmitting && props.children}
-            {props.isSubmitting && <Spinner name="pulse" />}
-        </button>)
+    return (<Button
+        className='button-submit'
+        handleClick={() => ModalAlert({
+            modal: CancelledEventModal,
+            event: event
+        })}
+        disabled={disabled}>
+        {!props.isSubmitting && props.children}
+        {props.isSubmitting && <Spinner name="pulse" />}
+    </Button>)
 }
 
 export default load('category', Basic)

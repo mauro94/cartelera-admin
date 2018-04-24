@@ -21,7 +21,7 @@
 .event-options-container {
     grid-column: 1;
     grid-row: 2; 
-    border-right: solid 0.1rem $themeColor-light;
+    border-right: solid 0.1rem $light;
     text-align: right;
     padding-right: 1rem;
 }
@@ -51,7 +51,7 @@
     }
 
     .registration-toggler{
-        background: $themeColor-lightLight;
+        background: $lightLight;
         border-radius: 20px;
         padding: 30px;
         padding-top: 0px;
@@ -94,19 +94,19 @@
     span{
         font-size: 14px;
         max-width: 80px;
-        color: $themeColor-darkBlue;
+        color: $darkBlue;
         padding-top: 5px;
     }
 
     .span-warning{
         font-size: 14px;
-        color: $themeColor-red-shadow;
+        color: $red-shadow;
         padding-top: 5px;
     }
 
     .span-disabled{
         font-size: 13px;
-        color: $themeColor-light;
+        color: $light;
         padding-top: 5px;
     }
 }
@@ -124,10 +124,10 @@
         width: 50px;
         height: 50px;
         text-align: center;
-        background: $themeColor-white;
-        color: $themeColor-darkBlue;
+        background: $white;
+        color: $darkBlue;
         border-radius: 50%;
-        border: 2px solid $themeColor-darkBlue;
+        border: 2px solid $darkBlue;
 
         -webkit-transition: color 0.5s, background 0.5s;
         -moz-transition:    color 0.5s, background 0.5s;
@@ -136,28 +136,28 @@
         transition:         color 0.5s, background 0.5s;
     }
     .action-button:hover{
-        background: $themeColor-darkBlue;
-        color: $themeColor-white;
+        background: $darkBlue;
+        color: $white;
     }
 
     .action-button.warning{
-        color: $themeColor-red-shadow;
-        border: 2px solid $themeColor-red-shadow;
+        color: $red-shadow;
+        border: 2px solid $red-shadow;
     }
     .action-button.warning:hover{
-        background: $themeColor-red-shadow;
-        color: $themeColor-white;
+        background: $red-shadow;
+        color: $white;
     }
 
     .action-button.disabled{
-        color: $themeColor-white;
-        background: $themeColor-light;
-        border: 2px solid $themeColor-light;
+        color: $white;
+        background: $light;
+        border: 2px solid $light;
     }
     .action-button.disabled:hover{
-        color: $themeColor-white;
-        background: $themeColor-light;
-        border: 2px solid $themeColor-light;
+        color: $white;
+        background: $light;
+        border: 2px solid $light;
     }
 }
 
@@ -171,8 +171,8 @@
 
 .react-datepicker__input-container > input {
     font-size: 16px;
-    background: $themeColor-white;
-    border: 1px solid $themeColor-light;
+    background: $white;
+    border: 1px solid $light;
     height: 35px;
     width: 99%;
     text-overflow: ellipsis;

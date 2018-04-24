@@ -8,7 +8,7 @@
 
 .container-menu-elements {
     grid-column: 1;
-    border-right: solid 0.2rem $themeColor-light;
+    border-right: solid 0.2rem $light;
     height: 80%;
     text-align: right;
     padding-right: 2rem;
@@ -24,31 +24,31 @@
     margin-bottom: 2rem;
 
     &>a {
-        color: $themeColor-black;
+        color: $black;
         font-weight: 500;
 
         &:link {
-            color: $themeColor-black;
+            color: $black;
             text-decoration: none;
         }
 
         &:visited {
-            color: $themeColor-black;
+            color: $black;
             text-decoration: none;
         }
 
         &:hover {
-            color: $themeColor-lightBlue;
+            color: $light-blue;
         }
 
         &:active {
-            color: $themeColor-lightBlue;
+            color: $light-blue;
         }
     }
 }
 
 .menu-link-selected {
-    border-color: $themeColor-lightBlue;
-    color: $themeColor-lightBlue;
+    border-color: $light-blue;
+    color: $light-blue;
     border-bottom: 4px solid;
 }

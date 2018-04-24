@@ -2,6 +2,7 @@ import React from 'react'
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import { faCheck } from '@fortawesome/fontawesome-free-solid'
 import { Plus } from 'Images/plus'
+import Button from './Button'
 
 export default class Callout extends React.Component {
     constructor(props) {
@@ -45,22 +46,20 @@ export default class Callout extends React.Component {
                         <CalloutInput inputRef={(el) => { this.inputRef = el }} placeholder={this.props.placeholder} type={this.props.type} icon={this.props.icon} />
                     }
                     {!this.state.showCallout &&
-                        <button
-                            className='new'
-                            onClick={this.handleClick}>
+                        <Button
+                            handleClick={this.handleClick}>
                             <div className='plus'>
                                 <Plus />
                             </div>
-                            {`Agregar ${this.props.type}`}
-                        </button>
+                            {/*`Agregar ${this.props.type}`*/}
+                        </Button>
                     }
                     {this.state.showCallout &&
-                        <button
-                            className='new'
-                            onClick={() =>
+                        <Button
+                            handleClick={() =>
                                 this.props.add(this.inputRef.value)}>
                             <FontAwesomeIcon icon={faCheck} />
-                        </button>}
+                        </Button>}
                 </div>
             </div>
         )

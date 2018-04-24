@@ -1,16 +1,13 @@
 @import 'colors';
 
 .page-container {
-    // grid-template-rows: 12rem auto;
-    // grid-row-gap: 1rem;
-    // display: grid;
     >.title {
         align-self: center;
         padding: 0 10px;
         text-align: center;
         margin: 70px 0;
         >p{
-            color: $themeColor-light;
+            color: $light;
             cursor: pointer;
         }
         >h1{
@@ -24,7 +21,7 @@
     display: inline;
 
     &>a {
-        color: $themeColor-lighter;
+        color: $lighter;
         -webkit-transition: color 0.5s;
         -moz-transition:    color 0.5s;
         -ms-transition:     color 0.5s;
@@ -32,21 +29,21 @@
         transition:         color 0.5s;
 
         &:link {
-            color: $themeColor-lighter;
+            color: $lighter;
             text-decoration: none;
         }
 
         &:visited {
-            color: $themeColor-lighter;
+            color: $lighter;
             text-decoration: none;
         }
 
         &:hover {
-            color: $themeColor-lightBlue;
+            color: $light-blue;
         }
 
         &:active {
-            color: $themeColor-lightBlue;
+            color: $light-blue;
         }
     }
 }

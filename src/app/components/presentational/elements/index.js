@@ -1,3 +1,4 @@
+export { default as Button } from './Button'
 export { default as UserAvatar } from './UserAvatar'
 export { default as Callout } from './Callout'
 export { CheckboxPublished, CheckboxCanceled } from './Checkbox'

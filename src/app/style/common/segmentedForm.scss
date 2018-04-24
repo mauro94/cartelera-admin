@@ -21,8 +21,8 @@
             }
 
             &.selected {
-                color: $themeColor-black;
-                background-color: $themeColor-lightLight;
+                color: $black;
+                background-color: $lightLight;
                 .sb-avatar > div {
                     filter: grayscale(0);
                 }
@@ -38,7 +38,7 @@
                 &.callout.right::before {
                     right: -25px;
                     top: 18%;
-                    border-left: 17px solid $themeColor-lightLight;
+                    border-left: 17px solid $lightLight;
                 }
             }
         }

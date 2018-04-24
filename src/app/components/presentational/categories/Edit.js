@@ -2,7 +2,6 @@ import React from 'react'
 import EditCategoryForm from 'Containers/categories/Edit'
 import { history } from 'Helpers/index'
 import { FeedbackModal } from 'Presentational/elements'
-import 'Style/categories/edit.scss'
 import BasicForm from 'Presentational/categories/forms/Basic'
 
 export const EditSucceeded = (props) => (
@@ -30,7 +29,7 @@ export const EditFailed = (props) => (
 )
 
 const EditCategory = (props) => (
-    <div className='edit-category'>
+    <div className='expanded-selection'>
         <div className='label'>
             <div key='Label-0' className='label-grid-item'>
                 <div className='text'>

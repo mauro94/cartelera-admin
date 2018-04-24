@@ -4,13 +4,12 @@ import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import { faEnvelope } from '@fortawesome/fontawesome-free-regular'
 import { faPhone, faPencilAlt } from '@fortawesome/fontawesome-free-solid'
 import { Format, Labels } from 'Helpers/index'
-import { UserAvatar, Tag } from 'Presentational/elements'
-import 'Style/users/show.scss'
+import { Button, UserAvatar, Tag } from 'Presentational/elements'
 
 const UserShow = (props) => {
     let selectedItem = document.getElementById(`list-item-${props.user.id}`)
     selectedItem.scrollIntoView({ behavior: 'smooth', block: 'start' })
-    return <div className='show'>
+    return <div className='expanded-selection'>
         <Title user={props.user} />
         <Details user={props.user} />
         <Actions enabled={props.user.enabled} id={props.user.id} />
@@ -19,13 +18,14 @@ const UserShow = (props) => {
 
 const Actions = (props) => (
     <div className='actions'>
-        <button className={'enabled ' + props.enabled ? 'disable' : 'enable'}>
+        <Button
+            type={props.enabled ? 'danger' : 'primary'}>
             {props.enabled ? 'Desactivar' : 'Activar'}
-        </button>
+        </Button>
         <Link to={`${props.id}/editar`}>
-            <button className='edit'>
+            <Button>
                 <FontAwesomeIcon icon={faPencilAlt} /> Editar
-            </button>
+            </Button>
         </Link>
     </div>
 )
