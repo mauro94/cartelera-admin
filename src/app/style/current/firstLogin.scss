@@ -1,4 +1,4 @@
-.first-login-form {
+.login-form-container {
     .input-container{
         margin-top: 0px;
 
@@ -6,6 +6,7 @@
           width: 100%;
         }
         input[type="password"],
+        input[type="email"],
         input[type="text"]{
             font-size: 1.2em;
             padding: 0.2em;

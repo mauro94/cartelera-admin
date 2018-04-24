@@ -24,12 +24,12 @@ class FirstLogin extends React.Component {
             <div>
                 <WelcomeMessage
                     mail={this.props.currentUser.email} />
-                <div className='first-login-form'>
-                <EditCurrentUser
-                    logout
-                    userToUpdate={{...this.props.currentUser, password: '', passwordConfirm: ''}}>
-                    <BasicForm />
-                </EditCurrentUser>
+                <div className='login-form-container'>
+                    <EditCurrentUser
+                        logout
+                        userToUpdate={{...this.props.currentUser, password: '', passwordConfirm: ''}}>
+                        <BasicForm />
+                    </EditCurrentUser>
                 </div>
             </div>
         )
