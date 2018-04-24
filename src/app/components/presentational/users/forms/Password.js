@@ -33,7 +33,7 @@ const PasswordForm = (props) => (
         data={[
             { name: 'password', component: PasswordComponent },
             { name: 'passwordConfirm', component: PasswordComponent }]}
-        submitTitle='Cambiar contraseña' />
+        submitTitle='Actualizar' />
 )
 
 // export default load('user', Password)

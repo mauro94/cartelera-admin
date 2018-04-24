@@ -1,6 +1,6 @@
 import React from 'react'
 import { Field } from 'formik'
-export { Password as PasswordComponent } from 'Presentational/elements/Password'
+import { Password } from 'Presentational/elements/Password'
 import { DatePickerElement } from 'Presentational/elements/DatePickerElement'
 import { Format, Labels } from 'Helpers/index'
 import { update } from 'Logic/actions/thunks/event';
@@ -123,6 +123,20 @@ export const EmailComponent = ({
     </div>
   );
 
+  export const TextFieldComponent = (props) => (
+      <React.Fragment>
+      <div className={'input-container sm'}>
+          <div className='text-input'>
+              <label>
+              {Format.capitalize(Labels[props.field.name])}
+              </label>
+              <Field name={props.field.name} className={((props.form.touched[props.field.name] && props.form.errors[props.field.name]) ? 'emptyField' : 'readyField')} type="text"/>
+              <span className='separator'> </span>
+          </div>
+      </div>
+      </React.Fragment>
+    );
+
 
 export const TextComponent = ({
   field, // { name, value, onChange, onBlur }
@@ -137,6 +151,20 @@ export const TextComponent = ({
       />
     </div>
   );
+
+  export const PasswordComponent = (props) => (
+      <React.Fragment>
+        <div className={'input-container sm'}>
+            <div className='text-input'>
+                <label>
+                {Format.capitalize(Labels[props.field.name])}
+                </label>
+                <Field name={props.field.name} className={((props.form.touched[props.field.name] && props.form.errors[props.field.name]) ? 'emptyField' : 'readyField')} component={Password}/>
+                <span className='separator'> </span>
+            </div>
+        </div>
+      </React.Fragment>
+    );
 
   export const ToggleComponent = (props) => {
       return <div className="switch-container">
@@ -180,15 +208,28 @@ export const TextFieldAreaComponent = (props) => {
 
 export const SelectComponent = (props) => (
   <div className="form-field">
-    <div>
-      <label>{props.instruction}</label>
-    </div>
     <select
       {...props.field}
       {...props}>
       {props.list.map(Option)}
     </select>
   </div>
+);
+
+export const SelectorComponent = (props) => (
+  <React.Fragment>
+  <div className='input-container sm'>
+      <div className='text-input'>
+          <label>
+          {Format.capitalize(Labels[props.field.name])}
+          </label>
+          <Field name={props.field.name} 
+                list={props.list}
+                className={((props.form.touched[props.field.name] && props.form.errors[props.field.name]) ? 'emptyField' : 'readyField')}
+                component={SelectComponent} />
+      </div>
+  </div>
+  </React.Fragment>
 );
 
 export const FieldDate = (props) => (

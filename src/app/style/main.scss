@@ -41,6 +41,7 @@ textarea {
 .form-field {
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
+  padding-left: 5px;
 }
 
 .password-form-field {
@@ -62,8 +63,9 @@ button:focus {
 
 .form-field.buttons {
   display: flex;
-  flex-direction: row;
-  flex-flow: row-reverse;
+  flex-direction: row-reverse;
+  flex-flow: flex-end;
+  width: 80%;
 }
 
 // Different kinds of input
@@ -402,6 +404,7 @@ h3 {
    }
 
    div.textarea,
+   input[type="password"],
    input[type="text"]{
      font-family: inherit;
      width: 100%;

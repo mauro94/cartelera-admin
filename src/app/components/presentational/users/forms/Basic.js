@@ -14,6 +14,7 @@ import {
     PasswordComponent,
     FormComponent as Form
 } from 'Presentational/elements'
+import { TextFieldComponent, SelectorComponent } from 'Presentational/elements/Input';
 
 const Basic = (props) => {
     let validations = props.current ? CurrentUserFormValidations : BasicUserFormValidations
@@ -54,11 +55,11 @@ const Basic = (props) => {
 
 const BasicForm = (props) => {
     let data = [
-        { name: 'firstName', component: TextComponent },
-        { name: 'lastName', component: TextComponent },
-        { name: 'office', component: TextComponent },
-        { name: 'phoneNumber', component: TextComponent },
-        { name: 'campus', component: SelectComponent, list: campusList }
+        { name: 'firstName', component: TextFieldComponent},
+        { name: 'lastName', component: TextFieldComponent },
+        { name: 'office', component: TextFieldComponent },
+        { name: 'phoneNumber', component: TextFieldComponent },
+        { name: 'campus', component: SelectorComponent, list: campusList }
     ]
     if (props.isNewbie && props.current) {
         data = [
@@ -70,6 +71,7 @@ const BasicForm = (props) => {
         <Form
             {...props}
             data={data}
+            className="event-form"
             submitTitle={props.isNewbie && props.current ? 'Continuar' : 'Actualizar'}
             canLogout={props.isNewbie && props.current}
             allRequired={props.isNewbie && props.current}

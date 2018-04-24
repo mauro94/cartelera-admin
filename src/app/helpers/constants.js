@@ -125,13 +125,13 @@ export const CurrentUserFormValidations = Object.freeze({
 })
 
 export const BasicUserFormValidations = Object.freeze({
-    firstName: Yup.string(),
-    lastName: Yup.string(),
+    firstName: Yup.string().required("Nombre requerido"),
+    lastName: Yup.string().required("Apellido requerido"),
     office: Yup.string(),
     phoneNumber: Yup.string()
         .matches(/^\+?\d+$/, "Teléfono inválido")
         .min(8, "Mínimo 8 caracteres"),
-    email: Yup.string().email("Correo no valido")
+    email: Yup.string().email("Correo no valido").required("Correo requerido"),
 })
 
 export const PasswordFormValidations = Object.freeze({
