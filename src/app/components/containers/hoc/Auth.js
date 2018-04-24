@@ -6,7 +6,7 @@ import { thunks } from 'Logic/actions/thunks'
 
 export const withAuth = (Component) => {
     class AuthenticatedComponent extends React.Component {
-        componentDidMount() {
+        componentWillMount() {
             if (Entity.isEmpty(this.props.currentUser.show)) {
                 if (!Session.exists())
                     history.replace('/login')

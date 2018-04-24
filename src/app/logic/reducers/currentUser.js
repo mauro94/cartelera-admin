@@ -14,6 +14,8 @@ function currentUser(state = defaultState, action) {
         case SessionActions.Logout:
         case CurrentUserActions.Get:
             return StateManager.get(state, action)
+        case CurrentUserActions.Update:
+            return StateManager.update(state, action)
         default:
             return state
     }

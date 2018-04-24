@@ -46,10 +46,11 @@ export const SubmitButton = (props) => {
     return (
         <button
             className="button-submit"
-            disabled={props.disabled}>
+            disabled={disabled}>
             {!props.isSubmitting && props.children}
             {props.isSubmitting && <Spinner name="pulse" />}
-        </button>)
+        </button>
+    )
 }
 
 export const FormComponent = (props) => {
@@ -71,7 +72,7 @@ export const FormComponent = (props) => {
                 <SubmitButton {...props}>
                     {props.submitTitle}
                 </SubmitButton>
-                {props.canLogout &&
+                {props.logout &&
                     <button className="button-newbie-logout" onClick={props.logout}>
                         Cerrar Sesión
                 </button>

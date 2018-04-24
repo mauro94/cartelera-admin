@@ -46,5 +46,11 @@
     .edit-event-content, .profile-content {
         width: 100%;
         padding: 0px 20px;
+
+        form{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+        }
     }
 }

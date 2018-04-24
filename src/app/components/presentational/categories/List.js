@@ -27,6 +27,7 @@ const Entry = (props) => (
 
 const Row = (props) => (
     <Link
+        id={`list-item-${props.item.id}`}
         to={getPath(props)}
         key={'Item-' + props.item.id}
         className={`list-item ${ isActive(props) ? 'selected' : ''}`}>

@@ -55,9 +55,9 @@ class Edit extends React.Component {
         let childrenWithProps = React.Children.map(children, child =>
             React.cloneElement(child, {
                 action: CurrentUserActions.Update,
+                current: true,
                 handleSubmit: this.handleSubmit,
-                logout: (this.props.logout
-                    && this.props.handleLogout),
+                logout: this.props.handleLogout,
                 reducer: {
                     status: this.props.currentUser.status,
                     action: this.props.currentUser.action,

@@ -21,7 +21,6 @@ export class Password extends React.Component {
             <div className="password-form-field">
             <input
                 type={this.state.viewPassword ? "text" : "password"}
-                placeholder="Contraseña"
                 {...this.props.field}
                 {...this.props}
             />

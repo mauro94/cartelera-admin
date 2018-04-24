@@ -40,20 +40,17 @@ const Routes = (props) => (
 
 const EditPasswordForm = (props) => (
     <EditCurrentUser
-        current
-        userToUpdate={props.user}>
+        userToUpdate={{ id: props.user.id, password: '', confirmPassword: '' }}>
         <PasswordForm />
     </EditCurrentUser>
 )
 
 const EditBasicForm = (props) => (
     <EditCurrentUser
-        current
         userToUpdate={props.user}>
         <BasicForm />
     </EditCurrentUser>
 )
-
 
 const Links = () => (
     <div className='navbar'>

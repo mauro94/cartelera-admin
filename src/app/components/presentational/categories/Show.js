@@ -7,13 +7,15 @@ import { Remove as RemoveCategory, Toggle as ToggleCategory } from 'Containers/c
 import 'Style/categories/show.scss'
 import { thunks } from 'Logic/actions/thunks'
 
-const ShowCategory = (props) => (
-    <div className='show'>
+const ShowCategory = (props) => {
+    let selectedItem = document.getElementById(`list-item-${props.category.id}`)
+    selectedItem.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    return <div className='show'>
         <Title category={props.category} />
         <Details category={props.category} />
         <Actions category={props.category} />
     </div>
-)
+}
 
 const Actions = (props) => (
     <div className='actions'>
