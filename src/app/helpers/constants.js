@@ -130,8 +130,7 @@ export const BasicUserFormValidations = Object.freeze({
     office: Yup.string(),
     phoneNumber: Yup.string()
         .matches(/^\+?\d+$/, "Teléfono inválido")
-        .min(8, "Mínimo 8 caracteres"),
-    email: Yup.string().email("Correo no valido").required("Correo requerido"),
+        .min(8, "Mínimo 8 caracteres")
 })
 
 export const PasswordFormValidations = Object.freeze({

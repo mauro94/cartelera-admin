@@ -1,20 +1,18 @@
 import React from 'react'
-import { Formik } from 'formik'
+import { Formik, Form } from 'formik'
 import Yup from 'yup'
 import { campusList } from 'Config/Test'
 import { load } from 'Containers/hoc'
 import {
     CurrentUserFormValidations,
     BasicUserFormValidations,
-    PasswordFormValidations
-} from 'Helpers/constants'
+    PasswordFormValidations,
+    Entity
+} from 'Helpers/index'
 import {
-    SelectComponent,
-    TextComponent,
-    PasswordComponent,
-    FormComponent as Form
+    TextField,
+    SubmitButton
 } from 'Presentational/elements'
-import { TextFieldComponent, SelectorComponent } from 'Presentational/elements/Input';
 
 const Basic = (props) => {
     let validations = props.current ? CurrentUserFormValidations : BasicUserFormValidations
@@ -52,32 +50,43 @@ const Basic = (props) => {
         </Formik>
     )
 }
+//<Form
+        //     {...props}
+        //     data={data}
+        //     className="event-form"
+        //     submitTitle={props.isNewbie && props.current ? 'Continuar' : 'Actualizar'}
+        //     canLogout={props.isNewbie && props.current}
+        //     allRequired={props.isNewbie && props.current}
+        //     logout={props.logout} />
+const BasicForm = (props) => (
+    <Form className="event-form">
+        {!Entity.isEmpty(props.error) && <p className="message-error">{props.error}</p>}
 
-const BasicForm = (props) => {
-    let data = [
-        { name: 'firstName', component: TextFieldComponent},
-        { name: 'lastName', component: TextFieldComponent },
-        { name: 'office', component: TextFieldComponent },
-        { name: 'phoneNumber', component: TextFieldComponent },
-        { name: 'campus', component: SelectorComponent, list: campusList }
-    ]
-    if (props.isNewbie && props.current) {
-        data = [
-            ...data,
-            { name: 'password', component: PasswordComponent },
-            { name: 'passwordConfirm', component: PasswordComponent }]
-    }
-    return (
-        <Form
-            {...props}
-            data={data}
-            className="event-form"
-            submitTitle={props.isNewbie && props.current ? 'Continuar' : 'Actualizar'}
-            canLogout={props.isNewbie && props.current}
-            allRequired={props.isNewbie && props.current}
-            logout={props.logout} />
-    )
-}
+        <TextField label='firstName' {...props}/>
+
+        <TextField label='lastName' {...props}/> 
+
+        <TextField label='office' {...props}/>
+
+        <TextField label='phoneNumber' {...props}/>
+
+        <TextField label='campus' {...props}/>
+
+        { props.isNewbie && props.current && <TextField label='password' {...props}/> }
+        { props.isNewbie && props.current && <TextField label='passwordConfirm' {...props}/> }
+
+        <SubmitButton {...props}>
+            { props.isNewbie && props.current ? 'Continuar' : 'Actualizar' }
+        </SubmitButton>
+
+        {
+            props.logout &&
+            <button className="button-newbie-logout" onClick={props.logout}>
+                Cerrar Sesión
+            </button>
+        }
+    </Form>
+)
 
 // export default load('user', Basic)
 export default Basic
