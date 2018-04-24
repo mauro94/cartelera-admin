@@ -22,6 +22,21 @@ export const TextField = (props) => (
   </React.Fragment>
 )
 
+export const EmailField = (props) => (
+  <React.Fragment>
+  <div className={props.inputSizeSmall ? 'input-container sm' : 'input-container'}>
+      <div className='text-input'>
+          <label>
+          {Format.capitalize(Labels[props.label])}
+          </label>
+          <Field name={props.label} className={((props.touched[props.label] && props.errors[props.label]) ? 'emptyField' : 'readyField')} type="email"/>
+          <span className='separator'> </span>
+      </div>
+      {props.touched[props.label] && props.errors[props.label] && <p className="message-error">{props.errors[props.label]}</p>}
+  </div>
+  </React.Fragment>
+)
+
 export const TagField = (props) => (
     <React.Fragment>
     <div className={props.inputSizeSmall ? 'input-container sm' : 'input-container'}>

@@ -1,13 +1,13 @@
 
 import React from 'react'
-import { Formik } from 'formik'
-import { LoginFormValidations } from 'Helpers/constants'
-import {
-    EmailComponent,
-    PasswordComponent,
-    FormComponent as Form
-} from 'Presentational/elements'
+import { Formik, Form } from 'formik'
+import { LoginFormValidations, Entity } from 'Helpers/index'
 import Yup from 'yup'
+import {
+    EmailField,
+    PasswordField,
+    SubmitButton
+} from 'Presentational/elements'
 
 export const BasicLogin = (props) => (
     <Formik
@@ -26,15 +26,16 @@ export const BasicLogin = (props) => (
     </Formik>
 )
 
-const BasicForm = (props) => {
-    let data = [
-        { name: 'email', component: EmailComponent },
-        { name: 'password', component: PasswordComponent }
-    ]
-    return (
-        <Form
-            {...props}
-            data={data}
-            submitTitle={'Iniciar Sesión'} />
-    )
-}
+const BasicForm = (props) => (
+    <Form className="event-form">
+        {!Entity.isEmpty(props.error) && <p className="message-error">{props.error}</p>}
+
+        <EmailField label='email' inputSizeSmall {...props}/>
+
+        <PasswordField label='password' inputSizeSmall {...props}/> 
+
+        <SubmitButton {...props}>
+            Iniciar Sesión
+        </SubmitButton>
+    </Form>
+)

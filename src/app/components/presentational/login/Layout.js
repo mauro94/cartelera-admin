@@ -6,7 +6,7 @@ import NewbieForm from './First'
 import logo from 'Images/logo.svg'
 
 const Login = () => (
-    <div className="grid-container container-login">
+    <div className="container-login">
         <div className="login-logo">
             <img className="logo" src={logo} />
         </div>

@@ -14,6 +14,7 @@ import {
     TextField,
     SubmitButton
 } from 'Presentational/elements'
+import { PasswordField } from 'Presentational/elements/Input';
 
 const Basic = (props) => {
     let validations = props.current ? CurrentUserFormValidations : BasicUserFormValidations
@@ -66,8 +67,8 @@ const BasicForm = (props) => (
 
         <TextField label='campus' inputSizeSmall {...props} />
 
-        {props.isNewbie && props.current && <TextField label='password' {...props} />}
-        {props.isNewbie && props.current && <TextField label='passwordConfirm' {...props} />}
+        {props.isNewbie && props.current && <PasswordField label='password' inputSizeSmall {...props} />}
+        {props.isNewbie && props.current && <PasswordField label='passwordConfirm' inputSizeSmall {...props} />}
 
         <div className="form-field buttons">
             <SubmitButton {...props}>
