@@ -8,7 +8,7 @@ export const EventsFormsDetails = (props) => (
     <Form className="event-form">
         {!Entity.isEmpty(props.error) && <p className="message-error">{props.error}</p>}
 
-        {props.values.prefix != '' && <div class="name-displayer">
+        {props.values.prefix != '' && <div className="name-displayer">
             <TextField label='prefix' inputSizeSmall {...props}/>
             <TextField label='contactName' {...props}/>
         </div>}

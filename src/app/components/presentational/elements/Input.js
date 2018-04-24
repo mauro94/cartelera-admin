@@ -123,21 +123,6 @@ export const EmailComponent = ({
     </div>
   );
 
-  export const TextFieldComponent = (props) => (
-      <React.Fragment>
-      <div className={'input-container sm'}>
-          <div className='text-input'>
-              <label>
-              {Format.capitalize(Labels[props.field.name])}
-              </label>
-              <Field name={props.field.name} className={((props.form.touched[props.field.name] && props.form.errors[props.field.name]) ? 'emptyField' : 'readyField')} type="text"/>
-              <span className='separator'> </span>
-          </div>
-      </div>
-      </React.Fragment>
-    );
-
-
 export const TextComponent = ({
   field, // { name, value, onChange, onBlur }
   form: { touched, errors }, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
@@ -152,16 +137,17 @@ export const TextComponent = ({
     </div>
   );
 
-  export const PasswordComponent = (props) => (
+  export const PasswordField = (props) => (
       <React.Fragment>
-        <div className={'input-container sm'}>
+        <div className={props.inputSizeSmall ? 'input-container sm' : 'input-container'}>
             <div className='text-input'>
                 <label>
-                {Format.capitalize(Labels[props.field.name])}
+                {Format.capitalize(Labels[props.label])}
                 </label>
-                <Field name={props.field.name} className={((props.form.touched[props.field.name] && props.form.errors[props.field.name]) ? 'emptyField' : 'readyField')} component={Password}/>
+                <Field name={props.label} className={((props.touched[props.label] && props.errors[props.label]) ? 'emptyField' : 'readyField')} component={Password}/>
                 <span className='separator'> </span>
             </div>
+            {props.touched[props.label] && props.errors[props.label] && <p className="message-error">{props.errors[props.label]}</p>}
         </div>
       </React.Fragment>
     );

@@ -1,6 +1,6 @@
 import React from 'react'
-import { EditUser, withAuth } from 'Containers/index'
-import { history, Session } from 'Helpers'
+import { EditCurrentUser, withAuth, load } from 'Containers/index'
+import { history, Session } from 'Helpers/index'
 import { WelcomeMessage } from 'Presentational/elements/Form'
 import { Basic as BasicForm } from 'Presentational/users/forms'
 import 'Style/gridColumns2.scss'
@@ -8,13 +8,13 @@ import 'Style/gridColumns2.scss'
 class FirstLogin extends React.Component {
     componentWillMount() {
         if (!Session.isNewbie()) {
-            history.replace('/dashboard')
+            history.replace('/')
         }
     }
 
     componentWillReceiveProps(nextProps) {
         if (!Session.isNewbie()) {
-            history.replace('/dashboard')
+            history.replace('/')
         }
     }
 
@@ -22,15 +22,15 @@ class FirstLogin extends React.Component {
         return (
             <div>
                 <WelcomeMessage
-                    mail={this.props.user.email} />
-                <EditUser
-                    current
+                    mail={this.props.currentUser.email} />
+                <EditCurrentUser
                     logout
-                    user={this.props.currentUser}
-                    form={BasicForm} />
+                    userToUpdate={{...this.props.currentUser, password: '', passwordConfirm: ''}}>
+                    <BasicForm />
+                </EditCurrentUser>
             </div>
         )
     }
 }
 
-export default withAuth(FirstLogin)
+export default withAuth(load('currentUser', FirstLogin))

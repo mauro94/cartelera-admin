@@ -15,21 +15,41 @@ export const StateManager = {
                 object => (object.id == action.object.id))
             newState.all[index] = action.object
         }
-        return {
-            ...newState,
-            action: action.type,
-            error: action.error,
-            show: action.object,
-            status: action.status
+        switch(action.status) {
+            case Status.Ready:
+                return {
+                    ...newState,
+                    action: action.type,
+                    error: action.error,
+                    show: action.object,
+                    status: action.status
+                }
+            default:
+                return {
+                    ...newState,
+                    action: action.type,
+                    error: action.error,
+                    status: action.status
+                }
         }
     },
     get: (oldState, action) => {
-        return {
-            ...oldState,
-            action: action.type,
-            error: action.error,
-            show: action.object,
-            status: action.status
+        switch(action.status) {
+            case Status.Ready:
+                return {
+                    ...oldState,
+                    action: action.type,
+                    error: action.error,
+                    show: action.object,
+                    status: action.status
+                }
+            default:
+                return {
+                    ...oldState,
+                    action: action.type,
+                    error: action.error,
+                    status: action.status
+                }
         }
     },
     all: (oldState, action) => {
@@ -39,7 +59,7 @@ export const StateManager = {
             status: action.status,
             error: action.error,
             action: action.type,
-            show: action.object && action.object[0]
+            show: action.object ? action.object[0] : oldState.show
         }
     },
     create: (oldState, action) => {
@@ -62,12 +82,22 @@ export const StateManager = {
                 object => (object.id == action.object.id))
             newState.all[index] = {}
         }
-        return {
-            ...newState,
-            action: action.type,
-            error: action.error,
-            show: action.object,
-            status: action.status
+        switch(action.status) {
+            case Status.Ready:
+                return {
+                    ...newState,
+                    action: action.type,
+                    error: action.error,
+                    show: action.object,
+                    status: action.status
+                }
+            default:
+                return {
+                    ...newState,
+                    action: action.type,
+                    error: action.error,
+                    status: action.status
+                }
         }
     }
 }

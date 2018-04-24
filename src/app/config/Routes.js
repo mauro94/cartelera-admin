@@ -7,7 +7,7 @@ import { LoginLayout } from 'Presentational/login'
 const Routes = () => (
     <Router history={history}>
         <Switch>
-            <Route exact path="/login" component={LoginLayout} />
+            <Route path="/login" component={LoginLayout} />
             <Route path="/" component={withAuth(MainLayout)} />
         </Switch>
     </Router>

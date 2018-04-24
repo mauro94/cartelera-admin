@@ -119,9 +119,7 @@ export const CurrentUserFormValidations = Object.freeze({
     phoneNumber: Yup.string()
         .matches(/^\+?\d+$/, "Teléfono inválido")
         .min(8, "Mínimo 8 caracteres")
-        .required("Teléfono requerido"),
-    email: Yup.string().email("Correo no valido")
-        .required("Correo requerido")
+        .required("Teléfono requerido")
 })
 
 export const BasicUserFormValidations = Object.freeze({
@@ -135,11 +133,16 @@ export const BasicUserFormValidations = Object.freeze({
 
 export const PasswordFormValidations = Object.freeze({
     password: Yup.string()
-        .min(6, "Mínimo 6 caracteres")
-        .required("Contraseña requerida"),
+        .min(6, "Mínimo 6 caracteres").required("Contraseña requerida"),
     passwordConfirm: Yup.string()
         .required("Confirmación de contraseña requerida")
         .oneOf([Yup.ref('password'), null], "Contraseñas deben ser iguales")
+})
+
+export const LoginFormValidations = Object.freeze({
+    email: Yup.string().email("Correo no valido")
+        .required("Correo requerido"),
+    password: PasswordFormValidations.password
 })
 
 export const EventFormValidations = Object.freeze({

@@ -1,4 +1,5 @@
 export * from './hoc/'
+export { default as EditCurrentUser } from './currentUser/Edit'
 export {
     Add as AddUser,
     List as UsersList,

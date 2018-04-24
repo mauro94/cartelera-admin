@@ -38,7 +38,7 @@ const Basic = (props) => {
             initialValues={initialValues}
             onSubmit={(values, action) => {
                 values.id = props.user.id
-                values.isNewbie = props.current
+                values.isNewbie = props.current ? false : props.user.isNewbie
                 props.handleSubmit(values)
                 action.setSubmitting(false)
             }}>
@@ -50,41 +50,37 @@ const Basic = (props) => {
         </Formik>
     )
 }
-//<Form
-        //     {...props}
-        //     data={data}
-        //     className="event-form"
-        //     submitTitle={props.isNewbie && props.current ? 'Continuar' : 'Actualizar'}
-        //     canLogout={props.isNewbie && props.current}
-        //     allRequired={props.isNewbie && props.current}
-        //     logout={props.logout} />
+
 const BasicForm = (props) => (
     <Form className="event-form">
         {!Entity.isEmpty(props.error) && <p className="message-error">{props.error}</p>}
 
-        <TextField label='firstName' {...props}/>
+        <TextField label='firstName' inputSizeSmall {...props}/>
 
-        <TextField label='lastName' {...props}/> 
+        <TextField label='lastName' inputSizeSmall {...props}/> 
 
-        <TextField label='office' {...props}/>
+        <TextField label='office' inputSizeSmall {...props}/>
 
-        <TextField label='phoneNumber' {...props}/>
+        <TextField label='phoneNumber' inputSizeSmall {...props}/>
 
-        <TextField label='campus' {...props}/>
+        <TextField label='campus' inputSizeSmall {...props}/>
 
         { props.isNewbie && props.current && <TextField label='password' {...props}/> }
         { props.isNewbie && props.current && <TextField label='passwordConfirm' {...props}/> }
 
-        <SubmitButton {...props}>
-            { props.isNewbie && props.current ? 'Continuar' : 'Actualizar' }
-        </SubmitButton>
+        <div className="form-field buttons">
+            <SubmitButton {...props}>
+                { props.isNewbie && props.current ? 'Continuar' : 'Actualizar' }
+            </SubmitButton>
 
-        {
-            props.logout &&
-            <button className="button-newbie-logout" onClick={props.logout}>
-                Cerrar Sesión
-            </button>
-        }
+            {
+                props.logout &&
+                <button className="button-newbie-logout" onClick={props.logout}>
+                    Cerrar Sesión
+                </button>
+            }
+        </div>
+
     </Form>
 )
 

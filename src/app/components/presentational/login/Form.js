@@ -1,7 +1,7 @@
 
 import React from 'react'
 import { Formik } from 'formik'
-import { CurrentUserFormValidations, PasswordFormValidations } from 'Helpers/constants'
+import { LoginFormValidations } from 'Helpers/constants'
 import {
     EmailComponent,
     PasswordComponent,
@@ -13,8 +13,8 @@ export const BasicLogin = (props) => (
     <Formik
         validationSchema={
             Yup.object().shape({
-                email: CurrentUserFormValidations.email,
-                password: PasswordFormValidations.password
+                email: LoginFormValidations.email,
+                password: LoginFormValidations.password
             })
         }
         initialValues={{ email: '', password: '' }}

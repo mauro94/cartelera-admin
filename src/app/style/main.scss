@@ -63,9 +63,8 @@ button:focus {
 
 .form-field.buttons {
   display: flex;
-  flex-direction: row-reverse;
-  flex-flow: flex-end;
-  width: 80%;
+  flex-direction: column;
+  width: 100%;
 }
 
 // Different kinds of input
@@ -191,12 +190,10 @@ h3 {
   background: transparent;
   color: $themeColor-black;
   border-radius: 7px;
-  text-align: right;
+  text-align: left;
   text-decoration: underline;
   height: 20px;
-  margin-top: 20px;
-  float: right;
-  
+  margin-top: 20px;  
   border: 0;
 }
 
@@ -362,6 +359,9 @@ h3 {
 
        li{
           background: $themeColor-lightLight;
+          font-size: 1rem;
+          font-family: inherit;
+          letter-spacing: 0.7px;
        }
 
        input{
@@ -410,7 +410,8 @@ h3 {
      padding-left: 7px;
      background: none;
      color: $themeColor-black;
-     font-size: 1em;
+     font-size: 1.5em;
+     letter-spacing: 1px;
      font-weight: 500;
      border: none;
      border-bottom: 1px solid $themeColor-blackish;
