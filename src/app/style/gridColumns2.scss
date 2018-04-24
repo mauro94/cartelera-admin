@@ -1,20 +1,25 @@
 .container-login {
-    grid-template-columns: 50% auto;
-    grid-gap: 20px;
-    align-content: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    height: 100vh;
+    flex-wrap: wrap;
 }
 
 .login-logo {
-    grid-column: 1;
     width: 100%;
     display: flex;
     justify-content:flex-end;
     align-items:center;
+    min-width: 350px;
+    max-width: 450px;
 }
 
 .login-form {
-    grid-column: 2;
     width: 100%;
     display: grid;
     align-content: center;
+    margin-left: 20px;
+    min-width: 350px;
+    max-width: 450px;
 }
