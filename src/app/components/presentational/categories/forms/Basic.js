@@ -31,7 +31,7 @@ const BasicForm = (props) => (
     <Form>
         {!Entity.isEmpty(props.error) && <p className="message-error">{props.error}</p>}
 
-        <TextField type='category' label='name' inputSizeSmall {...props} />
+        <TextField label='categoryName' inputSizeSmall {...props} />
 
         <div className="form-field buttons">
             <SubmitButton {...props}>

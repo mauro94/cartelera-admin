@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import { faTrashAlt, faPencilAlt } from '@fortawesome/fontawesome-free-solid'
-import { Format, CategoryLabels } from 'Helpers/index'
+import { Format, Labels } from 'Helpers/index'
 import { Remove as RemoveCategory, Toggle as ToggleCategory } from 'Containers/categories'
 import { Button } from 'Presentational/elements'
 
@@ -39,10 +39,10 @@ const Title = (props) => (
 const Details = (props) => (
     <div className='details-wrapper'>
         <div className='labels'>
-            <div className='label'>{Format.capitalize(CategoryLabels.enabled)}</div>
-            <div className='label'>{Format.capitalize(CategoryLabels.pastEvents)}</div>
-            <div className='label'>{Format.capitalize(CategoryLabels.upcomingEvents)}</div>
-            <div className='label'>{Format.capitalize(CategoryLabels.totalEvents)}</div>
+            <div className='label'>{Format.capitalize(Labels.enabled)}</div>
+            <div className='label'>{Format.capitalize(Labels.pastEvents)}</div>
+            <div className='label'>{Format.capitalize(Labels.upcomingEvents)}</div>
+            <div className='label'>{Format.capitalize(Labels.totalEvents)}</div>
         </div>
         <div className='details'>
             <div className='value'>

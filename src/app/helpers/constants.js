@@ -87,12 +87,8 @@ export const Labels = Object.freeze({
     hasDeadline: "registro tiene fecha límite",
     tags: "Temas relacionados",
     photo: "imagen del evento",
-    schedule: "horario del evento"
-})
-
-export const CategoryLabels = Object.freeze({
-    name: 'Categoría',
-    enabled: 'Estado',
+    schedule: "horario del evento",
+    categoryName: 'Categoría',
     pastEvents: 'Eventos pasados',
     upcomingEvents: 'Eventos próximos',
     totalEvents: 'Eventos totales'
