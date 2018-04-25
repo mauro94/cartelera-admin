@@ -8,7 +8,7 @@ export const EditSucceeded = (props) => (
     <FeedbackModal
         title={'¡Categoría editada!'}
         subtitle={props.category.name}
-        children={props.category.totalCount + ' eventos han sido modificados.'}
+        children={props.category.totalCount + (props.category.totalCount == 1 ? ' evento ha sido modificado.' : ' eventos han sido modificados.')}
         handleOk={() => {
             props.onClose()
             history.push(`/categorias/${props.category.id}`)

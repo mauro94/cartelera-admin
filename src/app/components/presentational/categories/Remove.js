@@ -20,8 +20,11 @@ export const RemoveConfirm = (props) => (
         subtitle={props.category.name}
         confirmationMsg={'Una vez eliminada, ya no se podrá recuperar.'}
         lastMsg={'continuar'}
-        onClose={props.onClose}
-        handleConfirm={() => props.remove(props.category)}>
+        handleCancel={props.onClose}
+        handleConfirmCancel={() => {
+            props.onClose()
+            props.remove(props.category)
+        }}>
     </ConfirmationModal>
 )
 

@@ -19,8 +19,11 @@ export const ToggleConfirm = (props) => (
             'Una vez desactivada, ya no se podrá utilizar esta categoría en los eventos hasta que se reactive.' :
             'Una vez activada, se podrá utilizar esta categoría en los eventos.'}
         lastMsg={props.category.enabled ? 'desactivar' : 'activar'}
-        onClose={props.onClose}
-        handleConfirm={() => props.toggle(props.category)}>
+        handleCancel={props.onClose}
+        handleConfirmCancel={() => {
+            props.onClose()
+            props.toggle(props.category)
+        }}>
     </ConfirmationModal>
 )
 
