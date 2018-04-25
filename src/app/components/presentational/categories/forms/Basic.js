@@ -4,7 +4,7 @@ import Yup from 'yup'
 import Spinner from 'react-spinkit'
 import { Labels, Entity, Format } from 'Helpers/index'
 import { CategoryFormValidations } from 'Helpers/constants'
-import { TextComponent, Button, SubmitButton } from 'Presentational/elements'
+import { TextComponent, Button, TextField, SubmitButton } from 'Presentational/elements'
 import { load } from 'Containers/hoc'
 
 const Basic = (props) => {
@@ -27,76 +27,18 @@ const Basic = (props) => {
     )
 }
 
-const BasicForm = (props) => {
-    let data = [
-        { name: 'name', component: TextComponent }
-    ]
-    return (
-        <CategoryFormComponent
-            {...props}
-            data={data}
-            submitTitle='Actualizar'
-            allRequired={true} />
-    )
-}
+const BasicForm = (props) => (
+    <Form>
+        {!Entity.isEmpty(props.error) && <p className="message-error">{props.error}</p>}
 
-export const CategoryFormComponent = (props) => {
-    let entry =
-        <CategoryEntry
-            {...props}
-            attr={props.data[0].name}
-            component={props.data.component}
-            key='Entry-0'
-            list={props.data.list} />
+        <TextField type='category' label='name' inputSizeSmall {...props} />
 
-    return (
-        <Form>
-            {!Entity.isEmpty(props.error) && <p className="message-error">{props.error}</p>}
-            {entry}
-            <div className="form-field buttons">
-                <SubmitButton {...props}>
-                    {props.submitTitle}
-                </SubmitButton>
-            </div>
-        </Form>)
-}
-
-export const CategoryEntry = (props) => (
-    <div>
-        <Field
-            name={props.attr}
-            list={props.list}
-            className={((props.touched[props.attr] && props.errors[props.attr]) ?
-                'emptyField' : 'readyField')}
-            component={props.component}
-            placeholder={'Categoría'}
-        />
-        {
-            props.touched[props.attr] &&
-            props.errors[props.attr] &&
-            <p className="message-error">{props.errors[props.attr]}</p>
-        }
-    </div>
+        <div className="form-field buttons">
+            <SubmitButton {...props}>
+                Actualizar
+            </SubmitButton>
+        </div>
+    </Form>
 )
-
-export const CategorySubmitButton = (props) => {
-    let emptyValues = Entity.hasEmptyElements(props.values)
-    let untouched = Entity.isEmpty(props.touched)
-    let hasErrors = !Entity.isEmpty(props.errors)
-    let disabled = untouched ||
-        (props.allRequired && emptyValues) ||
-        hasErrors ||
-        props.isSubmitting
-    return (<Button
-        className='button-submit'
-        handleClick={() => ModalAlert({
-            modal: CancelledEventModal,
-            event: event
-        })}
-        disabled={disabled}>
-        {!props.isSubmitting && props.children}
-        {props.isSubmitting && <Spinner name="pulse" />}
-    </Button>)
-}
 
 export default load('category', Basic)

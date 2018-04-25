@@ -37,28 +37,28 @@ const Title = (props) => (
 )
 
 const Details = (props) => (
-    <div className='details'>
-        <DetailEntry label='enabled'>
-            {props.category.enabled ? 'Activa' : 'Inactiva'}
-        </DetailEntry>
-        <DetailEntry label='pastEvents'>
-            {props.category.pastCount}
-        </DetailEntry>
-        <DetailEntry label='upcomingEvents'>
-            {props.category.upcomingCount}
-        </DetailEntry>
-        <DetailEntry label='totalEvents'>
-            {props.category.totalCount}
-        </DetailEntry>
-    </div>
-)
-
-const DetailEntry = (props) => (
-    <div className={'entry ' + props.label}>
-        <div className='label'>{Format.capitalize(CategoryLabels[props.label])}</div>
-        <div className='value'>
-            {props.children}
+    <div className='details-wrapper'>
+        <div className='labels'>
+            <div className='label'>{Format.capitalize(CategoryLabels.enabled)}</div>
+            <div className='label'>{Format.capitalize(CategoryLabels.pastEvents)}</div>
+            <div className='label'>{Format.capitalize(CategoryLabels.upcomingEvents)}</div>
+            <div className='label'>{Format.capitalize(CategoryLabels.totalEvents)}</div>
         </div>
+        <div className='details'>
+            <div className='value'>
+                {props.category.enabled ? 'Activo' : 'Inactivo'}
+            </div>
+            <div className='value'>
+                {props.category.pastCount}
+            </div>
+            <div className='value'>
+                {props.category.upcomingCount}
+            </div>
+            <div className='value'>
+                {props.category.totalCount}
+            </div>
+        </div>
+        
     </div>
 )
 
