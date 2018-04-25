@@ -27,7 +27,7 @@ export const BasicLogin = (props) => (
 )
 
 const BasicForm = (props) => (
-    <Form className="event-form">
+    <Form >
         {!Entity.isEmpty(props.error) && <p className="message-error">{props.error}</p>}
 
         <EmailField label='email' inputSizeSmall {...props}/>

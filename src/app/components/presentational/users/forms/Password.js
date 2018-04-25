@@ -27,7 +27,7 @@ const Password = (props) => (
 )
 
 const PasswordForm = (props) => (
-    <Form className="event-form">
+    <Form >
         {!Entity.isEmpty(props.error) && <p className="message-error">{props.error}</p>}
 
         <PasswordField label='password' inputSizeSmall {...props}/>

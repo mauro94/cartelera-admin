@@ -6,7 +6,7 @@ import { FormButtonSubmit } from 'Presentational/elements/Form'
 import { CharactersLeft } from "Presentational/elements/CharactersLeft"
 
 export const EventsFormsIndex = (props) => {
-    return <Form className="event-form event-form-general">
+    return <Form>
         {!Entity.isEmpty(props.error) && <p className="message-error">{props.error}</p>}
 
         <div className="form-general-data">

@@ -1,9 +1,10 @@
 .container-login {
     display: flex;
-    flex-direction: row;
+    flex-flow: row wrap;
+    align-content: center;
+    align-items: center;
     justify-content: center;
-    height: 100vh;
-    flex-wrap: wrap;
+    min-height: 100vh;
 }
 
 .login-logo {
@@ -13,13 +14,14 @@
     align-items:center;
     min-width: 350px;
     max-width: 450px;
+    margin: 30px;
 }
 
 .login-form {
     width: 100%;
     display: flex;
     align-content: center;
-    margin-left: 20px;
     min-width: 350px;
     max-width: 450px;
+    margin: 30px;
 }

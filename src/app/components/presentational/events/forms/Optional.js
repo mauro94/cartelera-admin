@@ -5,7 +5,7 @@ import { Entity } from 'Helpers/object'
 import { FormButtonSignout, FormButtonSubmit } from 'Presentational/elements/Form'
 
 export const EventsFormsOptional = (props) => (
-    <Form className="event-form">
+    <Form >
         {!Entity.isEmpty(props.error) && <p className="message-error">{props.error}</p>}
 
         <TagField label='tags' placeholder="" {...props}/>
