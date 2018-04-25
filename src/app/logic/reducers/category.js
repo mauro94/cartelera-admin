@@ -8,7 +8,7 @@ function category(state = StateManager.defaultState, action) {
         case CategoryActions.Create:
             return {
                 ...StateManager.create(state, action),
-                error: action.error && 'La categoría ya esta en uso.'
+                error: action.error && 'Categoría inválida o la categoría ya esta en uso.'
             }
         case CategoryActions.Update:
             return StateManager.update(state, action)
