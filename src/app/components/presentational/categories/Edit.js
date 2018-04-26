@@ -30,14 +30,6 @@ export const EditFailed = (props) => (
 
 const EditCategory = (props) => (
     <div className='expanded-selection'>
-        <div className='label'>
-            <div key='Label-0' className='label-grid-item'>
-                <div className='text'>
-                    Nombre de la categoría
-                </div>
-            </div>
-            <div className='pointer'></div>
-        </div>
         <EditCategoryForm
             categoryToUpdate={props.category}>
             <BasicForm />
