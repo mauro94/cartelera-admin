@@ -5,7 +5,7 @@ import { withRouter, Redirect, Route } from 'react-router-dom'
 import { getIndex, getUserType, userDictionary } from './helper'
 import { Entity, history, UserActions } from 'Helpers/index'
 import { thunks } from 'Logic/actions/thunks'
-import { UsersList, ShowUser, EditUser } from 'Presentational/users'
+import { UsersList } from 'Presentational/users'
 
 class Users extends React.Component {
     constructor() {
@@ -40,45 +40,22 @@ class Users extends React.Component {
         })
     }
     render() {
-        const routes = <React.Fragment>
-            <Route
-                exact path='/usuarios/:type'
-                render={({ match }) => {
-                    if (!Entity.isEmpty(this.props.user.all)) {
-                        return <Redirect
-                            to={`/usuarios/${match.params.type}/${this.props.user.all[0].id}`} />
-                    }
-                }} />
-            <Route
-                exact
-                path='/usuarios/:type/:id/editar'
-                render={({ match }) => (
-                    <EditUser
-                        type={match.params.type}
-                        user={this.props.user.all[getIndex(this.props.user.all, match)]} />
-                )} />
-            <Route
-                exact
-                path='/usuarios/:type/:id'
-                render={({ match }) => <ShowUser user={this.props.user.all[getIndex(this.props.user.all, match)]} />
-                } />
-        </React.Fragment>
         return (
             <Route path='/'>
                 <React.Fragment>
                     <UsersList
                         action={UserActions.All}
                         hide
+                        location={this.props.location}
                         onSuccess={this.renderRoutes}
                         reducer={{
                             status: this.props.user.status,
                             action: this.props.user.action,
                             error: this.props.user.error
                         }}
+                        renderSelectedUserRoutes={this.state.renderRoutes}
                         type={this.props.type || 'sponsors'}
-                        users={this.props.user.all}
-                        location={this.props.location} />
-                    {this.state.renderRoutes && routes}
+                        users={this.props.user.all} />
                 </React.Fragment>
             </Route>
         )
@@ -88,7 +65,8 @@ class Users extends React.Component {
 const mapStateToProps = (state, ownProps) => {
     return {
         user: state.user,
-        location: ownProps.location
+        location: ownProps.location,
+        match: ownProps.match
     }
 }
 

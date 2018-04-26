@@ -3,6 +3,7 @@
 .list {
     overflow-y: auto;
     min-width: 350px;
+    flex-grow: 1;
     .list-item {
         align-items: center;
         align-content: center;
@@ -12,24 +13,22 @@
         filter: opacity(70%);
         padding: 20px;
         text-decoration: none;
-        .list-item-data {
-            .title {
-                margin-left: 10px;
-                font-size: 18px;
-                font-weight: 400;
-            }
-            .email {
-                margin-left: 10px;
-                font-size: 16px;
-                font-weight: 300;
-            }
-            .category-title {
-                margin-left: 10px;
-                font-size: 18px;
-                font-weight: 400;
-                text-overflow: ellipsis;
-                color: $black
-            }
+        .title {
+            margin-left: 10px;
+            font-size: 18px;
+            font-weight: 400;
+        }
+        .email {
+            margin-left: 10px;
+            font-size: 16px;
+            font-weight: 300;
+        }
+        .category-title {
+            margin-left: 10px;
+            font-size: 18px;
+            font-weight: 400;
+            text-overflow: ellipsis;
+            color: $black
         }
         &:hover {
             filter: opacity(100%);

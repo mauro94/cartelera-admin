@@ -4,7 +4,7 @@ import { withRouter, Redirect, Route } from 'react-router-dom'
 import { getIndex } from './helper'
 import { Entity, CategoryActions } from 'Helpers/index'
 import { thunks } from 'Logic/actions/thunks'
-import { CategoriesList, ShowCategory, EditCategory } from 'Presentational/categories'
+import { CategoriesList } from 'Presentational/categories'
 
 class Categories extends React.Component {
     constructor() {
@@ -34,28 +34,6 @@ class Categories extends React.Component {
     }
 
     render() {
-        const routes = <React.Fragment>
-            <Route
-                exact
-                path='/categorias'
-                render={({ match }) => {
-                    if (!Entity.isEmpty(this.props.category.all)) {
-                        return <Redirect to={`/categorias/${this.props.category.all[0].id}`} />
-                    }
-                }} />
-            <Route
-                exact
-                path='/categorias/:id/editar'
-                render={({ match }) => (
-                    <EditCategory category={this.props.category.all[getIndex(this.props.category.all, match)]} />
-                )} />
-            <Route
-                exact
-                path='/categorias/:id'
-                render={({ match }) => (
-                    <ShowCategory category={this.props.category.all[getIndex(this.props.category.all, match)]} />
-                )} />
-        </React.Fragment>
         return (
             <Route path='/'>
                 <React.Fragment>
@@ -69,8 +47,8 @@ class Categories extends React.Component {
                             error: this.props.category.error
                         }}
                         categories={this.props.category.all}
-                        location={this.props.location} />
-                    {this.state.renderRoutes && routes}
+                        location={this.props.location}
+                        renderSelectedCategoryRoutes={this.state.renderRoutes} />
                 </React.Fragment>
             </Route>
         )

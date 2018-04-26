@@ -2,13 +2,13 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import { faEnvelope } from '@fortawesome/fontawesome-free-regular'
-import { faPhone, faPencilAlt } from '@fortawesome/fontawesome-free-solid'
+import { faLock, faLockOpen, faPhone, faPencilAlt } from '@fortawesome/fontawesome-free-solid'
 import { Format, Labels } from 'Helpers/index'
 import { Button, UserAvatar, Tag } from 'Presentational/elements'
 
 const UserShow = (props) => {
     let selectedItem = document.getElementById(`list-item-${props.user.id}`)
-    selectedItem.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    selectedItem.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
     return <div className='expanded-selection'>
         <Title user={props.user} />
         <Details user={props.user} />
@@ -16,15 +16,30 @@ const UserShow = (props) => {
     </div>
 }
 
+const ToggleEnable = (props) => {
+    if (props.enabled) {
+        return (
+            <React.Fragment>
+                <FontAwesomeIcon icon={faLock} />
+            </React.Fragment>
+        )
+    }
+    return (
+        <React.Fragment>
+            <FontAwesomeIcon icon={faLockOpen} />
+        </React.Fragment>
+    )
+}
+
 const Actions = (props) => (
     <div className='actions'>
         <Button
             type={props.enabled ? 'danger' : 'primary'}>
-            {props.enabled ? 'Desactivar' : 'Activar'}
+            <ToggleEnable enabled={props.enabled} />
         </Button>
         <Link to={`${props.id}/editar`}>
             <Button>
-                <FontAwesomeIcon icon={faPencilAlt} /> Editar
+                <FontAwesomeIcon icon={faPencilAlt} />
             </Button>
         </Link>
     </div>

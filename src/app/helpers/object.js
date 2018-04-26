@@ -38,6 +38,9 @@ const compareUsers = (a, b) => {
 }
 
 export const Entity = {
+    getIndexFromPath: (objects, match) => {
+        return objects.findIndex(obj => obj.id == match.params.id)
+    },
     isEmpty: (obj) => {
         return !obj
             || (Object.keys(obj).length === 0)

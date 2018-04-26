@@ -1,9 +1,9 @@
 import React from 'react'
 import { Route, Redirect, NavLink } from 'react-router-dom'
-import { Format } from 'Helpers/object'
+import { Entity } from 'Helpers/object'
 import { Add as AddUser, List as UsersList } from 'Containers/users'
-import { Pill } from 'Presentational/elements'
-import 'Style/common/layouts/expandedList.scss'
+import { EditUser, ShowUser } from './index'
+import Header from 'Presentational/elements/Header'
 
 const UsersLayout = (props) => (
     <React.Fragment>
@@ -18,7 +18,12 @@ const UsersLayout = (props) => (
 
 const UsersPage = (props) => (
     <React.Fragment>
-        <Header match={props.match} />
+        <Header
+            {...props}
+            mainPath='usuarios'
+            filter={['sponsors', 'admins']}>
+            <AddUser type={props.match.params.type} />
+        </Header>
         <div className='expanded-list'>
             <UsersList
                 type={props.match.params.type} />
@@ -26,21 +31,30 @@ const UsersPage = (props) => (
     </React.Fragment>
 )
 
-const Header = (props) => {
-    let type = props.match.params.type.replace(/s$/, '')
-    return <div className='title'>
-        <h1>{Format.capitalize(props.match.params.type)}</h1>
-        <h1 className='toggle-title-filter'>
-            <NavLink to={`/usuarios/${unactiveLocation(props.match)}`}>
-                {` / ${unactiveLocation(props.match)}`}
-            </NavLink>
-        </h1>
-        <AddUser type={type} />
-    </div>
-}
-
-const unactiveLocation = (match) => (
-    match.params.type == 'sponsors' ? 'admins' : 'sponsors'
+export const SelectedUserRoutes = (props) => (
+    <React.Fragment>
+        <Route
+            exact path='/usuarios/:type'
+            render={({ match }) => {
+                if (!props.usersAreEmpty) {
+                    return <Redirect
+                        to={`/usuarios/${match.params.type}/${props.users[0].id}`} />
+                }
+            }} />
+        <Route
+            exact
+            path='/usuarios/:type/:id/editar'
+            render={({ match }) => (
+                <EditUser
+                    type={match.params.type}
+                    user={props.users[Entity.getIndexFromPath(props.users, match)]} />
+            )} />
+        <Route
+            exact
+            path='/usuarios/:type/:id'
+            render={({ match }) => <ShowUser user={props.users[Entity.getIndexFromPath(props.users, match)]} />
+            } />
+    </React.Fragment>
 )
 
 export default UsersLayout

@@ -13,15 +13,25 @@
             color: $light;
         }
     }
+    .small-display {
+        flex-grow: 2;
+        .expanded-selection {
+            margin: 2% 0;
+        }
+    }
+    .large-display {
+        flex-grow: 2;
+        .expanded-selection {
+            margin-left: 2%;
+        }
+    }
     .expanded-selection {
         background-color: $lightLight;
         border-radius: 10px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        flex-grow: 1;
-        padding: 50px;
-        margin-left: 10px;
+        padding: 5%;
         .title {
             display: flex;
             align-items: center;
@@ -46,7 +56,7 @@
                 color: grey;
                 font-weight: 200;
                 margin: 10px;
-                width: 150px;
+                max-width: 150px;
             }
             .details {
                 margin: 10px;
@@ -56,9 +66,10 @@
         .actions {
             display: flex;
             flex-direction: row;
-            justify-content: flex-end;
-            svg {
-                padding-right: 10px;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            .btn > button {
+                margin: 1px;
             }
         }
     }
