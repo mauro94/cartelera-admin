@@ -17,15 +17,33 @@
         flex-grow: 2;
         .expanded-selection {
             margin: 2% 0;
+            form {
+                .input-container {
+                    min-width: 100%;
+                }
+            }
         }
     }
     .large-display {
         flex-grow: 2;
+        max-width: 60%;
         .expanded-selection {
             margin-left: 2%;
+            form {
+                .input-container {
+                    max-width: 250px;
+                }
+            }
         }
     }
     .expanded-selection {
+        form {
+            .input-container {
+                margin: 0;
+                margin-top: 20px;
+                max-width: 250px;
+            }
+        }
         background-color: $lightLight;
         border-radius: 10px;
         display: flex;

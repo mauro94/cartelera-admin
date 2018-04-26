@@ -29,12 +29,6 @@ const EditUser = (props) => {
     let selectedItem = document.getElementById(`list-item-${props.user.id}`)
     selectedItem.scrollIntoView({ behavior: 'smooth', block: 'start' })
     return <div className='expanded-selection'>
-        <UserAvatar user={props.user} size={100} />
-        <div className='label'>
-            <FormLabels array={['firstName',
-                'lastName', 'office', 'phoneNumber', 'campus']} />
-            <div className='pointer'></div>
-        </div>
         <EditUserForm
             type={props.type}
             userToUpdate={props.user}>
