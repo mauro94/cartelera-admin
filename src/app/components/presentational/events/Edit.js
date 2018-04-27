@@ -16,7 +16,7 @@ const EventsEdit = (props) => (
             <div className='title'>
                 <div className="event-top-container">
                     <h1> {props.event.name}</h1>
-                    {<EventForm.Actions {...props} />}
+                    {<EventForm.Actions {...props}/>}
                 </div>
             </div>
             <RegistreesRoute {...props} />
