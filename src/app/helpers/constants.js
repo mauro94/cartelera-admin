@@ -1,5 +1,9 @@
 import Yup from 'yup'
 
+export const RegistreeActions = Object.freeze({
+    All: 'ALL_REGISTREES'
+})
+
 export const EventActions = Object.freeze({
     All: 'ALL_EVENTS',
     Create: 'CREATE_EVENT',
