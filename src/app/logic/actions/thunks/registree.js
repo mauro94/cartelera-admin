@@ -6,6 +6,7 @@ export const allFromEventId = (eventId) => {
     return dispatch => serverCall({
         dispatch: dispatch,
         actionType: RegistreeActions.All,
+        onError: test,
         call: () => request.get(
             '/registrees', {
                 headers: {
@@ -14,4 +15,8 @@ export const allFromEventId = (eventId) => {
                 }
             }),
     })
+}
+
+const test = (response) => {
+    console.log(response)
 }

@@ -18,7 +18,7 @@ class Login extends React.Component {
     render() {
         return (
             <div className='login-form-container'>
-                <LoginForm handleSubmit={this.props.handleSubmit} />
+                <LoginForm handleSubmit={this.props.handleSubmit} error={this.props.error}/>
             </div>
         )
     }
@@ -26,6 +26,7 @@ class Login extends React.Component {
 
 const mapStateToProps = state => {
     return {
+        error: state.currentUser.error && state.currentUser.error.error
     }
 }
 
