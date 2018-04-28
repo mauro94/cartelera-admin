@@ -9,18 +9,16 @@ import { history } from 'Helpers/index'
 
 const Action = (props) => {
     let { children, label, type, ...modalProps } = props
-    let handleClick = props.modal ? () => ModalAlert(modalProps)
-        : () => console.log('remove')
     return (
-        <Link className='action-button-container' to={props.to ? props.to : ''}>
+        <a className='action-button-container'>
             <Button
                 type={type}
                 className='action-button'
-                handleClick={() => handleClick()}>
+                handleClick={() => ModalAlert(modalProps)}>
                 {children}
             </Button>
             <span>{label}</span>
-        </Link>
+        </a>
     )
 }
 

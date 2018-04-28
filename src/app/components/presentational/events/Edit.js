@@ -19,7 +19,6 @@ const EventsEdit = (props) => (
                     {<EventForm.Actions {...props}/>}
                 </div>
             </div>
-            <RegistreesRoute {...props} />
             <div className='edit-event-container'>
                 <Menu id={props.event.id} />
                 <Form {...props}>
@@ -28,12 +27,6 @@ const EventsEdit = (props) => (
             </div>
         </React.Fragment>
     </Router>
-)
-
-const RegistreesRoute = (props) => (
-    <Route
-        path={'/eventos/' + props.event.id + '/editar/registrados'}
-        render={() => <Registrees event={props.event} />} />
 )
 
 const Form = (props) => {
@@ -122,9 +115,14 @@ const Menu = (props) => (
             Registro
         </NavButton>
 
+        <NavButton to={'/eventos/' + props.id + '/editar/registrados'}>
+            Lista de registrados
+        </NavButton>
+
         <NavButton to={'/eventos/' + props.id + '/editar/opcional'}>
             Opcional
         </NavButton>
+
     </div>
 )
 
@@ -146,6 +144,9 @@ const FormRoutes = (props) => (
         <Route
             path={'/eventos/' + props.id + '/editar/opcional'}
             render={() => <EventForm.Optional {...props} />} />
+        <Route
+            path={'/eventos/' + props.event.id + '/editar/registrados'}
+            render={() => <Registrees event={props.event} />} />
     </div>
 )
 
