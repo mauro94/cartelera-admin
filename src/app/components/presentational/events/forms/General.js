@@ -7,7 +7,6 @@ import { CharactersLeft } from "Presentational/elements/CharactersLeft"
 
 export const EventsFormsIndex = (props) => {
     return <Form>
-        {!Entity.isEmpty(props.error) && <p className="message-error">{props.error}</p>}
 
         <div className="form-general-data">
             <TextField label='name' {...props}/>

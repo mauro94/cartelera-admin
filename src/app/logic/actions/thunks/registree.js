@@ -24,3 +24,7 @@ export const allFromEventId = (eventId) => {
             }),
     })
 }
+
+const test = (response) => {
+    console.log(response)
+}

@@ -7,7 +7,6 @@ import { BrowserRouter as Router, Route, Link, NavLink } from 'react-router-dom'
 
 export const EventsFormsRegistration = (props) => (
     <Form >
-        {!Entity.isEmpty(props.error) && <p className='message-error'>{props.error}</p>}
 
         <div className='registration-toggler'>
             <ToggleField label='hasRegistration' {...props}/>

@@ -23,8 +23,9 @@ const Action = (props) => {
 }
 
 export const EventsFormsActions = (props) => (
-    <div className='event-actions-container'>
+    <div className='actions-container'>
         <Action
+            type='icon-button primary'
             label={props.event.published ?
                 'Quitar de vista pública' :
                 'Publicar evento'}
@@ -35,7 +36,7 @@ export const EventsFormsActions = (props) => (
         </Action>
 
         <Action
-            type='danger'
+            type='icon-button danger'
             label={props.event.cancelled ? 'Evento cancelado' : 'Cancelar evento'}
             modal={props.event.cancelled ? FeedbackCancelled : ConfirmCancel}
             event={props.event}
@@ -43,6 +44,5 @@ export const EventsFormsActions = (props) => (
             error={props.event.error}>
             <FontAwesomeIcon icon={faBan} />
         </Action>
-
     </div>
 )

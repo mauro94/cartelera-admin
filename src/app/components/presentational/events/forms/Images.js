@@ -6,7 +6,6 @@ import { FormButtonSignout, FormButtonSubmit } from 'Presentational/elements/For
 
 export const EventsFormsImages = (props) => (
     <Form>
-        {!Entity.isEmpty(props.error) && <p className='message-error'>{props.error}</p>}
         <div className='photo-editor'>
             <TextField label='photo' inputSizeSmall {...props}/>
 

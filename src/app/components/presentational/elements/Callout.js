@@ -40,26 +40,30 @@ export default class Callout extends React.Component {
 
     render() {
         return (
-            <div ref={node => { this.node = node; }}>
-                <div className='add'>
-                    {this.state.showCallout &&
-                        <CalloutInput inputRef={(el) => { this.inputRef = el }} placeholder={this.props.placeholder} type={this.props.type} icon={this.props.icon} />
-                    }
-                    {!this.state.showCallout &&
-                        <Button
-                            handleClick={this.handleClick}>
-                            <div className='plus'>
-                                <Plus />
-                            </div>
-                            {/*`Agregar ${this.props.type}`*/}
-                        </Button>
-                    }
-                    {this.state.showCallout &&
-                        <Button
-                            handleClick={() =>
-                                this.props.add(this.inputRef.value)}>
-                            <FontAwesomeIcon icon={faCheck} />
-                        </Button>}
+            <div className="action-callout">
+                <div ref={node => { this.node = node; }}>
+                    <div className='add'>
+                        {this.state.showCallout &&
+                            <CalloutInput inputRef={(el) => { this.inputRef = el }} placeholder={this.props.placeholder} type={this.props.type} icon={this.props.icon} />
+                        }
+                        {!this.state.showCallout &&
+                            <Button
+                                type='icon-button primary'
+                                handleClick={this.handleClick}>
+                                <div className='plus'>
+                                    <Plus />
+                                </div>
+                                {/*`Agregar ${this.props.type}`*/}
+                            </Button>
+                        }
+                        {this.state.showCallout &&
+                            <Button
+                                type='icon-button primary'
+                                handleClick={() =>
+                                    this.props.add(this.inputRef.value)}>
+                                <FontAwesomeIcon icon={faCheck} />
+                            </Button>}
+                    </div>
                 </div>
             </div>
         )

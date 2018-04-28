@@ -1,5 +1,6 @@
 @import 'colors';
 
+.categories-page,
 .page-container {
     >.title {
         align-self: center;
@@ -17,7 +18,32 @@
     }
 }
 
+.header-stick{
+    display: flex;
+    flex-direction: row;
+}
+
+.action-callout{
+    min-width: 400px;
+    justify-content: flex-end;
+    display: flex;
+}
+
+.top-container {
+    max-height: 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+
+    h1{
+        text-align: left;
+        margin-top: 0;
+    }
+}
+
 .toggle-title-filter{
+    padding-left: 11px;
     display: inline;
 
     &>a {

@@ -6,7 +6,6 @@ import { FormButtonSignout, FormButtonSubmit } from 'Presentational/elements/For
 
 export const EventsFormsOptional = (props) => (
     <Form >
-        {!Entity.isEmpty(props.error) && <p className="message-error">{props.error}</p>}
 
         <TagField label='tags' placeholder="" {...props}/>
 

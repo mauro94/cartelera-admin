@@ -6,7 +6,6 @@ import { FormButtonSignout, FormButtonSubmit } from 'Presentational/elements/For
 
 export const EventsFormsDetails = (props) => (
     <Form >
-        {!Entity.isEmpty(props.error) && <p className="message-error">{props.error}</p>}
 
         {props.values.prefix != '' && <div className="name-displayer">
             <TextField label='prefix' inputSizeSmall {...props}/>

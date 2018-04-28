@@ -22,7 +22,7 @@ export const BasicLogin = (props) => (
             props.handleSubmit(values)
             action.setSubmitting(false)
         }}>
-        {props => (<BasicForm {...props} />)}
+        {(formProps) => (<BasicForm {...formProps} error={props.error} />)}
     </Formik>
 )
 
