@@ -1,13 +1,19 @@
 //registrees
-import { RegistreeActions } from 'Helpers/constants'
+import { RegistreeActions, Status } from 'Helpers/constants'
 import { serverCall, request, headers } from './helper'
+import { createAction } from 'Logic/actions'
 
 export const allFromEventId = (eventId) => {
     return dispatch => serverCall({
         dispatch: dispatch,
         actionType: RegistreeActions.All,
         onSuccess: (response) => {
-            response.eventId = eventId
+            dispatch(createAction(
+                RegistreeActions.EventId,
+                eventId,
+                null,
+                Status.Ready
+            ))
         },
         call: () => request.get(
             '/registrees', {

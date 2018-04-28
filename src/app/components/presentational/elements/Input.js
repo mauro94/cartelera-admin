@@ -5,121 +5,121 @@ import { DatePickerElement } from 'Presentational/elements/DatePickerElement'
 import { Format, Labels } from 'Helpers/index'
 import { update } from 'Logic/actions/thunks/event';
 import { DateSinglePicker } from 'Presentational/elements/DateSinglePicker';
-import {TagManager} from 'Presentational/elements/Tags';
+import { TagManager } from 'Presentational/elements/Tags';
 
 export const TextField = (props) => (
   <React.Fragment>
-  <div className={props.inputSizeSmall ? 'input-container sm' : 'input-container'}>
+    <div className={props.inputSizeSmall ? 'input-container sm' : 'input-container'}>
       <div className='text-input'>
-          <label>
+        <label>
           {Format.capitalize(Labels[props.label])}
-          </label>
-          <Field name={props.label} className={((props.touched[props.label] && props.errors[props.label]) ? 'emptyField' : 'readyField')} type="text"/>
-          <span className='separator'> </span>
+        </label>
+        <Field name={props.label} className={((props.touched[props.label] && props.errors[props.label]) ? 'emptyField' : 'readyField')} type="text" />
+        <span className='separator'> </span>
       </div>
       {props.touched[props.label] && props.errors[props.label] && <p className="message-error">{props.errors[props.label]}</p>}
-  </div>
+    </div>
   </React.Fragment>
 )
 
 export const EmailField = (props) => (
   <React.Fragment>
-  <div className={props.inputSizeSmall ? 'input-container sm' : 'input-container'}>
+    <div className={props.inputSizeSmall ? 'input-container sm' : 'input-container'}>
       <div className='text-input'>
-          <label>
+        <label>
           {Format.capitalize(Labels[props.label])}
-          </label>
-          <Field name={props.label} className={((props.touched[props.label] && props.errors[props.label]) ? 'emptyField' : 'readyField')} type="email"/>
-          <span className='separator'> </span>
+        </label>
+        <Field name={props.label} className={((props.touched[props.label] && props.errors[props.label]) ? 'emptyField' : 'readyField')} type="email" />
+        <span className='separator'> </span>
       </div>
       {props.touched[props.label] && props.errors[props.label] && <p className="message-error">{props.errors[props.label]}</p>}
-  </div>
+    </div>
   </React.Fragment>
 )
 
 export const TagField = (props) => (
-    <React.Fragment>
+  <React.Fragment>
     <div className={props.inputSizeSmall ? 'input-container sm' : 'input-container'}>
       <div className='text-input'>
-          <label>
+        <label>
           {Format.capitalize(Labels[props.label])}
-          </label>
-          <Field name={props.label} className={((props.touched[props.label] && props.errors[props.label]) ? 'emptyField' : 'readyField')} type="text" {...props} component={TagManager}/>
-          <span className='separator'> </span>
+        </label>
+        <Field name={props.label} className={((props.touched[props.label] && props.errors[props.label]) ? 'emptyField' : 'readyField')} type="text" {...props} component={TagManager} />
+        <span className='separator'> </span>
       </div>
       {props.touched[props.label] && props.errors[props.label] && <p className="message-error">{props.errors[props.label]}</p>}
     </div>
 
-    </React.Fragment>
+  </React.Fragment>
 )
 
 export const TextFieldDate = (props) => (
   <React.Fragment>
-  <div className='input-container'>
+    <div className='input-container'>
       <div className='text-input'>
-          <label>
+        <label>
           {Format.capitalize(Labels[props.fieldId])}
-          </label>
-          <Field
+        </label>
+        <Field
           onClick={props.onClick}
           value={props.value}
           name={props.label}
           className={((props.touched[props.label] && props.errors[props.label]) ? 'emptyField' : 'readyField')}
-          type="text"/>
-          <span className='separator'> </span>
+          type="text" />
+        <span className='separator'> </span>
       </div>
       {props.touched[props.label] && props.errors[props.label] && <p className="message-error">{props.errors[props.label]}</p>}
-  </div>
+    </div>
   </React.Fragment>
 )
 
 export const TextFieldArea = (props) => (
   <React.Fragment>
-  <div className='input-container'>
+    <div className='input-container'>
       <div className='text-input'>
-          <label>
+        <label>
           {Format.capitalize(Labels[props.label])}
-          </label>
-          <Field name={props.label} {...props} component={TextFieldAreaComponent}/>
-          <span className='separator'> </span>
+        </label>
+        <Field name={props.label} {...props} component={TextFieldAreaComponent} />
+        <span className='separator'> </span>
       </div>
       {props.touched[props.label] && props.errors[props.label] && <p className="message-error">{props.errors[props.label]}</p>}
-  </div>
+    </div>
   </React.Fragment>
 )
 
 
 export const Selector = (props) => (
   <React.Fragment>
-  <div className={props.inputSizeSmall ? 'input-container sm' : 'input-container'}>
+    <div className={props.inputSizeSmall ? 'input-container sm' : 'input-container'}>
       <div className='text-input'>
-          <label>
+        <label>
           {Format.capitalize(Labels[props.label])}
-          </label>
-          <Field name={props.label} 
-                list={props.list}
-                className={((props.touched[props.label] && props.errors[props.label]) ? 'emptyField' : 'readyField')}
-                component={SelectComponent} />
+        </label>
+        <Field name={props.label}
+          list={props.list}
+          className={((props.touched[props.label] && props.errors[props.label]) ? 'emptyField' : 'readyField')}
+          component={SelectComponent} />
       </div>
       {props.touched[props.label] && props.errors[props.label] && <p className="message-error">{props.errors[props.label]}</p>}
-  </div>
+    </div>
   </React.Fragment>
 )
 
 export const ToggleField = (props) => (
   <React.Fragment>
-  <div className={props.inputSizeSmall ? 'input-container sm' : 'input-container'}>
+    <div className={props.inputSizeSmall ? 'input-container sm' : 'input-container'}>
       <div className='text-input toggle'>
-          <label>
+        <label>
           {Format.capitalize(Labels[props.label])}
-          </label>
-          <Field name={props.label}
-                 {...props} 
-                 component={ToggleComponent} />
-          {!props.inputSizeSmall && (props.values[props.label] == props.toggleMessageInfoTrigger) && <p className="message-toggle-info">{props.toggleMessage}</p>}
+        </label>
+        <Field name={props.label}
+          {...props}
+          component={ToggleComponent} />
+        {!props.inputSizeSmall && (props.values[props.label] == props.toggleMessageInfoTrigger) && <p className="message-toggle-info">{props.toggleMessage}</p>}
       </div>
       {props.inputSizeSmall && (props.values[props.label] == props.toggleMessageInfoTrigger) && <p className="message-toggle-info sm">{props.toggleMessage}</p>}
-  </div>
+    </div>
   </React.Fragment>
 )
 
@@ -152,33 +152,33 @@ export const TextComponent = ({
     </div>
   );
 
-  export const PasswordField = (props) => (
-      <React.Fragment>
-        <div className={props.inputSizeSmall ? 'input-container sm' : 'input-container'}>
-            <div className='text-input'>
-                <label>
-                {Format.capitalize(Labels[props.label])}
-                </label>
-                <Field name={props.label} className={((props.touched[props.label] && props.errors[props.label]) ? 'emptyField' : 'readyField')} component={Password}/>
-                <span className='separator'> </span>
-            </div>
-            {props.touched[props.label] && props.errors[props.label] && <p className="message-error">{props.errors[props.label]}</p>}
-        </div>
-      </React.Fragment>
-    );
-
-  export const ToggleComponent = (props) => {
-      return <div className="switch-container">
-        <label className="switch">
-          <input className={((props.touched[props.label] && props.errors[props.label]) ? 'switch__input emptyField' : 'switch__input readyField')}
-                 type="checkbox"
-                 name={props.field.name}
-                 checked={props.values[props.label] == 'on' ? true: false}
-                 onChange={(e)=> { updateFormik(props.field.name, (e.target.checked ? 'on' : 'off'), props.setFieldValue, props.setTouched, props.touched) }}/>
-          <div className="switch__checkbox"></div>
+export const PasswordField = (props) => (
+  <React.Fragment>
+    <div className={props.inputSizeSmall ? 'input-container sm' : 'input-container'}>
+      <div className='text-input'>
+        <label>
+          {Format.capitalize(Labels[props.label])}
         </label>
+        <Field name={props.label} className={((props.touched[props.label] && props.errors[props.label]) ? 'emptyField' : 'readyField')} component={Password} />
+        <span className='separator'> </span>
       </div>
-  }
+      {props.touched[props.label] && props.errors[props.label] && <p className="message-error">{props.errors[props.label]}</p>}
+    </div>
+  </React.Fragment>
+);
+
+export const ToggleComponent = (props) => {
+  return <div className="switch-container">
+    <label className="switch">
+      <input className={((props.touched[props.label] && props.errors[props.label]) ? 'switch__input emptyField' : 'switch__input readyField')}
+        type="checkbox"
+        name={props.field.name}
+        checked={props.values[props.label] == 'on' ? true : false}
+        onChange={(e) => { updateFormik(props.field.name, (e.target.checked ? 'on' : 'off'), props.setFieldValue, props.setTouched, props.touched) }} />
+      <div className="switch__checkbox"></div>
+    </label>
+  </div>
+}
 
 export const TextAreaComponent = ({
   field, // { name, value, onChange, onBlur }
@@ -195,16 +195,18 @@ export const TextAreaComponent = ({
   )
 
 export const TextFieldAreaComponent = (props) => {
-      return <div 
-        className={((props.touched[props.label] && props.errors[props.label]) ? 'textarea emptyField' : 'textarea readyField')}
-        rows="1"
-        contentEditable="true"
-        name={props.field.name}
-        onInput={props.textareaHandleChange}
-        onBlur={(e)=> { 
-          updateFormik(props.field.name, e.target.textContent, props.setFieldValue, props.setTouched, props.touched)}}>
-        {props.field.value}
-      </div>
+  return <div
+    className={((props.touched[props.label] && props.errors[props.label]) ? 'textarea emptyField' : 'textarea readyField')}
+    rows="1"
+    contentEditable="true"
+    suppressContentEditableWarning
+    name={props.field.name}
+    onInput={props.textareaHandleChange}
+    onBlur={(e) => {
+      updateFormik(props.field.name, e.target.textContent, props.setFieldValue, props.setTouched, props.touched)
+    }}>
+    {props.field.value}
+  </div>
 }
 
 export const SelectComponent = (props) => (
@@ -219,44 +221,44 @@ export const SelectComponent = (props) => (
 
 export const SelectorComponent = (props) => (
   <React.Fragment>
-  <div className='input-container sm'>
+    <div className='input-container sm'>
       <div className='text-input'>
-          <label>
+        <label>
           {Format.capitalize(Labels[props.field.name])}
-          </label>
-          <Field name={props.field.name} 
-                list={props.list}
-                className={((props.form.touched[props.field.name] && props.form.errors[props.field.name]) ? 'emptyField' : 'readyField')}
-                component={SelectComponent} />
+        </label>
+        <Field name={props.field.name}
+          list={props.list}
+          className={((props.form.touched[props.field.name] && props.form.errors[props.field.name]) ? 'emptyField' : 'readyField')}
+          component={SelectComponent} />
       </div>
-  </div>
+    </div>
   </React.Fragment>
 );
 
 export const FieldDate = (props) => (
   <Field
-  name={props.label}
-  className={((props.touched[props.label] && props.errors[props.label]) ? 'emptyField' : 'readyField')}
-  updateFormik = {updateFormik}
-  type="text"
-  {...props}
-  component={DatePickerElement}/>
+    name={props.label}
+    className={((props.touched[props.label] && props.errors[props.label]) ? 'emptyField' : 'readyField')}
+    updateFormik={updateFormik}
+    type="text"
+    {...props}
+    component={DatePickerElement} />
 )
 
 export const FieldSingleDate = (props) => (
   <Field
-  name={props.label}
-  className={((props.touched[props.label] && props.errors[props.label]) ? 'emptyField' : 'readyField')}
-  updateFormik = {updateFormik}
-  type="text"
-  {...props}
-  component={DateSinglePicker}/>
+    name={props.label}
+    className={((props.touched[props.label] && props.errors[props.label]) ? 'emptyField' : 'readyField')}
+    updateFormik={updateFormik}
+    type="text"
+    {...props}
+    component={DateSinglePicker} />
 )
 
 
 const updateFormik = (name, value, setValue, setTouched, touched) => {
   setValue(name, value)
-  setTouched({ ...touched, [name]: true})
+  setTouched({ ...touched, [name]: true })
 }
 
 const Option = element => (

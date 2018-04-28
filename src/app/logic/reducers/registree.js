@@ -11,10 +11,28 @@ var defaultState = {
 
 function registree(state = defaultState, action) {
     switch (action.type) {
-        case RegistreeActions.All:
+        case RegistreeActions.EventId:
             return {
-                ...StateManager.all(state, action),
-                eventId: eventId
+                ...state,
+                action: action.type,
+                eventId: action.object
+            }
+        case RegistreeActions.All:
+            if (action.status == Status.Ready) {
+                return {
+                    ...state,
+                    action: action.type,
+                    all: action.object,
+                    status: Status.Ready
+                }
+            }
+            else if (action.status == Status.Failed) {
+                return {
+                    ...state,
+                    action: action.type,
+                    error: action.error,
+                    status: Status.Failed,
+                }
             }
     }
     return state

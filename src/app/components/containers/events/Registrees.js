@@ -8,7 +8,7 @@ import { RegistreeActions } from 'Helpers/index';
 class Registrees extends React.Component {
     componentWillMount() {
         if (Entity.isEmpty(this.props.registree.all) ||
-            this.props.registree.eventId != this.props.event.show.id) {
+            this.props.registree.eventId != this.props.event.id) {
             this.props.getRegistrees(this.props.event.id)
         }
     }
@@ -31,7 +31,7 @@ class Registrees extends React.Component {
 
 const mapStateToProps = (state) => ({
     registree: state.registree,
-    event: state.event
+    event: state.event.show
 })
 
 const mapDispatchToProps = (dispatch) => ({

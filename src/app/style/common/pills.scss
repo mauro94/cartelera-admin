@@ -1,26 +1,4 @@
 @import 'colors';
-.pill-bar {
-    display: flex;
-    flex-flow: row;
-    min-height: 80px;
-    align-items: center;
-    .pill {
-        font-size: 18px;
-        margin-right: 20px;
-        padding: 10px;
-        text-decoration: none;
-        color: $light;
-        font-weight: 500;
-        border-radius: 8px;
-    }
-    .pill:hover {
-        color: $black;
-    }
-    .selected-pill {
-        background-color: $lightLight;
-        color: $black;
-    }
-}
 
 .navbar-button {
     border-radius: 7px;
@@ -30,6 +8,7 @@
     font-size: 18px;
     font-weight: 500;
     padding: 10px 15px;
+    text-align: right;
     text-decoration: none;
     .sb-avatar > div {
         filter: grayscale(100%);
