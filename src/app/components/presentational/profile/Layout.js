@@ -9,7 +9,15 @@ import 'Style/common/segmentedForm.scss'
 
 const ProfileLayout = (props) => (
     <React.Fragment>
-        <div className='title'><h1>Perfil</h1></div>
+        <div className='title'>
+            <div className="top-container">
+                <div class="header-stick">
+                <h1> Perfil</h1>
+                </div>
+                <div className='actions-container'>
+                </div>
+            </div>
+        </div>
         <div className='profile-container'>
             <Links />
             <SwitchRoutes user={props.user} />

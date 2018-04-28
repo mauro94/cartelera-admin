@@ -25,7 +25,7 @@ const Action = (props) => {
 }
 
 export const EventsFormsActions = (props) => (
-    <div className='event-actions-container'>
+    <div className='actions-container'>
         <Action
             label={props.event.published ?
                 'Quitar de vista pública' :

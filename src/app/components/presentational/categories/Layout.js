@@ -21,10 +21,14 @@ const CategoriesPage = (props) => (
 )
 
 const Header = (props) => (
-    <div>
-        <h1>Categorías</h1>
-        <div className='tool-bar'>
-            <AddCategory />
+    <div className='title'>
+        <div className="top-container">
+            <h1> Categorías </h1>
+            <div className='actions-container'>
+                <div className='tool-bar'>
+                    <AddCategory />
+                </div>
+            </div>
         </div>
     </div>
 )

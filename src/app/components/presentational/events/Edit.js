@@ -14,7 +14,7 @@ const EventsEdit = (props) => (
     <Router>
         <React.Fragment>
             <div className='title'>
-                <div className="event-top-container">
+                <div className="top-container">
                     <h1> {props.event.name}</h1>
                     {<EventForm.Actions {...props}/>}
                 </div>
