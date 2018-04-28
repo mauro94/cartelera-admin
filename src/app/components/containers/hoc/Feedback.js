@@ -44,7 +44,7 @@ const withFeedback = (Component) => {
             }
         }
         getProps() {
-            let { reducer, action, ...childProps } = this.props;
+            let { reducer, action, onSuccess, onError, ...childProps } = this.props;
             return childProps
         }
         render() {

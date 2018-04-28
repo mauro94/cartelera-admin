@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Entity } from 'Helpers/object'
 import { thunks } from 'Logic/actions/thunks'
-import ListRegistrees from 'Presentational/events/Registrees'
+import ListRegistrees from 'Presentational/events/forms/Registrees'
 import { RegistreeActions } from 'Helpers/index';
 
 class Registrees extends React.Component {

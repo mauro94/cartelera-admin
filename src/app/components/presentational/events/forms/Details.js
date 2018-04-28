@@ -5,21 +5,21 @@ import { Entity } from 'Helpers/object'
 import { FormButtonSignout, FormButtonSubmit } from 'Presentational/elements/Form'
 
 export const EventsFormsDetails = (props) => (
-    <Form >
+    <React.Fragment>
 
         {props.values.prefix != '' && <div className="name-displayer">
-            <TextField label='prefix' inputSizeSmall {...props}/>
-            <TextField label='contactName' {...props}/>
+            <TextField label='prefix' inputSizeSmall {...props} />
+            <TextField label='contactName' {...props} />
         </div>}
 
-        {props.values.prefix == '' &&  <TextField label='contactName' {...props}/>}
+        {props.values.prefix == '' && <TextField label='contactName' {...props} />}
 
-        <TextField label='contactEmail' {...props}/>
+        <TextField label='contactEmail' {...props} />
 
-        <TextField label='contactPhone' {...props}/> 
+        <TextField label='contactPhone' {...props} />
 
-        <TextField label='facebookUrl' inputSizeSmall {...props}/>
+        <TextField label='facebookUrl' inputSizeSmall {...props} />
 
-        <TextField label='twitterUrl' inputSizeSmall {...props}/>
-    </Form>
+        <TextField label='twitterUrl' inputSizeSmall {...props} />
+    </React.Fragment>
 )
