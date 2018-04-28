@@ -19,7 +19,20 @@ export const Format = {
     sortUsers: (list) => {
         list = list.sort((a, b) => compareUsers(a, b))
         return list
+    },
+    typeCast: (obj) => typeCast(obj)
+}
+
+const typeCast = (obj) => {
+    for (var key in obj) {
+        switch (obj[key]) {
+            case 'off':
+                obj[key] = false
+            case 'on':
+                obj[key] = true
+        }
     }
+    return obj
 }
 
 const compareUsers = (a, b) => {

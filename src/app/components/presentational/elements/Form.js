@@ -37,17 +37,10 @@ export const Entry = (props) => (
 )
 
 export const SubmitButton = (props) => {
-    let emptyValues = Entity.hasEmptyElements(props.values)
-    let untouched = Entity.isEmpty(props.touched)
-    let hasErrors = !Entity.isEmpty(props.errors)
-    let disabled = untouched ||
-        (props.allRequired && emptyValues) ||
-        hasErrors ||
-        props.isSubmitting
     return (
         <Button
             className='button-submit'
-            disabled={disabled}>
+            disabled={!props.isValid || props.isSubmitting}>
             {!props.isSubmitting && props.children}
             {props.isSubmitting && <Spinner name="pulse" />}
         </Button>

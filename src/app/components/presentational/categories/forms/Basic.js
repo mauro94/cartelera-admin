@@ -4,7 +4,7 @@ import Yup from 'yup'
 import Spinner from 'react-spinkit'
 import { Labels, Entity, Format } from 'Helpers/index'
 import { CategoryFormValidations } from 'Helpers/constants'
-import { TextComponent, Button, TextField, SubmitButton } from 'Presentational/elements'
+import { TextField, SubmitButton } from 'Presentational/elements'
 import { load } from 'Containers/hoc'
 
 const Basic = (props) => {

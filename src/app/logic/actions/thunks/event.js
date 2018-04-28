@@ -1,4 +1,4 @@
-import { EventActions } from 'Helpers/constants'
+import { Format, EventActions } from 'Helpers/index'
 import { serverCall, request, headers } from './helper'
 
 export const all = () => {
@@ -22,13 +22,25 @@ export const get = (id) => {
 }
 
 export const update = (event) => {
-    let {id, ...updatedFields} = event;
+    let { id, ...updatedFields } = event
+    updatedFields = Format.snakeCase('event', updatedFields)
     return dispatch => serverCall({
         dispatch: dispatch,
         actionType: EventActions.Update,
         call: () => request.put(
             `/events/${id}/`,
-            { event: updatedFields },
-            { headers: headers.withAuth() }) 
+            updatedFields,
+            { headers: headers.withAuth() })
+    })
+}
+
+export const create = (event) => {
+    return dispatch => serverCall({
+        dispatch: dispatch,
+        actionType: EventActions.Create,
+        call: () => request.post(
+            `/events/`,
+            Format.snakeCase('event', event),
+            { headers: headers.withAuth() })
     })
 }
