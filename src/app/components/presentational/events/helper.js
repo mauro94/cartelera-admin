@@ -1,7 +1,4 @@
 export const Format = {
-    cost: (cost) => {
-        return ((!cost || cost == 0) ? '0' : cost)
-    },
     toggle: (publicEvent) => {
         return (publicEvent ? 'on' : 'off')
     },
@@ -23,8 +20,8 @@ export const Format = {
     },
     toRange: (startDatetime, endDatetime) => {
         let dateRange = {
-            "startDatetime": startDatetime,
-            "endDatetime": endDatetime
+            startDatetime: startDatetime || new Date(),
+            endDatetime: endDatetime || new Date()
         }
         return dateRange;
     }

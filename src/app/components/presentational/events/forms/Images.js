@@ -5,10 +5,10 @@ import { Entity } from 'Helpers/object'
 import { FormButtonSignout, FormButtonSubmit } from 'Presentational/elements/Form'
 
 export const EventsFormsImages = (props) => (
-    <Form>
+    <React.Fragment>
         {!Entity.isEmpty(props.error) && <p className='message-error'>{props.error}</p>}
         <div className='photo-editor'>
-            <TextField label='photo' inputSizeSmall {...props}/>
+            <TextField label='photo' inputSizeSmall {...props} />
 
             <div className='show-image'>
                 <img src={props.values.photo} />
@@ -17,7 +17,7 @@ export const EventsFormsImages = (props) => (
         </div>
 
         <div className='photo-editor'>
-            <TextField label='schedule' inputSizeSmall {...props}/>
+            <TextField label='schedule' inputSizeSmall {...props} />
 
             <div className='show-image'>
                 <img src={props.values.schedule} />
@@ -25,5 +25,5 @@ export const EventsFormsImages = (props) => (
 
         </div>
 
-    </Form>
+    </React.Fragment>
 )

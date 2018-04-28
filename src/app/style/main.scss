@@ -384,9 +384,19 @@ h3 {
       }
    }
 
+   .with-static-placeholder {
+     display: flex;
+     .static-placeholder {
+      width: min-content;
+      padding: 0;
+      margin: 0;
+     }
+   }
+
    div.textarea,
    input[type="password"],
    input[type="email"],
+   input[type="number"],
    input[type="text"]{
      font-family: inherit;
      width: 100%;

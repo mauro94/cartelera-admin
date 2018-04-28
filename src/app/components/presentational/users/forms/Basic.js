@@ -1,7 +1,6 @@
 import React from 'react'
 import { Formik, Form } from 'formik'
 import Yup from 'yup'
-import { campusList } from 'Config/Test'
 import { load } from 'Containers/hoc'
 import {
     CurrentUserFormValidations,

@@ -4,14 +4,15 @@ import { withRouter } from 'react-router-dom'
 import { categoryList, campusList } from 'Config/Test'
 import { thunks } from 'Logic/actions/thunks'
 import { default as EditEvent } from 'Presentational/events/Edit'
-import { Entity, EventActions } from 'Helpers/index';
+import { Entity, Format, EventActions } from 'Helpers/index';
 
 class Edit extends React.Component {
     constructor(props) {
         super(props)
         this.action = EventActions.Get
         this.togglePublished = this.togglePublished.bind(this)
-        this.handleConfirmCancel= this.handleConfirmCancel.bind(this)
+        this.handleConfirmCancel = this.handleConfirmCancel.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this)
         this.textareaHandleChange = this.textareaHandleChange.bind(this)
         this.setTextarea = this.setTextarea.bind(this)
         this.state = {
@@ -39,15 +40,17 @@ class Edit extends React.Component {
     }
 
     handleSubmit(values) {
-        for (var key in props.event.show) {
+        let updatedEvent = { id: this.props.event.show.id }
+        Format.typeCast(values)
+        for (var key in this.props.event.show) {
             if (values.hasOwnProperty(key)) {
-                if (props.event.show[key] == values[key] && key != "id") {
-                    delete values[key]
+                if (this.props.event.show[key] != values[key] && key != 'id') {
+                    updatedEvent[key] = values[key]
                 }
             }
         }
         this.action = EventActions.Update
-        this.props.updateEvent()
+        this.props.updateEvent(updatedEvent)
     }
 
     togglePublished() {
@@ -89,7 +92,7 @@ class Edit extends React.Component {
                 togglePublished={this.togglePublished}
                 handleConfirmCancel={this.handleConfirmCancel}
                 hide
-                onSuccess={()=>this.setTextarea()}
+                onSuccess={() => this.setTextarea()}
                 reducer={{
                     status: this.props.event.status,
                     action: this.props.event.action,

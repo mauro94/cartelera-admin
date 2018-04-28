@@ -72,7 +72,7 @@ export const Labels = Object.freeze({
     rangeDatetime: "fecha y hora",
     startDatetime: "inicio: fecha y hora de inicio",
     endDatetime: "fin: fecha y hora de fin",
-    cost: "costo (MXN)",
+    cost: "costo",
     majors: "carreras invitadas",
     location: "ubicación",
     contactName: "nombre de contacto",
@@ -150,7 +150,7 @@ export const EventFormValidations = Object.freeze({
     name: Yup.string().required("Nombre requerido"),
     description: Yup.string().max(CharacterCount, `Limite de ${CharacterCount} caracteres superado. `).required("Descripción requerida"),
     location: Yup.string().required("Ubicación requerida"),
-    cost: Yup.string().matches(/^\d+$/, "Costo inválido"),
+    cost: Yup.string().matches(/^(\d+)(\.)?(\d+)$/, "Costo inválido"),
     contactName: Yup.string().required("Nombre requerido"),
     contactEmail: Yup.string().email("Correo no valido").required("Correo requerido"),
     contactPhone: Yup.string()
