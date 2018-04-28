@@ -1,6 +1,6 @@
 import React from 'react'
 export const Plus = () => (
-    <svg viewBox="0 0 173 92">
+    <svg viewBox="5 5 100 100">
         <g
             fillRule="evenodd"
             strokeLinecap="square">

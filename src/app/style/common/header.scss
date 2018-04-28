@@ -23,6 +23,12 @@
     flex-direction: row;
 }
 
+.action-callout{
+    min-width: 400px;
+    justify-content: flex-end;
+    display: flex;
+}
+
 .top-container {
     max-height: 2rem;
     display: flex;

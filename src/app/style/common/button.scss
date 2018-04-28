@@ -49,11 +49,26 @@ button {
     &.hide {
         display: none;
     }
+    &.icon-button{
+        padding: 10px;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border: 3px solid transparent;
+    }
 }
 
 @mixin button-style($color) {
     &:hover {
         color: $color;
+
+        &.icon-button{
+            border-color: $color;
+        }
         svg {
             color: $color;
             stroke: $color;
@@ -82,6 +97,10 @@ button {
         text-align: right;
     }
     button:enabled {
+        cursor: pointer;
+        -webkit-transition: all 1s ease;
+        transition: all 1s ease;
+        
         &.primary {
             @include button-style($light-blue);
         }
@@ -94,24 +113,63 @@ button {
         &.secondary {
             @include button-style-inverse($light-grey);
         }
-        cursor: pointer;
-        -webkit-transition: all 1s ease;
-        transition: all 1s ease;
+
+        &.icon-button{
+            &:hover {
+                -webkit-transition: all .7s ease;
+                transition: all 1s ease;
+                background: transparent;
+                border-radius: 0;
+                transition: border-color .6s ease;
+                transition: background .6s ease;
+                //position: inherit;
+                border-radius: 50%;
+    
+                &:after {
+                    width: 100%;
+                    left: 0;
+                    background: transparent;
+                    transition: border-color .6s ease;
+                    transition: background .6s ease;
+                    //position: inherit;
+                    border: 3px solid transparent;
+                    height: 0px;
+                    background: transparent;
+
+                }
+            }
+
+            &:after {
+                position: absolute;
+                transition: all 0s ease;
+                content: '';
+                width: 0;
+                bottom: 0;
+                left: inherit;
+                right: 0;
+                height: 3px;
+                transition: all .6s ease;
+                //position: inherit;
+                height: 0px;
+                background: transparent;   
+            }
+        }
+
         &:hover {
             -webkit-transition: all .7s ease;
             transition: all 1s ease;
             background: transparent;
-            color: $light-blue;
             border-radius: 0;
+
             &:after {
-                transition: all .3s ease;
+                transition: all .2s ease;
                 width: 100%;
                 left: 0;
             }
         }
         &:after {
             position: absolute;
-            transition: all .3s ease;
+            transition: all 0s ease;
             content: '';
             width: 0;
             bottom: 0;
