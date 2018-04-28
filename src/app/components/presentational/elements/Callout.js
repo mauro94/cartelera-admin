@@ -40,7 +40,7 @@ export default class Callout extends React.Component {
 
     render() {
         return (
-            <div class="action-callout">
+            <div className="action-callout">
                 <div ref={node => { this.node = node; }}>
                     <div className='add'>
                         {this.state.showCallout &&

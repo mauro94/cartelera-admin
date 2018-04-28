@@ -7,13 +7,13 @@ const AllEvents = () => (
     <React.Fragment>
         <div className='title'>
             <div className="top-container">
-                <div class="header-stick">
-                <h1>{`Eventos ${location.search.includes('pasados') ? 'pasados ' : 'próximos '}`}</h1>
-                <h1 className='toggle-title-filter'>
-                    <NavLink to={{ search: '?tipo=' + (location.search.includes('pasados') ? 'próximos' : 'pasados') }}>
-                        /{location.search.includes('pasados') ? ' próximos' : ' pasados'}
-                    </NavLink>
-                </h1>
+                <div className="header-stick">
+                    <h1>{`Eventos ${location.search.includes('pasados') ? 'pasados ' : 'próximos '}`}</h1>
+                    <h1 className='toggle-title-filter'>
+                        <NavLink to={{ search: '?tipo=' + (location.search.includes('pasados') ? 'próximos' : 'pasados') }}>
+                            /{location.search.includes('pasados') ? ' próximos' : ' pasados'}
+                        </NavLink>
+                    </h1>
                 </div>
                 <div className='actions-container'>
                 </div>

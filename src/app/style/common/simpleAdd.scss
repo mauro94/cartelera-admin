@@ -29,10 +29,12 @@
             padding: 0 10px;
             background-color: $lightLight;
             svg {
+                padding-left: 5px;
                 color: $light;
                 margin-right: 10px;
             }
             input {
+                padding: 10px 5px;
                 border: none;
                 background-color: $lightLight;
                 width: 250px;

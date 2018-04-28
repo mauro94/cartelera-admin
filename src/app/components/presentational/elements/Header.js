@@ -6,7 +6,7 @@ const Header = (props) => {
     let type = props.match.params.type.replace(/s$/, '')
     return <div className='title'>
             <div className="top-container">
-                <div class="header-stick">
+                <div className="header-stick">
                     <h1> {Format.capitalize(props.match.params.type)} </h1>
                     <h1 className='toggle-title-filter'>
                         <NavLink to={`/${props.mainPath}/${unactiveLocation(props.match, props.filter)}`}>

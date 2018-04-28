@@ -25,6 +25,7 @@ export const Confirmation = (props) => (
                 {'Salir sin cambios'}
             </Button>
             <Button
+                type={props.confirmButtonType ? props.confirmButtonType : 'primary'}
                 handleClick={(e) => props.handleConfirmCancel(e)}>
                 Si, {props.lastMsg}
             </Button>

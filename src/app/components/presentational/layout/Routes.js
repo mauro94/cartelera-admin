@@ -23,5 +23,5 @@ export const CategoriesRoute = props => (
 
 export const ProfileRoute = props => (
     <Route path='/perfil' render={() =>
-        <div className='page-container'><ProfileLayout user={props.user} /></div>} />
+        <div className='page-container'><ProfileLayout user={props.user} logout={props.logout}/></div>} />
 )

@@ -81,6 +81,7 @@ export class ConfirmCancel extends React.Component {
                 error
                 title={'Cancelar evento'}
                 subtitle={this.props.event.name}
+                confirmButtonType='danger'
                 confirmationMsg={'El público general verá el evento como cancelado y no se podrá revertir la cancelación.'}
                 lastMsg={'cancelar evento'}
                 buttonClass={'modal-confirm-cancel-button'}

@@ -14,7 +14,7 @@ export const SponsorLayout = props => (
         ]}
         routes={[
             <EventsRoutes />,
-            <ProfileRoute user={props.currentUser} />
+            <ProfileRoute user={props.currentUser} logout={props.logout} />
         ]}
     />
 )

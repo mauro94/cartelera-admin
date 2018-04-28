@@ -1,20 +1,43 @@
 import React from 'react'
 import { Route, NavLink, Redirect, Switch } from 'react-router-dom'
+import FontAwesomeIcon from '@fortawesome/react-fontawesome'
+import { faSignOutAlt } from '@fortawesome/fontawesome-free-solid'
 import EditCurrentUser from 'Containers/currentUser/Edit'
+import { Button } from 'Presentational/elements'
 import {
     Basic as BasicForm,
     Password as PasswordForm
 } from 'Presentational/users/forms'
 import 'Style/common/segmentedForm.scss'
 
+const Action = (props) => {
+    return (
+        <a className='action-button-container'>
+            <Button
+                type={props.type}
+                className='action-button'
+                handleClick={() => {props.logout()}}>
+                {props.children}
+            </Button>
+            <span>{props.label}</span>
+        </a>
+    )
+}
+
 const ProfileLayout = (props) => (
     <React.Fragment>
         <div className='title'>
             <div className="top-container">
-                <div class="header-stick">
+                <div className="header-stick">
                 <h1> Perfil</h1>
                 </div>
                 <div className='actions-container'>
+                <Action
+                    type='icon-button dark'
+                    logout={props.logout}
+                    label='Cerrar sesión'>
+                    <FontAwesomeIcon icon={faSignOutAlt} />
+                </Action>
                 </div>
             </div>
         </div>
