@@ -55,8 +55,6 @@ const Basic = (props) => {
 
 const BasicForm = (props) => (
     <Form >
-        {!Entity.isEmpty(props.error) && <p className="message-error">{props.error}</p>}
-
         <TextField label='firstName' inputSizeSmall {...props} />
 
         <TextField label='lastName' inputSizeSmall {...props} />
