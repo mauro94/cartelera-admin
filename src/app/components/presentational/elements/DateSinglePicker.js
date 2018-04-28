@@ -3,8 +3,6 @@ import DatePicker from 'react-datepicker'
 import moment from 'moment'
 import 'react-datepicker/dist/react-datepicker.css'
 import { TextFieldDate } from 'Presentational/elements/Input'
-import { Formik } from 'node_modules/formik/dist/formik';
-
 export class DateSinglePicker extends React.Component {
     constructor(props) {
         super(props)
