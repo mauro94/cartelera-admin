@@ -22,7 +22,7 @@ const Action = (props) => {
     )
 }
 
-export const EventsFormsActions = (props) => (
+export const EventFormsActions = (props) => (
     <div className='actions-container'>
         <Action
             type='icon-button primary'
