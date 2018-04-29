@@ -4,6 +4,7 @@ import { Format } from 'Helpers/index'
 
 const Header = (props) => {
     let type = props.match.params.type.replace(/s$/, '')
+
     return <div className='title'>
             <div className="top-container">
                 <div className="header-stick">
