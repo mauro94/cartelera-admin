@@ -5,23 +5,20 @@ import { thunks } from 'Logic/actions/thunks'
 import { SelectComponent } from 'Presentational/elements/Input'
 import load from 'Containers/hoc/Load'
 
-// const CategoriesDropdown = (props) => (
-//     <Selector
-//         inputSizeSmall
-//         // label='category'
-//         list={props.formattedCategories}
-//         {...props} />
-// )
-
 const LoadedCategoriesDropdown = load('categories', SelectComponent)
 
 class Dropdown extends React.Component {
 
     constructor(props) {
         super(props)
-        this.formatCategories = this.formatCategories.bind(this)
+        this.updateCategories = this.updateCategories.bind(this)
+        this.getFormattedCategories = this.getFormattedCategories.bind(this)
+        let formattedCategories = []
+        if (!Entity.isEmpty(this.props.category.all)) {
+            formattedCategories = this.getFormattedCategories()
+        }
         this.state = {
-            formattedCategories: []
+            formattedCategories: formattedCategories
         }
     }
 
@@ -31,20 +28,24 @@ class Dropdown extends React.Component {
         }
     }
 
-    formatCategories() {
-        let formattedCategories = []
-        formattedCategories = this.props.category.all.map(category => (
+    getFormattedCategories() {
+        return this.props.category.all.map(category => (
             {
                 key: category.id,
                 text: category.name
             }
         ))
+    }
+
+    updateCategories() {
+        let formattedCategories = this.getFormattedCategories()
         this.setState({
             formattedCategories: formattedCategories
         })
     }
 
     render() {
+        let { getCategories, category, ...dropdownProps } = this.props
         return (
             <LoadedCategoriesDropdown
                 action={CategoryActions.All}
@@ -54,10 +55,11 @@ class Dropdown extends React.Component {
                     action: this.props.category.action,
                     error: this.props.category.error
                 }}
-                onSuccess={() => this.formatCategories()}
+                onSuccess={() => this.updateCategories()}
                 categories={this.props.category.all}
+                selected={this.props.form.values.categoryId}
                 list={this.state.formattedCategories}
-                {...this.props} />
+                {...dropdownProps} />
         )
     }
 }

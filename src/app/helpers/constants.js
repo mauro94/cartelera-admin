@@ -149,9 +149,11 @@ export const LoginFormValidations = Object.freeze({
 
 export const EventFormValidations = Object.freeze({
     name: Yup.string().required("Nombre requerido"),
+    schedule: Yup.string().matches(/.*(.jpg|.png|.gif|.jpeg)$/, 'Liga de imagen inválida'),
+    photo: Yup.string().matches(/.*(.jpg|.png|.gif|.jpeg)$/, 'Liga de imagen inválida').required('Imagen requerida'),
     description: Yup.string().max(CharacterCount, `Limite de ${CharacterCount} caracteres superado. `).required("Descripción requerida"),
     location: Yup.string().required("Ubicación requerida"),
-    cost: Yup.string().matches(/^(\d+)(\.)?(\d+)$/, "Costo inválido"),
+    cost: Yup.string().matches(/(?=.*?\d)^(([1-9]\d{0,2}(,\d{3})*)|\d+)?(\.\d{1,2})?$/, "Costo inválido"),
     contactName: Yup.string().required("Nombre requerido"),
     contactEmail: Yup.string().email("Correo no valido").required("Correo requerido"),
     contactPhone: Yup.string()

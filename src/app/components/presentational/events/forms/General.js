@@ -1,44 +1,37 @@
 import React, { Fragment } from 'react'
 import { Formik, Form, Field } from 'formik';
-import { TextField, TextFieldArea, Selector, FieldDate } from 'Presentational/elements/Input';
+import { TextField, TextFieldArea, Selector, FieldDate, SelectComponent } from 'Presentational/elements/Input';
 import { Entity } from 'Helpers/index'
+import { campusList } from 'Config/Test'
 import { FormButtonSubmit } from 'Presentational/elements/Form'
 import { CharactersLeft } from "Presentational/elements/CharactersLeft"
 import CategoriesDropdown from 'Containers/categories/Dropdown'
 
 export const EventsFormsIndex = (props) => {
-    return <React.Fragment>
+    return (
+        <React.Fragment>
 
-        <div className="form-general-data">
-            <TextField label='name' {...props} />
+            <div className="form-general-data">
+                <TextField label='name' {...props} />
 
-            <TextFieldArea label='description' {...props} />
+                <TextFieldArea label='description' {...props} />
 
-            <TextField label='location' {...props} />
+                <TextField label='location' {...props} />
 
-            <Selector label='campus' inputSizeSmall list={props.campusList} {...props} />
+                <Selector label='campus' inputSizeSmall component={CampusDropdown} {...props} />
 
-            {/*<Selector label='categoryId' inputSizeSmall component={CategoriesDropdown} {...props} />*/}
+                <Selector label='categoryId' inputSizeSmall component={CategoriesDropdown} {...props} />
 
-            <div className={'input-container sm'}>
-                <div className='text-input'>
-                    <label>
-                        {'Categoría'}
-                    </label>
-                    <Field name={'categoryId'}
-                        className={(touchedWithErrors(props) ? 'emptyField' : 'readyField')}
-                        component={CategoriesDropdown} />
-                </div>
-                {touchedWithErrors(props) && <p className="message-error">{props.errors[props.label]}</p>}
+                <FieldDate label='rangeDatetime'{...props} />
+
             </div>
 
-            <FieldDate label='rangeDatetime'{...props} />
-
-        </div>
-
-    </React.Fragment>
+        </React.Fragment>
+    )
 }
 
-const touchedWithErrors = (props) => (
-    props.touched[props.label] && props.errors[props.label]
+const CampusDropdown = (props) => (
+    <SelectComponent
+        list={campusList}
+        {...props} />
 )

@@ -6,7 +6,7 @@ export const eventInitialValues = {
     description: '',
     location: '',
     campus: 'MTY',
-    categoryId: '1',
+    categoryId: 1,
     cost: '0',
     majors: [],
     languages: [],
@@ -18,15 +18,15 @@ export const eventInitialValues = {
         startDatetime: today,
         endDatetime: today
     },
-    publicEvent: 'off',
+    publicEvent: false,
     facebookUrl: '',
     twitterUrl: '',
-    petFriendly: 'off',
+    petFriendly: false,
     registrationUrl: '',
     registrationMessage: '',
     registrationDeadline: today,
-    hasRegistration: '',
-    hasDeadline: '',
+    hasRegistration: false,
+    hasDeadline: false,
     requirementsToRegister: '',
     tagNames: [],
     photo: '',
@@ -40,5 +40,11 @@ export const getEventInitialValues = (event) => {
     }
     let formattedCost = formattedEvent.cost.replace(/\.0+$/, '')
     formattedEvent.cost = formattedCost
+    formattedEvent.rangeDatetime = {
+        startDatetime: event.startDatetime || eventInitialValues.rangeDatetime.startDatetime,
+        endDatetime: event.endDatetime || eventInitialValues.rangeDatetime.endDatetime
+    }
+    formattedEvent.category = event.category || ''
+    formattedEvent.categoryId = eventInitialValues.categoryId
     return formattedEvent
 }

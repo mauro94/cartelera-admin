@@ -19,9 +19,6 @@ const load = (loadingResource, Component) => {
             }
         }
         componentWillReceiveProps(nextProps) {
-            if (this.props.loadingResource == 'categories') {
-                console.log()
-            }
             let status = {
                 wasWaiting: this.waiting,
                 reducer: nextProps.reducer,
@@ -54,7 +51,7 @@ const load = (loadingResource, Component) => {
             }
         }
         getProps() {
-            let { reducer, action, ...childProps } = this.props;
+            let { reducer, action, onSuccess, onError, hide, ...childProps } = this.props;
             return childProps
         }
         render() {

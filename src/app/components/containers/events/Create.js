@@ -1,7 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
-import { categoryList, campusList } from 'Config/Test'
 import { thunks } from 'Logic/actions/thunks'
 import CreateEvent from 'Presentational/events/Create'
 import { Entity, EventActions, history } from 'Helpers/index'
@@ -29,10 +28,11 @@ class Create extends React.Component {
     handleSubmit(values) {
         values.sponsorId = this.props.currentUser.show.id
         values.applicantId = this.props.currentUser.show.id
+        values.startDatetime = values.rangeDatetime.startDatetime
+        values.endDatetime = values.rangeDatetime.endDatetime
+        delete values.rangeDatetime
         this.props.createEvent(values)
     }
-
-    //{"errors":{"applicant_id":["can't be blank"],"sponsor_id":["can't be blank"],"category_id":["can't be blank"],"sponsor":["must exist"],"applicant":["must exist"],"category":["must exist"]}}
 
     textareaHandleChange(e) {
         //validation here
@@ -51,8 +51,6 @@ class Create extends React.Component {
         return (
             <CreateEvent
                 action={EventActions.Create}
-                campusList={campusList}
-                categoryList={categoryList}
                 textarea={this.state.textarea}
                 textareaHandleChange={this.textareaHandleChange}
                 handleSubmit={this.handleSubmit}

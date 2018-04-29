@@ -1,10 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
-import { categoryList, campusList } from 'Config/Test'
 import { thunks } from 'Logic/actions/thunks'
 import { default as EditEvent } from 'Presentational/events/Edit'
-import { Entity, Format, EventActions } from 'Helpers/index';
+import { Entity, Format, EventActions } from 'Helpers/index'
+import { getEventInitialValues } from 'Presentational/events/forms/helper'
 
 class Edit extends React.Component {
     constructor(props) {
@@ -22,11 +22,15 @@ class Edit extends React.Component {
         }
     }
     componentDidMount() {
-        if (Entity.isEmpty(this.props.event.show) || this.props.event.show.id != this.props.id)
+        if (Entity.isEmpty(this.props.event.show) || this.props.event.show.id != this.props.id) {
+            this.action = EventActions.Get
             this.props.getEvent(this.props.id)
+        }
     }
+
     componentWillReceiveProps(nextProps) {
         if (this.props.id != nextProps.id) {
+            this.action = EventActions.Get
             this.props.getEvent(nextProps.id)
         }
     }
@@ -41,7 +45,6 @@ class Edit extends React.Component {
 
     handleSubmit(values) {
         let updatedEvent = { id: this.props.event.show.id }
-        Format.typeCast(values)
         for (var key in this.props.event.show) {
             if (values.hasOwnProperty(key)) {
                 if (this.props.event.show[key] != values[key] && key != 'id') {
@@ -51,6 +54,12 @@ class Edit extends React.Component {
         }
         this.action = EventActions.Update
         this.props.updateEvent(updatedEvent)
+    }
+
+    handleActionSucceeded() {
+        if (this.action == EventActions.Get) {
+            this.setTextarea()
+        }
     }
 
     togglePublished() {
@@ -83,8 +92,6 @@ class Edit extends React.Component {
         return (
             <EditEvent
                 action={this.action}
-                campusList={campusList}
-                categoryList={categoryList}
                 event={this.props.event.show}
                 textarea={this.state.textarea}
                 textareaHandleChange={this.textareaHandleChange}
@@ -92,7 +99,7 @@ class Edit extends React.Component {
                 togglePublished={this.togglePublished}
                 handleConfirmCancel={this.handleConfirmCancel}
                 hide
-                onSuccess={() => this.setTextarea()}
+                onSuccess={() => this.handleActionSucceeded()}
                 reducer={{
                     status: this.props.event.status,
                     action: this.props.event.action,

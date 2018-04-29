@@ -13,7 +13,6 @@ import { SubmitButton } from 'Presentational/elements/Form'
 export const EventForm = (props) => {
     let initialValues = props.event ? props.event : eventInitialValues
     return <Formik
-        enableReinitialize
         validationSchema={
             Yup.object().shape(EventFormValidations)
         }

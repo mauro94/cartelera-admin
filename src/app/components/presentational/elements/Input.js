@@ -3,9 +3,10 @@ import { Field } from 'formik'
 import { Password } from 'Presentational/elements/Password'
 import { DatePickerElement } from 'Presentational/elements/DatePickerElement'
 import { Format, Labels } from 'Helpers/index'
-import { update } from 'Logic/actions/thunks/event';
-import { DateSinglePicker } from 'Presentational/elements/DateSinglePicker';
-import { TagManager } from 'Presentational/elements/Tags';
+import { update } from 'Logic/actions/thunks/event'
+import { DateSinglePicker } from 'Presentational/elements/DateSinglePicker'
+import { TagManager } from 'Presentational/elements/Tags'
+import ContentEditable from 'react-contenteditable'
 
 const MoneyFieldComponent = (props) => (
   <div className='with-static-placeholder'>
@@ -126,9 +127,8 @@ export const Selector = (props) => (
         {Format.capitalize(Labels[props.label])}
       </label>
       <Field name={props.label}
-        list={props.list ? props.list : []}
         className={(touchedWithErrors(props) ? 'emptyField' : 'readyField')}
-        component={props.component ? props.component : SelectComponent} />
+        component={props.component} />
     </div>
     {touchedWithErrors(props) && <p className="message-error">{props.errors[props.label]}</p>}
   </div>
@@ -199,8 +199,8 @@ export const ToggleComponent = (props) => {
       <input className={((touchedWithErrors(props)) ? 'switch__input emptyField' : 'switch__input readyField')}
         type="checkbox"
         name={props.field.name}
-        checked={props.values[props.label] == 'on' ? true : false}
-        onChange={(e) => { updateFormik(props.field.name, (e.target.checked ? 'on' : 'off'), props.setFieldValue, props.setTouched, props.touched) }} />
+        checked={props.values[props.label]}
+        onChange={(e) => { updateFormik(props.field.name, e.target.checked, props.setFieldValue, props.setTouched, props.touched) }} />
       <div className="switch__checkbox"></div>
     </label>
   </div>
@@ -220,30 +220,65 @@ export const TextAreaComponent = ({
     </div>
   )
 
-export const TextFieldAreaComponent = (props) => {
-  return <div
-    className={((touchedWithErrors(props)) ? 'textarea emptyField' : 'textarea readyField')}
-    rows="1"
-    contentEditable="true"
-    suppressContentEditableWarning
-    name={props.field.name}
-    onInput={props.textareaHandleChange}
-    onBlur={(e) => {
-      updateFormik(props.field.name, e.target.textContent, props.setFieldValue, props.setTouched, props.touched)
-    }}>
-    {props.field.value}
-  </div>
+export class TextFieldAreaComponent extends React.Component {
+  constructor() {
+    super()
+    this.handleBlur = this.handleBlur.bind(this)
+    // this.state = {
+    //   html: this.props.field.values[this.props.field.name]
+    // }
+  }
+
+  componentDidMount() {
+    document.querySelector('div[contenteditable="true"]').addEventListener("paste", function (e) {
+      e.preventDefault();
+      var text = e.clipboardData.getData("text/plain");
+      document.execCommand("insertHTML", false, text);
+    })
+  }
+
+  handleBlur(e) {
+    console.log(e)
+    updateFormik(this.props.field.name, e.target.value, this.props.setFieldValue, this.props.setTouched, this.props.touched)
+  }
+
+  render() {
+    // return <div
+    //   className={'textarea ' + ((touchedWithErrors(this.props)) ? 'emptyField' : 'readyField')}
+    //   rows='1'
+    //   contentEditable="true"
+    //   suppressContentEditableWarning
+    //   name={this.props.field.name}
+    //   onInput={this.props.textareaHandleChange}
+    //   onBlur={(e) => { this.handleBlur(e) }}>
+    //   {this.props.field.value}
+    // </div>
+
+    return <ContentEditable
+      className={'textarea ' + ((touchedWithErrors(this.props)) ? 'emptyField' : 'readyField')}
+      html={this.props.field.value} // innerHTML of the editable div
+      onChange={this.handleBlur} // handle innerHTML change
+    />
+  }
 }
 
-export const SelectComponent = (props) => (
-  <div className="form-field">
-    <select
-      {...props.field}
-      {...props}>
-      {props.list.map(Option)}
-    </select>
-  </div>
-)
+export const SelectComponent = (props) => {
+  return (
+    <div className="form-field">
+      <select
+        {...props.field}
+        {...props}>
+        {props.list.map(element =>
+          <option
+            key={element.key}
+            value={element.key}>
+            {element.text}
+          </option>
+        )}
+      </select>
+    </div>
+  )
+}
 
 export const FieldDate = (props) => (
   <Field
