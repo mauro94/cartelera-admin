@@ -70,6 +70,18 @@ form {
     }
 }
 
+.large-button-container{
+    width: 100%;
+}
+
+.email-format{
+    display: block;
+    left: 0;
+    position: absolute;
+    top: -1000px;
+    z-index: 99;
+}
+
 .form-general-data{
     display: flex;
     flex-wrap: wrap;

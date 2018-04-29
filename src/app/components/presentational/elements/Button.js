@@ -3,7 +3,7 @@ import React from 'react'
 const Button = (props) => {
     return (
         <div className={'btn' + (props.right ? ' right' : '')}>
-            <button
+            <Button
                 className={(props.type ? props.type : 'primary')
                     + (props.hide ? ' hide' : '')
                     + (props.small ? ' sm' : '')}
