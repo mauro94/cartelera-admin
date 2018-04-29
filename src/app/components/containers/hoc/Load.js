@@ -19,6 +19,9 @@ const load = (loadingResource, Component) => {
             }
         }
         componentWillReceiveProps(nextProps) {
+            if (this.props.loadingResource == 'categories') {
+                console.log()
+            }
             let status = {
                 wasWaiting: this.waiting,
                 reducer: nextProps.reducer,

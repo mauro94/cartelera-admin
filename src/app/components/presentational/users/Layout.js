@@ -8,11 +8,14 @@ import Header from 'Presentational/elements/Header'
 const UsersLayout = (props) => (
     <React.Fragment>
         <Route
-            exact path='/usuarios/'
+            exact
+            path='/usuarios/'
             render={() => <Redirect
                 to={`/usuarios/sponsors/`} />
             } />
-        <Route path='/usuarios/:type' render={UsersPage} />
+        <Route
+            path='/usuarios/:type'
+            render={UsersPage} />
     </React.Fragment>
 )
 

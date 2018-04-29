@@ -6,8 +6,7 @@ export const eventInitialValues = {
     description: '',
     location: '',
     campus: 'MTY',
-    category: 'Congreso',
-    id: '1',
+    categoryId: '1',
     cost: '0',
     majors: [],
     languages: [],
@@ -29,7 +28,7 @@ export const eventInitialValues = {
     hasRegistration: '',
     hasDeadline: '',
     requirementsToRegister: '',
-    tags: [],
+    tagNames: [],
     photo: '',
     schedule: ''
 }

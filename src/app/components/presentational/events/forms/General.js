@@ -4,6 +4,7 @@ import { TextField, TextFieldArea, Selector, FieldDate } from 'Presentational/el
 import { Entity } from 'Helpers/index'
 import { FormButtonSubmit } from 'Presentational/elements/Form'
 import { CharactersLeft } from "Presentational/elements/CharactersLeft"
+import CategoriesDropdown from 'Containers/categories/Dropdown'
 
 export const EventsFormsIndex = (props) => {
     return <React.Fragment>
@@ -17,7 +18,19 @@ export const EventsFormsIndex = (props) => {
 
             <Selector label='campus' inputSizeSmall list={props.campusList} {...props} />
 
-            <Selector label='category' inputSizeSmall list={props.categoryList}  {...props} />
+            {/*<Selector label='categoryId' inputSizeSmall component={CategoriesDropdown} {...props} />*/}
+
+            <div className={'input-container sm'}>
+                <div className='text-input'>
+                    <label>
+                        {'Categoría'}
+                    </label>
+                    <Field name={'categoryId'}
+                        className={(touchedWithErrors(props) ? 'emptyField' : 'readyField')}
+                        component={CategoriesDropdown} />
+                </div>
+                {touchedWithErrors(props) && <p className="message-error">{props.errors[props.label]}</p>}
+            </div>
 
             <FieldDate label='rangeDatetime'{...props} />
 
@@ -25,3 +38,7 @@ export const EventsFormsIndex = (props) => {
 
     </React.Fragment>
 }
+
+const touchedWithErrors = (props) => (
+    props.touched[props.label] && props.errors[props.label]
+)

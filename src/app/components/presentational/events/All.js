@@ -1,13 +1,15 @@
 import React from 'react'
-import { Route, NavLink } from 'react-router-dom'
+import { Route, NavLink, Link } from 'react-router-dom'
 import { List as EventsList } from 'Containers/events'
+import { Plus } from 'Images/plus'
+import { Button } from 'Presentational/elements'
 import 'Style/eventsMenuLayout.scss'
 
 const AllEvents = () => (
     <React.Fragment>
         <div className='title'>
-            <div className="top-container">
-                <div className="header-stick">
+            <div className='top-container'>
+                <div className='header-stick'>
                     <h1>{`Eventos ${location.search.includes('pasados') ? 'pasados ' : 'próximos '}`}</h1>
                     <h1 className='toggle-title-filter'>
                         <NavLink to={{ search: '?tipo=' + (location.search.includes('pasados') ? 'próximos' : 'pasados') }}>
@@ -16,6 +18,15 @@ const AllEvents = () => (
                     </h1>
                 </div>
                 <div className='actions-container'>
+                    <Link to='/eventos/nuevo'>
+                        <div className='add'>
+                            <Button type='icon-button primary'>
+                                <div className='plus'>
+                                    <Plus />
+                                </div>
+                            </Button>
+                        </div>
+                    </Link>
                 </div>
             </div>
         </div>

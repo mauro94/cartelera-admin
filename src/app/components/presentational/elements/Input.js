@@ -126,9 +126,9 @@ export const Selector = (props) => (
         {Format.capitalize(Labels[props.label])}
       </label>
       <Field name={props.label}
-        list={props.list}
+        list={props.list ? props.list : []}
         className={(touchedWithErrors(props) ? 'emptyField' : 'readyField')}
-        component={SelectComponent} />
+        component={props.component ? props.component : SelectComponent} />
     </div>
     {touchedWithErrors(props) && <p className="message-error">{props.errors[props.label]}</p>}
   </div>
@@ -243,23 +243,7 @@ export const SelectComponent = (props) => (
       {props.list.map(Option)}
     </select>
   </div>
-);
-
-export const SelectorComponent = (props) => (
-  <React.Fragment>
-    <div className='input-container sm'>
-      <div className='text-input'>
-        <label>
-          {Format.capitalize(Labels[props.field.name])}
-        </label>
-        <Field name={props.field.name}
-          list={props.list}
-          className={((props.form.touched[props.field.name] && props.form.errors[props.field.name]) ? 'emptyField' : 'readyField')}
-          component={SelectComponent} />
-      </div>
-    </div>
-  </React.Fragment>
-);
+)
 
 export const FieldDate = (props) => (
   <Field

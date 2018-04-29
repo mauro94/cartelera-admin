@@ -7,7 +7,7 @@ import { FormButtonSignout, FormButtonSubmit } from 'Presentational/elements/For
 export const EventsFormsOptional = (props) => (
     <React.Fragment>
 
-        <TagField label='tags' placeholder='' {...props} />
+        <TagField label='tagNames' placeholder='' {...props} />
 
         <MoneyField label='cost' inputSizeSmall {...props} />
 
