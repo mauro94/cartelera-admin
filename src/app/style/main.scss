@@ -282,6 +282,8 @@ h3 {
   width: 100%;
   text-align: left;
   max-width: 100%;
+  min-height: 100px;
+  justify-content: center;
 
   &.sm{
     margin-right: 50px;
@@ -325,7 +327,6 @@ h3 {
   }
   
    .text-input{
-     overflow: hidden;  
      margin-bottom: .875em;
 
      &.toggle{
