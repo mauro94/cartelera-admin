@@ -13,6 +13,28 @@
         filter: opacity(70%);
         padding: 20px;
         text-decoration: none;
+
+        &.column{
+            justify-content: center;
+        }
+
+        .column-focus{
+            display: flex;
+            justify-content: flex-end;
+            text-align: right;
+            padding: 0px 10px;
+            font-weight: 600;
+            font-size: 1.6rem;
+            width: 100%;
+        }
+
+        .column-no-focus{
+            display:flex;
+            font-size: 1.2rem;
+            padding: 0px 10px;
+            width: 100%;
+        }
+
         .title {
             margin-left: 10px;
             font-size: 18px;

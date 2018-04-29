@@ -6,8 +6,13 @@ import { load } from 'Containers/hoc'
 const ListRegistrees = (props) => (
     <div className='list'>
         {props.registrees.map((r, index) => (
-            <div className='list-item' key={`registree-${index}`}>
-                {r['user_email']}
+            <div className='list-item column' key={`registree-${index}`}>
+                <div className='column-focus'>
+                    {r['fullName']}
+                </div>
+                <div className='column-no-focus'>
+                    {r['email']}
+                </div>
             </div>
         ))}
     </div>
