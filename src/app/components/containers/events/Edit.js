@@ -45,6 +45,8 @@ class Edit extends React.Component {
 
     handleSubmit(values) {
         let updatedEvent = { id: this.props.event.show.id }
+        values.startDatetime = values.rangeDatetime.startDatetime
+        values.endDatetime = values.rangeDatetime.endDatetime
         for (var key in this.props.event.show) {
             if (values.hasOwnProperty(key)) {
                 if (this.props.event.show[key] != values[key] && key != 'id') {
