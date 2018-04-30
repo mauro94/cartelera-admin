@@ -238,22 +238,10 @@ export class TextFieldAreaComponent extends React.Component {
   }
 
   handleBlur(e) {
-    console.log(e)
     updateFormik(this.props.field.name, e.target.value, this.props.setFieldValue, this.props.setTouched, this.props.touched)
   }
 
   render() {
-    // return <div
-    //   className={'textarea ' + ((touchedWithErrors(this.props)) ? 'emptyField' : 'readyField')}
-    //   rows='1'
-    //   contentEditable="true"
-    //   suppressContentEditableWarning
-    //   name={this.props.field.name}
-    //   onInput={this.props.textareaHandleChange}
-    //   onBlur={(e) => { this.handleBlur(e) }}>
-    //   {this.props.field.value}
-    // </div>
-
     return <ContentEditable
       className={'textarea ' + ((touchedWithErrors(this.props)) ? 'emptyField' : 'readyField')}
       html={this.props.field.value} // innerHTML of the editable div
