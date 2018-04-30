@@ -91,14 +91,14 @@ export const Labels = Object.freeze({
     requirementsToRegister: "requerimientos para registrarse",
     hasRegistration: "usar funcionalidad de registro de la página",
     hasDeadline: "registro tiene fecha límite",
-    tagNames: "Temas relacionados",
+    tagNames: "temas relacionados",
     photo: "imagen del evento",
     schedule: "horario del evento",
-    categoryName: 'Categoría',
-    pastEvents: 'Eventos pasados',
-    upcomingEvents: 'Eventos próximos',
-    totalEvents: 'Eventos totales',
-    maxCapacity: "capacidad máxima de personas registradas"
+    categoryName: 'eategoría',
+    pastEvents: 'eventos pasados',
+    upcomingEvents: 'eventos próximos',
+    totalEvents: 'eventos totales',
+    maxCapacity: 'número máximo de personas registradas'
 })
 
 export const Months = Object.freeze([
