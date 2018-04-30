@@ -2,6 +2,7 @@ import React from 'react'
 import { Formik, Form } from 'formik'
 import Yup from 'yup'
 import { load } from 'Containers/hoc'
+import { campusList } from 'Config/Test'
 import {
     CurrentUserFormValidations,
     BasicUserFormValidations,
@@ -11,7 +12,9 @@ import {
 import {
     Button,
     TextField,
-    SubmitButton
+    SubmitButton,
+    Selector,
+    SelectComponent 
 } from 'Presentational/elements'
 import { PasswordField } from 'Presentational/elements/Input';
 
@@ -62,7 +65,7 @@ const BasicForm = (props) => (
 
         <TextField label='phoneNumber' inputSizeSmall {...props} />
 
-        <TextField label='campus' inputSizeSmall {...props} />
+        <Selector label='campus' inputSizeSmall component={CampusDropdown} {...props} />
 
         {props.isNewbie && props.current && <PasswordField label='password' inputSizeSmall {...props} />}
         {props.isNewbie && props.current && <PasswordField label='passwordConfirm' inputSizeSmall {...props} />}
@@ -71,9 +74,23 @@ const BasicForm = (props) => (
             <SubmitButton {...props}>
                 {props.isNewbie && props.current ? 'Continuar' : 'Actualizar'}
             </SubmitButton>
+
+            { props.logout && props.isNewbie &&
+            <Button
+                type='secondary lg'
+                handleClick={() => props.logout()}>
+                {'Cerrar sesión'}
+            </Button>}
         </div>
 
+
     </Form>
+)
+
+const CampusDropdown = (props) => (
+    <SelectComponent
+        list={campusList}
+        {...props} />
 )
 
 // export default load('user', Basic)
