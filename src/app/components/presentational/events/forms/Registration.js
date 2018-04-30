@@ -3,6 +3,7 @@ import {
     TextField,
     TextFieldArea,
     FieldSingleDate,
+    NumberField,
     ToggleField
 } from 'Presentational/elements/Input'
 import { Entity } from 'Helpers/object'
@@ -23,6 +24,8 @@ export const EventsFormsRegistration = (props) => (
         </div>
 
         <TextFieldArea label='requirementsToRegister' {...props} />
+
+        <NumberField label='maxCapacity' {...props} />
 
         <ToggleField label='hasDeadline' {...props} />
 

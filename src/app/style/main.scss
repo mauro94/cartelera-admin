@@ -328,6 +328,8 @@ h3 {
   
    .text-input{
      margin-bottom: .875em;
+     width: 100%;
+     overflow: auto;
 
      &.toggle{
        display: flex;
@@ -399,9 +401,9 @@ h3 {
    input[type="number"],
    input[type="text"]{
      font-family: inherit;
-     width: 100%;
-     padding: 0.7em;
-     padding-left: 7px;
+     width: 95%;
+     padding: 0.5em 0;
+      padding-left: 7px;
      background: none;
      color: $black;
      font-size: 1.5em;

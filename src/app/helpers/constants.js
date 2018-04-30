@@ -97,7 +97,8 @@ export const Labels = Object.freeze({
     categoryName: 'Categoría',
     pastEvents: 'Eventos pasados',
     upcomingEvents: 'Eventos próximos',
-    totalEvents: 'Eventos totales'
+    totalEvents: 'Eventos totales',
+    maxCapacity: "capacidad máxima de personas registradas"
 })
 
 export const Months = Object.freeze([
