@@ -74,16 +74,7 @@ const BasicForm = (props) => (
             <SubmitButton {...props}>
                 {props.isNewbie && props.current ? 'Continuar' : 'Actualizar'}
             </SubmitButton>
-
-            { props.logout && props.isNewbie &&
-            <Button
-                type='secondary lg'
-                handleClick={() => props.logout()}>
-                {'Cerrar sesión'}
-            </Button>}
         </div>
-
-
     </Form>
 )
 

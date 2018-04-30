@@ -5,6 +5,7 @@ import { thunks } from 'Logic/actions/thunks'
 import { default as EditEvent } from 'Presentational/events/Edit'
 import { Entity, Format, EventActions } from 'Helpers/index'
 import { getEventInitialValues } from 'Presentational/events/forms/helper'
+import { ConfirmUpdate } from 'Presentational/events/modals'
 
 class Edit extends React.Component {
     constructor(props) {
@@ -12,10 +13,10 @@ class Edit extends React.Component {
         this.action = EventActions.Get
         this.togglePublished = this.togglePublished.bind(this)
         this.handleConfirmCancel = this.handleConfirmCancel.bind(this)
-        this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleConfirmUpdate = this.handleConfirmUpdate.bind(this)
         this.textareaHandleChange = this.textareaHandleChange.bind(this)
         this.setTextarea = this.setTextarea.bind(this)
-        this.state = {
+        this.state = { 
             textarea: {
                 description: ''
             }
@@ -43,7 +44,7 @@ class Edit extends React.Component {
         })
     }
 
-    handleSubmit(values) {
+    handleConfirmUpdate(values) {
         let updatedEvent = { id: this.props.event.show.id }
         values.startDatetime = values.rangeDatetime.startDatetime
         values.endDatetime = values.rangeDatetime.endDatetime
@@ -101,9 +102,10 @@ class Edit extends React.Component {
                 event={this.props.event.show}
                 textarea={this.state.textarea}
                 textareaHandleChange={this.textareaHandleChange}
-                handleSubmit={this.handleSubmit}
                 togglePublished={this.togglePublished}
+                modal={ConfirmUpdate}
                 handleConfirmCancel={this.handleConfirmCancel}
+                handleConfirmUpdate={this.handleConfirmUpdate}
                 hide
                 onSuccess={() => this.handleActionSucceeded()}
                 reducer={{

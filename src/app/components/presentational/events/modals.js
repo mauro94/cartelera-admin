@@ -1,6 +1,23 @@
 import React from 'react'
 import { ConfirmationModal, FeedbackModal } from 'Presentational/elements'
 
+export const ConfirmUpdate = (props) => (
+    <ConfirmationModal
+        title={'Editar evento'}
+        subtitle={props.event.name}
+        confirmationMsg={'La información del evento se va a modificar'}
+        lastMsg={'confirmar actualización'}
+        buttonClass={'modal-confirm-button'}
+        handleConfirmCancel={() => {
+            props.handleConfirm()
+            props.onClose()
+        }}
+        handleCancel={() => {
+            props.onClose()
+        }}>
+    </ConfirmationModal>
+)
+
 export const ConfirmPublish = (props) => (
     <ConfirmationModal
         error

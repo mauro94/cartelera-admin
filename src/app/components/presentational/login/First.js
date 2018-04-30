@@ -29,6 +29,13 @@ class FirstLogin extends React.Component {
                         logout
                         userToUpdate={{...this.props.currentUser, password: '', passwordConfirm: ''}}>
                         <BasicForm />
+                        <div className="sub-form buttons">
+                            <Button
+                                type='secondary lg'
+                                handleClick={() => {this.props.logout()} }>
+                                {'Cerrar sesión'}
+                            </Button>
+                        </div>
                     </EditCurrentUser>
                 </div>
             </div>
