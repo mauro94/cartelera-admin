@@ -69,6 +69,7 @@ export const Labels = Object.freeze({
     name: 'nombre',
     description: "descripción",
     category: "categoría",
+    categoryId: 'categoría',
     rangeDatetime: "fecha y hora",
     startDatetime: "inicio: fecha y hora de inicio",
     endDatetime: "fin: fecha y hora de fin",
@@ -90,7 +91,7 @@ export const Labels = Object.freeze({
     requirementsToRegister: "requerimientos para registrarse",
     hasRegistration: "usar funcionalidad de registro de la página",
     hasDeadline: "registro tiene fecha límite",
-    tags: "Temas relacionados",
+    tagNames: "Temas relacionados",
     photo: "imagen del evento",
     schedule: "horario del evento",
     categoryName: 'Categoría',
@@ -146,11 +147,15 @@ export const LoginFormValidations = Object.freeze({
     password: PasswordFormValidations.password
 })
 
+var imgUrlRegex = new RegExp(/.*(jpg|gif|png)/i)
+
 export const EventFormValidations = Object.freeze({
     name: Yup.string().required("Nombre requerido"),
+    schedule: Yup.string().matches(imgUrlRegex, 'Liga de imagen inválida'),
+    photo: Yup.string().matches(imgUrlRegex, 'Liga de imagen inválida').required('Imagen requerida'),
     description: Yup.string().max(CharacterCount, `Limite de ${CharacterCount} caracteres superado. `).required("Descripción requerida"),
     location: Yup.string().required("Ubicación requerida"),
-    cost: Yup.string().matches(/^(\d+)(\.)?(\d+)$/, "Costo inválido"),
+    cost: Yup.string().matches(/(?=.*?\d)^(([1-9]\d{0,2}(,\d{3})*)|\d+)?(\.\d{1,2})?$/, "Costo inválido"),
     contactName: Yup.string().required("Nombre requerido"),
     contactEmail: Yup.string().email("Correo no valido").required("Correo requerido"),
     contactPhone: Yup.string()

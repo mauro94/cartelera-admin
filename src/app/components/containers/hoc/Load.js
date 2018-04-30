@@ -51,7 +51,7 @@ const load = (loadingResource, Component) => {
             }
         }
         getProps() {
-            let { reducer, action, ...childProps } = this.props;
+            let { reducer, action, onSuccess, onError, hide, ...childProps } = this.props;
             return childProps
         }
         render() {

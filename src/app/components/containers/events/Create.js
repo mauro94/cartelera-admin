@@ -1,10 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
-import { categoryList, campusList } from 'Config/Test'
 import { thunks } from 'Logic/actions/thunks'
 import CreateEvent from 'Presentational/events/Create'
-import { Entity, EventActions, history } from 'Helpers/index';
+import { Entity, EventActions, history } from 'Helpers/index'
 
 class Create extends React.Component {
     constructor() {
@@ -27,6 +26,11 @@ class Create extends React.Component {
     }
 
     handleSubmit(values) {
+        values.sponsorId = this.props.currentUser.show.id
+        values.applicantId = this.props.currentUser.show.id
+        values.startDatetime = values.rangeDatetime.startDatetime
+        values.endDatetime = values.rangeDatetime.endDatetime
+        delete values.rangeDatetime
         this.props.createEvent(values)
     }
 
@@ -47,8 +51,6 @@ class Create extends React.Component {
         return (
             <CreateEvent
                 action={EventActions.Create}
-                campusList={campusList}
-                categoryList={categoryList}
                 textarea={this.state.textarea}
                 textareaHandleChange={this.textareaHandleChange}
                 handleSubmit={this.handleSubmit}
@@ -65,6 +67,7 @@ class Create extends React.Component {
 
 const mapStateToProps = state => {
     return {
+        currentUser: state.currentUser,
         event: state.event
     }
 }

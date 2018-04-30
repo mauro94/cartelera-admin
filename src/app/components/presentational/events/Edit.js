@@ -12,15 +12,6 @@ import {
 
 const EventsEdit = (props) => {
     let event = getEventInitialValues(props.event)
-    event = {
-        ...event,
-        rangeDatetime: Format.toRange(props.event.startDatetime,
-            props.event.endDatetime),
-        publicEvent: Format.toggle(props.event.publicEvent) || 'off',
-        petFriendly: Format.toggle(props.event.petFriendly) || 'off',
-        hasRegistration: Format.toggle(props.event.hasRegistration) || '',
-        hasDeadline: Format.toggle(props.event.hasDeadline) || '',
-    }
 
     return (
         <Router>

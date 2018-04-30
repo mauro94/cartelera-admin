@@ -13,11 +13,11 @@ export const EventsFormsRegistration = (props) => (
         <div className='registration-toggler'>
             <ToggleField label='hasRegistration' {...props} />
 
-            {props.values.hasRegistration == "on" &&
+            {props.values.hasRegistration &&
                 <TextFieldArea label='registrationMessage' {...props} />
             }
 
-            {props.values.hasRegistration == "off" &&
+            {!props.values.hasRegistration &&
                 <TextField label='registrationUrl' {...props} />
             }
         </div>
@@ -26,7 +26,7 @@ export const EventsFormsRegistration = (props) => (
 
         <ToggleField label='hasDeadline' {...props} />
 
-        {props.values.hasDeadline == "on" && <FieldSingleDate label='registrationDeadline' {...props} />}
+        {props.values.hasDeadline && <FieldSingleDate label='registrationDeadline' {...props} />}
 
     </React.Fragment>
 )

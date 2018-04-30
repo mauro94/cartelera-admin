@@ -1,7 +1,4 @@
 export const Format = {
-    toggle: (publicEvent) => {
-        return (publicEvent ? 'on' : 'off')
-    },
     array: (arr) => {
         let outStr = '';
         if (arr.length === 1) {

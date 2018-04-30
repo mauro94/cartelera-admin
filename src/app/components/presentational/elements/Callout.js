@@ -11,7 +11,7 @@ export default class Callout extends React.Component {
         this.handleOutsideClick = this.handleOutsideClick.bind(this);
         this.state = {
             showCallout: false
-        };
+        }
     }
 
     handleClick() {
@@ -26,16 +26,16 @@ export default class Callout extends React.Component {
 
         this.setState(prevState => ({
             showCallout: !prevState.showCallout,
-        }));
+        }))
     }
 
     handleOutsideClick(e) {
         // ignore clicks on the component itself
         if (this.node.contains(e.target)) {
-            return;
+            return
         }
 
-        this.handleClick();
+        this.handleClick()
     }
 
     render() {
@@ -53,7 +53,6 @@ export default class Callout extends React.Component {
                                 <div className='plus'>
                                     <Plus />
                                 </div>
-                                {/*`Agregar ${this.props.type}`*/}
                             </Button>
                         }
                         {this.state.showCallout &&

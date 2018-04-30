@@ -7,7 +7,7 @@ import { FormButtonSignout, FormButtonSubmit } from 'Presentational/elements/For
 export const EventsFormsOptional = (props) => (
     <React.Fragment>
 
-        <TagField label='tags' placeholder='' {...props} />
+        <TagField label='tagNames' placeholder='' {...props} />
 
         <MoneyField label='cost' inputSizeSmall {...props} />
 
@@ -15,9 +15,9 @@ export const EventsFormsOptional = (props) => (
 
         <TagField label='languages' placeholder='' inputSizeSmall {...props} />
 
-        <ToggleField label='publicEvent' toggleMessage='Exclusivo para alumnos del Tec' toggleMessageInfoTrigger='off' inputSizeSmall {...props} />
+        <ToggleField label='publicEvent' toggleMessage='Exclusivo para alumnos del Tec' inputSizeSmall {...props} />
 
-        <ToggleField label='petFriendly' toggleMessage='Mascotas son bienvenidas' toggleMessageInfoTrigger='on' inputSizeSmall {...props} />
+        <ToggleField label='petFriendly' toggleMessage='Mascotas son bienvenidas' toggleMessageInfoTrigger inputSizeSmall {...props} />
 
     </React.Fragment>
 )

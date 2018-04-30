@@ -1,27 +1,37 @@
 import React, { Fragment } from 'react'
 import { Formik, Form, Field } from 'formik';
-import { TextField, TextFieldArea, Selector, FieldDate } from 'Presentational/elements/Input';
+import { TextField, TextFieldArea, Selector, FieldDate, SelectComponent } from 'Presentational/elements/Input';
 import { Entity } from 'Helpers/index'
+import { campusList } from 'Config/Test'
 import { FormButtonSubmit } from 'Presentational/elements/Form'
 import { CharactersLeft } from "Presentational/elements/CharactersLeft"
+import CategoriesDropdown from 'Containers/categories/Dropdown'
 
 export const EventsFormsIndex = (props) => {
-    return <React.Fragment>
+    return (
+        <React.Fragment>
 
-        <div className="form-general-data">
-            <TextField label='name' {...props} />
+            <div className="form-general-data">
+                <TextField label='name' {...props} />
 
-            <TextFieldArea label='description' {...props} />
+                <TextFieldArea label='description' {...props} />
 
-            <TextField label='location' {...props} />
+                <TextField label='location' {...props} />
 
-            <Selector label='campus' inputSizeSmall list={props.campusList} {...props} />
+                <Selector label='campus' inputSizeSmall component={CampusDropdown} {...props} />
 
-            <Selector label='category' inputSizeSmall list={props.categoryList}  {...props} />
+                <Selector label='categoryId' inputSizeSmall component={CategoriesDropdown} {...props} />
 
-            <FieldDate label='rangeDatetime'{...props} />
+                <FieldDate label='rangeDatetime'{...props} />
 
-        </div>
+            </div>
 
-    </React.Fragment>
+        </React.Fragment>
+    )
 }
+
+const CampusDropdown = (props) => (
+    <SelectComponent
+        list={campusList}
+        {...props} />
+)
