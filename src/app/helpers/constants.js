@@ -98,6 +98,7 @@ export const Labels = Object.freeze({
     pastEvents: 'eventos pasados',
     upcomingEvents: 'eventos próximos',
     totalEvents: 'eventos totales',
+    hasCapacity: 'registro tiene cupo limitado',
     maxCapacity: 'número máximo de personas registradas'
 })
 
