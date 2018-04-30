@@ -28,7 +28,7 @@ class Registrees extends React.Component {
 
     createRegistreeEmailsToCopy() {
         let emails = this.props.registree.all.map(e => e.email)
-        let result = emails.join(";\n")
+        let result = emails.join(';\n')
         this.setState({
             registreeEmailsToCopy: result
         })

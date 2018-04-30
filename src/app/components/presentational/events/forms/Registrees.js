@@ -1,20 +1,13 @@
 import React from 'react'
 import { history } from 'Helpers/index'
-import { Button } from 'Presentational/elements'
+import { ClipboardButton } from 'Presentational/elements'
 import { load } from 'Containers/hoc'
+import { Entity } from 'Helpers/index';
 
 const ListRegistrees = (props) => {
     return <React.Fragment>
-            <div className='large-button-container'>
-                <Button
-                    type='dark lg'
-                    handleClick={(event) => {
-                        event.preventDefault()
-                        copyTextToClipboard('registree-emails-to-copy')
-                    }}> 
-                    Copiar lista de correos
-                </Button>
-            </div>
+
+            {!Entity.isEmpty(props.registrees) && <ClipboardButton buttonText="Copiar lista de correos"></ClipboardButton>}
 
             <div className='list'>
                 {props.registrees.map((r, index) => (
@@ -29,14 +22,10 @@ const ListRegistrees = (props) => {
                 ))}
             </div>
 
-            <input id='registree-emails-to-copy' className='email-format' value={props.registreeEmailsToCopy}></input>
-        </React.Fragment>
-}
+            <textarea id='registree-emails-to-copy' className='email-format' rows='5' value={props.registreeEmailsToCopy}>
+            </textarea>
 
-const copyTextToClipboard = (elementId) => {
-    let copyText = document.getElementById(elementId);
-    copyText.select();
-    document.execCommand("Copy",false);
+        </React.Fragment>
 }
 
 export default load('registrees', ListRegistrees)

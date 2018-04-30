@@ -70,6 +70,14 @@ form {
     }
 }
 
+.linger {
+    pointer-events: auto !important;
+    &:hover {
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+}
+
 .large-button-container{
     width: 100%;
 }
