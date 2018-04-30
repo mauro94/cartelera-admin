@@ -2,9 +2,10 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import { faEnvelope } from '@fortawesome/fontawesome-free-regular'
-import { faLock, faLockOpen, faPhone, faPencilAlt } from '@fortawesome/fontawesome-free-solid'
+import { faPhone, faPencilAlt } from '@fortawesome/fontawesome-free-solid'
 import { Format, Labels } from 'Helpers/index'
 import { Button, UserAvatar, Tag } from 'Presentational/elements'
+import { Toggle as ToggleUser } from 'Containers/users'
 
 const UserShow = (props) => {
     let selectedItem = document.getElementById(`list-item-${props.user.id}`)
@@ -12,32 +13,14 @@ const UserShow = (props) => {
     return <div className='expanded-selection'>
         <Title user={props.user} />
         <Details user={props.user} />
-        <Actions enabled={props.user.enabled} id={props.user.id} />
+        <Actions user={props.user} />
     </div>
-}
-
-const ToggleEnable = (props) => {
-    if (props.enabled) {
-        return (
-            <React.Fragment>
-                <FontAwesomeIcon icon={faLock} />
-            </React.Fragment>
-        )
-    }
-    return (
-        <React.Fragment>
-            <FontAwesomeIcon icon={faLockOpen} />
-        </React.Fragment>
-    )
 }
 
 const Actions = (props) => (
     <div className='actions'>
-        <Button
-            type={props.enabled ? 'danger' : 'primary'}>
-            <ToggleEnable enabled={props.enabled} />
-        </Button>
-        <Link to={`${props.id}/editar`}>
+        <ToggleUser userToToggle={props.user} />
+        <Link to={`${props.user.id}/editar`}>
             <Button>
                 <FontAwesomeIcon icon={faPencilAlt} />
             </Button>
