@@ -47,6 +47,10 @@ class Edit extends React.Component {
         let updatedEvent = { id: this.props.event.show.id }
         values.startDatetime = values.rangeDatetime.startDatetime
         values.endDatetime = values.rangeDatetime.endDatetime
+
+        //Has capacity
+        values.maxCapacity = (values.hasCapacity == false ? 0 : values.maxCapacity)
+
         for (var key in this.props.event.show) {
             if (values.hasOwnProperty(key)) {
                 if (this.props.event.show[key] != values[key] && key != 'id') {

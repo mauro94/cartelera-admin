@@ -25,7 +25,9 @@ export const EventsFormsRegistration = (props) => (
 
         <TextFieldArea label='requirementsToRegister' {...props} />
 
-        <NumberField label='maxCapacity' {...props} />
+        <ToggleField label='hasCapacity' {...props} />
+
+        {props.values.hasCapacity && <NumberField label='maxCapacity' {...props} />}
 
         <ToggleField label='hasDeadline' {...props} />
 

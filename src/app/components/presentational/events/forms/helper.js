@@ -30,7 +30,9 @@ export const eventInitialValues = {
     requirementsToRegister: '',
     tagNames: [],
     photo: '',
-    schedule: ''
+    schedule: '',
+    hasCapacity: false,
+    maxCapacity: '0'
 }
 
 export const getEventInitialValues = (event) => {
@@ -46,5 +48,6 @@ export const getEventInitialValues = (event) => {
     }
     formattedEvent.category = event.category || ''
     formattedEvent.categoryId = eventInitialValues.categoryId
+    formattedEvent.hasCapacity = (formattedEvent.maxCapacity > 0)
     return formattedEvent
 }
