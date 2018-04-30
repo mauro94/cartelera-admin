@@ -39,6 +39,7 @@ export const Entry = (props) => (
 export const SubmitButton = (props) => {
     return (
         <Button
+            type='primary lg'
             className='button-submit'
             disabled={!props.isValid || props.isSubmitting}>
             {!props.isSubmitting && props.children}

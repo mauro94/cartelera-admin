@@ -6,23 +6,24 @@ import { FormButtonSignout, FormButtonSubmit } from 'Presentational/elements/For
 
 export const EventsFormsImages = (props) => (
     <React.Fragment>
-        <div className='photo-editor'>
-            <TextField label='photo' inputSizeSmall {...props} />
+        <div class="add-photos-container">
+            <div className='photo-editor'>
+                <TextField label='photo' inputSizeSmall {...props} />
 
-            <div className='show-image'>
-                <img src={props.values.photo} />
+                <div className='show-image'>
+                    <img src={props.values.photo} />
+                </div>
+
             </div>
 
-        </div>
+            <div className='photo-editor'>
+                <TextField label='schedule' inputSizeSmall {...props} />
 
-        <div className='photo-editor'>
-            <TextField label='schedule' inputSizeSmall {...props} />
+                <div className='show-image'>
+                    <img src={props.values.schedule} />
+                </div>
 
-            <div className='show-image'>
-                <img src={props.values.schedule} />
             </div>
-
         </div>
-
     </React.Fragment>
 )

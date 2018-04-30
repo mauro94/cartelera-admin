@@ -40,6 +40,19 @@ export const TextField = (props) => (
   </div>
 )
 
+export const NumberField = (props) => (
+  <div className={props.inputSizeSmall ? 'input-container sm' : 'input-container'}>
+    <div className='text-input'>
+      <label>
+        {Format.capitalize(Labels[props.label])}
+      </label>
+      <Field name={props.label} className={(touchedWithErrors(props) ? 'emptyField' : 'readyField')} type="number" />
+      <span className='separator'> </span>
+    </div>
+    {touchedWithErrors(props) && <p className="message-error">{props.errors[props.label]}</p>}
+  </div>
+)
+
 export const MoneyField = (props) => (
   <div className={props.inputSizeSmall ? 'input-container sm' : 'input-container'}>
     <div className='text-input'>

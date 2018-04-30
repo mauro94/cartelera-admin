@@ -1,4 +1,4 @@
-import { history, Format, Session, Status, CurrentUserActions, UserActions, SessionActions } from 'Helpers/index'
+import { history, Format, Session, Status, CurrentUserActions, UserActions, SessionActions, EventActions } from 'Helpers/index'
 import { createAction } from 'Logic/actions'
 import { serverCall, request, headers } from 'Logic/actions/thunks/helper'
 
@@ -41,6 +41,9 @@ export const logout = () => {
         dispatch(
             createAction(SessionActions.Logout, null, null,
                 Status.Ready))
+        dispatch(
+            createAction(EventActions.All, {}, null, Status.Ready)
+        )
         history.replace('/login')
     }
 }

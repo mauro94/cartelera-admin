@@ -16,10 +16,9 @@ export const allFromEventId = (eventId) => {
             ))
         },
         call: () => request.get(
-            '/registrees', {
+            `events/${eventId}/registrees`, {
                 headers: {
-                    ...headers.withAuth(),
-                    'eventId': eventId
+                    ...headers.withAuth()
                 }
             }),
     })

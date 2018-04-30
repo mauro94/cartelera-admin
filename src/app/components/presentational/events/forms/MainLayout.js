@@ -28,11 +28,11 @@ export const EventForm = (props) => {
             return (
                 <Form>
                     {routesWithProps}
-                    <div className="form-field buttons">
+                    {!location.pathname.includes('registrados') && <div className="form-field buttons">
                         <SubmitButton {...formProps}>
                             {props.event ? 'Actualizar' : 'Crear'}
                         </SubmitButton>
-                    </div>
+                    </div>}
                 </Form>
             )
         }}

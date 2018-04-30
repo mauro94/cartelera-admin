@@ -45,6 +45,11 @@ form {
         padding-top: 0px;
         width: 80%;
         margin-bottom: 15px;
+
+    }
+
+    .add-photos-container{
+        display: flex;
     }
 
     .photo-editor{
@@ -64,6 +69,26 @@ form {
         }
 
     }
+}
+
+.linger {
+    pointer-events: auto !important;
+    &:hover {
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+}
+
+.large-button-container{
+    width: 100%;
+}
+
+.email-format{
+    display: block;
+    left: 0;
+    position: absolute;
+    top: -1000px;
+    z-index: 99;
 }
 
 .form-general-data{

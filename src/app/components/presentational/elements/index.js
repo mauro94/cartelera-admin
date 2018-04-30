@@ -1,5 +1,6 @@
 export { default as ExpandedList } from './layouts/ExpandedList'
 export { default as Button } from './Button'
+export * from './ClipboardButton'
 export { default as Callout } from './Callout'
 export { CheckboxPublished, CheckboxCanceled } from './Checkbox'
 export { default as Dropdown } from './Dropdown'
