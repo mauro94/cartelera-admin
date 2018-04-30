@@ -4,6 +4,11 @@
     overflow-y: auto;
     min-width: 350px;
     flex-grow: 1;
+
+    &.long{
+        max-height: 100vh;
+    }
+    
     .list-item {
         align-items: center;
         align-content: center;

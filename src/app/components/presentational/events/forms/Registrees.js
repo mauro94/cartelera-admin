@@ -9,7 +9,7 @@ const ListRegistrees = (props) => {
 
             {!Entity.isEmpty(props.registrees) && <ClipboardButton buttonText="Copiar lista de correos"></ClipboardButton>}
 
-            <div className='list'>
+            <div className='list long'>
                 {props.registrees.map((r, index) => (
                     <div className='list-item column' key={`registree-${index}`}>
                         <div className='column-focus'>
