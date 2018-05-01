@@ -82,6 +82,13 @@
 
     .header-stick{
         display: flex;
+        flex-direction: column;
         flex-wrap: wrap;
+    }
+
+    .page-container {
+        >.title {
+            margin: 20px 0;
+        }
     }
 }
