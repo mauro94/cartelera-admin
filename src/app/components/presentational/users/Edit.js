@@ -2,6 +2,7 @@ import React from 'react'
 import EditUserForm from 'Containers/users/Edit'
 import { Labels, Format, history } from 'Helpers/index'
 import { FeedbackModal, UserAvatar } from 'Presentational/elements'
+import {  Tag } from 'Presentational/elements'
 import BasicForm from 'Presentational/users/forms/Basic'
 
 export const EditSucceeded = (props) => (
