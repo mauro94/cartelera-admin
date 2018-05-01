@@ -5,8 +5,10 @@ import { load } from 'Containers/hoc'
 import { PasswordFormValidations, Entity } from 'Helpers/index'
 import {
     PasswordField,
-    SubmitButton
+    SubmitButton,
+    ModalAlert
 } from 'Presentational/elements';
+import { ConfirmPasswordUpdate } from 'Presentational/events/modals'
 
 const Password = (props) => (
     <Formik
@@ -19,7 +21,10 @@ const Password = (props) => (
             id: props.user.id
         }}
         onSubmit={(values, action) => {
-            props.handleSubmit(values)
+            ModalAlert({
+                modal: ConfirmPasswordUpdate,
+                handleConfirm: () => props.handleConfirmSubmit(values)
+            })
             action.setSubmitting(false)
         }}>
         {(props) => <PasswordForm {...props} />}

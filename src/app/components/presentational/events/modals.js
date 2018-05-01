@@ -34,6 +34,22 @@ export const ConfirmUserUpdate = (props) => (
     </ConfirmationModal>
 )
 
+export const ConfirmPasswordUpdate = (props) => (
+    <ConfirmationModal
+        title={'Cambiar contraseña'}
+        confirmationMsg={'Tu contraseña será modificada, no se te olvide'}
+        lastMsg={'cambiar contraseña'}
+        buttonClass={'modal-confirm-button'}
+        handleConfirmCancel={() => {
+            props.handleConfirm()
+            props.onClose()
+        }}
+        handleCancel={() => {
+            props.onClose()
+        }}>
+    </ConfirmationModal>
+)
+
 export const ConfirmCreate = (props) => (
     <ConfirmationModal
         title={'Crear evento'}
