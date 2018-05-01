@@ -518,5 +518,10 @@ h3 {
 @media #{$mobileScreenSize} {
   .input-container{
     margin-top: 0px;
+
+    &.sm{
+      margin-right: 0px;
+      width: 100%;
+    }
   }
 }

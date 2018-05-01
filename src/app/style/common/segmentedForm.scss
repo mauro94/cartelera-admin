@@ -70,6 +70,15 @@
             padding: 0px 0px;
         }
 
+        .input-container{
+            margin-top: 0px;
+        
+            &.sm{
+              margin-right: 0px;
+              width: 100%;
+            }
+        }
+
         .navbar {
             flex-flow: wrap;
             justify-content: center;
