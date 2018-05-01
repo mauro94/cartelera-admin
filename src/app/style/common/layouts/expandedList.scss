@@ -72,23 +72,38 @@
             justify-content: center;
             font-size: 18px;
             font-weight: 300;
+
             .labels {
-                text-align: right;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                flex-wrap: wrap;
+
+                .label{
+                text-align: left;
                 color: grey;
                 font-weight: 200;
                 margin: 10px;
-                max-width: 150px;
+                min-width: 150px;
+                }
             }
             .details {
                 margin: 10px;
-                width: 150px;
+                min-width: 150px;
             }
         }
         .actions {
+            width: 100%;
             display: flex;
-            flex-direction: row;
+            align-self: center;
+            flex-direction: column-reverse;
             flex-wrap: wrap;
-            justify-content: space-between;
+            justify-content: flex-start;
+            margin-top: 15px;
+            
+            a{
+                width: 100%;
+            }
             .btn > button {
                 margin: 1px;
             }
