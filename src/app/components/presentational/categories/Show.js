@@ -4,7 +4,7 @@ import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import { faTrashAlt, faPencilAlt } from '@fortawesome/fontawesome-free-solid'
 import { Format, Labels } from 'Helpers/index'
 import { Remove as RemoveCategory, Toggle as ToggleCategory } from 'Containers/categories'
-import { Button } from 'Presentational/elements'
+import { Button, CategoryAvatar } from 'Presentational/elements'
 
 const ShowCategory = (props) => {
     let selectedItem = document.getElementById(`list-item-${props.category.id}`)
@@ -18,11 +18,11 @@ const ShowCategory = (props) => {
 
 const Actions = (props) => (
     <div className='actions'>
-        {props.category.totalCount == 0 && <RemoveCategory categoryToRemove={props.category} />}
         {props.category.upcomingCount == 0 && <ToggleCategory categoryToToggle={props.category} />}
+        {props.category.totalCount == 0 && <RemoveCategory categoryToRemove={props.category} />}
         <Link to={`/categorias/${props.category.id}/editar`}>
-            <Button>
-                <FontAwesomeIcon icon={faPencilAlt} /> Editar
+            <Button type="primary lg">
+                Editar
             </Button>
         </Link>
     </div>
@@ -30,7 +30,8 @@ const Actions = (props) => (
 
 const Title = (props) => (
     <div className='title'>
-        <div className='name'>
+        <CategoryAvatar category={props.category} size={100} />
+        <div className='name'> 
             {props.category.name}
         </div>
     </div>
@@ -38,24 +39,33 @@ const Title = (props) => (
 
 const Details = (props) => (
     <div className='details-wrapper'>
-        <div className='labels'>
-            <div className='label'>{Format.capitalize(Labels.enabled)}</div>
-            <div className='label'>{Format.capitalize(Labels.pastEvents)}</div>
-            <div className='label'>{Format.capitalize(Labels.upcomingEvents)}</div>
-            <div className='label'>{Format.capitalize(Labels.totalEvents)}</div>
-        </div>
         <div className='details'>
-            <div className='value'>
-                {props.category.enabled ? 'Activo' : 'Inactivo'}
+            <div className='labels'>
+                <div className='label'>{Format.capitalize(Labels.enabled)}</div>
+                <div className='value'>
+                    {props.category.enabled ? 'Activo' : 'Inactivo'}
+                </div>
             </div>
-            <div className='value'>
-                {props.category.pastCount}
+
+            <div className='labels'>
+                <div className='label'>{Format.capitalize(Labels.pastEvents)}</div>
+                <div className='value'>
+                    {props.category.pastCount}
+                </div>
             </div>
-            <div className='value'>
-                {props.category.upcomingCount}
+
+            <div className='labels'>
+                <div className='label'>{Format.capitalize(Labels.upcomingEvents)}</div>
+                <div className='value'>
+                    {props.category.upcomingCount}
+                </div>
             </div>
-            <div className='value'>
-                {props.category.totalCount}
+
+            <div className='labels'>
+                <div className='label'>{Format.capitalize(Labels.totalEvents)}</div>
+                <div className='value'>
+                    {props.category.totalCount}
+                </div>
             </div>
         </div>
         

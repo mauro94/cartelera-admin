@@ -6,10 +6,6 @@
     min-width: 350px;
     flex-grow: 1;
 
-    @media #{$mobileScreenSize} {
-        min-width: 100%;
-    }
-
     &.long{
         max-height: 100vh;
     }
@@ -61,7 +57,6 @@
             font-size: 18px;
             font-weight: 400;
             text-overflow: ellipsis;
-            color: $black
         }
         &:hover {
             filter: opacity(100%);
@@ -75,6 +70,23 @@
                 color: white;
             }
             background-color: $lightLight
+        }
+    }
+}
+
+@media #{$mobileScreenSize} {
+    .list {
+        min-width: 100%;
+        .list-item {
+            padding: 10px 0;
+
+            .column-focus{
+                font-size: 1.3rem;
+            }
+    
+            .column-no-focus{
+                font-size: 0.9rem;
+            }
         }
     }
 }

@@ -21,8 +21,8 @@ const Actions = (props) => (
     <div className='actions'>
         <ToggleUser userToToggle={props.user} />
         <Link to={`${props.user.id}/editar`}>
-            <Button>
-                <FontAwesomeIcon icon={faPencilAlt} />
+            <Button type="primary lg">
+                Editar
             </Button>
         </Link>
     </div>
@@ -48,28 +48,40 @@ const Title = (props) => {
 
 const Details = (props) => (
     <div className='details-wrapper'>
-        <div className='labels'>
-            <div className='label'>{Format.capitalize(Labels.email)}</div>
-            <div className='label'>{Format.capitalize(Labels.enabled)}</div>
-            <div className='label'>{Format.capitalize(Labels.phoneNumber)}</div>
-            <div className='label'>{Format.capitalize(Labels.office)}</div>
-            <div className='label'>{Format.capitalize(Labels.campus)}</div>
-        </div>
         <div className='details'>
-            <div className='value'>
-                {<FontAwesomeIcon icon={faEnvelope} /> && props.user.email}
+            <div className='labels'>
+                <div className='label'>{Format.capitalize(Labels.email)}</div>
+                <div className='value'>
+                    {<FontAwesomeIcon icon={faEnvelope} /> && props.user.email}
+                </div>
             </div>
-            <div className='value'>
-                {props.user.enabled ? 'Activo' : 'Inactivo'}
+
+            <div className='labels'>
+                <div className='label'>{Format.capitalize(Labels.enabled)}</div>
+                <div className='value'>
+                    {props.user.enabled ? 'Activo' : 'Inactivo'}
+                </div>
             </div>
-            <div className='value'>
-                {<FontAwesomeIcon icon={faPhone} /> && props.user.phoneNumber}
+
+            <div className='labels'>
+                <div className='label'>{Format.capitalize(Labels.phoneNumber)}</div>
+                <div className='value'>
+                    {<FontAwesomeIcon icon={faPhone} /> && props.user.phoneNumber}
+                </div>
             </div>
-            <div className='value'>
-                {props.user.office}
+
+            <div className='labels'>
+                <div className='label'>{Format.capitalize(Labels.office)}</div>
+                <div className='value'>
+                    {props.user.office}
+                </div>
             </div>
-            <div className='value'>
-                {props.user.campus}
+
+            <div className='labels'>
+                <div className='label'>{Format.capitalize(Labels.campus)}</div>
+                <div className='value'>
+                    {props.user.campus}
+                </div>
             </div>
         </div>
     </div>

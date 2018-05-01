@@ -1,10 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { load } from 'Containers/hoc'
-import { history, Format } from 'Helpers/index'
+import { ErrorElement } from 'Presentational/elements'
+import { Entity, history, Format } from 'Helpers/index'
 
 const EventsList = (props) => (
     <React.Fragment>
+        {Entity.isEmpty(props.events) && <ErrorElement message={'No se han encontrado eventos'}/>}
         {props.events.map((event, index) => (
             <EventGridItem
                 event={event}
