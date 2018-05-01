@@ -5,7 +5,7 @@ import { history } from 'Helpers/index'
 
 export const ToggleCategory = (props) => (
     <Button
-        type={props.category.enabled ? 'danger' : 'primary'}
+        type={props.category.enabled ? 'secondary lg' : 'secondary lg'}
         handleClick={() => props.confirm(props.category)}>
         {props.category.enabled ? 'Desactivar' : 'Activar'}
     </Button>

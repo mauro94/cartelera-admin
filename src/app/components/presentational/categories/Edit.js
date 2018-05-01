@@ -30,10 +30,19 @@ export const EditFailed = (props) => (
 
 const EditCategory = (props) => (
     <div className='expanded-selection'>
+        <Title category={props.category} />
         <EditCategoryForm
             categoryToUpdate={props.category}>
             <BasicForm />
         </EditCategoryForm>
+    </div>
+)
+
+const Title = (props) => (
+    <div className='title'>
+        <div className='name'>
+            {props.category.name}
+        </div>
     </div>
 )
 
