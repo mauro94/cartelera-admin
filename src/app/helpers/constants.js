@@ -94,7 +94,7 @@ export const Labels = Object.freeze({
     tagNames: "temas relacionados",
     photo: "imagen del evento",
     schedule: "horario del evento",
-    categoryName: 'eategoría',
+    categoryName: 'categoría',
     pastEvents: 'eventos pasados',
     upcomingEvents: 'eventos próximos',
     totalEvents: 'eventos totales',
