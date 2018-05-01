@@ -72,14 +72,14 @@ const Routes = (props) => (
 const EditPasswordForm = (props) => (
     <EditCurrentUser
         userToUpdate={{ id: props.user.id, password: '', confirmPassword: '' }}>
-        <PasswordForm />
+        <PasswordForm/>
     </EditCurrentUser>
 )
 
 const EditBasicForm = (props) => (
     <EditCurrentUser
         userToUpdate={props.user}>
-        <BasicForm />
+        <BasicForm showModal/>
     </EditCurrentUser>
 )
 

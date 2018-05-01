@@ -40,8 +40,7 @@ export const EventFormsActions = (props) => (
             label={props.event.cancelled ? 'Evento cancelado' : 'Cancelar evento'}
             modal={props.event.cancelled ? FeedbackCancelled : ConfirmCancel}
             event={props.event}
-            handleConfirmCancel={props.handleConfirmCancel}
-            error={props.event.error}>
+            handleConfirmCancel={props.handleConfirmCancel}>
             <FontAwesomeIcon icon={faBan} />
         </Action>
     </div>

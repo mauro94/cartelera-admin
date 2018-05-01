@@ -30,8 +30,8 @@ const UsersList = (props) => {
     )
 }
 
-const Entry = (props) => (
-    <React.Fragment>
+const Entry = (props) => {
+    return <React.Fragment>
         <UserAvatar user={props.user} size={50} />
         <div className='title-and-email'>
             <div className='title'>
@@ -42,6 +42,6 @@ const Entry = (props) => (
             </div>
         </div>
     </React.Fragment>
-)
+}
 
 export default load('users', UsersList)

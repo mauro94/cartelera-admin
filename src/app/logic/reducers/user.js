@@ -1,7 +1,8 @@
-import { UserActions, Entity } from 'Helpers/index'
+import { UserActions, Entity, Status} from 'Helpers/index'
 import { StateManager } from './helper'
 
 function user(state = StateManager.defaultState, action) {
+    let newState = Object.assign({}, state)
     switch (action.type) {
         case UserActions.All:
             return StateManager.all(state, action)
@@ -11,7 +12,6 @@ function user(state = StateManager.defaultState, action) {
                 error: action.error && 'El correo ya está registrado en el sistema'
             }
         case UserActions.Get:
-            let newState = Object.assign({}, state)
             let showIndex = newState.all.findIndex(user =>
                 (user.id == action.object))
             let newShow = newState.all[showIndex]

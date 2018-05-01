@@ -1,6 +1,72 @@
 import React from 'react'
 import { ConfirmationModal, FeedbackModal } from 'Presentational/elements'
 
+export const ConfirmUpdate = (props) => (
+    <ConfirmationModal
+        title={'Editar evento'}
+        subtitle={props.event.name}
+        confirmationMsg={'La información del evento se va a modificar'}
+        lastMsg={'confirmar actualización'}
+        buttonClass={'modal-confirm-button'}
+        handleConfirmCancel={() => {
+            props.handleConfirm()
+            props.onClose()
+        }}
+        handleCancel={() => {
+            props.onClose()
+        }}>
+    </ConfirmationModal>
+)
+
+export const ConfirmUserUpdate = (props) => (
+    <ConfirmationModal
+        title={'Editar perfil'}
+        confirmationMsg={'La información de tu perfil se va a modificar'}
+        lastMsg={'confirmar actualización'}
+        buttonClass={'modal-confirm-button'}
+        handleConfirmCancel={() => {
+            props.handleConfirm()
+            props.onClose()
+        }}
+        handleCancel={() => {
+            props.onClose()
+        }}>
+    </ConfirmationModal>
+)
+
+export const ConfirmPasswordUpdate = (props) => (
+    <ConfirmationModal
+        title={'Cambiar contraseña'}
+        confirmationMsg={'Tu contraseña será modificada, no se te olvide'}
+        lastMsg={'cambiar contraseña'}
+        buttonClass={'modal-confirm-button'}
+        handleConfirmCancel={() => {
+            props.handleConfirm()
+            props.onClose()
+        }}
+        handleCancel={() => {
+            props.onClose()
+        }}>
+    </ConfirmationModal>
+)
+
+export const ConfirmCreate = (props) => (
+    <ConfirmationModal
+        title={'Crear evento'}
+        subtitle={props.event.name}
+        confirmationMsg={'El evento será creado y publicado en la cartelera'}
+        lastMsg={'crear evento'}
+        buttonClass={'modal-confirm-button'}
+        handleConfirmCancel={() => {
+            props.handleConfirm()
+            props.onClose()
+        }}
+        handleCancel={() => {
+            props.onClose()
+        }}>
+    </ConfirmationModal>
+)
+
 export const ConfirmPublish = (props) => (
     <ConfirmationModal
         error

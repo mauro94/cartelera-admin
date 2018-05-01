@@ -9,17 +9,23 @@ import { eventInitialValues } from './helper'
 import 'Style/eventDetail.scss'
 import 'Style/common/segmentedForm.scss'
 import { SubmitButton } from 'Presentational/elements/Form'
+import { ModalAlert } from 'Presentational/elements/index'
 
 export const EventForm = (props) => {
     let initialValues = props.event ? props.event : eventInitialValues
     return <Formik
+        enableReinitialize
         validationSchema={
             Yup.object().shape(EventFormValidations)
         }
         initialValues={initialValues}
         mapPropsToValues={initialValues}
         onSubmit={(values, action) => {
-            props.handleSubmit(values)
+            ModalAlert({
+                modal: props.modal,
+                event: props.event || values,
+                handleConfirm: () => props.handleConfirmSubmit(values)
+            })
             action.setSubmitting(false)
         }}>
         {(formProps) => {
@@ -28,7 +34,8 @@ export const EventForm = (props) => {
             return (
                 <Form>
                     {routesWithProps}
-                    {!location.pathname.includes('registrados') && <div className="form-field buttons">
+                    {!location.pathname.includes('registrados') 
+                    && <div className="form-field buttons">
                         <SubmitButton {...formProps}>
                             {props.event ? 'Actualizar' : 'Crear'}
                         </SubmitButton>
