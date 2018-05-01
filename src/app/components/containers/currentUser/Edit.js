@@ -16,13 +16,13 @@ class Edit extends React.Component {
     componentWillMount() {
         this.setState({
             user: {
-                firstName: this.props.userToUpdate.firstName || '',
-                lastName: this.props.userToUpdate.lastName || '',
-                office: this.props.userToUpdate.office || '',
-                phoneNumber: this.props.userToUpdate.phoneNumber || '',
-                campus: this.props.userToUpdate.campus || 'MTY',
-                id: this.props.userToUpdate.id,
-                isNewbie: this.props.userToUpdate.isNewbie
+                firstName: this.props.currentUser.show.firstName || '',
+                lastName: this.props.currentUser.show.lastName || '',
+                office: this.props.currentUser.show.office || '',
+                phoneNumber: this.props.currentUser.show.phoneNumber || '',
+                campus: this.props.currentUser.show.campus || 'MTY',
+                id: this.props.currentUser.show.id,
+                isNewbie: this.props.currentUser.show.isNewbie
             }
         })
     }
@@ -35,10 +35,10 @@ class Edit extends React.Component {
         })
     }
     handleSubmit(user) {
-        let updatedUser = { id: this.props.userToUpdate.id }
-        for (var key in this.props.userToUpdate) {
+        let updatedUser = { id: this.props.currentUser.show.id }
+        for (var key in this.props.currentUser.show) {
             if (user.hasOwnProperty(key)) {
-                if (this.props.userToUpdate[key] != user[key] && key != "id") {
+                if (this.props.currentUser.show[key] != user[key] && key != "id") {
                     updatedUser[key] = user[key]
                 }
             }

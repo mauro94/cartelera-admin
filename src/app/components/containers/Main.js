@@ -9,30 +9,25 @@ import 'Style/main.scss'
 import "node_modules/react-tagging-input/src/component/scss/styles.scss";
 
 class Main extends React.Component {
-    componentWillMount() {
-        switch (this.props.currentUser.userType) {
-            case 'admin':
-                this.setState({
-                    component: <AdminLayout {...this.props} />
-                })
-                break;
-            case 'sponsor':
-                this.setState({
-                    component: <SponsorLayout {...this.props} />
-                })
-                break;
-            default:
-                break;
-        }
-    }
-
     render() {
-        return this.state.component
+        if (this.props.currentUser.show.userType == 'admin') {
+            return (
+                <AdminLayout
+                    currentUser={this.props.currentUser.show}
+                    logout={this.props.logout} />
+            )
+        }
+        return (
+            <SponsorLayout 
+                currentUser={this.props.currentUser.show}
+                logout={this.props.logout}/>
+        )
     }
 }
 
 const mapStateToProps = state => {
     return {
+        currentUser: state.currentUser
     }
 }
 
