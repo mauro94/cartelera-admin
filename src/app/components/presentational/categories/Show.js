@@ -18,11 +18,11 @@ const ShowCategory = (props) => {
 
 const Actions = (props) => (
     <div className='actions'>
-        {props.category.totalCount == 0 && <RemoveCategory categoryToRemove={props.category} />}
         {props.category.upcomingCount == 0 && <ToggleCategory categoryToToggle={props.category} />}
+        {props.category.totalCount == 0 && <RemoveCategory categoryToRemove={props.category} />}
         <Link to={`/categorias/${props.category.id}/editar`}>
-            <Button>
-                <FontAwesomeIcon icon={faPencilAlt} /> Editar
+            <Button type="primary lg">
+                Editar
             </Button>
         </Link>
     </div>
@@ -38,24 +38,33 @@ const Title = (props) => (
 
 const Details = (props) => (
     <div className='details-wrapper'>
-        <div className='labels'>
-            <div className='label'>{Format.capitalize(Labels.enabled)}</div>
-            <div className='label'>{Format.capitalize(Labels.pastEvents)}</div>
-            <div className='label'>{Format.capitalize(Labels.upcomingEvents)}</div>
-            <div className='label'>{Format.capitalize(Labels.totalEvents)}</div>
-        </div>
         <div className='details'>
-            <div className='value'>
-                {props.category.enabled ? 'Activo' : 'Inactivo'}
+            <div className='labels'>
+                <div className='label'>{Format.capitalize(Labels.enabled)}</div>
+                <div className='value'>
+                    {props.category.enabled ? 'Activo' : 'Inactivo'}
+                </div>
             </div>
-            <div className='value'>
-                {props.category.pastCount}
+
+            <div className='labels'>
+                <div className='label'>{Format.capitalize(Labels.pastEvents)}</div>
+                <div className='value'>
+                    {props.category.pastCount}
+                </div>
             </div>
-            <div className='value'>
-                {props.category.upcomingCount}
+
+            <div className='labels'>
+                <div className='label'>{Format.capitalize(Labels.upcomingEvents)}</div>
+                <div className='value'>
+                    {props.category.upcomingCount}
+                </div>
             </div>
-            <div className='value'>
-                {props.category.totalCount}
+
+            <div className='labels'>
+                <div className='label'>{Format.capitalize(Labels.totalEvents)}</div>
+                <div className='value'>
+                    {props.category.totalCount}
+                </div>
             </div>
         </div>
         

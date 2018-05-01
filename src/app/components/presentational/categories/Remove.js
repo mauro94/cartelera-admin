@@ -6,7 +6,7 @@ import { withFeedback } from 'Containers/hoc';
 
 export const RemoveCategory = (props) => (
     <Button
-        type='dark'
+        type='dark lg'
         handleClick={() => {
             props.confirm(props.category)
         }}>
