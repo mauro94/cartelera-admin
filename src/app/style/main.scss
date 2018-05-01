@@ -410,6 +410,9 @@ h3 {
    input[type="email"],
    input[type="number"],
    input[type="text"]{
+      -webkit-border-radius:0px;
+      -webkit-appearance: none;
+      border-radius: 0;
      font-family: inherit;
      width: 95%;
      padding: 0.5em 0;
