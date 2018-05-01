@@ -134,7 +134,6 @@ form {
     align-items: center;
     display: flex;
     flex-direction: row;
-    margin: 8px 0px 0px 0px;
     padding-right: 30px;
 
     .action-button{
@@ -218,6 +217,11 @@ form {
 
   
 @media #{$mobileScreenSize} {
+
+    .actions-container{
+        margin: 15px 0px 0px 0px;
+    }
+    
     .action-button-container{
         span{
             font-size: 12px;

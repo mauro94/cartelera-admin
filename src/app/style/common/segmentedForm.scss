@@ -6,7 +6,6 @@
     flex-flow: row;
     justify-content: space-around;
     align-items: flex-start;
-    flex-wrap: wrap;
 
     .navbar {
         align-items: flex-end;
@@ -65,8 +64,33 @@
 @media #{$mobileScreenSize} {
 
     .edit-event-container, .profile-container {
+        flex-wrap: wrap;
+
         .edit-event-content, .profile-content {
             padding: 0px 0px;
+        }
+
+        .navbar {
+            flex-flow: wrap;
+            justify-content: center;
+            margin: 10px 0px;
+    
+            .navbar-button {
+                margin: 5px;
+                font-size: 12px;
+
+                &.callout{
+                    position: relative;
+                    padding: 6px 10px;
+                }
+
+                &.selected {
+                    &.callout.right::before {
+                        border-left: 0px solid $lightLight;
+                    }
+                }
+
+            }
         }
     }
 

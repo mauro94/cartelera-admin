@@ -424,6 +424,10 @@ h3 {
      overflow-x: scroll;
      text-overflow: ellipsis;
 
+     @media #{$mobileScreenSize} {
+      font-size: 16px;
+    }
+
      /*Some sibling magic happens */
      &:focus + .separator {
        transform: scaleX(1) translateY(-2px);   
@@ -509,4 +513,10 @@ h3 {
 .switch-container {
   padding: 10px;
   margin-left: 20px;
+}
+
+@media #{$mobileScreenSize} {
+  .input-container{
+    margin-top: 0px;
+  }
 }
