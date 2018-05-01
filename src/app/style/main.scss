@@ -154,6 +154,11 @@ h3 {
   font-size: 13px;
 }
 
+.generic-error{
+  grid-column-start: 1;
+  grid-column-end: end;
+}
+
 .message-toggle-info {
   width: auto;
   margin: 0px 10px;
