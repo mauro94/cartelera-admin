@@ -1,0 +1,23 @@
+.btn-img-picker {
+    margin: 30px;
+    .btn {
+        position: absolute;
+    }
+    .img-picker {
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 95%;
+        height: 50px;
+
+        button {
+            opacity: 0;
+            width: 95% !important;
+            height: 50px !important;
+        }
+
+        img {
+            display: none;
+        }
+    }
+}

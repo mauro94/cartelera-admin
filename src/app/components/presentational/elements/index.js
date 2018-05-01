@@ -6,6 +6,7 @@ export { CheckboxPublished, CheckboxCanceled } from './Checkbox'
 export { default as Dropdown } from './Dropdown'
 export { default as ErrorElement } from './Error'
 export { SubmitButton } from './Form'
+export * from './ImageUploader'
 export * from './Input'
 export { default as LoadingElement } from './Loading'
 export {
