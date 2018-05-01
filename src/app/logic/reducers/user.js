@@ -7,15 +7,9 @@ function user(state = StateManager.defaultState, action) {
         case UserActions.All:
             return StateManager.all(state, action)
         case UserActions.Create:
-            if (action.status == Status.Ready) {
-                newState.all = [action.object, ...state.all]
-                newState.show = action.object.user
-            }
             return {
-                ...newState,
-                action: action.type,
-                error: action.error && 'El correo ya está registrado en el sistema',
-                status: action.status
+                ...StateManager.create(state, action),
+                error: action.error && 'El correo ya está registrado en el sistema'
             }
         case UserActions.Get:
             let showIndex = newState.all.findIndex(user =>

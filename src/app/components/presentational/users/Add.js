@@ -11,13 +11,13 @@ export const AddUser = (props) => (
 
 export const AddSucceeded = (props) => (
     <FeedbackModal
-        title={Format.capitalize(UserTypes[props.type]) + ' agregado'}
+        title={Format.capitalize(props.user.userType) + ' agregado'}
         subtitle={props.user.email}
         handleOk={() => {
             props.onClose()
-            history.push(`/usuarios/${props.type}s/${props.user.id}`)
+            history.push(`/usuarios/${props.user.userType}s/${props.user.id}`)
         }}>
-        Contraseña temporal: <h1>{TemporaryPassword}</h1>
+        Contraseña temporal: <h1>{props.user.password}</h1>
     </FeedbackModal>
 )
 
