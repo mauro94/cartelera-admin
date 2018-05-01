@@ -18,8 +18,14 @@
         .expanded-selection {
             margin: 2% 0;
             form {
-                .input-container {
+                justify-content: center;
+                .input-container.sm {
                     min-width: 100%;
+                    margin-right: 20px;
+                }
+                .form-field.buttons{
+                    padding: 0px;
+                    margin-top: 0px;
                 }
             }
         }
@@ -30,20 +36,40 @@
         .expanded-selection {
             margin-left: 2%;
             form {
-                .input-container {
-                    max-width: 250px;
+                justify-content: center;
+                .input-container.sm {
+                    max-width: 200px;
+                    margin-right: 20px;
+                }
+                .form-field.buttons{
+                    padding: 0px;
+                    margin-top: 0px;
                 }
             }
         }
     }
     .expanded-selection {
         form {
-            .input-container {
-                margin: 0;
-                margin-top: 20px;
-                max-width: 250px;
+            .input-container{
+                margin-top: 0px;
+
+                &.sm{
+                width: 100%;
+                }
+                input[type="number"],
+                input[type="password"],
+                input[type="email"],
+                input[type="text"]{
+                    font-size: 1.2em;
+                    padding: 0.2em;
+                }   
+            }
+            .form-field.buttons{
+                padding: 0px;
+                margin-top: 0px;
             }
         }
+
         background-color: $lightLight;
         border-radius: 10px;
         display: flex;
