@@ -2,16 +2,18 @@ import React from 'react'
 import { load } from 'Containers/hoc'
 import { Entity } from 'Helpers/object'
 import { SelectedCategoryRoutes } from 'Presentational/categories'
-import { ExpandedList } from 'Presentational/elements'
+import { ExpandedList, CategoryAvatar, getCatRandomColor } from 'Presentational/elements'
 
 const CategoriesList = (props) => {
     let listData = {
         entries: [],
-        linkPaths: []
+        linkPaths: [],
+        colors: []
     }
     props.categories.forEach(category => {
         listData.entries.push(<Entry category={category} />)
         listData.linkPaths.push(`/categorias/${category.id}`)
+        listData.colors.push(getCatRandomColor(category))
     })
     return (
         <ExpandedList
@@ -26,10 +28,15 @@ const CategoriesList = (props) => {
     )
 }
 
-const Entry = (props) => (
-    <div className='category-title'>
-        {props.category.name}
-    </div>
-)
+const Entry = (props) => {
+    return (
+        <React.Fragment>
+            <CategoryAvatar category={props.category} size={50} />
+            <div className='category-title'>
+                {props.category.name}
+            </div>
+        </React.Fragment>
+    )
+}
 
 export default load('categories', CategoriesList)

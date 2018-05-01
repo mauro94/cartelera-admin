@@ -3,7 +3,7 @@ import Avatar from 'react-avatar';
 
 const CategoryAvatar = (props) => (
     <Avatar
-        color={getRandomColor(props.category)}
+        color={getCatRandomColor(props.category)}
         size={props.size}
         round={true}
         name={getInitials(props.category)} />
@@ -29,7 +29,7 @@ function _stringAsciiCodeSum(value) {
 }
 
 export
-    function getRandomColor(value, colors = defaultColors) {
+    function getCatRandomColor(value, colors = defaultColors) {
     // if no value is passed, always return transparent color otherwise
     // a rerender would show a new color which would will
     // give strange effects when an interface is loading
