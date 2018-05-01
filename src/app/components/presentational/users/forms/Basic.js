@@ -38,6 +38,7 @@ const Basic = (props) => {
     }
     return (
         <Formik
+            enableReinitialize
             validationSchema={
                 Yup.object().shape(validations)
             }

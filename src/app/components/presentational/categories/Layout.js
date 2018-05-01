@@ -6,7 +6,7 @@ import { ShowCategory, EditCategory } from 'Presentational/categories'
 import 'Style/common/layouts/expandedList.scss'
 
 const CategoriesLayout = (props) => (
-    <div className='categories-page'>
+    <div className='page-container'>
         <Route path='/categorias' render={CategoriesPage} />
     </div>
 )

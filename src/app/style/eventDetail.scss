@@ -1,5 +1,5 @@
 @import 'common/colors';
-
+@import 'setup';
 
 .event-details-container {
     display: flex;
@@ -41,7 +41,6 @@ form {
     .registration-toggler{
         background: $lightLight;
         border-radius: 20px;
-        padding: 30px;
         padding-top: 0px;
         width: 80%;
         margin-bottom: 15px;
@@ -50,6 +49,8 @@ form {
 
     .add-photos-container{
         display: flex;
+        width: 100%;
+        flex-wrap: wrap;
     }
 
     .photo-editor{
@@ -92,6 +93,7 @@ form {
 }
 
 .form-general-data{
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
@@ -132,6 +134,7 @@ form {
     align-items: center;
     display: flex;
     flex-direction: row;
+    padding-right: 30px;
 
     .action-button{
         margin-right: 0.2rem;
@@ -212,4 +215,31 @@ form {
     margin-bottom: 0.5rem;
   }
 
+  
+@media #{$mobileScreenSize} {
 
+    .actions-container{
+        margin: 15px 0px 0px 0px;
+    }
+    
+    .action-button-container{
+        span{
+            font-size: 12px;
+        }
+    }
+
+    .registration-toggler{
+        padding: 30px;
+    }
+
+    form {
+        .photo-editor{
+            width: 100%;
+
+            .show-image{
+                padding: 0px;
+                width: 100%;
+            }
+        }
+    }
+}

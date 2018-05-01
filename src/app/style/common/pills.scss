@@ -1,4 +1,5 @@
 @import 'colors';
+@import '../setup';
 
 .navbar-button {
     border-radius: 7px;
@@ -23,5 +24,12 @@
         .sb-avatar > div {
             filter: grayscale(0);
         }
+    }
+}
+
+@media #{$mobileScreenSize} {
+    .navbar-button{
+        font-size: 14px;
+        padding: 7px;
     }
 }

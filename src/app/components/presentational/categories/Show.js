@@ -8,7 +8,7 @@ import { Button } from 'Presentational/elements'
 
 const ShowCategory = (props) => {
     let selectedItem = document.getElementById(`list-item-${props.category.id}`)
-    selectedItem.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    selectedItem.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
     return <div className='expanded-selection'>
         <Title category={props.category} />
         <Details category={props.category} />

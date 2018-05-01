@@ -1,4 +1,5 @@
 @import 'colors';
+@import '../setup';
 
 button:disabled {
     opacity: 0.3 !important;
@@ -186,4 +187,14 @@ button {
             height: 3px;
         }
     }
+}
+
+@media #{$mobileScreenSize} {
+    button {
+        &.icon-button{
+            width: 45px;
+            height: 45px;
+        }
+    }
+
 }

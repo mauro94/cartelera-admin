@@ -1,9 +1,14 @@
 @import 'colors';
+@import '../setup';
 
 .list {
     overflow-y: auto;
     min-width: 350px;
     flex-grow: 1;
+
+    @media #{$mobileScreenSize} {
+        min-width: 100%;
+    }
 
     &.long{
         max-height: 100vh;
@@ -27,7 +32,7 @@
         .column-focus{
             display: flex;
             justify-content: flex-end;
-            text-align: right;
+            text-align: center;
             margin: 0px 10px;
             font-weight: 600;
             font-size: 1.6rem;

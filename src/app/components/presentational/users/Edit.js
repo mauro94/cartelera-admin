@@ -27,7 +27,7 @@ export const EditFailed = (props) => (
 
 const EditUser = (props) => {
     let selectedItem = document.getElementById(`list-item-${props.user.id}`)
-    selectedItem.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    selectedItem.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
     return <div className='expanded-selection'>
         <EditUserForm
             type={props.type}

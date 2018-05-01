@@ -96,6 +96,7 @@ h1 {
   color: $black;
   grid-row: 1;
   margin-bottom: 2px;
+  transition: all 0.5s ease;
 
   @media #{$mobileScreenSize} {
     font-size: 36px;
@@ -423,6 +424,10 @@ h3 {
      overflow-x: scroll;
      text-overflow: ellipsis;
 
+     @media #{$mobileScreenSize} {
+      font-size: 16px;
+    }
+
      /*Some sibling magic happens */
      &:focus + .separator {
        transform: scaleX(1) translateY(-2px);   
@@ -508,4 +513,10 @@ h3 {
 .switch-container {
   padding: 10px;
   margin-left: 20px;
+}
+
+@media #{$mobileScreenSize} {
+  .input-container{
+    margin-top: 0px;
+  }
 }
