@@ -18,6 +18,22 @@ export const ConfirmUpdate = (props) => (
     </ConfirmationModal>
 )
 
+export const ConfirmUserUpdate = (props) => (
+    <ConfirmationModal
+        title={'Editar perfil'}
+        confirmationMsg={'La información de tu perfil se va a modificar'}
+        lastMsg={'confirmar actualización'}
+        buttonClass={'modal-confirm-button'}
+        handleConfirmCancel={() => {
+            props.handleConfirm()
+            props.onClose()
+        }}
+        handleCancel={() => {
+            props.onClose()
+        }}>
+    </ConfirmationModal>
+)
+
 export const ConfirmCreate = (props) => (
     <ConfirmationModal
         title={'Crear evento'}

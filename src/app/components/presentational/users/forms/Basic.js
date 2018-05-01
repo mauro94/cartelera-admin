@@ -14,8 +14,10 @@ import {
     TextField,
     SubmitButton,
     Selector,
-    SelectComponent 
+    SelectComponent,
+    ModalAlert
 } from 'Presentational/elements'
+
 import { PasswordField } from 'Presentational/elements/Input';
 
 const Basic = (props) => {
@@ -43,7 +45,10 @@ const Basic = (props) => {
             onSubmit={(values, action) => {
                 values.id = props.user.id
                 values.isNewbie = props.current ? false : props.user.isNewbie
-                props.handleSubmit(values)
+                props.showModal ? ModalAlert({
+                    modal: props.modal,
+                    handleConfirm: () => props.handleConfirmSubmit(values)
+                }) : props.handleSubmit(values)
                 action.setSubmitting(false)
             }}>
             {(formProps) =>

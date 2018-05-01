@@ -79,7 +79,7 @@ const EditPasswordForm = (props) => (
 const EditBasicForm = (props) => (
     <EditCurrentUser
         userToUpdate={props.user}>
-        <BasicForm />
+        <BasicForm showModal/>
     </EditCurrentUser>
 )
 

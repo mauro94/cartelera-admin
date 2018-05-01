@@ -4,6 +4,7 @@ import { CurrentUserActions } from 'Helpers/constants'
 import { thunks } from 'Logic/actions/thunks'
 import { ModalAlert } from 'Presentational/elements'
 import { EditSucceeded, EditFailed } from 'Presentational/users/Edit'
+import { ConfirmUserUpdate } from 'Presentational/events/modals'
 
 class Edit extends React.Component {
     constructor(props) {
@@ -55,8 +56,10 @@ class Edit extends React.Component {
         let childrenWithProps = React.Children.map(children, child =>
             React.cloneElement(child, {
                 action: CurrentUserActions.Update,
+                modal: ConfirmUserUpdate,
                 current: true,
                 handleSubmit: this.handleSubmit,
+                handleConfirmSubmit: this.handleSubmit,
                 logout: this.props.handleLogout,
                 reducer: {
                     status: this.props.currentUser.status,
