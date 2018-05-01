@@ -96,9 +96,10 @@ h1 {
   color: $black;
   grid-row: 1;
   margin-bottom: 2px;
+  transition: all 0.5s ease;
 
   @media #{$mobileScreenSize} {
-    font-size: 32px;
+    font-size: 36px;
   }
 
   @media #{$desktopScreenSize} {
