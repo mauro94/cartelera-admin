@@ -1,11 +1,13 @@
 @import 'pills';
+@import '../setup';
 
 .edit-event-container, .profile-container {
     display: flex;
     flex-flow: row;
     justify-content: space-around;
     align-items: flex-start;
-    
+    flex-wrap: wrap;
+
     .navbar {
         align-items: flex-end;
         display: flex;
@@ -59,3 +61,14 @@
         }
     }
 }
+
+@media #{$mobileScreenSize} {
+
+    .edit-event-container, .profile-container {
+        .edit-event-content, .profile-content {
+            padding: 0px 0px;
+        }
+    }
+
+}
+
