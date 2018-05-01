@@ -15,6 +15,7 @@ export const ToggleConfirm = (props) => (
     <ConfirmationModal
         title={'Desea ' + (props.user.enabled ? 'desactivar' : 'activar') + ' al usuario?'}
         subtitle={props.user.email}
+        confirmButtonType='danger'
         confirmationMsg={props.user.enabled ?
             'Una vez desactivado, el usuario ya no podrá llevar a cabo sus funciones como ' + props.user.userType + '.' :
             'Una vez activado, el usuario podrá volver a llevar a cabo sus funciones como ' + props.user.userType + '.'}

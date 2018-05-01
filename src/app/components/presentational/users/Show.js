@@ -34,8 +34,8 @@ const getUserTitle = (user) => {
         : user.email
 }
 
-const Title = (props) => (
-    <div className='title'>
+const Title = (props) => {
+    return <div className='title'>
         <UserAvatar user={props.user} size={100} />
         <div className='name'>
             <p>{getUserTitle(props.user)}</p>
@@ -44,7 +44,7 @@ const Title = (props) => (
             {props.user.isNewbie && <Tag>Nuevo</Tag>}
         </div>
     </div>
-)
+}
 
 const Details = (props) => (
     <div className='details-wrapper'>

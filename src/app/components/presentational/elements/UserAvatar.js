@@ -3,6 +3,7 @@ import Avatar from 'react-avatar';
 
 const UserAvatar = (props) => (
     <Avatar
+        color={getRandomColor(props.user)}
         size={props.size}
         round={true}
         name={getInitials(props.user)} />
@@ -19,12 +20,12 @@ const getInitials = (user) => {
 }
 
 const defaultColors = [
-    '#d61a7f',
-    '#ff4080',
-    '#d73d32',
-    '#7e3794',
-    '#4285f4',
-    '#67ae3f'
+    '#2F6690',
+    '#FF6B35',
+    '#B33F62',
+    '#DBB632',
+    '#00BFB2',
+    '#67ae3f',
 ];
 
 function _stringAsciiCodeSum(value) {
