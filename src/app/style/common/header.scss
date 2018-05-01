@@ -35,7 +35,7 @@
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
 
     h1{
         text-align: left;
@@ -90,5 +90,9 @@
         >.title {
             margin: 20px 0;
         }
+    }
+
+    .top-container{
+        flex-wrap: wrap;
     }
 }

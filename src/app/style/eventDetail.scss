@@ -41,7 +41,6 @@ form {
     .registration-toggler{
         background: $lightLight;
         border-radius: 20px;
-        padding: 30px;
         padding-top: 0px;
         width: 80%;
         margin-bottom: 15px;
@@ -220,5 +219,9 @@ form {
         span{
             font-size: 12px;
         }
+    }
+
+    .registration-toggler{
+        padding: 30px;
     }
 }
