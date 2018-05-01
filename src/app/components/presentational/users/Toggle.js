@@ -5,7 +5,7 @@ import { history } from 'Helpers/index'
 
 export const ToggleUser = (props) => (
     <Button
-        type={props.user.enabled ? 'secondary lg' : 'primary lg'}
+        type={props.user.enabled ? 'secondary lg' : 'secondary lg'}
         handleClick={() => props.confirm(props.user)}>
         {props.user.enabled ? 'Desactivar' : 'Activar'}
     </Button>
