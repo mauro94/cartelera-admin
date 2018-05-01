@@ -47,7 +47,6 @@ export const getEventInitialValues = (event) => {
         endDatetime: event.endDatetime || eventInitialValues.rangeDatetime.endDatetime
     }
     formattedEvent.category = event.category || ''
-    formattedEvent.categoryId = eventInitialValues.categoryId
     formattedEvent.hasCapacity = (formattedEvent.maxCapacity > 0)
     return formattedEvent
 }
