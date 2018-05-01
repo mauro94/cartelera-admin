@@ -80,6 +80,14 @@
         min-width: 100%;
         .list-item {
             padding: 10px 0;
+
+            .column-focus{
+                font-size: 1.3rem;
+            }
+    
+            .column-no-focus{
+                font-size: 0.9rem;
+            }
         }
     }
 }
