@@ -13,6 +13,7 @@ class Dropdown extends React.Component {
         super(props)
         this.updateCategories = this.updateCategories.bind(this)
         this.getFormattedCategories = this.getFormattedCategories.bind(this)
+        this.getFilteredCategories = this.getFilteredCategories.bind(this)
         let formattedCategories = []
         if (!Entity.isEmpty(this.props.category.all)) {
             formattedCategories = this.getFormattedCategories()
@@ -28,8 +29,13 @@ class Dropdown extends React.Component {
         }
     }
 
+    getFilteredCategories() {
+        return this.props.category.all.filter(category => category.enabled)
+    }
+
     getFormattedCategories() {
-        return this.props.category.all.map(category => (
+        let filteredCategories = this.getFilteredCategories()
+        return filteredCategories.map(category => (
             {
                 key: category.id,
                 text: category.name
