@@ -49,6 +49,8 @@ form {
 
     .add-photos-container{
         display: flex;
+        width: 100%;
+        flex-wrap: wrap;
     }
 
     .photo-editor{
@@ -91,6 +93,7 @@ form {
 }
 
 .form-general-data{
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
