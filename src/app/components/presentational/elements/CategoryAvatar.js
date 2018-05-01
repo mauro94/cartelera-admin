@@ -14,11 +14,11 @@ const getInitials = (category) => {
 }
 
 const defaultColors = [
-    '#2F6690',
-    '#FF6B35',
-    '#B33F62',
+    '#2A9D8F',
+    '#C95234',
+    '#392F5A',
     '#DBB632',
-    '#00BFB2',
+    '#CC356C',
     '#67ae3f',
 ];
 
