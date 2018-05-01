@@ -3,7 +3,8 @@ export { default as EditCurrentUser } from './currentUser/Edit'
 export {
     Add as AddUser,
     List as UsersList,
-    Edit as EditUser
+    Edit as EditUser,
+    Toggle as ToggleUser
 } from './users'
 export {
     Add as AddEvent,
