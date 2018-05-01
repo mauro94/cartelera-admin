@@ -1,9 +1,14 @@
 @import 'colors';
+@import '../setup';
 
 .list {
     overflow-y: auto;
     min-width: 350px;
     flex-grow: 1;
+
+    @media #{$mobileScreenSize} {
+        min-width: 100%;
+    }
 
     &.long{
         max-height: 100vh;

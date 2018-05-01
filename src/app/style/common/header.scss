@@ -27,7 +27,7 @@
 .action-callout{
     justify-content: flex-end;
     display: flex;
-    min-width: 350px;
+    min-width: 300px;
 
     @media #{$mobileScreenSize} {
         min-width: 0px;

@@ -33,6 +33,10 @@
                 padding-left: 5px;
                 color: $light;
                 margin-right: 10px;
+
+                @media #{$mobileScreenSize} {
+                    display: none;
+                }
             }
             input {
                 padding: 10px 5px;
