@@ -18,6 +18,23 @@ export const ConfirmUpdate = (props) => (
     </ConfirmationModal>
 )
 
+export const ConfirmCreate = (props) => (
+    <ConfirmationModal
+        title={'Crear evento'}
+        subtitle={props.event.name}
+        confirmationMsg={'El evento será creado y publicado en la cartelera'}
+        lastMsg={'crear evento'}
+        buttonClass={'modal-confirm-button'}
+        handleConfirmCancel={() => {
+            props.handleConfirm()
+            props.onClose()
+        }}
+        handleCancel={() => {
+            props.onClose()
+        }}>
+    </ConfirmationModal>
+)
+
 export const ConfirmPublish = (props) => (
     <ConfirmationModal
         error

@@ -14,6 +14,7 @@ import { ModalAlert } from 'Presentational/elements/index'
 export const EventForm = (props) => {
     let initialValues = props.event ? props.event : eventInitialValues
     return <Formik
+        enableReinitialize
         validationSchema={
             Yup.object().shape(EventFormValidations)
         }
@@ -22,8 +23,8 @@ export const EventForm = (props) => {
         onSubmit={(values, action) => {
             ModalAlert({
                 modal: props.modal,
-                event: props.event,
-                handleConfirm: () => props.handleConfirmUpdate(values)
+                event: props.event || values,
+                handleConfirm: () => props.handleConfirmSubmit(values)
             })
             action.setSubmitting(false)
         }}>

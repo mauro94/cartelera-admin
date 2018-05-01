@@ -3,7 +3,6 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import { EventForm, EventFormNav, EventFormRoutes } from 'Presentational/events/forms'
 import { withFeedback } from 'Containers/hoc'
 
-
 const NewEvent = (props) => (
     <Router>
         <React.Fragment>

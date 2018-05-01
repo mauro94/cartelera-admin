@@ -105,7 +105,7 @@ class Edit extends React.Component {
                 togglePublished={this.togglePublished}
                 modal={ConfirmUpdate}
                 handleConfirmCancel={this.handleConfirmCancel}
-                handleConfirmUpdate={this.handleConfirmUpdate}
+                handleConfirmSubmit={this.handleConfirmUpdate}
                 hide
                 onSuccess={() => this.handleActionSucceeded()}
                 reducer={{

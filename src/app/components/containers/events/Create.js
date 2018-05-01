@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom'
 import { thunks } from 'Logic/actions/thunks'
 import CreateEvent from 'Presentational/events/Create'
 import { Entity, EventActions, history } from 'Helpers/index'
+import { ConfirmCreate } from 'Presentational/events/modals'
 
 class Create extends React.Component {
     constructor() {
@@ -53,7 +54,8 @@ class Create extends React.Component {
                 action={EventActions.Create}
                 textarea={this.state.textarea}
                 textareaHandleChange={this.textareaHandleChange}
-                handleSubmit={this.handleSubmit}
+                handleConfirmSubmit={this.handleSubmit}
+                modal={ConfirmCreate}
                 onSuccess={() => this.eventCreatedSuccessfully()}
                 reducer={{
                     status: this.props.event.status,
