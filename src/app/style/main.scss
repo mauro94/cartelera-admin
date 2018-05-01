@@ -516,6 +516,12 @@ h3 {
 }
 
 @media #{$mobileScreenSize} {
+  .form-field.buttons{
+    font-size: 12px;
+    margin: 25px 0px 25px 0px;
+    padding: 0px;
+  }
+
   .input-container{
     margin-top: 0px;
 

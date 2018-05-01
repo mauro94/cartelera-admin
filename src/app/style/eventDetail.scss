@@ -218,6 +218,10 @@ form {
   
 @media #{$mobileScreenSize} {
 
+    .large-button-container{
+        font-size: 12px;
+    }
+
     .actions-container{
         margin: 15px 0px 0px 0px;
     }

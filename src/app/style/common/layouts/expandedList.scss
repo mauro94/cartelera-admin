@@ -95,3 +95,28 @@
         }
     }
 }
+@media #{$mobileScreenSize} {
+    .expanded-list {
+        .expanded-selection{
+            .actions{
+                font-size: 12px;
+                margin: 7px 0;
+            }
+
+            .title{
+                flex-direction: column;
+                align-self: center;
+
+                .name{
+                    font-size: 1.2rem;
+                    margin: 5px;
+
+                    p{
+                        margin: 7px 0;
+                    }
+                }
+            }
+        }
+    }
+}
+
