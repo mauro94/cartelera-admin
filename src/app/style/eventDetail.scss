@@ -1,5 +1,5 @@
 @import 'common/colors';
-
+@import 'setup';
 
 .event-details-container {
     display: flex;
@@ -133,6 +133,7 @@ form {
     display: flex;
     flex-direction: row;
     margin: 8px 0px 0px 0px;
+    padding-right: 30px;
 
     .action-button{
         margin-right: 0.2rem;
@@ -213,4 +214,11 @@ form {
     margin-bottom: 0.5rem;
   }
 
-
+  
+@media #{$mobileScreenSize} {
+    .action-button-container{
+        span{
+            font-size: 12px;
+        }
+    }
+}
