@@ -4,7 +4,7 @@ import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import { faTrashAlt, faPencilAlt } from '@fortawesome/fontawesome-free-solid'
 import { Format, Labels } from 'Helpers/index'
 import { Remove as RemoveCategory, Toggle as ToggleCategory } from 'Containers/categories'
-import { Button } from 'Presentational/elements'
+import { Button, CategoryAvatar } from 'Presentational/elements'
 
 const ShowCategory = (props) => {
     let selectedItem = document.getElementById(`list-item-${props.category.id}`)
@@ -30,7 +30,8 @@ const Actions = (props) => (
 
 const Title = (props) => (
     <div className='title'>
-        <div className='name'>
+        <CategoryAvatar category={props.category} size={100} />
+        <div className='name'> 
             {props.category.name}
         </div>
     </div>
