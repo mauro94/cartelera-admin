@@ -1,3 +1,5 @@
+@import '../setup';
+
 .login-form-container {
     .input-container{
         margin-top: 0px;
@@ -14,3 +16,16 @@
         }
     }      
 }
+
+@media #{$mobileScreenSize} {
+    .login-form-container {
+        .input-container{
+            margin-top: 0px;
+        
+            &.sm{
+              margin-right: 0px;
+              width: 100%;
+            }
+        }     
+    }
+  }

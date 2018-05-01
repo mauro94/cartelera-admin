@@ -42,6 +42,7 @@ form {
         background: $lightLight;
         border-radius: 20px;
         padding-top: 0px;
+        padding-left: 20px;
         width: 80%;
         margin-bottom: 15px;
 
@@ -134,7 +135,7 @@ form {
     align-items: center;
     display: flex;
     flex-direction: row;
-    padding-right: 30px;
+    padding: 5px;
 
     .action-button{
         margin-right: 0.2rem;
@@ -218,13 +219,17 @@ form {
   
 @media #{$mobileScreenSize} {
 
+    .large-button-container{
+        font-size: 12px;
+    }
+
     .actions-container{
         margin: 15px 0px 0px 0px;
     }
     
     .action-button-container{
         span{
-            font-size: 12px;
+            font-size: 11px;
         }
     }
 

@@ -124,27 +124,29 @@ button {
         }
 
         &.icon-button{
-            &:hover {
-                -webkit-transition: all .7s ease;
-                transition: all 1s ease;
-                background: transparent;
-                border-radius: 0;
-                transition: border-color .6s ease;
-                transition: background .6s ease;
-                //position: inherit;
-                border-radius: 50%;
-    
-                &:after {
-                    width: 100%;
-                    left: 0;
+            @media #{$desktopScreenSize} {
+                &:hover {
+                    -webkit-transition: all .7s ease;
+                    transition: all 1s ease;
                     background: transparent;
+                    border-radius: 0;
                     transition: border-color .6s ease;
                     transition: background .6s ease;
                     //position: inherit;
-                    border: 3px solid transparent;
-                    height: 0px;
-                    background: transparent;
+                    border-radius: 50%;
+        
+                    &:after {
+                        width: 100%;
+                        left: 0;
+                        background: transparent;
+                        transition: border-color .6s ease;
+                        transition: background .6s ease;
+                        //position: inherit;
+                        border: 3px solid transparent;
+                        height: 0px;
+                        background: transparent;
 
+                    }
                 }
             }
 
@@ -164,18 +166,21 @@ button {
             }
         }
 
-        &:hover {
-            -webkit-transition: all .7s ease;
-            transition: all 1s ease;
-            background: transparent;
-            border-radius: 0;
+        @media #{$desktopScreenSize} {
+            &:hover {
+                -webkit-transition: all .7s ease;
+                transition: all 1s ease;
+                background: transparent;
+                border-radius: 0;
 
-            &:after {
-                transition: all .2s ease;
-                width: 100%;
-                left: 0;
+                &:after {
+                    transition: all .2s ease;
+                    width: 100%;
+                    left: 0;
+                }
             }
         }
+
         &:after {
             position: absolute;
             transition: all 0s ease;

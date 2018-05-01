@@ -410,6 +410,9 @@ h3 {
    input[type="email"],
    input[type="number"],
    input[type="text"]{
+      -webkit-border-radius:0px;
+      -webkit-appearance: none;
+      border-radius: 0;
      font-family: inherit;
      width: 95%;
      padding: 0.5em 0;
@@ -516,7 +519,18 @@ h3 {
 }
 
 @media #{$mobileScreenSize} {
+  .form-field.buttons{
+    font-size: 12px;
+    margin: 25px 0px 25px 0px;
+    padding: 0px;
+  }
+
   .input-container{
     margin-top: 0px;
+
+    &.sm{
+      margin-right: 0px;
+      width: 100%;
+    }
   }
 }
