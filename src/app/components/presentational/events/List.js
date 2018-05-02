@@ -17,7 +17,6 @@ const EventsList = (props) => (
 )
 
 const EventGridItem = ({ event, index }) => {
-    event.hashtag = ['code', 'hack', 'business']
     return (
         <Link
             to={`/eventos/${event.id}/editar`}
@@ -34,8 +33,8 @@ const EventGridItem = ({ event, index }) => {
                     {Format.dateInSpanish(event.start_datetime)}
                 </div>
                 <div className='event-grid-hashtags'>
-                    {event.hashtag &&
-                        <Hashtags hashtag={event.hashtag} index={index} />}
+                    {event.tag_names &&
+                        <Hashtags hashtag={event.tag_names} index={index} />}
                 </div>
             </div>
         </Link>
