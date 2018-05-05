@@ -1,20 +1,26 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { parseEvents } from './helper'
+import { getEventsType } from './helper'
 import { Entity, EventActions } from 'Helpers/index'
 import { thunks } from 'Logic/actions/thunks'
 import EventsList from 'Presentational/events/List'
 
 class Events extends React.Component {
-    componentDidMount() {
-        if (Entity.isEmpty(parseEvents(this.props))) {
-            this.props.getEvents()
+    componentWillMount() {
+        if (Entity.isEmpty(this.props.event.all) ||
+            this.props.event.filter != getEventsType(this.props.query)) {
+            this.props.getEvents(getEventsType(this.props.query))
+        }
+    }
+    componentWillReceiveProps(nextProps) {
+        if (this.props.query != nextProps.query) {
+            this.props.getEvents(getEventsType(nextProps.query))
         }
     }
     render() {
         return (
             <EventsList
-                events={parseEvents(this.props)}
+                events={this.props.event.all}
                 hide
                 reducer={{
                     status: this.props.event.status,
@@ -34,8 +40,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        getEvents: () => {
-            dispatch(thunks.event.all())
+        getEvents: (filter) => {
+            dispatch(thunks.event.all(filter))
         }
     }
 }

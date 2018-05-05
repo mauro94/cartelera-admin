@@ -1,12 +1,21 @@
-import { Format, EventActions } from 'Helpers/index'
+import { Format, EventActions, Status } from 'Helpers/index'
 import { serverCall, request, headers } from './helper'
+import { createAction } from 'Logic/actions'
 
-export const all = () => {
+export const all = (filter) => {
     return dispatch => serverCall({
         dispatch: dispatch,
         actionType: EventActions.All,
+        onSuccess: (response) => {
+            dispatch(createAction(
+                EventActions.Filter,
+                filter,
+                null,
+                Status.Ready
+            ))
+        },
         call: () => request.get(
-            '/event_list',
+            `/events/${filter}`,
             { headers: headers.withAuth() }),
     })
 }
