@@ -1,5 +1,4 @@
 import React from 'react'
-import { ArcherContainer, ArcherElement } from 'react-archer'
 import { Route, NavLink, Link } from 'react-router-dom'
 import { List as EventsList } from 'Containers/events'
 import { Plus } from 'Images/plus'
@@ -7,7 +6,7 @@ import { Button } from 'Presentational/elements'
 import 'Style/eventsMenuLayout.scss'
 
 const AllEvents = () => (
-    <ArcherContainer className='archer-container'>
+    <React.Fragment>
         <div className='title'>
             <div className='top-container'>
                 <div className='header-stick'>
@@ -18,23 +17,20 @@ const AllEvents = () => (
                     </h1>
                 </div>
                 <div className='actions-container'>
-                    <ArcherElement
-                        id='create-event-btn'>
-                        <Link to='/eventos/nuevo'>
-                            <div className='add'>
-                                <Button type='icon-button primary'>
-                                    <div className='plus'>
-                                        <Plus />
-                                    </div>
-                                </Button>
-                            </div>
-                        </Link>
-                    </ArcherElement>
+                    <Link to='/eventos/nuevo'>
+                        <div className='add'>
+                            <Button type='icon-button primary'>
+                                <div className='plus'>
+                                    <Plus />
+                                </div>
+                            </Button>
+                        </div>
+                    </Link>
                 </div>
             </div>
         </div>
         <Routes />
-    </ArcherContainer>
+    </React.Fragment>
 )
 
 const Routes = () => (

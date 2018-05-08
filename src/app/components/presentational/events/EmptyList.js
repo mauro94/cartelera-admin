@@ -1,5 +1,4 @@
 import React from 'react'
-import { ArcherElement } from 'react-archer'
 import { EmptyElement } from 'Presentational/elements'
 import EmptyEventIcon from 'Images/emptyEvents.svg'
 import 'Style/events/emptyList.scss'
@@ -10,14 +9,7 @@ export const EmptyUpcomingEvents = (props) => (
         <EmptyElement>
             <div>
                 <div>No tienes eventos próximos</div>
-                <ArcherElement
-                    id='create-event-msg'
-                    relations={[{
-                        from: { anchor: 'right' },
-                        to: { anchor: 'bottom', id: 'create-event-btn' }
-                    }]}>
-                    <div>Crea uno nuevo</div>
-                </ArcherElement>
+                <div>Crea uno nuevo</div>
             </div>
         </EmptyElement>
     </div>
