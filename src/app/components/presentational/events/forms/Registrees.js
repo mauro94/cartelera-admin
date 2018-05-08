@@ -5,7 +5,7 @@ import { load } from 'Containers/hoc'
 import { Entity } from 'Helpers/index';
 
 const ListRegistrees = (props) => {
-    if (Entity.isEmpty) {
+    if (Entity.isEmpty(props.registrees)) {
         return <EmptyRegistrees />
     }
     return <React.Fragment>
