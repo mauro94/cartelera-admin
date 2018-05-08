@@ -1,9 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { load } from 'Containers/hoc'
-import { EmptyElement } from 'Presentational/elements'
+import { EmptyUpcomingEvents, EmptyPastEvents } from 'Presentational/elements'
 import { Entity, history, Format } from 'Helpers/index'
-import { EmptyUpcomingEvents, EmptyPastEvents } from './EmptyList'
 
 const EventsList = (props) => {
     if (Entity.isEmpty(props.events)) {

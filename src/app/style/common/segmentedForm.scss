@@ -3,9 +3,6 @@
 
 .edit-event-container, .profile-container {
     display: flex;
-    flex-flow: row;
-    justify-content: space-around;
-    align-items: flex-start;
 
     .navbar {
         align-items: flex-end;
@@ -46,11 +43,12 @@
     }
 
     .edit-event-content, .profile-content {
+        height: 100%;
         width: 100%;
         padding: 0px 20px;
         display: flex;
         flex-direction: row;
-        align-items: flex-end;
+        align-items: flex-start;
         flex-wrap: wrap;
 
         form{
