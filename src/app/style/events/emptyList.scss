@@ -1,0 +1,34 @@
+@import '../common/colors';
+@import '../setup';
+
+.empty-events {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    img {
+        height: 200px;
+    }
+}
+
+.archer-container {
+    > svg {
+        @media #{$desktopScreenSize} {
+            display: block;
+        }
+        display: none;
+        z-index: -10;
+        #arrow {
+            path {
+                fill: $lighter;
+                stroke-dasharray: 0;
+            }
+        }
+        path {
+            stroke: $lighter !important;
+            stroke-dasharray: 5;
+        }
+    }
+}

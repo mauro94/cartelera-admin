@@ -1,4 +1,5 @@
 import React from 'react'
+import { ArcherContainer, ArcherElement } from 'react-archer'
 import { Route, NavLink, Link } from 'react-router-dom'
 import { List as EventsList } from 'Containers/events'
 import { Plus } from 'Images/plus'
@@ -6,7 +7,7 @@ import { Button } from 'Presentational/elements'
 import 'Style/eventsMenuLayout.scss'
 
 const AllEvents = () => (
-    <React.Fragment>
+    <ArcherContainer className='archer-container'>
         <div className='title'>
             <div className='top-container'>
                 <div className='header-stick'>
@@ -17,28 +18,29 @@ const AllEvents = () => (
                     </h1>
                 </div>
                 <div className='actions-container'>
-                    <Link to='/eventos/nuevo'>
-                        <div className='add'>
-                            <Button type='icon-button primary'>
-                                <div className='plus'>
-                                    <Plus />
-                                </div>
-                            </Button>
-                        </div>
-                    </Link>
+                    <ArcherElement
+                        id='create-event-btn'>
+                        <Link to='/eventos/nuevo'>
+                            <div className='add'>
+                                <Button type='icon-button primary'>
+                                    <div className='plus'>
+                                        <Plus />
+                                    </div>
+                                </Button>
+                            </div>
+                        </Link>
+                    </ArcherElement>
                 </div>
             </div>
         </div>
         <Routes />
-    </React.Fragment>
+    </ArcherContainer>
 )
 
 const Routes = () => (
-    <div className='container-events-all'>
-        <Route
-            path='/eventos'
-            render={({ location }) => <EventsList query={location.search} />} />
-    </div>
+    <Route
+        path='/eventos'
+        render={({ location }) => <EventsList query={location.search} />} />
 )
 
 const Links = () => (
