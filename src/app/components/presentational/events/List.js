@@ -8,7 +8,7 @@ const EventsList = (props) => {
     let emptyMsg
     if(props.upcoming) {
         emptyMsg = <div>
-                    <div>No tienes eventos futuros</div>
+                    <div>No tienes eventos próximos</div>
                     <div>Crea un evento nuevo</div>
                     </div>
     }

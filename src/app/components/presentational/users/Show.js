@@ -59,7 +59,7 @@ const Details = (props) => (
             <div className='labels'>
                 <div className='label'>{Format.capitalize(Labels.enabled)}</div>
                 <div className='value'>
-                    {props.user.enabled ? 'Activo' : 'Inactivo'}
+                    {props.user.enabled ? 'Activado' : 'Bloqueado'}
                 </div>
             </div>
 
