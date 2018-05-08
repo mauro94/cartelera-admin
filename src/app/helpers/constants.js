@@ -9,7 +9,8 @@ export const EventActions = Object.freeze({
     All: 'ALL_EVENTS',
     Create: 'CREATE_EVENT',
     Get: 'GET_EVENT',
-    Update: 'UPDATE_EVENT'
+    Update: 'UPDATE_EVENT',
+    Filter: 'FILTER_EVENT'
 })
 
 export const CategoryActions = Object.freeze({

@@ -1,7 +1,7 @@
 import { EventActions } from 'Helpers/constants'
 import { StateManager } from './helper'
 
-function event(state = StateManager.defaultState, action) {
+function event(state = { ...StateManager.defaultState, filter: 'upcoming' }, action) {
     switch (action.type) {
         case EventActions.All:
             return StateManager.all(state, action)
@@ -11,6 +11,11 @@ function event(state = StateManager.defaultState, action) {
             return StateManager.get(state, action)
         case EventActions.Update:
             return StateManager.update(state, action)
+        case EventActions.Filter:
+            return {
+                ...state,
+                filter: action.object
+            }
     }
     return state
 }

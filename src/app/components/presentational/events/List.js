@@ -6,7 +6,7 @@ import { Entity, history, Format } from 'Helpers/index'
 
 const EventsList = (props) => (
     <React.Fragment>
-        {Entity.isEmpty(props.events) && <ErrorElement message={'No se han encontrado eventos'}/>}
+        {Entity.isEmpty(props.events) && <ErrorElement message={'No se han encontrado eventos'} />}
         {props.events.map((event, index) => (
             <EventGridItem
                 event={event}
@@ -30,11 +30,11 @@ const EventGridItem = ({ event, index }) => {
             <div className='text'>
                 <div className='event-grid-title'>{event.name}</div>
                 <div className='event-grid-date'>
-                    {Format.dateInSpanish(event.start_datetime)}
+                    {Format.dateInSpanish(event.startDatetime)}
                 </div>
                 <div className='event-grid-hashtags'>
-                    {event.tag_names &&
-                        <Hashtags hashtag={event.tag_names} index={index} />}
+                    {event.tagNames &&
+                        <Hashtags hashtag={event.tagNames} index={index} />}
                 </div>
             </div>
         </Link>

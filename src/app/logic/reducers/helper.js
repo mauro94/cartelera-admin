@@ -10,12 +10,12 @@ export const StateManager = {
     },
     update: (oldState, action) => {
         let newState = Object.assign({}, oldState)
-        if (action.status == Status.Ready && !Entity.isEmpty(newState.all) && action.type != EventActions.Update) {
+        if (action.status == Status.Ready && !Entity.isEmpty(newState.all)) {
             let index = newState.all.findIndex(
                 object => (object.id == action.object.id))
             newState.all[index] = action.object
         }
-        switch(action.status) {
+        switch (action.status) {
             case Status.Ready:
                 return {
                     ...newState,
@@ -34,7 +34,7 @@ export const StateManager = {
         }
     },
     get: (oldState, action) => {
-        switch(action.status) {
+        switch (action.status) {
             case Status.Ready:
                 return {
                     ...oldState,
@@ -82,7 +82,7 @@ export const StateManager = {
                 object => (object.id == action.object.id))
             newState.all[index] = {}
         }
-        switch(action.status) {
+        switch (action.status) {
             case Status.Ready:
                 return {
                     ...newState,
