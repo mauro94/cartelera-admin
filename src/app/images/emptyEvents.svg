@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="500px" height="500px" viewBox="0 0 500 500" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 43.1 (39012) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 2</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-2">
+            <circle id="Oval-2" fill="#EEEEEE" cx="250" cy="250" r="250"></circle>
+            <g id="icons8-calendar-(1)" transform="translate(250.000000, 250.000000) rotate(17.000000) translate(-250.000000, -250.000000) translate(135.000000, 132.000000)" fill-rule="nonzero">
+                <path d="M0,211.794872 L0,66.5641026 L230,66.5641026 L230,211.794872 C230,225.107692 219.105263,236 205.789474,236 L24.2105263,236 C10.8947368,236 0,225.107692 0,211.794872 Z" id="Shape" fill="#CFD8DC"></path>
+                <path d="M230,42.3589744 L230,78.6666667 L0,78.6666667 L0,42.3589744 C0,29.0461538 10.8947368,18.1538462 24.2105263,18.1538462 L205.789474,18.1538462 C219.105263,18.1538462 230,29.0461538 230,42.3589744 Z" id="Shape" fill="#F44336"></path>
+                <g id="Group" transform="translate(42.368421, 24.205128)" fill="#B71C1C">
+                    <ellipse id="Oval" cx="127.105263" cy="18.1538462" rx="18.1578947" ry="18.1538462"></ellipse>
+                    <ellipse id="Oval" cx="18.1578947" cy="18.1538462" rx="18.1578947" ry="18.1538462"></ellipse>
+                </g>
+                <g id="Group" transform="translate(48.421053, 0.000000)" fill="#B0BEC5">
+                    <path d="M121.052632,0 C114.394737,0 108.947368,5.44615385 108.947368,12.1025641 L108.947368,42.3589744 C108.947368,49.0153846 114.394737,54.4615385 121.052632,54.4615385 C127.710526,54.4615385 133.157895,49.0153846 133.157895,42.3589744 L133.157895,12.1025641 C133.157895,5.44615385 127.710526,0 121.052632,0 Z" id="Shape"></path>
+                    <path d="M12.1052632,0 C5.44736842,0 0,5.44615385 0,12.1025641 L0,42.3589744 C0,49.0153846 5.44736842,54.4615385 12.1052632,54.4615385 C18.7631579,54.4615385 24.2105263,49.0153846 24.2105263,42.3589744 L24.2105263,12.1025641 C24.2105263,5.44615385 18.7631579,0 12.1052632,0 Z" id="Shape"></path>
+                </g>
+                <g id="Group" transform="translate(48.421053, 102.871795)" fill="#90A4AE">
+                    <rect id="Rectangle-path" x="0" y="0" width="24.2105263" height="24.2051282"></rect>
+                    <rect id="Rectangle-path" x="36.3157895" y="0" width="24.2105263" height="24.2051282"></rect>
+                    <rect id="Rectangle-path" x="72.6315789" y="0" width="24.2105263" height="24.2051282"></rect>
+                    <rect id="Rectangle-path" x="108.947368" y="0" width="24.2105263" height="24.2051282"></rect>
+                    <rect id="Rectangle-path" x="0" y="36.3076923" width="24.2105263" height="24.2051282"></rect>
+                    <rect id="Rectangle-path" x="36.3157895" y="36.3076923" width="24.2105263" height="24.2051282"></rect>
+                    <rect id="Rectangle-path" x="72.6315789" y="36.3076923" width="24.2105263" height="24.2051282"></rect>
+                    <rect id="Rectangle-path" x="108.947368" y="36.3076923" width="24.2105263" height="24.2051282"></rect>
+                    <rect id="Rectangle-path" x="0" y="72.6153846" width="24.2105263" height="24.2051282"></rect>
+                    <rect id="Rectangle-path" x="36.3157895" y="72.6153846" width="24.2105263" height="24.2051282"></rect>
+                    <rect id="Rectangle-path" x="72.6315789" y="72.6153846" width="24.2105263" height="24.2051282"></rect>
+                    <rect id="Rectangle-path" x="108.947368" y="72.6153846" width="24.2105263" height="24.2051282"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
