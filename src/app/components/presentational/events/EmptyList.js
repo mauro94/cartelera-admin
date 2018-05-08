@@ -5,7 +5,7 @@ import 'Style/events/emptyList.scss'
 
 export const EmptyUpcomingEvents = (props) => (
     <div className='empty-events'>
-        <img className='empty-event-icon' height="50" src={EmptyEventIcon} />
+        <img className='empty-event-icon' src={EmptyEventIcon} />
         <EmptyElement>
             <div>
                 <div>No tienes eventos próximos</div>
@@ -16,7 +16,10 @@ export const EmptyUpcomingEvents = (props) => (
 )
 
 export const EmptyPastEvents = (props) => (
-    <EmptyElement>
-        <div>No tienes eventos pasados</div>
-    </EmptyElement>
+    <div className='empty-events'>
+        <img className='empty-event-icon' src={EmptyEventIcon} />
+        <EmptyElement>
+            <div>No tienes eventos pasados</div>
+        </EmptyElement>
+    </div>
 )
