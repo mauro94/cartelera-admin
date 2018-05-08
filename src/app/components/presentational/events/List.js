@@ -17,7 +17,6 @@ const EventsList = (props) => (
 )
 
 const EventGridItem = ({ event, index }) => {
-    event.hashtag = ['code', 'hack', 'business']
     return (
         <Link
             to={`/eventos/${event.id}/editar`}
