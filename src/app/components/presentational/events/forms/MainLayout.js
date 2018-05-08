@@ -70,15 +70,15 @@ export const EventFormNav = (props) => {
                 Imágenes
             </NavButton>
 
-            <NavButton to={`/eventos/${path}/detalles`}>
-                Contacto
+            <NavButton to={`/eventos/${path}/organizador`}>
+                Organizador
             </NavButton>
 
             <NavButton to={`/eventos/${path}/registro`}>
                 Registro
             </NavButton>
 
-            {props.edit &&
+            {props.edit && props.showRegistrees &&
                 <NavButton to={`/eventos/${path}/registrados`}>
                     Lista de registrados
             </NavButton>}
@@ -101,8 +101,8 @@ export const EventFormRoutes = (props) => {
                 path={`/eventos/${path}`}
                 render={() => <EventFormSection.General {...routeProps} />} />
             <Route
-                path={`/eventos/${path}/detalles`}
-                render={() => <EventFormSection.Details {...routeProps} />} />
+                path={`/eventos/${path}/organizador`}
+                render={() => <EventFormSection.Organizer {...routeProps} />} />
             <Route
                 path={`/eventos/${path}/imagenes`}
                 render={() => <EventFormSection.Images {...routeProps} />} />
