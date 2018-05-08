@@ -4,11 +4,25 @@ import { faEnvelope } from '@fortawesome/fontawesome-free-regular'
 import { load } from 'Containers/hoc'
 import { Entity } from 'Helpers/object'
 import { SelectedUserRoutes } from './Layout'
-import { UserAvatar, getRandomColor, ExpandedList } from 'Presentational/elements'
+import { UserAvatar, getRandomColor, ExpandedList, EmptyElement } from 'Presentational/elements'
 
 const UsersList = (props) => {
+    let emptyMsg
+    if(props.type == 'sponsors') {
+        emptyMsg = <div>
+                    <div>No existen sponsors</div>
+                    <div>Crea un sponsor nuevo</div>
+                    </div>
+    }
+    else {
+        emptyMsg = <div>
+                    <div>No existen admins</div>
+                    <div>Crea un admin nuevo</div>
+                    </div>
+    }
+
     let listData = {
-        entries: [],
+        entries: [], 
         linkPaths: [],
         colors: []
     }
@@ -18,15 +32,19 @@ const UsersList = (props) => {
         listData.colors.push(getRandomColor(user))
     })
     return (
-        <ExpandedList
-            {...listData}
-            items={props.users}
-            location={props.location}
-            selectedItem={
-                <SelectedUserRoutes
-                    usersAreEmpty={Entity.isEmpty(props.users)}
-                    users={props.users} />}
-            renderSelectedItem={props.renderSelectedUserRoutes} />
+        (Entity.isEmpty(props.users) ? 
+            <EmptyElement>
+                {emptyMsg}
+            </EmptyElement> :
+            <ExpandedList
+                {...listData}
+                items={props.users}
+                location={props.location}
+                selectedItem={
+                    <SelectedUserRoutes
+                        usersAreEmpty={Entity.isEmpty(props.users)}
+                        users={props.users} />}
+                renderSelectedItem={props.renderSelectedUserRoutes} />)
     )
 }
 

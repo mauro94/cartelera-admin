@@ -1,12 +1,26 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { load } from 'Containers/hoc'
-import { ErrorElement } from 'Presentational/elements'
+import { EmptyElement } from 'Presentational/elements'
 import { Entity, history, Format } from 'Helpers/index'
 
-const EventsList = (props) => (
-    <React.Fragment>
-        {Entity.isEmpty(props.events) && <ErrorElement message={'No se han encontrado eventos'} />}
+const EventsList = (props) => {
+    let emptyMsg
+    if(props.upcoming) {
+        emptyMsg = <div>
+                    <div>No tienes eventos próximos</div>
+                    <div>Crea un evento nuevo</div>
+                    </div>
+    }
+    else {
+        emptyMsg = <div>No tienes eventos pasados</div>
+    }
+
+    return <React.Fragment>
+        {Entity.isEmpty(props.events) &&
+            <EmptyElement>
+            {emptyMsg}
+            </EmptyElement>}
         {props.events.map((event, index) => (
             <EventGridItem
                 event={event}
@@ -14,7 +28,7 @@ const EventsList = (props) => (
                 key={'item-' + index} />
         ))}
     </React.Fragment>
-)
+}
 
 const EventGridItem = ({ event, index }) => {
     return (
