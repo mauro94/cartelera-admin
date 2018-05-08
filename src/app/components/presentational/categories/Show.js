@@ -43,7 +43,7 @@ const Details = (props) => (
             <div className='labels'>
                 <div className='label'>{Format.capitalize(Labels.enabled)}</div>
                 <div className='value'>
-                    {props.category.enabled ? 'Activo' : 'Inactivo'}
+                    {props.category.enabled ? 'Activado' : 'Desactivado'}
                 </div>
             </div>
 

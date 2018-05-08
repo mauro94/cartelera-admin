@@ -21,6 +21,7 @@ class Events extends React.Component {
         return (
             <EventsList
                 events={this.props.event.all}
+                upcoming={getEventsType(this.props.query) == 'upcoming'}
                 hide
                 reducer={{
                     status: this.props.event.status,

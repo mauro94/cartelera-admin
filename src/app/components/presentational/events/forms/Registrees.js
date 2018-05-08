@@ -1,7 +1,6 @@
 import React from 'react'
 import { history } from 'Helpers/index'
-import { ClipboardButton } from 'Presentational/elements'
-import { ErrorElement } from 'Presentational/elements'
+import { ClipboardButton, EmptyElement } from 'Presentational/elements'
 import { load } from 'Containers/hoc'
 import { Entity } from 'Helpers/index';
 
@@ -10,7 +9,7 @@ const ListRegistrees = (props) => {
             {!Entity.isEmpty(props.registrees) && <ClipboardButton buttonText="Copiar lista de correos"></ClipboardButton>}
 
             <div className='list long'>
-                {Entity.isEmpty(props.registrees) && <ErrorElement message={'No se han registrado personas al evento'}/>}
+                {Entity.isEmpty(props.registrees) && <EmptyElement><div>No se han registrado personas al evento</div></EmptyElement>}
                 {props.registrees.map((r, index) => (
                     <div className='list-item column' key={`registree-${index}`}>
                         <div className='column-focus'>
