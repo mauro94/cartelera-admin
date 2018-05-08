@@ -8,12 +8,3 @@ export function createAction(type, object, error = {}, status) {
         status: status
     }
 }
-
-export function selectUser(id) {
-    return createAction(
-        UserActions.Get,
-        id,
-        null,
-        Status.Ready
-    )
-}

@@ -53,26 +53,44 @@ export const StateManager = {
         }
     },
     all: (oldState, action) => {
-        return {
-            ...oldState,
-            all: action.object,
-            status: action.status,
-            error: action.error,
-            action: action.type,
-            show: action.object ? action.object[0] : oldState.show
+        switch (action.status) {
+            case Status.Ready:
+                return {
+                    ...oldState,
+                    all: action.object,
+                    status: action.status,
+                    error: action.error,
+                    action: action.type,
+                    show: action.object ? action.object[0] : oldState.show
+                }
+            default:
+                return {
+                    ...oldState,
+                    action: action.type,
+                    error: action.error,
+                    status: action.status
+                }
         }
     },
     create: (oldState, action) => {
-        let newState = Object.assign({}, oldState)
-        if (action.status == Status.Ready) {
-            newState.all = [action.object, ...oldState.all]
-            newState.show = action.object
-        }
-        return {
-            ...newState,
-            action: action.type,
-            error: action.error,
-            status: action.status
+        switch (action.status) {
+            case Status.Ready:
+                let newState = Object.assign({}, oldState)
+                newState.all = [action.object, ...oldState.all]
+                newState.show = action.object
+                return {
+                    ...newState,
+                    action: action.type,
+                    error: action.error,
+                    status: action.status
+                }
+            default:
+                return {
+                    ...oldState,
+                    action: action.type,
+                    error: action.error,
+                    status: action.status
+                }
         }
     },
     remove: (oldState, action) => {
