@@ -14,6 +14,7 @@ const CategoriesLayout = (props) => (
 const CategoriesPage = (props) => (
     <React.Fragment>
         <Header match={props.match} />
+        
         <div className='expanded-list'>
             <CategoriesList />
         </div>
