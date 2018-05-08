@@ -4,7 +4,7 @@ import { TextField } from 'Presentational/elements/Input'
 import { Entity } from 'Helpers/object'
 import { FormButtonSignout, FormButtonSubmit } from 'Presentational/elements/Form'
 
-export const EventsFormsDetails = (props) => (
+export const EventsFormsOrganizer = (props) => (
     <React.Fragment>
 
         {props.values.prefix != '' && <div className="name-displayer">
