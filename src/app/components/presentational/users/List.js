@@ -32,7 +32,7 @@ const UsersList = (props) => {
         listData.colors.push(getRandomColor(user))
     })
     return (
-        (!Entity.isEmpty(props.users) ? 
+        (Entity.isEmpty(props.users) ? 
             <EmptyElement>
                 {emptyMsg}
             </EmptyElement> :
