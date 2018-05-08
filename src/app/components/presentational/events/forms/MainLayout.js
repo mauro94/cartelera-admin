@@ -78,7 +78,7 @@ export const EventFormNav = (props) => {
                 Registro
             </NavButton>
 
-            {props.edit &&
+            {props.edit && props.showRegistrees &&
                 <NavButton to={`/eventos/${path}/registrados`}>
                     Lista de registrados
             </NavButton>}
