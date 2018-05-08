@@ -1,8 +1,25 @@
 import React from 'react'
 import EmptyEventIcon from 'Images/emptyEvents.svg'
-import EmptyRegistryIcon from 'Images/peopleIcon.svg'
+import EmptyUsersIcon from 'Images/usersIcon.svg'
+import EmptyRegistryIcon from 'Images/registreesIcon.svg'
 import EmptyCategoryIcon from 'Images/categoriesIcon.svg'
 import 'Style/common/emptyIcon.scss'
+
+export const EmptySponsors = (props) => (
+    <EmptyElement>
+        <img className='empty-icon' src={EmptyUsersIcon} />
+        <div>No existen sponsors</div>
+        <div>Crea uno nuevo</div>
+    </EmptyElement>
+)
+
+export const EmptyAdmins = (props) => (
+    <EmptyElement>
+        <img className='empty-icon' src={EmptyUsersIcon} />
+        <div>No existen admins</div>
+        <div>Crea uno nuevo</div>
+    </EmptyElement>
+)
 
 export const EmptyCategories = (props) => (
     <EmptyElement>

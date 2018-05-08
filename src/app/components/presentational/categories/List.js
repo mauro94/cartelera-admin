@@ -5,6 +5,9 @@ import { SelectedCategoryRoutes } from 'Presentational/categories'
 import { ExpandedList, CategoryAvatar, getCatRandomColor, EmptyCategories } from 'Presentational/elements'
 
 const CategoriesList = (props) => {
+    if (Entity.isEmpty(props.categories)) {
+        return <EmptyCategories />
+    }
     let listData = {
         entries: [],
         linkPaths: [],
@@ -16,17 +19,15 @@ const CategoriesList = (props) => {
         listData.colors.push(getCatRandomColor(category))
     })
     return (
-        (!Entity.isEmpty(props.categories) ?
-            <EmptyCategories /> :
-            <ExpandedList
-                {...listData}
-                items={props.categories}
-                location={props.location}
-                selectedItem={
-                    <SelectedCategoryRoutes
-                        categoriesAreEmpty={Entity.isEmpty(props.categories)}
-                        categories={props.categories} />}
-                renderSelectedItem={props.renderSelectedCategoryRoutes} />)
+        <ExpandedList
+            {...listData}
+            items={props.categories}
+            location={props.location}
+            selectedItem={
+                <SelectedCategoryRoutes
+                    categoriesAreEmpty={Entity.isEmpty(props.categories)}
+                    categories={props.categories} />}
+            renderSelectedItem={props.renderSelectedCategoryRoutes} />
     )
 }
 
