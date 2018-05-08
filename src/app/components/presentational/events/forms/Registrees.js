@@ -5,11 +5,13 @@ import { load } from 'Containers/hoc'
 import { Entity } from 'Helpers/index';
 
 const ListRegistrees = (props) => {
+    if (Entity.isEmpty) {
+        return <EmptyRegistrees />
+    }
     return <React.Fragment>
         {!Entity.isEmpty(props.registrees) && <ClipboardButton buttonText="Copiar lista de correos"></ClipboardButton>}
 
         <div className='list long'>
-            {Entity.isEmpty(props.registrees) && <EmptyRegistrees />}
             {props.registrees.map((r, index) => (
                 <div className='list-item column' key={`registree-${index}`}>
                     <div className='column-focus'>

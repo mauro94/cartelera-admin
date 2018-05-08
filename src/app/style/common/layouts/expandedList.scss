@@ -3,7 +3,7 @@
 @import '../tags';
 
 .expanded-list {
-    height: 70vh;
+    max-height: 70vh;
     display: flex;
     width: 100%;
     flex-wrap: wrap;

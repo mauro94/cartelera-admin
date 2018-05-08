@@ -2,7 +2,7 @@ import React from 'react'
 import { load } from 'Containers/hoc'
 import { Entity } from 'Helpers/object'
 import { SelectedCategoryRoutes } from 'Presentational/categories'
-import { ExpandedList, CategoryAvatar, getCatRandomColor, EmptyElement } from 'Presentational/elements'
+import { ExpandedList, CategoryAvatar, getCatRandomColor, EmptyCategories } from 'Presentational/elements'
 
 const CategoriesList = (props) => {
     let listData = {
@@ -16,13 +16,8 @@ const CategoriesList = (props) => {
         listData.colors.push(getCatRandomColor(category))
     })
     return (
-        (Entity.isEmpty(props.categories) ?
-            <EmptyElement>
-                <div>
-                    <div>No existen categorías</div>
-                    <div>Crea una categoría nueva</div>
-                </div>
-            </EmptyElement> :
+        (!Entity.isEmpty(props.categories) ?
+            <EmptyCategories /> :
             <ExpandedList
                 {...listData}
                 items={props.categories}
@@ -31,7 +26,7 @@ const CategoriesList = (props) => {
                     <SelectedCategoryRoutes
                         categoriesAreEmpty={Entity.isEmpty(props.categories)}
                         categories={props.categories} />}
-                renderSelectedItem={props.renderSelectedCategoryRoutes}/>)
+                renderSelectedItem={props.renderSelectedCategoryRoutes} />)
     )
 }
 

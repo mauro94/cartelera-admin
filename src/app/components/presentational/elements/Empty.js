@@ -1,7 +1,16 @@
 import React from 'react'
 import EmptyEventIcon from 'Images/emptyEvents.svg'
 import EmptyRegistryIcon from 'Images/peopleIcon.svg'
+import EmptyCategoryIcon from 'Images/categoriesIcon.svg'
 import 'Style/common/emptyIcon.scss'
+
+export const EmptyCategories = (props) => (
+    <EmptyElement>
+        <img className='empty-icon' src={EmptyCategoryIcon} />
+        <div>No existen categorías</div>
+        <div>Crea una nueva</div>
+    </EmptyElement>
+)
 
 export const EmptyRegistrees = (props) => (
     <EmptyElement>
