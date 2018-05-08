@@ -12,23 +12,3 @@
         height: 200px;
     }
 }
-
-.archer-container {
-    > svg {
-        @media #{$desktopScreenSize} {
-            display: block;
-        }
-        display: none;
-        z-index: -10;
-        #arrow {
-            path {
-                fill: $lighter;
-                stroke-dasharray: 0;
-            }
-        }
-        path {
-            stroke: $lighter !important;
-            stroke-dasharray: 5;
-        }
-    }
-}
