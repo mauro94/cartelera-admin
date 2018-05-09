@@ -6,7 +6,8 @@ import Yup from 'yup'
 import {
     EmailField,
     PasswordField,
-    SubmitButton
+    SubmitButton,
+    Button
 } from 'Presentational/elements'
 
 export const BasicLogin = (props) => (

@@ -19,6 +19,11 @@ class Login extends React.Component {
         return (
             <div className='login-form-container'>
                 <LoginForm handleSubmit={this.props.handleSubmit} error={this.props.error}/>
+                <div class="forgot-password">
+                    <a>
+                        Olvide mi contraseña
+                    </a>
+                </div>
             </div>
         )
     }
