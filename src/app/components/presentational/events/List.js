@@ -1,33 +1,25 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { load } from 'Containers/hoc'
-import { EmptyElement } from 'Presentational/elements'
+import { EmptyUpcomingEvents, EmptyPastEvents } from 'Presentational/elements'
 import { Entity, history, Format } from 'Helpers/index'
 
 const EventsList = (props) => {
-    let emptyMsg
-    if(props.upcoming) {
-        emptyMsg = <div>
-                    <div>No tienes eventos próximos</div>
-                    <div>Crea un evento nuevo</div>
-                    </div>
-    }
-    else {
-        emptyMsg = <div>No tienes eventos pasados</div>
+    if (Entity.isEmpty(props.events)) {
+        if (props.upcoming) {
+            return <EmptyUpcomingEvents />
+        }
+        return <EmptyPastEvents />
     }
 
-    return <React.Fragment>
-        {Entity.isEmpty(props.events) &&
-            <EmptyElement>
-            {emptyMsg}
-            </EmptyElement>}
+    return <div className='container-events-all'>
         {props.events.map((event, index) => (
             <EventGridItem
                 event={event}
                 index={index}
                 key={'item-' + index} />
         ))}
-    </React.Fragment>
+    </div>
 }
 
 const EventGridItem = ({ event, index }) => {

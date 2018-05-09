@@ -10,7 +10,6 @@ export const eventInitialValues = {
     cost: '0',
     majors: [],
     languages: [],
-    prefix: '',
     contactName: '',
     contactEmail: '',
     contactPhone: '',

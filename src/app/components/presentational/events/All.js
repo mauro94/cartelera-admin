@@ -34,11 +34,9 @@ const AllEvents = () => (
 )
 
 const Routes = () => (
-    <div className='container-events-all'>
-        <Route
-            path='/eventos'
-            render={({ location }) => <EventsList query={location.search} />} />
-    </div>
+    <Route
+        path='/eventos'
+        render={({ location }) => <EventsList query={location.search} />} />
 )
 
 const Links = () => (
