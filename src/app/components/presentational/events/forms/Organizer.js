@@ -6,13 +6,7 @@ import { FormButtonSignout, FormButtonSubmit } from 'Presentational/elements/For
 
 export const EventsFormsOrganizer = (props) => (
     <React.Fragment>
-
-        {props.values.prefix != '' && <div className="name-displayer">
-            <TextField label='prefix' inputSizeSmall {...props} />
-            <TextField label='contactName' {...props} />
-        </div>}
-
-        {props.values.prefix == '' && <TextField label='contactName' {...props} />}
+        <TextField label='contactName' {...props} />
 
         <TextField label='contactEmail' {...props} />
 

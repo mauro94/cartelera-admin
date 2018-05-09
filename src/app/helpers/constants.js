@@ -85,7 +85,6 @@ export const Labels = Object.freeze({
     twitterUrl: "twitter",
     petFriendly: "pet-friendly",
     languages: "idiomas ofrecidos",
-    prefix: "artículo",
     registrationUrl: "liga de registro exterior (e.g. Google Forms)",
     registrationMessage: "mensaje de confirmación de registro",
     registrationDeadline: "fecha límite de registro",
