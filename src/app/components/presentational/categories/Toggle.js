@@ -15,6 +15,7 @@ export const ToggleConfirm = (props) => (
     <ConfirmationModal
         title={'Desea ' + (props.category.enabled ? 'desactivar' : 'activar') + ' la categoría?'}
         subtitle={props.category.name}
+        confirmButtonType={props.category.enabled ? 'danger' : 'primary'}
         confirmationMsg={props.category.enabled ?
             'Una vez desactivada, ya no se podrá utilizar esta categoría en los eventos hasta que se reactive.' :
             'Una vez activada, se podrá utilizar esta categoría en los eventos.'}

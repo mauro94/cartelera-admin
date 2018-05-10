@@ -36,7 +36,12 @@ class Edit extends React.Component {
     }
     handleSubmit(user) {
         let updatedUser = { id: this.props.currentUser.show.id }
-        for (var key in this.props.currentUser.show) {
+        let validateUser = {
+            ...this.props.currentUser.show,
+            password: '',
+            passwordConfirm: ''
+        }
+        for (var key in validateUser) {
             if (user.hasOwnProperty(key)) {
                 if (this.props.currentUser.show[key] != user[key] && key != "id") {
                     updatedUser[key] = user[key]

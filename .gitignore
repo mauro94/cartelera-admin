@@ -3,7 +3,7 @@ src/public
 .vscode
 .DS_STORE
 
-#awsmobilejs
+awsmobilejs/
 appsync-info.json
 aws-info.json
 project-info.json
