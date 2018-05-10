@@ -26,7 +26,7 @@ export const AddFailed = (props) => (
         title={'Error al agregar la categoría'}
         subtitle={props.category}
         handleOk={props.onClose}>
-        {props.error}
+        {props.error.name[0]}
     </FeedbackModal>
 )
 

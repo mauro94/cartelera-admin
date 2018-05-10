@@ -14,7 +14,7 @@ function handleError(action) {
         case 404:
             return 'Este correo no existe en la lista de registrados'
         default:
-            return action.error.data
+            return action.error.data.errors ? action.error.data.errors : action.error.data.error_message
     }
 }
 

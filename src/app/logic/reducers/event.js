@@ -6,13 +6,17 @@ function handleError(action) {
         case 404:
             return 'Este evento no existe'
         default:
-            return action.error.data
+            return action.error.data.errors ? action.error.data.errors : action.error.data.error_message
     }
 }
 
 function event(state = { ...StateManager.defaultState, filter: 'upcoming' }, action) {
     switch (action.type) {
         case EventActions.All:
+            action = {
+                ...action,
+                object: action.object && action.object.events
+            }
             return {
                 ...StateManager.all(state, action),
                 error: action.error && handleError(action)

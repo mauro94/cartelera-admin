@@ -6,7 +6,7 @@ function handleError(action) {
         case 404:
             return 'Esta categoría no existe'
         default:
-            return action.error.data
+            return action.error.data.errors ? action.error.data.errors : action.error.data.error_message
     }
 }
 
