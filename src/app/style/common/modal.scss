@@ -6,6 +6,14 @@
   text-align: center;
   min-width: 100%;
 
+  .modal-additional-info{
+    margin: 25px;
+  }
+
+  h3{
+    margin: 5px;
+  }
+
   textarea {
       font-family: $systemfont;
       padding: 10px;
@@ -46,6 +54,7 @@
     display: flex;
     flex-direction: column-reverse;
     align-items: center;
+    margin: 20px 0;
 
     .modal-confirm-cancel-button{
       background: $red;

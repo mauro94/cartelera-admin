@@ -18,6 +18,7 @@ export const RemoveConfirm = (props) => (
     <ConfirmationModal
         title={'Desea eliminar la categoría?'}
         subtitle={props.category.name}
+        confirmButtonType='danger'
         confirmationMsg={'Una vez eliminada, ya no se podrá recuperar.'}
         lastMsg={'continuar'}
         handleCancel={props.onClose}

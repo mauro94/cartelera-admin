@@ -13,6 +13,10 @@ export const EventActions = Object.freeze({
     Filter: 'FILTER_EVENT'
 })
 
+export const GenericServerCallActions = Object.freeze({
+    PasswordReset: 'PASSWORD_RESET'
+})
+
 export const CategoryActions = Object.freeze({
     All: 'ALL_CATEGORIES',
     Create: 'CREATE_CATEGORY',
@@ -47,7 +51,9 @@ export const UserTypes = Object.freeze({
     Sponsor: 'sponsor',
     Admin: 'admin',
     sponsor: 'sponsor',
-    admin: 'admin'
+    admin: 'admin',
+    sponsors: 'sponsor',
+    admins: 'admin'
 })
 
 export const UserForms = Object.freeze({
