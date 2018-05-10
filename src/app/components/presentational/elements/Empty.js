@@ -3,7 +3,7 @@ import EmptyEventIcon from 'Images/emptyEvents.svg'
 import EmptyUsersIcon from 'Images/usersIcon.svg'
 import EmptyRegistryIcon from 'Images/registreesIcon.svg'
 import EmptyCategoryIcon from 'Images/categoriesIcon.svg'
-import 'Style/common/emptyIcon.scss'
+import 'Style/common/warningIcon.scss'
 
 export const EmptySponsors = (props) => (
     <EmptyElement>
@@ -52,7 +52,7 @@ export const EmptyPastEvents = (props) => (
 )
 
 export const EmptyElement = ({ children }) => (
-    <div className='empty-container'>
-        <h3 className="generic-error">{children}</h3>
+    <div className='warning-container'>
+        <h3 className="generic-warning">{children}</h3>
     </div>
 )

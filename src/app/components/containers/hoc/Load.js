@@ -1,5 +1,5 @@
 import React from 'react'
-import { ErrorElement, LoadingElement } from 'Presentational/elements'
+import { ServerError, LoadingElement } from 'Presentational/elements'
 import { actionSucceded, actionFailed, waitingOnAction } from 'Containers/helper'
 import { Entity, Status } from 'Helpers/index'
 
@@ -49,16 +49,28 @@ const load = (loadingResource, Component) => {
             }
         }
         getProps() {
-            let { reducer, action, onSuccess, onError, hide, ...childProps } = this.props;
+            let {
+                reducer,
+                action,
+                onSuccess,
+                onError,
+                hide,
+                ...childProps
+            } = this.props;
             return childProps
         }
         render() {
             switch (this.state.status) {
                 case Status.Failed:
-                    if (this.props.hide) return <ErrorElement
-                        message={this.props.reducer.error} />
+                    if (this.props.hide) {
+                        return (
+                            <ServerError errorMessage={this.props.reducer.error} />
+                        )
+                    }
                 case Status.WaitingOnServer:
-                    if (this.props.hide) return <LoadingElement />
+                    if (this.props.hide) {
+                        return <LoadingElement />
+                    }
                     else return (
                         <React.Fragment>
                             <LoadingElement />
@@ -68,8 +80,10 @@ const load = (loadingResource, Component) => {
                     )
                 case Status.Ready:
                 default:
-                    return <Component
-                        {...this.getProps()} />
+                    return (
+                        <Component
+                            {...this.getProps()} />
+                    )
             }
         }
     }

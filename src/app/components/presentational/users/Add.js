@@ -6,7 +6,7 @@ import { withFeedback } from 'Containers/hoc'
 import 'Style/common/simpleAdd.scss'
 
 export const AddUser = (props) => (
-        <Callout add={props.add} placeholder="ejemplo@ejemplo.com" type={props.type} icon={faEnvelope} />
+    <Callout add={props.add} placeholder="ejemplo@ejemplo.com" type={props.type} icon={faEnvelope} />
 )
 
 export const AddSucceeded = (props) => (
@@ -27,7 +27,7 @@ export const AddFailed = (props) => (
         title={'Error al agregar al ' + UserTypes[props.type]}
         subtitle={props.user}
         handleOk={props.onClose}>
-        {props.error}
+        {props.error.email[0]}
     </FeedbackModal>
 )
 

@@ -9,6 +9,15 @@ var defaultState = {
     eventId: -1
 }
 
+function handleError(action) {
+    switch (action.error.status) {
+        case 404:
+            return 'Este correo no existe en la lista de registrados'
+        default:
+            return action.error.data.errors ? action.error.data.errors : action.error.data.error_message
+    }
+}
+
 function registree(state = defaultState, action) {
     switch (action.type) {
         case RegistreeActions.EventId:
@@ -17,13 +26,14 @@ function registree(state = defaultState, action) {
                     return {
                         ...state,
                         action: action.type,
-                        eventId: action.object
+                        eventId: action.object,
+                        error: action.error && handleError(action)
                     }
                 default:
                     return {
                         ...state,
                         action: action.type,
-                        error: action.error,
+                        error: action.error && handleError(action),
                         status: action.status
                     }
             }
@@ -40,7 +50,7 @@ function registree(state = defaultState, action) {
                     return {
                         ...state,
                         action: action.type,
-                        error: action.error,
+                        error: action.error && handleError(action),
                         status: action.status
                     }
             }

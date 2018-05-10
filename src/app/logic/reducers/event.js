@@ -1,5 +1,14 @@
-import { EventActions } from 'Helpers/constants'
+import { EventActions, Status } from 'Helpers/constants'
 import { StateManager } from './helper'
+
+function handleError(action) {
+    switch (action.error.status) {
+        case 404:
+            return 'Este evento no existe'
+        default:
+            return action.error.data.errors ? action.error.data.errors : action.error.data.error_message
+    }
+}
 
 function event(state = { ...StateManager.defaultState, filter: 'upcoming' }, action) {
     switch (action.type) {
@@ -8,17 +17,30 @@ function event(state = { ...StateManager.defaultState, filter: 'upcoming' }, act
                 ...action,
                 object: action.object && action.object.events
             }
-            return StateManager.all(state, action)
+            return {
+                ...StateManager.all(state, action),
+                error: action.error && handleError(action)
+            }
         case EventActions.Create:
-            return StateManager.create(state, action)
+            return {
+                ...StateManager.create(state, action),
+                error: action.error && handleError(action)
+            }
         case EventActions.Get:
-            return StateManager.get(state, action)
+            return {
+                ...StateManager.get(state, action),
+                error: action.error && handleError(action)
+            }
         case EventActions.Update:
-            return StateManager.update(state, action)
+            return {
+                ...StateManager.update(state, action),
+                error: action.error && handleError(action)
+            }
         case EventActions.Filter:
             return {
                 ...state,
-                filter: action.object
+                filter: action.object,
+                error: action.error && handleError(action)
             }
     }
     return state

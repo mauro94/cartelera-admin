@@ -8,20 +8,24 @@ import { UserActions } from 'Helpers/constants'
 class Add extends React.Component {
     constructor(props) {
         super(props)
-        this.email = ''
+        this.state = {
+            email: ''
+        }
         this.handleAdd = this.handleAdd.bind(this)
         this.handleError = this.handleError.bind(this)
         this.handleSuccess = this.handleSuccess.bind(this)
     }
     handleAdd(email) {
-        this.email = email
-        this.props.add({email: email, type: this.props.type})
+        this.setState({
+            email: email
+        })
+        this.props.add({ email: email, type: this.props.type })
     }
     handleError() {
         ModalAlert({
             modal: AddFailed,
             type: this.props.type,
-            user: this.email,
+            user: this.state.email,
             error: this.props.user.error
         })
     }

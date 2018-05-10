@@ -3,6 +3,7 @@ import EditCategoryForm from 'Containers/categories/Edit'
 import { history } from 'Helpers/index'
 import { FeedbackModal } from 'Presentational/elements'
 import BasicForm from 'Presentational/categories/forms/Basic'
+import { CategoryAvatar } from 'Presentational/elements'
 
 export const EditSucceeded = (props) => (
     <FeedbackModal
@@ -40,6 +41,7 @@ const EditCategory = (props) => (
 
 const Title = (props) => (
     <div className='title'>
+        <CategoryAvatar category={props.category} size={100} />
         <div className='name'>
             {props.category.name}
         </div>
