@@ -1,7 +1,7 @@
 import React from 'react'
 import PageNotFoundIcon from 'Images/pageNotFound.svg'
 import ServerErrorIcon from 'Images/serverError.svg'
-import 'Style/common/emptyIcon.scss'
+import 'Style/common/warningIcon.scss'
 
 export const ServerError = (props) => (
     <ErrorElement>
@@ -18,7 +18,7 @@ export const PageNotFound = (props) => (
 )
 
 export const ErrorElement = ({ children }) => (
-    <div className='error-container'>
-        <h3 className='generic-error'>{children}</h3>
+    <div className='warning-container'>
+        <h3 className='generic-warning'>{children}</h3>
     </div>
 )

@@ -37,10 +37,14 @@ export const serverCall = ({ dispatch, actionType, call, onSuccess, onError }) =
             if (onError) {
                 onError(error)
             }
+            let reducerError = {
+                data: error.response.data,
+                status: error.response.status
+            }
             dispatch(createAction(
                 actionType,
                 null,
-                error.response ? error.response.data : error.message,
+                reducerError,
                 Status.Failed
             ))
         })
