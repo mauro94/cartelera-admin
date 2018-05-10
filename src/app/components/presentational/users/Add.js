@@ -17,7 +17,7 @@ export const AddSucceeded = (props) => (
             props.onClose()
             history.push(`/usuarios/${props.user.userType}s/${props.user.id}`)
         }}>
-        Contraseña temporal: <h1>{props.user.password}</h1>
+        <div className='modal-additional-info'> Contraseña temporal: <h3>{props.user.password}</h3></div>
     </FeedbackModal>
 )
 
