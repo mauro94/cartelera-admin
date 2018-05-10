@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Button = (props) => {
+export const Button = (props) => {
     return (
         <div className={'btn' + (props.right ? ' right' : '')}>
             <button
@@ -15,4 +15,17 @@ const Button = (props) => {
     )
 }
 
-export default Button
+export const StaticButton = (props) => {
+    return (
+        <div className={'static' + (props.right ? ' right' : '')}>
+            <button
+                className={(props.type ? props.type : 'primary')
+                    + (props.hide ? ' hide' : '')
+                    + (props.small ? ' sm' : '')}
+                disabled={props.disabled}
+                onClick={props.handleClick}>
+                {props.children}
+            </button>
+        </div>
+    )
+}

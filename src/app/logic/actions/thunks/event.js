@@ -1,23 +1,35 @@
-import { Format, EventActions, Status } from 'Helpers/index'
+import { Format, EventActions, EventsPerPage, Status } from 'Helpers/index'
 import { serverCall, request, headers } from './helper'
 import { createAction } from 'Logic/actions'
 
-export const all = (filter) => {
-    return dispatch => serverCall({
-        dispatch: dispatch,
-        actionType: EventActions.All,
-        onSuccess: (response) => {
-            dispatch(createAction(
-                EventActions.Filter,
-                filter,
-                null,
-                Status.Ready
-            ))
-        },
-        call: () => request.get(
-            `/events/${filter}`,
-            { headers: headers.withAuth() }),
-    })
+export const all = (filter, page) => {
+    return dispatch => {
+        dispatch(createAction(
+            EventActions.CurrentPage,
+            page,
+            null,
+            Status.Ready
+        ))
+        dispatch(createAction(
+            EventActions.Filter,
+            filter,
+            null,
+            Status.Ready
+        ))
+        return serverCall({
+            dispatch: dispatch,
+            actionType: EventActions.All,
+            call: () => request.get(
+                `/events/${filter}`,
+                {
+                    headers: headers.withAuth(),
+                    params: {
+                        page: page,
+                        per_page: EventsPerPage
+                    }
+                }),
+        })
+    }
 }
 
 export const get = (id) => {

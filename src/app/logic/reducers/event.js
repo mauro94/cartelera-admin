@@ -10,16 +10,30 @@ function handleError(action) {
     }
 }
 
-function event(state = { ...StateManager.defaultState, filter: 'upcoming' }, action) {
+let defaultState = {
+    ...StateManager.defaultState,
+    currentPage: 1,
+    filter: 'upcoming',
+    count: 0,
+    totalPages: 1
+}
+
+function event(state = defaultState, action) {
     switch (action.type) {
-        case EventActions.All:
-            action = {
-                ...action,
-                object: action.object && action.object.events
-            }
+        case EventActions.CurrentPage:
             return {
-                ...StateManager.all(state, action),
-                error: action.error && handleError(action)
+                ...state,
+                currentPage: action.object
+            }
+        case EventActions.All:
+            let count = action.object ? action.object.total : state.count
+            let totalPages = action.object ? action.object.pages : state.totalPages
+            let events = action.object ? action.object.events : null
+            return {
+                ...StateManager.all(state, { ...action, object: events }),
+                count: count,
+                error: action.error && handleError(action),
+                totalPages: totalPages
             }
         case EventActions.Create:
             return {

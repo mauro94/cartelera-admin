@@ -2,7 +2,7 @@ import React from 'react'
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import { faCheck } from '@fortawesome/fontawesome-free-solid'
 import { Plus } from 'Images/plus'
-import Button from './Button'
+import { Button } from './Button'
 
 export default class Callout extends React.Component {
     constructor(props) {

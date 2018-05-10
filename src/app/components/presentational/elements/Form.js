@@ -2,7 +2,7 @@ import React from 'react'
 import Spinner from 'react-spinkit'
 import { Form, Field } from 'formik';
 import { Labels, Entity, Format } from 'Helpers/index'
-import Button from './Button'
+import { Button } from './Button'
 
 export const WelcomeMessage = ({ mail }) => (
     <p>

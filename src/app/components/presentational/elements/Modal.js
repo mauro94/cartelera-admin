@@ -1,6 +1,6 @@
 import React from 'react'
 import { confirmAlert } from 'react-confirm-alert'
-import Button from './Button'
+import { Button  } from './Button'
 import 'react-confirm-alert/src/react-confirm-alert.css'
 
 export const Alert = (props) => {
