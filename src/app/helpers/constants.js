@@ -51,7 +51,9 @@ export const UserTypes = Object.freeze({
     Sponsor: 'sponsor',
     Admin: 'admin',
     sponsor: 'sponsor',
-    admin: 'admin'
+    admin: 'admin',
+    sponsors: 'sponsor',
+    admins: 'admin'
 })
 
 export const UserForms = Object.freeze({
