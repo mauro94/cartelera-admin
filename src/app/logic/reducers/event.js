@@ -4,6 +4,10 @@ import { StateManager } from './helper'
 function event(state = { ...StateManager.defaultState, filter: 'upcoming' }, action) {
     switch (action.type) {
         case EventActions.All:
+            action = {
+                ...action,
+                object: action.object && action.object.events
+            }
             return StateManager.all(state, action)
         case EventActions.Create:
             return StateManager.create(state, action)
