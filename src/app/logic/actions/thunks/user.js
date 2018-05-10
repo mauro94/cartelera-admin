@@ -1,4 +1,4 @@
-import { history, Format, Session, Status, CurrentUserActions, UserActions, SessionActions, EventActions } from 'Helpers/index'
+import { history, Format, Session, Status, CurrentUserActions, UserActions, SessionActions, EventActions, GenericServerCallActions } from 'Helpers/index'
 import { createAction } from 'Logic/actions'
 import { serverCall, request, headers } from 'Logic/actions/thunks/helper'
 
@@ -19,6 +19,19 @@ export const login = (loginAttempt) => {
             history.replace(response.data.isNewbie ? '/login/newbie' : '/')
         }
     })
+}
+
+export const resetPassword = (resetAttempt) => {
+    return (dispatch) => {
+        serverCall({
+            dispatch: dispatch,
+            actionType: GenericServerCallActions.PasswordReset,
+            call: () => request.post(
+                `/password_recover`,
+                resetAttempt,
+                { headers: headers.withoutAuth() })
+        })
+    }
 }
 
 export const get = (id, isCurrent = false) => {

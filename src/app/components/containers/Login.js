@@ -17,9 +17,7 @@ class Login extends React.Component {
 
     render() {
         return (
-            <div className='login-form-container'>
                 <LoginForm handleSubmit={this.props.handleSubmit} error={this.props.error}/>
-            </div>
         )
     }
 }
@@ -32,8 +30,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        handleSubmit: (loginAttempt, setErrors) => {
-            dispatch(thunks.user.login(loginAttempt, setErrors))
+        handleSubmit: (loginAttempt) => {
+            dispatch(thunks.user.login(loginAttempt))
         }
     }
 }
