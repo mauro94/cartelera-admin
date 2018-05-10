@@ -13,7 +13,7 @@ function handleError(action) {
         case 404:
             return 'Este usuario no existe'
         default:
-            return action.error.data.errors ? action.error.data.errors : action.error.data.error_message
+            return action.error.data.errors ? action.error.data.errors : action.error.data.error ? action.error.data : action.error.data.error_message
     }
 }
 
