@@ -1,5 +1,7 @@
 import Yup from 'yup'
 
+export const EventsPerPage = Object.freeze(12)
+
 export const RegistreeActions = Object.freeze({
     All: 'ALL_REGISTREES',
     EventId: 'EVENT_ID_REGISTREES'
@@ -8,6 +10,7 @@ export const RegistreeActions = Object.freeze({
 export const EventActions = Object.freeze({
     All: 'ALL_EVENTS',
     Create: 'CREATE_EVENT',
+    CurrentPage: 'CURRENT_EVENT_PAGE',
     Get: 'GET_EVENT',
     Update: 'UPDATE_EVENT',
     Filter: 'FILTER_EVENT'

@@ -101,6 +101,18 @@ button {
     }
 }
 
+.static {
+    .icon-button {
+        height: 30px;
+        width: 30px;
+        margin: 20px;
+        background-color: $light;
+    }
+    button:enabled {
+        cursor: pointer;
+    }
+}
+
 .btn {
 
     &.right {
@@ -149,7 +161,7 @@ button {
 
                     }
                 }
-            }
+        }
 
             &:after {
                 position: absolute;

@@ -19,10 +19,20 @@ export class DatePickerElement extends React.Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        this.setState({
-            startDate: moment(nextProps.values[nextProps.field.name].startDatetime),
-            endDate: moment(nextProps.values[nextProps.field.name].endDatetime),
-        })
+        let nextStart = nextProps.values[nextProps.field.name].startDatetime
+        let prevStart = this.props.values[nextProps.field.name].startDatetime
+        let nextEnd = nextProps.values[nextProps.field.name].endDatetime
+        let prevEnd = this.props.values[nextProps.field.name].endDatetime
+        if (nextStart != prevStart) {
+            this.setState({
+                startDate: moment(nextStart)
+            })
+        }
+        if (nextEnd != prevEnd) {
+            this.setState({
+                endDate: moment(nextEnd)
+            })
+        }
     }
 
     handleChange({ startDate, endDate }) {
