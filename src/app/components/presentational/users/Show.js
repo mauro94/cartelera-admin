@@ -6,6 +6,7 @@ import { faPhone, faPencilAlt } from '@fortawesome/fontawesome-free-solid'
 import { Format, Labels } from 'Helpers/index'
 import { Button, UserAvatar, Tag } from 'Presentational/elements'
 import { Toggle as ToggleUser } from 'Containers/users'
+import { campusList } from 'Config/Test'
 
 const UserShow = (props) => {
     let selectedItem = document.getElementById(`list-item-${props.user.id}`)
@@ -80,12 +81,18 @@ const Details = (props) => (
             <div className='labels'>
                 <div className='label'>{Format.capitalize(Labels.campus)}</div>
                 <div className='value'>
-                    {props.user.campus}
+                    {getCampus(props.user.campus)}
                 </div>
             </div>
         </div>
     </div>
 )
+
+function getCampus (keyToFind) {
+    var campusObject = campusList.find(function (obj) { return obj.key === keyToFind })
+    return campusObject.text
+}
+
 
 
 export default UserShow
