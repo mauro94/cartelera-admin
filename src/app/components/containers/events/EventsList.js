@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { getEventsType } from './helper'
+import { getEventsType } from './eventsHelper'
 import { Entity, EventActions } from 'Helpers/index'
 import { thunks } from 'Logic/actions/thunks'
 import EventsList from 'Presentational/events/List'

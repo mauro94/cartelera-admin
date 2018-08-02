@@ -1,6 +1,6 @@
 import React from 'react'
 import { ErrorElement, LoadingElement } from 'Presentational/elements'
-import { actionSucceded, actionFailed, waitingOnAction } from 'Containers/helper'
+import { actionSucceded, actionFailed, waitingOnAction } from './hocHelper'
 import { Entity, Status } from 'Helpers/index'
 
 const withFeedback = (Component) => {

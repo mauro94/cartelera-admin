@@ -1,8 +1,8 @@
 import React from 'react'
 import { Switch } from 'react-router-dom'
 import 'Style/gridMain.scss'
-import { UpcomingLink } from './Links'
-import { DefaultRoute, EventsRoutes } from './Routes'
+import { UpcomingLink } from './MainLinks'
+import { DefaultRoute, EventsRoutes } from './MainRoutes'
 
 export const Layout = props => (
     <div className='container'>

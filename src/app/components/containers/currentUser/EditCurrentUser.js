@@ -6,7 +6,7 @@ import { ModalAlert } from 'Presentational/elements'
 import { EditSucceeded, EditFailed } from 'Presentational/users/Edit'
 import { ConfirmUserUpdate } from 'Presentational/events/modals'
 
-class Edit extends React.Component {
+class EditCurrentUser extends React.Component {
     constructor(props) {
         super(props)
         this.handleSubmit = this.handleSubmit.bind(this)
@@ -94,4 +94,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Edit)
+export default connect(mapStateToProps, mapDispatchToProps)(EditCurrentUser)

@@ -1,6 +1,6 @@
 import Yup from 'yup'
 
-export const EventsPerPage = Object.freeze(12)
+export const EventsPerPage = Object.freeze(2)
 
 export const RegistreeActions = Object.freeze({
     All: 'ALL_REGISTREES',

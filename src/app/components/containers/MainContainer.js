@@ -6,6 +6,7 @@ import { load } from 'Containers/hoc'
 import { thunks } from 'Logic/actions/thunks'
 import { AdminLayout, SponsorLayout } from 'Presentational/layout'
 import 'Style/main.scss'
+// todo: check import
 import "node_modules/react-tagging-input/src/component/scss/styles.scss";
 
 class Main extends React.Component {
@@ -18,9 +19,9 @@ class Main extends React.Component {
             )
         }
         return (
-            <SponsorLayout 
+            <SponsorLayout
                 currentUser={this.props.currentUser.show}
-                logout={this.props.logout}/>
+                logout={this.props.logout} />
         )
     }
 }

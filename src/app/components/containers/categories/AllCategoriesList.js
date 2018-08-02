@@ -1,7 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { withRouter, Redirect, Route } from 'react-router-dom'
-import { getIndex } from './helper'
 import { Entity, CategoryActions } from 'Helpers/index'
 import { thunks } from 'Logic/actions/thunks'
 import { CategoriesList } from 'Presentational/categories'

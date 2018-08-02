@@ -1,7 +1,7 @@
 import React from 'react'
 import Layout from './MainLayout'
-import { EventsLink, ProfileLinks } from './Links'
-import { EventsRoutes, ProfileRoute } from './Routes'
+import { EventsLink, ProfileLinks } from './MainLinks'
+import { EventsRoutes, ProfileRoute } from './MainRoutes'
 
 export const SponsorLayout = props => (
     <Layout

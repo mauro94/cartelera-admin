@@ -2,7 +2,7 @@
 import React from 'react'
 import { Route } from "react-router-dom"
 import LoginForm from 'Containers/Login'
-import NewbieForm from './First'
+import NewbieForm from './NewbieForm'
 import RecoverPassword from 'Containers/RecoverPassword'
 import logo from 'Images/logo.svg'
 

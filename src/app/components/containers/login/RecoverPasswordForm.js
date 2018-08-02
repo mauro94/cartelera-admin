@@ -25,23 +25,23 @@ class RecoverPassword extends React.Component {
     }
     render() {
         return (
-            <Recovery 
-            action={GenericServerCallActions.PasswordReset}
-            reducer={{
-                status: this.props.genericServerCall.status,
-                action: this.props.genericServerCall.action,
-                error: this.props.genericServerCall.error
-            }}
-            onSuccess={this.handleSuccess}
-            onError={this.handleError} 
-            handleSubmit={this.props.handleSubmit}/>
+            <Recovery
+                action={GenericServerCallActions.PasswordReset}
+                reducer={{
+                    status: this.props.genericServerCall.status,
+                    action: this.props.genericServerCall.action,
+                    error: this.props.genericServerCall.error
+                }}
+                onSuccess={this.handleSuccess}
+                onError={this.handleError}
+                handleSubmit={this.props.handleSubmit} />
         )
     }
 }
 
 const mapStateToProps = state => {
-    return { 
-        genericServerCall : state.genericServerCall
+    return {
+        genericServerCall: state.genericServerCall
     }
 }
 
