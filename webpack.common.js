@@ -1,4 +1,3 @@
-var webpack = require("webpack");
 var path = require("path");
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
@@ -6,7 +5,6 @@ var BUILD_DIR = path.resolve(__dirname, 'src/public');
 
 module.exports = {
     entry: [
-        "react-hot-loader/patch",
         "./src/app/config/index.js"
     ],
 
@@ -14,13 +12,6 @@ module.exports = {
         path: BUILD_DIR,
         publicPath: '/',
         filename: 'bundle.js'
-    },
-
-    devtool: "source-map-inline",
-    devServer: {
-        contentBase: './src/public',
-        hot: true,
-        historyApiFallback: true
     },
 
     resolve: {
@@ -38,8 +29,6 @@ module.exports = {
     },
 
     plugins: [
-        new webpack.NamedModulesPlugin(),
-        new webpack.HotModuleReplacementPlugin(),
         new HtmlWebpackPlugin({
             title: 'Cartelera - Admin',
             chunksSortMode: 'dependency',
@@ -55,12 +44,6 @@ module.exports = {
             },
             test: /\.jsx?$/,
             exclude: /(node_modules|bower_components)/
-        },
-        {
-            test: /\.js$/,
-            use: ["source-map-loader"],
-            enforce: "pre",
-            exclude: /node_modules/
         },
         {
             test: /\.(s*)css$/,

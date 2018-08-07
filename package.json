@@ -6,8 +6,8 @@
   "license": "ISC",
   "main": "./dist/bundle.js",
   "scripts": {
-    "build": "node_modules/.bin/webpack",
-    "start": "npm run build && node_modules/.bin/webpack-dev-server",
+    "build": "webpack --config webpack.prod.js --env.build development",
+    "start": "webpack-dev-server --config webpack.dev.js --env.build development",
     "clean": "node_modules/.bin/rimraf src/public",
     "clean:all": "node_modules/.bin/rimraf src/public node_modules"
   },
@@ -29,7 +29,8 @@
     "source-map-loader": "^0.2.3",
     "url-loader": "^0.6.2",
     "webpack": "^3.11.0",
-    "webpack-dev-server": "^2.11.1"
+    "webpack-dev-server": "^2.11.1",
+    "webpack-merge": "^4.1.4"
   },
   "dependencies": {
     "@fortawesome/fontawesome": "^1.1.4",
